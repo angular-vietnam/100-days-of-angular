@@ -4,7 +4,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 
 ## Các bài viết
 
-- [Day 1: Chuẩn Bị Môi Trường Làm Việc][day1]
+- [Day 1: PREPARE THE WORKING ENVIRONMENT][day1]
 - [Day 2: EXPLORE ANGULAR APP][day2]
 - [Day 3: ANGULAR DATA BINDING][day3]
 - [Day 4: ANGULAR STRUCTURE DIRECTIVE - NGIF][day4]
