@@ -19,12 +19,12 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 
 ## Author
 
-- [Tiep Phan][https://github.com/tieppt]
-- [Chau Tran][https://github.com/nartc]
+- [Tiep Phan][tieppt]
+- [Chau Tran][nartc]
 
 ## Có chỉnh sửa
 
-- [Trung Vo][https://github.com/trungk18]
+- [Trung Vo][trungk18]
 
 [day1]: Day001-Installation.md
 [day2]: Day002-AngularApp.md
@@ -34,3 +34,6 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day6]: Day006-Attribute-Directive-Class-Style.md
 [day7]: Day007-Component-Interaction-01.md
 [day8]: Day008-Component-Interaction-02.md
+[tieppt]: https://github.com/tieppt
+[nartc]: https://github.com/nartc
+[trungk18]: https://github.com/trungk18
