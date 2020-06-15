@@ -24,7 +24,7 @@ Ngoài cú pháp trên chúng ta có thể dùng:
 Với classExpr có thể là string, array string hoặc object – nếu key nào của object là truthy thì sẽ thêm vào, nếu falsy thì sẽ xóa đi.
 Ví dụ các dạng của classExpr:
 
-| Term         | Description                          |
+| Type         | Value                                |
 | ------------ | ------------------------------------ |
 | String       | `"my-class-1 my-class-2 my-class-3"` |
 | Array String | `['foo', 'bar']`                     |
@@ -55,7 +55,7 @@ Cuối cùng là cú pháp dạng:
 
 Với styleExpr là một trong các dạng:
 
-| Term         | Description                                                                        |
+| Type         | Value                                                                              |
 | ------------ | ---------------------------------------------------------------------------------- |
 | String       | `"width: 100%; height: 100%"`                                                      |
 | Array String | `['width', '100px']`                                                               |
