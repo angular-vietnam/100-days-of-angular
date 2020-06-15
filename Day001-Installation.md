@@ -1,4 +1,4 @@
-# Day 1: Chuẩn Bị Môi Trường Làm Việc
+# Day 1: PREPARE THE WORKING ENVIRONMENT
 
 ## GIỚI THIỆU
 
