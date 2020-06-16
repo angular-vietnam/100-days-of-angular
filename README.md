@@ -14,7 +14,9 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 6: Attribute Directive - Class and Style][day6]                                     | [Youtube][day6-video] |
 | [Day 7: Component Interaction - Pass data from parent to child with input binding][day7] | [Youtube][day7-video] |
 | [Day 8: Component Interaction - Parent listens for child event][day8]                    | [Youtube][day8-video] |
-| [Day 9: Custom Two-way Binding][day9]                                                    |                       |
+| [Day 9: Custom Two-way Binding][day9]                                                    
+| [Day 10: Template Variable và ViewChild/ViewChildren][day10]
+|                       |
 
 ## Youtube Playlist
 
@@ -38,6 +40,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day7]: Day007-Component-Interaction-01.md
 [day8]: Day008-Component-Interaction-02.md
 [day9]: Day009-two-way-binding.md
+[day10]: Day010-template-variable-viewchild-viewchildren.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
