@@ -135,6 +135,10 @@ Link document các bạn cần tìm hiểu trong Day 5
 
 Mục tiêu Day 6 sẽ là về `Attribute directive` để áp dụng style, class binding.
 
+## Author
+
+[Tiep Phan](https://github.com/tieppt)
+
 ## HASHTAG
 
 `#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day5`

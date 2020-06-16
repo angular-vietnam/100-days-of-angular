@@ -81,6 +81,10 @@ Lúc này các bạn sẽ cần trả lời 1 số câu hỏi về routing, styl
 - https://angular.io/guide/setup-local
 - https://angular.io/tutorial/toh-pt0
 
+## Author
+
+[Tiep Phan](https://github.com/tieppt)
+
 ### Updated from Chau Tran
 
 Bài ngày 1 này để chuẩn bị Dev Environment, có thể sẽ rất dễ với phần lớn các bạn. Nhưng những ngày sau khi đi vào những chủ đề chính của Angular, thay vì chỉ làm bài thì các bạn nên share cả lên facebook của bản thân và thêm tag số ngày (ví dụ day2, day3...) với các tiêu đề như: Học đc gì? Gặp khó khăn gì?

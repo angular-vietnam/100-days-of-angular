@@ -75,6 +75,10 @@ Link document các bạn cần tìm hiểu trong Day 4
 
 Mục tiêu Day 5 sẽ là về cấu trúc lặp `ngForOf`
 
+## Author
+
+[Tiep Phan](https://github.com/tieppt)
+
 ## HASHTAG
 
 `#100DaysOfCodeAngular` `#100DaysOfCode #AngularVietNam100DoC_Day4`

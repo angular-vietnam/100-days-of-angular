@@ -179,4 +179,8 @@ https://stackblitz.com/edit/angular-ivy-100-days-of-code-day-9?file=src%2Fapp%2F
 
 Mục tiêu của Day 10 là Template variable và ViewChild/ViewChildren.
 
+## Author
+
+[Tiep Phan](https://github.com/tieppt)
+
 `#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day9`

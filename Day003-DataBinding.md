@@ -117,6 +117,11 @@ Link document các bạn cần tìm hiểu trong Day 3
 
 Mục tiêu Day 4 sẽ là về cấu trúc `if else`
 
+## Author
+
+[Tiep Phan](https://github.com/tieppt)
+
+
 ## HASHTAG
 
 `#100DaysOfCodeAngular` `#100DaysOfCode #AngularVietNam100DoC_Day3`

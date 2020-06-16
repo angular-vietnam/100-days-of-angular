@@ -123,4 +123,9 @@ Dưới đây là các link document mà các bạn cần tìm hiểu:
 https://stackblitz.com/edit/angular-ivy-100-days-of-code-day-8?file=src%2Fapp%2Fauthor-detail%2Fauthor-detail.component.ts
 
 Mục tiêu của Day 9 là custom two-way binding
+
+## Author
+
+[Tiep Phan](https://github.com/tieppt)
+
 `#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day8`

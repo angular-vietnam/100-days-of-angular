@@ -76,4 +76,8 @@ Dưới đây là các link document mà các bạn cần tìm hiểu:
 
 Mục tiêu Day 7 sẽ là Input cho component.
 
+## Author
+
+[Tiep Phan](https://github.com/tieppt)
+
 `#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day6`

@@ -84,6 +84,10 @@ Link document các bạn cần tìm hiểu trong Day 2
  
 Mục tiêu Day 3 sẽ là về **data binding**.
 
+## Author
+
+[Tiep Phan](https://github.com/tieppt)
+
 ## HASHTAG
 
 `#100DaysOfCodeAngular #100DaysOfCode`

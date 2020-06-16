@@ -196,4 +196,8 @@ https://stackblitz.com/edit/angular-ivy-100-days-of-code-day-7
 
 Mục tiêu của Day 8 là child component sẽ thông báo lại cho parent component một event với @Output decorator.
 
+## Author
+
+[Tiep Phan](https://github.com/tieppt)
+
 `#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day7`
