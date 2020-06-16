@@ -6,15 +6,15 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 
 | Bài viết                                                                                 | Video                 |
 | ---------------------------------------------------------------------------------------- | --------------------- |
-| [Day 1: PREPARE THE WORKING ENVIRONMENT][day1]                                           | [Youtube][day1-video] |
-| [Day 2: EXPLORE ANGULAR APP][day2]                                                       | [Youtube][day2-video] |
-| [Day 3: ANGULAR DATA BINDING][day3]                                                      | [Youtube][day3-video] |
-| [Day 4: ANGULAR STRUCTURE DIRECTIVE - NGIF][day4]                                        | [Youtube][day4-video] |
-| [Day 5: ANGULAR STRUCTURE DIRECTIVE NGFOROF][day5]                                       | [Youtube][day5-video] |
-| [Day 6: ATTRIBUTE DIRECTIVE - ClASS AND STYLE][day6]                                     | [Youtube][day6-video] |
-| [Day 7: COMPONENT INTERACTION - PASS DATA FROM PARENT TO CHILD WITH INPUT BINDING][day7] |                       |
-| [Day 8: COMPONENT INTERACTION - PARENT LISTENS FOR CHILD EVENT][day8]                    |                       |
-| [Day 9: # Day 9: Custom Two-way binding][day9]                                           |                       |
+| [Day 1: Prepare The Working Environment][day1]                                           | [Youtube][day1-video] |
+| [Day 2: Explore Angular App][day2]                                                       | [Youtube][day2-video] |
+| [Day 3: Angular Data Binding][day3]                                                      | [Youtube][day3-video] |
+| [Day 4: Angular Structure Directive - NgIf][day4]                                        | [Youtube][day4-video] |
+| [Day 5: Angular Structure Directive - NgForOf][day5]                                     | [Youtube][day5-video] |
+| [Day 6: Attribute Directive - Class and Style][day6]                                     | [Youtube][day6-video] |
+| [Day 7: Component Interaction - Pass data from parent to child with input binding][day7] |                       |
+| [Day 8: Component Interaction - Parent listens for child event][day8]                    |                       |
+| [Day 9: Custom Two-way Binding][day9]                                                    |                       |
 
 ## Youtube Playlist
 
