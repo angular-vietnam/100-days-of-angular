@@ -14,6 +14,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 6: ATTRIBUTE DIRECTIVE - ClASS AND STYLE][day6]                                     | [Youtube][day6-video] |
 | [Day 7: COMPONENT INTERACTION - PASS DATA FROM PARENT TO CHILD WITH INPUT BINDING][day7] |                       |
 | [Day 8: COMPONENT INTERACTION - PARENT LISTENS FOR CHILD EVENT][day8]                    |                       |
+| [Day 9: # Day 9: Custom Two-way binding][day9]                                           |                       |
 
 ## Youtube Playlist
 
@@ -36,6 +37,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day6]: Day006-Attribute-Directive-Class-Style.md
 [day7]: Day007-Component-Interaction-01.md
 [day8]: Day008-Component-Interaction-02.md
+[day9]: Day009-two-way-binding.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
