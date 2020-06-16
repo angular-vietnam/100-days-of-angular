@@ -12,8 +12,8 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 4: Angular Structure Directive - NgIf][day4]                                        | [Youtube][day4-video] |
 | [Day 5: Angular Structure Directive - NgForOf][day5]                                     | [Youtube][day5-video] |
 | [Day 6: Attribute Directive - Class and Style][day6]                                     | [Youtube][day6-video] |
-| [Day 7: Component Interaction - Pass data from parent to child with input binding][day7] |                       |
-| [Day 8: Component Interaction - Parent listens for child event][day8]                    |                       |
+| [Day 7: Component Interaction - Pass data from parent to child with input binding][day7] | [Youtube][day7-video] |
+| [Day 8: Component Interaction - Parent listens for child event][day8]                    | [Youtube][day8-video] |
 | [Day 9: Custom Two-way Binding][day9]                                                    |                       |
 
 ## Youtube Playlist
@@ -44,6 +44,8 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day4-video]: https://youtu.be/Yujs6hi-l4w
 [day5-video]: https://youtu.be/q7CQPEPSkD0
 [day6-video]: https://youtu.be/Zh36WRD3MMQ
+[day7-video]: https://youtu.be/uTd2W4NQkgs
+[day8-video]: https://youtu.be/XFN75RZzMJY
 [tieppt]: https://github.com/tieppt
 [nartc]: https://github.com/nartc
 [trungk18]: https://github.com/trungk18
