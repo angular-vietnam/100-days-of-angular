@@ -198,7 +198,7 @@ Cũng trong Day 10 chúng ta học thêm một component lifecycle khác là `ng
 
 https://stackblitz.com/edit/angular-ivy-100-days-of-code-day-10?file=src/app/app.component.ts
 
-Mục tiêu của Day 11 là Template variable và ViewChild/ViewChildren.
+Mục tiêu của Day 11 là TypeScript Basic: Data Type & Class.
 
 ## Author
 
