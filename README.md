@@ -41,7 +41,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day8]: Day008-Component-Interaction-02.md
 [day9]: Day009-two-way-binding.md
 [day10]: Day010-template-variable-viewchild-viewchildren.md
-[day10]: Day011-typescript-data-type.md
+[day11]: Day011-typescript-data-type.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
