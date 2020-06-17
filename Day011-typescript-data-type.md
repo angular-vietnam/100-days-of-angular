@@ -181,12 +181,15 @@ Khi mình cho `DogService` và `CatService extends BaseService`, thì trên `Dog
 Trên đây chỉ là một ví dụ nhỏ. Để hiểu và áp dụng nhiều, các bạn phải luyện tập và hiểu **Object-Oriented Programming**
 
 ## Tại sao lại là TypeScript?
+
 ### Pros
+
 Như những gì đã nhắc đến ở trên, **TS** giúp developers phát triển phần mềm một cách tường minh hơn với những `type definition` mà **TS** cũng như các thư viện dùng cho **TS** cung cấp. Với khả năng áp dụng tính thừa kế với những `syntax` quen thuộc trong **OOP** như: `abstract`, `class`, và `type parameter <T>`, **TS** giúp developers có thể phát triển ứng dụng một cách nhanh, tường minh, chính xác, dễ bảo trì và mở rộng hơn.
 
 Trong thời gian trở lại đây, **TS** luôn có thứ hạng rất cao (hạng 1 hoặc hạng 2) về **Ngôn ngữ được yêu thích** trong những cuộc khảo sát có tiếng tăm như [**StackOverflow Survey**](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved).
 
 ### Cons
+
 Nhưng cũng như bất cứ thứ gì trên đời (bất cứ không nhỉ? 🤨) thì đều có mặt tốt mặt xấu.
 
 **TS** mang lại nhiều lợi ích, nhưng cũng mang lại không ít phiền toái. Điển hình như:
@@ -197,13 +200,14 @@ Nhưng cũng như bất cứ thứ gì trên đời (bất cứ không nhỉ? �
 - [TypeScript Tax](https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b).
 
 ### Trade-off
+
 Nhưng lợi ích của **TS** mang lại thực sự là lớn hơn so với phiền phức. Việc **Angular** chọn **TS** làm ngôn ngữ chính cũng giúp chúng ta thấy được tầm quan trọng về **structure**, **maintainability**, và **scalability** của chính **Angular**. Chúng ta muốn có gì đó thì phải đánh đổi một thứ khác.
 
 ## Summary
 
 Như vậy ngày hôm nay chúng ta đã tìm hiểu thêm về **What**, **How** và **Why** của **TypeScript**. Với những kiến thức nền này và cộng thêm luyện tập, các bạn sẽ cảm thấy tự tin hơn khi làm việc cùng **Angular** trong các ngày cũng như các dự án của bản thân trong thời gian sắp tới.
 
-Mục tiêu của Day 12 là Content Projection trong Angular.
+Mục tiêu của Day 12 là **Một số kỹ thuật TypeScript Nâng Cao**.
 
 ## Author
 
