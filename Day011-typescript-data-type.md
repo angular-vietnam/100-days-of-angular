@@ -11,9 +11,9 @@
 Để có cái nhìn bao quát hơn về **superset**, các bạn xem hình sau:
 ![TypeScript Graphics](assets/typescript-graphics.png)
 
-Theo như hình minh hoạ thì **TS** = **JS** + **something else**.
+Theo như hình minh hoạ thì **TS** = **JS** plus (+) **something else**.
 
-## TypeScript - "something else"
+## TypeScript minus (-) "something else"
 
 Đầu tiên và quan trọng nhất là **TS** cung cấp **Static Types**. **JS** là một ngôn ngữ mang tính chất `Dynamic` và vì thế nên **JS** rất _thoải mái_, nếu không muốn nói là _quá thoải mái_. Các bạn xem qua ví dụ sau:
 
@@ -40,14 +40,14 @@ Sau đây là danh sách các **default types** trong **TS**
 let someString: string;
 let someNumber: number;
 let someBoolean: boolean;
-let something: any;
+let something: any; // có thể gán sang cho bất kỳ kiểu dữ liệu nào khác
 let someStringArray: string[]; // tương tự cho number[], boolean[], any[]
 let someObject: object;
 let someNull: null;
 let someUndefined: undefined;
 let someUnknown: unknown;
-let someNever: never;
-let someTyple: [string, number];
+let someNever: never; // ví dụ như một hàm throw exception
+let someTuple: [string, number];
 let someVoidFunction: () => void; // một hàm không trả về giá trị gì sau khi thực thi
 let someFunction: () => string; // một hàm trả về giá trị có type "string" sau khi thực thi
 ```
@@ -87,7 +87,11 @@ const susan: User = {
 };
 ```
 
-Ở đoạn code trên, các bạn sẽ thấy chúng ta khai báo một `interface User` bao gồm `firstName`, `lastName`, `age`, và `job`. Các bạn hiểu nôm na `interface` giống như một cái _khuôn bánh_ vậy, các bạn muốn _bánh_ của mình có hình dạng như thế nào thì chúng ta sẽ sử dụng cái _khuôn_ có hình dạng như vậy. Kế tiếp, các bạn để ý cú pháp `job?: string` nhé. Đây gọi là `Optional Property`. Ở trong `User`, `job` là một property **không-bắt-buộc**, nghĩa là có cũng được, không có cũng không sao trong khi 3 properties còn lại là **bắt buộc phải có**.
+Ở đoạn code trên, các bạn sẽ thấy chúng ta khai báo một `interface User` bao gồm `firstName`, `lastName`, `age`, và `job`.
+
+Các bạn hiểu nôm na `interface` giống như một cái _khuôn bánh_ vậy, các bạn muốn _bánh_ của mình có hình dạng như thế nào thì chúng ta sẽ sử dụng cái _khuôn_ có hình dạng như vậy.
+
+Kế tiếp, các bạn để ý cú pháp `job?: string` nhé. Đây gọi là `Optional Property`. Ở trong `User`, `job` là một property **không-bắt-buộc**, nghĩa là có cũng được, không có cũng không sao trong khi 3 properties còn lại là **bắt buộc phải có**.
 
 Việc sử dụng `interface` sẽ giúp cho trình soạn thảo (`text editor`) gợi ý cho object của các bạn có những properties gì trên object đó. Khi type `john.`, `text edior` sẽ gợi ý được : `firstName`, `lastName`, `age`, và `job` cho các bạn lựa chọn khi truy xuất. Điều này giảm thiểu việc sai lỗi chính tả khi các bạn viết code.
 
@@ -95,7 +99,7 @@ Việc sử dụng `interface` sẽ giúp cho trình soạn thảo (`text editor
 
 #### Class
 
-`class` là cú pháp xuất hiện trong **ES6** (và xuất hiện rất nhiều ở những ngôn ngữ lập trình hướng đối tượng khác). Trong **JS**, `class` thực chất chỉ là _syntactic sugar_ cho **Prototypal Inheritance** ([Prototypal Programming](https://en.wikipedia.org/wiki/Prototype-based_programming), hay các bạn hay gọi trong **JS** là **prototype chain**).
+`class` là cú pháp xuất hiện trong **ES2015** hay **ES6** (và xuất hiện rất nhiều ở những ngôn ngữ lập trình hướng đối tượng khác). Trong **JS**, `class` thực chất chỉ là _syntactic sugar_ cho **Prototypal Inheritance** ([Prototypal Programming](https://en.wikipedia.org/wiki/Prototype-based_programming), hay các bạn hay gọi trong **JS** là **prototype chain**).
 
 **TS** đem lại support hàng đầu cho `class` với hệ thống typings khá mạnh mẽ. Để hiểu rõ hơn về `class`, các bạn cần có kiến thức về **Object Oriented Programming** ([**OOP**](https://en.wikipedia.org/wiki/Object-oriented_programming)). Ở đây, chúng ta sẽ chỉ khám phá qua các cú pháp dùng `class` trong **TS**
 
@@ -115,7 +119,7 @@ class User {
 }
 ```
 
-**TS** cũng hỗ trợ **Access Modifier** cho `class` với các keywords như: `public`, `private`, và `protected`. Kết hợp với các **Access Modifer**, các bạn có thể khai báo `class User` với cú pháp ngắn gọn sau
+**TS** cũng hỗ trợ **Access Modifier** cho `class` với các keywords như: `public`, `private`, và `protected`. Kết hợp với các **Access Modifer**, các bạn có thể khai báo `class User` với cú pháp ngắn gọn sau:
 
 ```typescript
 class User {
@@ -132,7 +136,7 @@ class User {
 
 #### Generics
 
-`Generics` là một trong những tính năng cực kỳ tốt mà **TS** mang lại. `Generics` sẽ gíup các bạn viết code theo hướng **Abstraction** dễ dàng hơn, theo sát hơn **SOLID Principles** ([**SOLID**](https://en.wikipedia.org/wiki/SOLID))
+`Generics` là một trong những tính năng cực kỳ tốt mà **TS** mang lại. `Generics` sẽ giúp các bạn viết code theo hướng **Abstraction** dễ dàng hơn, theo sát hơn **SOLID Principles** ([**SOLID**](https://en.wikipedia.org/wiki/SOLID))
 
 ```typescript
 abstract class BaseService<T> {
@@ -162,19 +166,44 @@ class CatService extends BaseService<Cat> {
 }
 ```
 
-Ví dụ trên là một trong những cách áp dụng **Abstraction** vào code của các bạn. Ở đây, mình viết 2 hàm `find()` và `findOne()` trong `abstract class BaseService`. Cú pháp `<T>` chính là `Generics`, hay còn gọi là `Type Parameter`. `BaseService` nhận vào 1 `Type Parameter` gọi là `T`. Cũng như parameter thông thường, các bạn có thể đặt bất cứ tên gì: `<T>`, `<K>`, `<Type>`, `<Props>` ..v.v.. Khi mình cho `DogService` và `CatService extends BaseService`, thì trên `DogService` sẽ có 2 hàm: `find()` và `findOne()` với đúng type `Dog` mà mình ko cần phải viết lại 2 hàm trên trong `DogService`. (tương tự, `CatService` cũng vậy, và với đúng type là `Cat`). Trên đây chỉ là một ví dụ nhỏ. Để hiểu và áp dụng nhiều, các bạn phải luyện tập và hiểu **Object-Oriented Programming**
+Ví dụ trên là một trong những cách áp dụng **Abstraction** vào code của các bạn.
+
+Ở đây, mình viết 2 hàm `find()` và `findOne()` trong `abstract class BaseService`.
+
+Cú pháp `<T>` chính là `Generics`, hay còn gọi là `Type Parameter`.
+
+`BaseService` nhận vào 1 `Type Parameter` gọi là `T`.
+
+Cũng như parameter thông thường, các bạn có thể đặt bất cứ tên gì: `<T>`, `<K>`, `<Type>`, `<Props>` ..v.v..
+
+Khi mình cho `DogService` và `CatService extends BaseService`, thì trên `DogService` sẽ có 2 hàm: `find()` và `findOne()` với đúng type `Dog` mà mình ko cần phải viết lại 2 hàm trên trong `DogService`. (tương tự, `CatService` cũng vậy, và với đúng type là `Cat`).
+
+Trên đây chỉ là một ví dụ nhỏ. Để hiểu và áp dụng nhiều, các bạn phải luyện tập và hiểu **Object-Oriented Programming**
 
 ## Tại sao lại là TypeScript?
-
+### Pros
 Như những gì đã nhắc đến ở trên, **TS** giúp developers phát triển phần mềm một cách tường minh hơn với những `type definition` mà **TS** cũng như các thư viện dùng cho **TS** cung cấp. Với khả năng áp dụng tính thừa kế với những `syntax` quen thuộc trong **OOP** như: `abstract`, `class`, và `type parameter <T>`, **TS** giúp developers có thể phát triển ứng dụng một cách nhanh, tường minh, chính xác, dễ bảo trì và mở rộng hơn.
 
 Trong thời gian trở lại đây, **TS** luôn có thứ hạng rất cao (hạng 1 hoặc hạng 2) về **Ngôn ngữ được yêu thích** trong những cuộc khảo sát có tiếng tăm như [**StackOverflow Survey**](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved).
 
-Nhưng cũng như bất cứ thứ gì trên đời (bất cứ không nhỉ? 🤨) thì đều có mặt tốt mặt xấu. **TS** mang lại nhiều lợi ích, nhưng cũng mang lại không ít phiền toái. Điển hình như: code nhiều hơn vì những định nghĩa `types` (type definition), `conditional check` nghiêm khắc hơn gây khó khăn và các thư viện bên ngoài phải có `type defs` (`d.ts` file) để hỗ trợ **TS**, nếu không thì cũng như không…: [TypeScript Tax](https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b). Nhưng lợi ích của **TS** mang lại thực sự là lớn hơn so với phiền phức. Việc **Angular** chọn **TS** làm ngôn ngữ chính cũng giúp chúng ta thấy được tầm quan trọng về **structure**, **maintainability**, và **scalability** của chính **Angular**.
+### Cons
+Nhưng cũng như bất cứ thứ gì trên đời (bất cứ không nhỉ? 🤨) thì đều có mặt tốt mặt xấu.
+
+**TS** mang lại nhiều lợi ích, nhưng cũng mang lại không ít phiền toái. Điển hình như:
+
+- code nhiều hơn vì những định nghĩa `types` (type definition)
+- `conditional check` nghiêm khắc hơn gây khó khăn và các thư viện bên ngoài phải có `type defs` (`d.ts` file) để hỗ trợ **TS**, nếu không thì cũng như không….
+
+- [TypeScript Tax](https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b).
+
+### Trade-off
+Nhưng lợi ích của **TS** mang lại thực sự là lớn hơn so với phiền phức. Việc **Angular** chọn **TS** làm ngôn ngữ chính cũng giúp chúng ta thấy được tầm quan trọng về **structure**, **maintainability**, và **scalability** của chính **Angular**. Chúng ta muốn có gì đó thì phải đánh đổi một thứ khác.
 
 ## Summary
 
-Như vậy ngày hôm nay chúng ta đã tìm hiểu thêm về **What** **How** và **Why** của **TypeScript**. Với những kiến thức nền này và cộng thêm luyện tập, các bạn sẽ cảm thấy tự tin hơn khi làm việc cùng **Angular** trong các ngày cũng như các dự án của bản thân trong thời gian sắp tới.
+Như vậy ngày hôm nay chúng ta đã tìm hiểu thêm về **What**, **How** và **Why** của **TypeScript**. Với những kiến thức nền này và cộng thêm luyện tập, các bạn sẽ cảm thấy tự tin hơn khi làm việc cùng **Angular** trong các ngày cũng như các dự án của bản thân trong thời gian sắp tới.
+
+Mục tiêu của Day 12 là Content Projection trong Angular.
 
 ## Author
 
