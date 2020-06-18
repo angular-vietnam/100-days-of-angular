@@ -268,9 +268,11 @@ type PersonWithoutPassword = Omit<Person, 'password'>; // {firstName: string, la
 
 ## Summary
 
-Như các bạn đã thấy, đi sâu vào hệ thống `types` của **TS** thật sự không quá dễ dàng đúng không? Nhưng hiểu được và nắm được một số kĩ thuật cơ bản thì sẽ gíup các bạn được rất nhiều trong việc sử dụng **TS** không những trong **Angular** mà trong những công nghệ khác nữa.
+Như các bạn đã thấy, đi sâu vào hệ thống `types` của **TS** thật sự không quá dễ dàng đúng không? Nhưng hiểu được và nắm được một số kĩ thuật cơ bản thì sẽ giúp các bạn được rất nhiều trong việc sử dụng **TS** không những trong **Angular** mà trong những công nghệ khác nữa.
 
 Ngoài những dạng type mà chúng ta vừa cùng nhau khám phá, **TS** còn rất nhiều những khái niệm thú vị khác như: **Decorator**, **Enum**, và **Mixin** .v.v... Để có thể nói hết tât cả về những khái niệm của **TS** thì sẽ tốn rất nhiều thời gian và đây là series về **Angular** cho nên các bạn nên bỏ thêm thời gian của bản thân để xem qua các khái niệm mình vừa nhắc đến của **TS** nhé.
+
+Mục tiêu của Day 13 là **Content Projection trong Angular**.
 
 ## Author
 
