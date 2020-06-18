@@ -17,6 +17,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 9: Custom Two-way Binding][day9]                                                    |                       |
 | [Day 10: Template Variable và ViewChild/ViewChildren][day10]                             |                       |
 | [Day 11: TypeScript Data Type][day11]                                                    |                       |
+| [Day 12: TypeScript Advanced Type][day12]                                                |                       |
 
 ## Youtube Playlist
 
@@ -42,6 +43,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day9]: Day009-two-way-binding.md
 [day10]: Day010-template-variable-viewchild-viewchildren.md
 [day11]: Day011-typescript-data-type.md
+[day12]: Day012-typescript-advanced-type.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
