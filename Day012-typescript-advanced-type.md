@@ -99,21 +99,21 @@ Ngoài những cách sử dụng thông thường trong `function` hoặc trong 
 
 ```typescript
 type StyleProp = {
-	backgroundColor: string;
-	color: string;
-	margin: string;
-	padding: string;
-	...
+  backgroundColor: string;
+  color: string;
+  margin: string;
+  padding: string;
+  ...
 }
 
 type ButtonProps = {
-	onClick: (event: MouseEvent) => void;
+  onClick: (event: MouseEvent) => void;
 } & StyleProps;
 
 type TextProps = {
-	fontSize: string;
-	fontWeight: number;
-	...
+  fontSize: string;
+  fontWeight: number;
+  ...
 } & StyleProps;
 ```
 
