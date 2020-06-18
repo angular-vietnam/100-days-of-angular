@@ -168,17 +168,17 @@ Như đa số các bạn đã biết, `flexDirection` của một **flex contain
 type FlexDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse';
 
 @Component({
-	selector: 'flex-container',
-	template: `<ng-content></ng-content>`
+  selector: 'flex-container',
+  template: `<ng-content></ng-content>`
 })
 export class FlexComponent {
-	@Input() flexDirection: FlexDirection = 'row';
+  @Input() flexDirection: FlexDirection = 'row';
 
-	@HostBinding('style.display') get display() {...}
+  @HostBinding('style.display') get display() {...}
 
-	@HostBinding('style.flex-direction') get direction() {
-		return this.flexDirection;
-	}
+  @HostBinding('style.flex-direction') get direction() {
+    return this.flexDirection;
+  }
 }
 ```
 
