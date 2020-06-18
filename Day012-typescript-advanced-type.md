@@ -215,9 +215,19 @@ type NumberArrayDictionary = Dictionary<number[]>; // {[key: string]: number[]}
 type UserEntity = Dictionary<User>; // {[key: string]: User}
 ```
 
-Ở ví dụ trên, chúng ta có 3 `Type Alias`: `ObjectDictionary`, `ArrayDictionary`, và `Dictionary`. Trong đó, `Dictionary` có thể được xem là **True Type** (type được `export` ra cho bên ngoài sử dụng), còn `ObjectDictionary` và `ArrayDictionary` có thể được xem là **Support Type** (type dùng để hỗ trợ cho **True Type**). Và code thì khá dễ hiểu, nếu mình truyền vào 1 type dạng `number[]` cho `type parameter T` ở `Dictionary<T>` thì `T extends []` sẽ được đính giá (evaluate) là `truthy` và `Dictionary<number[]> sẽ trả về type`ArrayDictionary<number>`
+Ở ví dụ trên, chúng ta có 3 `Type Alias`: `ObjectDictionary`, `ArrayDictionary`, và `Dictionary`. Trong đó, `Dictionary` có thể được xem là **True Type** (type được `export` ra cho bên ngoài sử dụng), còn `ObjectDictionary` và `ArrayDictionary` có thể được xem là **Support Type** (type dùng để hỗ trợ cho **True Type**). Và code thì khá dễ hiểu, nếu mình truyền vào 1 type dạng `number[]` cho `type parameter T` ở `Dictionary<T>` thì `T extends []` sẽ được đính giá (evaluate) là `truthy` và `Dictionary<number[]>` sẽ trả về type `ArrayDictionary<number>`
 
 Với `Type Alias` và `Conditional Type`, **TS** ngoài việc cung cấp cho chúng ta khả năng tạo những dạng type thú vị như trên và kết hợp chúng lại với nhau, thì **TS** còn cung cấp cho chúng ta 1 số _built-in_ type rất hay. Chúng ta cùng điểm qua một số _built-in_ types hay dùng nhé:
+
+- `Exclude`
+- `Extract`
+- `Readonly`
+- `Partial`
+- `Nullable`
+- `Pick`
+- `Record`
+- `ReturnType`
+- `Omit` (Omit là `Type Alias` của `Pick`và `Exclude`)
 
 ```typescript
 // Exclude/Extract
