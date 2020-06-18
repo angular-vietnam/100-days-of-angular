@@ -29,8 +29,8 @@ typeof 123; // number
 typeof true; // boolean
 typeof {}; // object
 typeof []; // object
-typeof (() => {}); // object
-typeof null; // null
+typeof (() => {}); // function
+typeof null; // object
 typeof undefined; // undefined
 typeof new Date(); // object
 
