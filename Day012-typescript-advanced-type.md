@@ -227,7 +227,7 @@ Với `Type Alias` và `Conditional Type`, **TS** ngoài việc cung cấp cho c
 - `Pick`
 - `Record`
 - `ReturnType`
-- `Omit` (Omit là `Type Alias` của `Pick`và `Exclude`)
+- `Omit` (Omit là `Type Alias` của `Pick` và `Exclude`)
 
 ```typescript
 // Exclude/Extract
