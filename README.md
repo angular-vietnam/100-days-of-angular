@@ -19,6 +19,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 11: TypeScript Data Type][day11]                                                    |                       |
 | [Day 12: TypeScript Advanced Type][day12]                                                |                       |
 | [Day 13: Content Projection Trong Angular][day13] |                       |
+| [Day 14: ng-template, ngTemplateOutlet và ng-container trong Angular][day14]| |
 | | |
 
 ## Youtube Playlist
@@ -29,9 +30,6 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 
 - [Tiep Phan][tieppt]
 - [Chau Tran][nartc]
-
-## Có chỉnh sửa
-
 - [Trung Vo][trungk18]
 
 [day1]: Day001-Installation.md
@@ -47,6 +45,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day11]: Day011-typescript-data-type.md
 [day12]: Day012-typescript-advanced-type.md
 [day13]: Day013-content-projection-in-angular.md
+[day14]: Day014-ng-template-ng-template-outlet-ng-container.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk

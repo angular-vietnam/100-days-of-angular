@@ -117,8 +117,6 @@ Tuy nhiên, khi dùng `tab-container` bạn hoàn toàn có thể pass vào temp
 })
 ```
 
-Đọc thêm ở [stackoverflow][https://stackoverflow.com/a/52910740/3375906]
-
 ## ngTemplateOutlet
 
 Qua ví dụ trên thì có thể thấy ngay `ngTemplateOutlet` là cách dùng để render một template được tạo ra bởi `ng-template` lên UI. Cú pháp như sau
@@ -197,8 +195,9 @@ Trong đó name ở bên trái dấu bằng là variable bạn có thể access 
 ng-container là một custom html tag để khi render trên UI sẽ không có extra tag để tránh ảnh hưởng đến style mình viết. Như ở ví dụ trên, bạn hoàn toàn có thể viết lại thành.
 
 ```html
-<div [ngTemplateOutlet]="buttonTmpl"
-              [ngTemplateOutletContext]="{ label: 'Click here', class: 'btn-primary', icon: null }">
+<div
+  [ngTemplateOutlet]="buttonTmpl"
+  [ngTemplateOutletContext]="{ label: 'Click here', class: 'btn-primary', icon: null }">
 </div>
 ```
 
@@ -216,16 +215,16 @@ Nếu bạn có style CSS chặt chẽ theo kiểu `parent > child`. Thì khi th
 
 ## Summary
 
-Phew, lâu quá không giải thích bằng tiếng Việt nên có thể sẽ không được tường minh như mong muốn. Hy vọng các bạn đã hiểu sơ qua về cách khái niệm `ng-template`, `ng-container` và `ngTemplateOutlet` trong bài viết này. Một số bài viết khác bạn có thể đọc thêm.
+Phew, lâu quá không giải thích bằng tiếng Việt nên có thể sẽ không được tường minh như mong muốn. Hy vọng các bạn đã hiểu sơ qua về cách khái niệm `ng-template`, `ng-container` và `ngTemplateOutlet` trong bài viết này.
 
+Một số bài viết khác bạn có thể đọc thêm.
+
+- https://alligator.io/angular/reusable-components-ngtemplateoutlet/
 - https://angular.io/guide/structural-directives#the-ng-template
 - [Angular render recursive view using *ngFor and ng-template](https://trungk18.com/experience/angular-recursive-view-render/)
+- https://blog.angular-university.io/angular-ng-template-ng-container-ngtemplateoutlet/
 
-Mục tiêu của Day 15 là **//TODO: anh Tiệp thêm hộ em nhé //**.
-
-## Reference
-
-- [blog.angular-university.io][reference]
+Mục tiêu của Day 15 là **Giới thiệu Dependency Injection trong Angular**.
 
 ## Author
 
@@ -233,5 +232,4 @@ Mục tiêu của Day 15 là **//TODO: anh Tiệp thêm hộ em nhé //**.
 
 `#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day14`
 
-[reference]: https://blog.angular-university.io/angular-ng-template-ng-container-ngtemplateoutlet/
 [day4]: Day004-Structure-Directive-If-Else.md
