@@ -69,10 +69,55 @@ Và đây là cách chúng ta có thể viết lại bằng cách dùng `ng-temp
 </ng-template>
 ```
 
-Có hai khái niệm khá mới xuất hiện trong ví dụ trên. Đó là `ng-container` và `ngTemplateOutlet`. Khi viết lại code dùng ng-template, ưu điểm dễ nhận thấy đó là: 
+Khi viết lại code dùng `ng-template`, ưu điểm dễ nhận thấy đó là:
 
-- Khi cần sửa lại UI cho counter. Thay vì phải sửa ở 3 nơi, bây giờ ta chỉ cần sửa đúng ở nơi ng-template của counter thôi. Tránh những lỗi typo hay find and replace bị thiếu. 
+- Nếu cần sửa lại UI cho counter. Thay vì phải sửa ở 3 nơi, bây giờ ta chỉ cần sửa ở một vị trí đó là `ng-template` của counter thôi. Tránh những lỗi typo hay find and replace bị thiếu. 
 - Vì phần template này chỉ gói gọn trong đúng một dòng code nên dùng ng-template tiện hơn hẳn là phải tách phần counter ra một component mới.
+
+#### 3. Dùng ng-template để pass vào component khác. Hỗ trợ override template có sẵn trong component.
+
+Ví dụ mình có component `tab-container`, mặc định sẽ render tab với template default là `defaultTabButtonsTmpl`.
+
+```ts
+@Component({
+  selector: 'tab-container',
+  template: `
+    <ng-template #defaultTabButtonsTmpl>
+      <div class="default-tab-buttons">
+        ...
+      </div>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="headerTemplate || defaultTabButtons"></ng-container>
+    ... rest of tab container component ...
+  `
+})
+export class TabContainerComponent {
+    @Input() headerTemplate: TemplateRef<any>; // Custom template provided by parent
+}
+```
+
+Tuy nhiên, khi dùng `tab-container` bạn hoàn toàn có thể pass vào template mới để override lại default UI ở parent component.
+
+```ts
+@Component({
+  selector: 'app-root',
+  template: `      
+    <ng-template #customTabButtons>
+      <div class="custom-class">
+        <button class="tab-button" (click)="login()">
+          {{loginText}}
+        </button>
+        <button class="tab-button" (click)="signUp()">
+          {{signUpText}}
+        </button>
+      </div>
+    </ng-template>
+    <tab-container [headerTemplate]="customTabButtons"></tab-container>      
+  `
+})
+```
+
+Đọc thêm ở [stackoverflow][https://stackoverflow.com/a/52910740/3375906]
 
 ## ngTemplateOutlet
 
@@ -96,14 +141,14 @@ Ví dụ như mình muốn reuse lại một button với những tên khác nha
 </button>
 ```
 
-Hoàn toàn có thể được viết lại thành. 
+Hoàn toàn có thể được viết lại thành.
 
 ```html
 <ng-template #buttonTmpl
              let-label="label"
-             let-class="class"
+             let-className="className"
              let-icon="icon">
-    <button [ngClass]="['btn', class ? class : '']">
+    <button [ngClass]="['btn', className ? className : '']">
         <i *ngIf="icon"
            class="fa {{icon}}"></i>
         {{ label }}
@@ -111,11 +156,11 @@ Hoàn toàn có thể được viết lại thành.
 </ng-template>
 
 <ng-container [ngTemplateOutlet]="buttonTmpl"
-              [ngTemplateOutletContext]="{ label: 'Click here', class: 'btn-primary', icon: null }">
+              [ngTemplateOutletContext]="{ label: 'Click here', className: 'btn-primary', icon: null }">
 </ng-container>
 
 <ng-container [ngTemplateOutlet]="buttonTmpl"
-              [ngTemplateOutletContext]="{ label: 'Remove', class: 'btn-danger', icon: 'fa-remove' }">
+              [ngTemplateOutletContext]="{ label: 'Remove', className: 'btn-danger', icon: 'fa-remove' }">
 </ng-container>
 ```
 
@@ -126,11 +171,30 @@ Vài điểm chú ý:
 - Khi define ra `ng-template`, bạn có thể config cho template đó nhận vào value bằng cách dùng cú pháp `let-name="name"`.
 Trong đó name ở bên trái dấu bằng là variable bạn có thể access được ở trong ng-template, còn name ở bên phải dấu bằng là tên của object property khi pass qua `ngTemplateOutletContext`. Hai cái name này hoàn toàn có thể khác nhau, không có vấn đề gì cả.
 
-- Khi dùng variable ở trong ng-template, bạn sẽ mất type safe. Ví dụ bạn pass vào một object user theo cú pháp `let-user="user"` với `firstName`, `lastName` và `age`. Thì trong ng-template, bạn muốn làm gì cái object này cũng được, ví dụ như thử dùng `user.fullName`, compiler sẽ không catch được lỗi, và cả angular language service cũng không báo lỗi trên IDE.
+- Nếu bạn không đặt tên cho variable ở vế phải của dấu bằng, chỉ viết là `let-name`, thì khi truyền data qua context, property của object truyền vào sẽ là `$implicit`. Ví dụ cụ thể:
+
+```html
+<ng-template #buttonTmpl
+             let-label
+             let-className="className"
+             let-icon="icon">
+    <button [ngClass]="['btn', className ? className : '']">
+        <i *ngIf="icon"
+           class="fa {{icon}}"></i>
+        {{ label }}
+    </button>
+</ng-template>
+
+<ng-container [ngTemplateOutlet]="buttonTmpl"
+              [ngTemplateOutletContext]="{ $implicit: 'Remove', className: 'btn-danger', icon: 'fa-remove' }">
+</ng-container>
+```
+
+- Khi dùng variable ở trong `ng-template`, bạn sẽ mất type safe. Ví dụ bạn pass vào một object user theo cú pháp `let-user="user"` với `firstName`, `lastName` và `age`. Thì trong ng-template, bạn muốn làm gì cái object này cũng được, ví dụ như thử dùng `user.fullName`, compiler sẽ không catch được lỗi, và cả angular language service cũng không báo lỗi trên IDE.
 
 ## ng-container
 
-Nếu bạn dùng React thì `ng-container` tương tự như `React.Fragment`. Là một custom html tag để khi render trên UI sẽ không có extra tag để tránh ảnh hưởng đến style mình viết. Như ở ví dụ trên, bạn hoàn toàn có thể viết lại thành.
+ng-container là một custom html tag để khi render trên UI sẽ không có extra tag để tránh ảnh hưởng đến style mình viết. Như ở ví dụ trên, bạn hoàn toàn có thể viết lại thành.
 
 ```html
 <div [ngTemplateOutlet]="buttonTmpl"
