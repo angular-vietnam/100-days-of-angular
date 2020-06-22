@@ -189,6 +189,9 @@ Như vậy, trong Day 15 chúng ta đã làm quen về khái niệm cũng như c
 - https://angular.io/guide/dependency-injection
 - https://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html
 
+## Code sample
+https://stackblitz.com/edit/angular-ivy-100-days-of-code-day-15?file=src/app/di.ts
+
 Mục tiêu của Day 16 là **Dependency Injection trong Ứng Dụng Angular**.
 
 ## Author
