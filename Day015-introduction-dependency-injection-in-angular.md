@@ -75,6 +75,16 @@ class ProductComponent {
 }
 ```
 
+Và chúng ta sẽ có một container có thể biết cách khởi tạo và provide cho các request của các class như sau:
+
+```ts
+(function container() {
+  const service = new CartService(); // và các dependencies của CartService nếu có
+  const productComp = new ProductComponent(service);
+  // other code logic
+})();
+```
+
 Lúc này bạn có thể thấy class `ProductComponent` không hề biết gì về các khởi tạo CartService như thế nào. Nó gửi request cho Inversion of Control (đảo ngược sự điều khiển hay đảo ngược sự phụ thuộc, viết tắt là IoC) container, từ đó nó có thể lấy được instance mà nó mong muốn.
 
 Trong trường hợp bạn muốn đổi implementation cũng rất dễ dàng và hoàn toàn không cần viết lại class `ProductComponent`.
