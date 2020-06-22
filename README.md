@@ -20,7 +20,8 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 12: TypeScript Advanced Type][day12]                                                | [Youtube][day12-video] |
 | [Day 13: Content Projection Trong Angular][day13]                                        | [Youtube][day13-video] |
 | [Day 14: ng-template, ngTemplateOutlet và ng-container trong Angular][day14]             | [Youtube][day14-video] |
-|                                                                                          |                        |
+|[Day 15: Introduction to Dependency Injection in Angular][day15]|                        |
+| | |
 
 ## Youtube Playlist
 
@@ -46,6 +47,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day12]: Day012-typescript-advanced-type.md
 [day13]: Day013-content-projection-in-angular.md
 [day14]: Day014-ng-template-ng-template-outlet-ng-container.md
+[day15]: Day015-introduction-dependency-injection-in-angular.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
