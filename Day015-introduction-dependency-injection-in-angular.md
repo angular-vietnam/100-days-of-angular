@@ -3,7 +3,7 @@
 ## Dependency Injection
 Dependency Injection (DI) là một pattern rất quan trọng trong lập trình, có thể bạn đã nghe qua những Spring Framework của Java hay ASP.NET có support DI, vậy với Frontend application thì có thật sự cần thiết?
 
-Hiện nay có rất nhiều Frontend Framework có support DI, Angular sử dụng rất nhiều và nó có riêng mội DI framework được thiết kế để đáp ứng được yêu cầu về mặt như kiến trúc hệ thống của Angular.
+Hiện nay có rất nhiều Frontend Framework có support DI, Angular sử dụng rất nhiều và nó có riêng một DI framework được thiết kế để đáp ứng được yêu cầu về mặt như kiến trúc hệ thống của Angular.
 
 ## DI là gì?
 
