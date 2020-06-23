@@ -21,8 +21,8 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 13: Content Projection Trong Angular][day13]                                        | [Youtube][day13-video] |
 | [Day 14: ng-template, ngTemplateOutlet và ng-container trong Angular][day14]             | [Youtube][day14-video] |
 | [Day 15: Introduction to Dependency Injection in Angular][day15]                         | [Youtube][day15-video] |
-|                                                                                          |                        |
-
+|[Day 16: Dependency Injection trong Ứng Dụng Angular Part 2][day16]|                        |
+| | |
 ## Youtube Playlist
 
 https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
@@ -48,6 +48,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day13]: Day013-content-projection-in-angular.md
 [day14]: Day014-ng-template-ng-template-outlet-ng-container.md
 [day15]: Day015-introduction-dependency-injection-in-angular.md
+[day16]: Day016-dependency-injection-in-angular-part-2.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
