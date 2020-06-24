@@ -194,6 +194,11 @@ Cũng trong Day 10 chúng ta học thêm một component lifecycle khác là `ng
 - https://angular.io/api/core/ViewChildren
 - https://www.tiepphan.com/thu-nghiem-voi-angular-template-variable-trong-angular/
 - https://www.tiepphan.com/angular-trong-5-phut-dynamic-component-rendering/
+
+## Youtube Video
+
+https://youtu.be/Wd_644YBQUM
+
 ## Code sample
 
 https://stackblitz.com/edit/angular-ivy-100-days-of-code-day-10?file=src/app/app.component.ts

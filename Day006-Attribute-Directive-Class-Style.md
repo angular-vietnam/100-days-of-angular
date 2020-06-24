@@ -76,6 +76,10 @@ Dưới đây là các link document mà các bạn cần tìm hiểu:
 
 Mục tiêu Day 7 sẽ là Input cho component.
 
+## Youtube Video
+
+https://youtu.be/Zh36WRD3MMQ
+
 ## Author
 
 [Tiep Phan](https://github.com/tieppt)

@@ -118,6 +118,10 @@ Dưới đây là các link document mà các bạn cần tìm hiểu:
 - https://angular.io/guide/component-interaction
 - https://www.tiepphan.com/thu-nghiem-voi-angular-2-component-event-voi-eventemitter-output/
 
+## Youtube Video
+
+https://youtu.be/XFN75RZzMJY
+
 ## Code sample
 
 https://stackblitz.com/edit/angular-ivy-100-days-of-code-day-8?file=src%2Fapp%2Fauthor-detail%2Fauthor-detail.component.ts

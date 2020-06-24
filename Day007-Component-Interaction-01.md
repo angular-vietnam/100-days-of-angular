@@ -190,6 +190,10 @@ Dưới đây là các link document mà các bạn cần tìm hiểu:
 - https://angular.io/guide/lifecycle-hooks
 - https://www.tiepphan.com/thu-nghiem-voi-angular-2-truyen-du-lieu-cho-component-voi-input/
 
+## Youtube Video
+
+https://youtu.be/uTd2W4NQkgs
+
 ## Code sample
 
 https://stackblitz.com/edit/angular-ivy-100-days-of-code-day-7

@@ -209,6 +209,10 @@ Như vậy ngày hôm nay chúng ta đã tìm hiểu thêm về **What**, **How*
 
 Mục tiêu của Day 12 là **Một số kỹ thuật TypeScript Nâng Cao**.
 
+## Youtube Video
+
+https://youtu.be/ozHjDLuusVU
+
 ## Author
 
 [Chau Tran](https://github.com/nartc)

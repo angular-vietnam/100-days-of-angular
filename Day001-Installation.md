@@ -72,6 +72,10 @@ Lúc này các bạn sẽ cần trả lời 1 số câu hỏi về routing, styl
   Sau khi serve thành công các bạn có thể mở trình duyệt và navigate vào địa chỉ URL: http://localhost:4200/ ở đây các bạn sẽ thấy được thành quả của mình.
   Như vậy, chúng ta đã hoàn thành ngày đầu tiên tìm hiểu Angular. Hẹn gặp lại trong các ngày tiếp theo.
 
+## Youtube Video
+
+https://youtu.be/NS6P1fpU77o
+
 ## HASHTAG
 
 `#100DaysOfCodeAngular` `#100DaysOfCode #AngularVietNam100DoC_Day1`

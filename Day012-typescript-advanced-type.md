@@ -284,6 +284,10 @@ Ngoài những dạng type mà chúng ta vừa cùng nhau khám phá, **TS** cò
 
 Mục tiêu của Day 13 là **Content Projection trong Angular**.
 
+## Youtube Video
+
+https://youtu.be/4tcajihANZQ
+
 ## Author
 
 [Chau Tran](https://github.com/nartc)
