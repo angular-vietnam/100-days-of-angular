@@ -226,6 +226,10 @@ Một số bài viết khác bạn có thể đọc thêm.
 
 Mục tiêu của Day 15 là **Giới thiệu Dependency Injection trong Angular**.
 
+## Youtube Video
+
+https://youtu.be/3JM8pDR-MaU
+
 ## Author
 
 [Trung Vo](https://github.com/trungk18)

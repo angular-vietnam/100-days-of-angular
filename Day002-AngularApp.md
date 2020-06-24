@@ -72,7 +72,12 @@ Ngoài cách tạo component bằng tay như trên, bạn có thể tạo bằng
 ng generate component hello
 Với cách tạo bằng tool thì bạn sẽ không cần phải làm những giai đoạn bằng tay lặp đi lặp lại nữa.
 That's all for today.
+
 Các bạn hãy thử tìm hiểu cấu trúc ứng dụng và tạo thêm nhiều component nữa nào.
+
+## Youtube Video
+
+https://youtu.be/jgFw8tAgKNs
 
 ## Link tham khảo
 

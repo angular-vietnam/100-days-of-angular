@@ -75,6 +75,10 @@ Link document các bạn cần tìm hiểu trong Day 4
 
 Mục tiêu Day 5 sẽ là về cấu trúc lặp `ngForOf`
 
+## Youtube Video
+
+https://youtu.be/Yujs6hi-l4w
+
 ## Author
 
 [Tiep Phan](https://github.com/tieppt)

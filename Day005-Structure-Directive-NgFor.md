@@ -52,7 +52,7 @@ Khi sử dụng NgForOf, ở mỗi vòng lặp chúng ta sẽ có thể truy xu�
 | odd: boolean   | True nếu đây là phần tử ở index lẻ                     |
 
 Để truy xuất được những biến trên chúng ta chỉ cần gọi chúng như sau:
-Đối với $implicit nó sẽ được gắn cho biến mà chính chúng ta khi khai báo let something of xxx, lúc này something = `\$implicit`.
+Đối với \$implicit nó sẽ được gắn cho biến mà chính chúng ta khi khai báo let something of xxx, lúc này something = `\$implicit`.
 Đối với các biến khác, chúng ta chỉ cần dùng cú pháp sau:
 
 ```html
@@ -134,6 +134,10 @@ Link document các bạn cần tìm hiểu trong Day 5
 - https://www.youtube.com/watch?v=dXDC-4KGIGI
 
 Mục tiêu Day 6 sẽ là về `Attribute directive` để áp dụng style, class binding.
+
+## Youtube Video
+
+https://youtu.be/q7CQPEPSkD0
 
 ## Author
 

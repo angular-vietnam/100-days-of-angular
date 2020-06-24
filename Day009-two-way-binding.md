@@ -173,6 +173,11 @@ Như vậy trong Day 9, chúng ta sẽ phải tìm hiểu cách để tạo ra c
 - https://www.tiepphan.com/thu-nghiem-voi-angular-2-component-event-voi-eventemitter-output/
 - https://www.tiepphan.com/thu-nghiem-voi-angular-2-two-way-binding-custom-two-way-data-binding/
 - https://angular.io/api/forms/NgModel
+
+## Youtube Video
+
+https://youtu.be/U8UCOKInmu8
+
 ## Code sample
 
 https://stackblitz.com/edit/angular-ivy-100-days-of-code-day-9?file=src%2Fapp%2Ftoggle%2Ftoggle.component.ts
