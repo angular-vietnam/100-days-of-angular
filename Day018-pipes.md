@@ -209,25 +209,20 @@ Với pipe `appTitle` ở trên, vì mình truyền vào giá trị string cho a
 export class PipeExampleComponent implements OnInit {
   userIdChangeAfterFiveSeconds = "14324";
   time$: Observable<number> = timer(0, 1000).pipe(
-    map(val => 5 - val),
+    map((val) => 5 - (val + 1)),
     startWith(5),
-    takeWhile(val => val >= 0)
+    finalize(() => {
+      this.userIdChangeAfterFiveSeconds = "";
+    }),
+    takeWhile((val) => val >= 0)
   );
-
-  ngOnInit() {
-    this.time$.subscribe((timer) => {
-      if (timer === 0) {
-        this.userIdChangeAfterFiveSeconds = "";
-      }
-    });
-  }
 }
 ```
 
 ```html
 <p>
-  Set userId to empty string after {{ timer }} seconds, notice the text "Edit"
-  will be set to "Add"
+  Set userId to empty string after {{ timer | async }} seconds, notice the text
+  "Edit" will be set to "Add"
 </p>
 <pre ngNonBindable>{{ userIdChangeAfterFiveSeconds | appTitle}}</pre>
 <div>Form title: {{ userIdChangeAfterFiveSeconds | appTitle}} User</div>
