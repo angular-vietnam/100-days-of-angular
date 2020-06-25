@@ -40,7 +40,8 @@ export class PipeExampleComponent implements OnInit {
 Và đây là cách mình hiển thị với built in pipe [Date][date] trong Angular
 
 ```html
-{{ now | date }} //Jun 24, 2020 {{ now | date:'medium'}} //Jun 24, 2020, 5:00:00
+<div>{{ now | date }}</div> //Jun 24, 2020 
+<div>{{ now | date:'medium'}}</div> //Jun 24, 2020, 5:00:00
 PM
 ```
 
