@@ -12,9 +12,9 @@ Pipes sẽ lo phần thứ 2, transform data trước khi show cho người dùn
 
 Hiểu đơn giản, pipe là một function nhận **input** mà chúng ta truyền vào, và **output** ra giá trị mình mong muốn.
 
-Ví dụ giữa client và server khi trao đổi thông tin liên quan đến thời gian, thường dùng ISO format `"2020-06-24T09:00:00.000Z"`, tương đương với ngày 26 tháng 6, 4h chiều (giờ Việt Nam).
+Ví dụ giữa client và server khi trao đổi thông tin liên quan đến thời gian, thường dùng ISO format `"2020-06-24T09:00:00.000Z"`, tương đương với ngày 24 tháng 6, 5h chiều (giờ Singapore).
 
-Tuy nhiên khi hiển thị, mình ko thể hiển trị trực tiếp ISO string cho người dùng vì chắc chắn là ko phải ai cũng là developer để hiểu được đó là gì. Vậy nên chúng ta cần transform ISO string ở trên dưới dạng mà người dùng có thể hiểu được, ví dụ `Jun 24, 2020, 4:00:00 PM`.
+Tuy nhiên khi hiển thị, mình ko thể hiển trị trực tiếp ISO string cho người dùng vì chắc chắn là ko phải ai cũng là developer để hiểu được đó là gì. Vậy nên chúng ta cần transform ISO string ở trên dưới dạng mà người dùng có thể hiểu được, ví dụ `Jun 24, 2020, 5:00:00 PM`.
 
 Để làm được việc này bạn có khá nhiều lựa chọn, nhưng thường thì có hai lựa chọn trong Angular:
 
