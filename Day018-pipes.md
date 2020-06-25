@@ -3,7 +3,7 @@
 Các ứng dụng thông thường đều bao gồm các tác vụ khá đơn giản:
 
 1. Lấy dữ liệu từ server. Đơn giản là gọi API call lên server, phức tạp thì listen tới một websocket để nhận được dữ liệu theo thời gian thực.
-2. Transform the data, ví dụ như bạn nhận được giá trị là `2020-06-24T09:00:00.000Z` dưới định dạng ISO. Nhưng trên UI mình phải show ở format dễ đọc cho user `Jun 24, 2020 `.
+2. Transform the data, ví dụ như bạn nhận được giá trị là `2020-06-24T09:00:00.000Z` dưới định dạng ISO. Nhưng trên UI mình phải show ở format dễ đọc cho user `Jun 24, 2020`.
 3. Và hiển thị dữ liệu lên UI cho người dùng.
 
 Pipes sẽ lo phần thứ 2, transform data trước khi show cho người dùng.
@@ -19,7 +19,7 @@ Tuy nhiên khi hiển thị, mình ko thể hiển trị trực tiếp ISO strin
 Để làm được việc này bạn có khá nhiều lựa chọn, nhưng thường thì có hai lựa chọn trong Angular:
 
 1. Viết một function, nhận date input và return output.
-2. Viêt một pipe, cũng nhận input và return output. 
+2. Viêt một pipe, cũng nhận input và return output.
 
 Điểm lợi thế của Pipe là dễ tái sử dụng. Vì thông thường sẽ có khá nhiều page cần hiển thị date time, việc dùng Pipe sẽ đem lại nhiều ưu điểm hơn là function.
 
@@ -40,8 +40,8 @@ export class PipeExampleComponent implements OnInit {
 Và đây là cách mình hiển thị với built in pipe [Date][date] trong Angular
 
 ```html
-{{ now | date }} //Jun 24, 2020 
-{{ now | date:'medium'}} //Jun 24, 2020, 5:00:00 PM
+{{ now | date }} //Jun 24, 2020 {{ now | date:'medium'}} //Jun 24, 2020, 5:00:00
+PM
 ```
 
 Chú ý phần giữa hai dấu ngoặc nhọn `{{ }}`, ngoài việc truyền vào variable bạn muốn hiển thì thì có thêm dấu xổ dọc `|`. Đó là pipe operator, sau đó là tên của pipe bạn đã định nghĩa. Tất cả pipe đều hoạt động theo cách này.
@@ -109,11 +109,11 @@ Thông thường bọn mình có thể viết đi viết lại một cái logic 
 
 Cho đến một ngày một dev mắc một lỗi typo ngớ ngẩn là thay vì `Add`, bạn ấy type thành `Adđ` (Vì có bật Unikey :)))
 
-Thế là mình quyết định viết một pipe đơn giản là nhận vào một string, nếu string này có value, show Edit, còn không thì show Add. Tránh được lỗi typo như ở trên về sau. 
+Thế là mình quyết định viết một pipe đơn giản là nhận vào một string, nếu string này có value, show Edit, còn không thì show Add. Tránh được lỗi typo như ở trên về sau.
 
 Để viết một pipe dành riêng cho nhu cầu của từng dự án, cần follow hai bước sau.
 
-### 1. Trước tiên chúng ta cần tạo một class có implement interface [`PipeTransform`][pipeTransform]. 
+### 1. Trước tiên chúng ta cần tạo một class có implement interface [`PipeTransform`][pipetransform].
 
 Interface này chỉ bao gồm một method duy nhất tên là `transform`.
 
@@ -121,7 +121,7 @@ Interface này chỉ bao gồm một method duy nhất tên là `transform`.
 
 ```ts
 interface PipeTransform {
-  transform(value: any, ...args: any[]): any
+  transform(value: any, ...args: any[]): any;
 }
 ```
 
@@ -129,9 +129,9 @@ interface PipeTransform {
 
 ```ts
 export class AppTitlePipe implements PipeTransform {
-    transform(resourceId: string): string {
-        return resourceId ? "Edit" : "Add";
-    }
+  transform(resourceId: string): string {
+    return resourceId ? "Edit" : "Add";
+  }
 }
 ```
 
@@ -139,7 +139,7 @@ export class AppTitlePipe implements PipeTransform {
 
 ### Thêm Pipe decorator cho class đã implement PipeTransform
 
-Giống như component có decorator `@Component`. Pipe cũng có decorator `@Pipe`. 
+Giống như component có decorator `@Component`. Pipe cũng có decorator `@Pipe`.
 
 ```
 @Pipe({
@@ -206,31 +206,36 @@ Method `transform` sẽ nhận vào nhiều argument. Trong đó:
 Với pipe `appTitle` ở trên, vì mình truyền vào giá trị string cho argument `resourceId`. Nên khi value của `resourceId` thay đổi, pipe nhận biết được là có sự thay đổi và update UI tương ứng. Ví dụ:
 
 ```ts
-export class PipeExampleComponent implements OnInit {  
+export class PipeExampleComponent implements OnInit {
   userIdChangeAfterFiveSeconds = "14324";
-  timer = 5;  
+  time$: Observable<number> = timer(0, 1000).pipe(
+    map(val => 5 - val),
+    startWith(5),
+    takeWhile(val => val >= 0)
+  );
 
   ngOnInit() {
-    let interval = setInterval(() => {
-      this.timer = this.timer - 1;
-      if (this.timer === 0) {
+    this.time$.subscribe((timer) => {
+      if (timer === 0) {
         this.userIdChangeAfterFiveSeconds = "";
-        clearInterval(interval)
       }
-    }, 1000);
+    });
   }
 }
 ```
 
 ```html
-<p>Set userId to empty string after {{ timer }} seconds, notice the text "Edit" will be set to "Add"</p>
+<p>
+  Set userId to empty string after {{ timer }} seconds, notice the text "Edit"
+  will be set to "Add"
+</p>
 <pre ngNonBindable>{{ userIdChangeAfterFiveSeconds | appTitle}}</pre>
 <div>Form title: {{ userIdChangeAfterFiveSeconds | appTitle}} User</div>
 ```
 
 ![Day 18 Pipe example][ss1]
 
-Vậy đối với primitive type như string, boolean, number. Angular detech changes khá là straight forward. Mỗi khi value thay đổi thì pipe cũng sẽ update theo. Còn đối với các reference type như object hay array thì sao nhỉ? 
+Vậy đối với primitive type như string, boolean, number. Angular detech changes khá là straight forward. Mỗi khi value thay đổi thì pipe cũng sẽ update theo. Còn đối với các reference type như object hay array thì sao nhỉ?
 
 ### Reference type
 
@@ -261,11 +266,11 @@ Mình có một pipe tên là `isAdult`, để filter ra những user lớn hơn
 
 ```ts
 @Pipe({
-  name: "isAdult"
+  name: "isAdult",
 })
 export class IsAdultPipe implements PipeTransform {
   transform(arr: User[]): User[] {
-    return arr.filter(x => x.age > 18);
+    return arr.filter((x) => x.age > 18);
   }
 }
 ```
@@ -274,16 +279,16 @@ Và mình render cả 2 list lên màn hình
 
 ```html
 <div class="row">
-	<div class="col-xs-6">
-		<h4>Full user list</h4>
-		<div *ngFor="let user of users">{{ user.name }}</div>
-	</div>
-	<div class="col-xs-6">
-		<div class="ml-4">
-			<h4>Adult user list</h4>
-			<div *ngFor="let user of users | isAdult">{{ user.name }}</div>
-		</div>
-	</div>
+  <div class="col-xs-6">
+    <h4>Full user list</h4>
+    <div *ngFor="let user of users">{{ user.name }}</div>
+  </div>
+  <div class="col-xs-6">
+    <div class="ml-4">
+      <h4>Adult user list</h4>
+      <div *ngFor="let user of users | isAdult">{{ user.name }}</div>
+    </div>
+  </div>
 </div>
 ```
 
@@ -295,12 +300,11 @@ Bây giờ mình add thêm 2 textbox để điền user và tuổi, cùng với 
 
 ![Day 18 Pipe example][ss3]
 
-
 ```ts
 addUser() {
   this.users.push(this.newUser);
   this.newUser = new User()
-}  
+}
 ```
 
 Mình push thêm phần tử mới vào mảng khi click add. Tức là mutate giá trị của mảng trực tiếp, chứ không gán một reference mới cho mảng. Điều này dẫn đến một đặc điểm quan trọng của Pipe.
@@ -328,14 +332,13 @@ Bây giờ thì bạn thấy list người lớn cũng đã được update khi 
 
 ![Day 18 Pipe example][ss4]
 
-
 ### 2. Set impure Pipe
 
 Nếu bạn muốn trigger pipe khi có thay đổi value của một phần tử trong array, hay khi một property của object bị thay đổi. Bạn có thể cấu hình pipe của bạn với thuộc tính `pure` với giá trị `false` trong decorator. Mặc định, `pure` luôn có giá trị true.
 
 @Pipe({
-  name: 'isAdult',
-  pure: false
+name: 'isAdult',
+pure: false
 })
 
 > Tuy nhiên khi sử dụng impure pipe phải hết sức cẩn thận vì như đã đề cập ở trên. Việc check từng phần trong array hay từng property trong object xem có thay đổi hay không rất tốn thời gian. Nên khi tập dữ liệu của bạn đủ lớn, chắc chắn app sẽ chậm đi trông thấy.
@@ -364,9 +367,9 @@ https://stackblitz.com/edit/angular-100-days-of-code-day-18-pipes
 
 [date]: https://angular.io/api/common/DatePipe
 [pipes]: https://angular.io/api/common/CommonModule#pipes
-[pipeTransform]: https://angular.io/api/core/PipeTransform
+[pipetransform]: https://angular.io/api/core/PipeTransform
 [styleguide]: https://angular.io/guide/styleguide#pipe-names
 [ss1]: assets/day-18-pipes-01.gif
 [ss2]: assets/day-18-pipes-02.png
 [ss3]: assets/day-18-pipes-03.gif
-[ss3]: assets/day-18-pipes-04.gif
+[ss4]: assets/day-18-pipes-04.gif
