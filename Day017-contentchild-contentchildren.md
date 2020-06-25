@@ -240,6 +240,7 @@ Như vậy, trong Day 17 bạn sẽ cần tìm hiểu sự khác biệt giữa v
 - https://netbasal.com/understanding-viewchildren-contentchildren-and-querylist-in-angular-896b0c689f6e
 
 ## Code sample
+
 - https://stackblitz.com/edit/angular-ivy-100-days-of-code-day-17?file=src%2Fapp%2Fapp.component.html
 - https://stackblitz.com/edit/angular-ivy-100-days-of-code-day-17-contentchildren?file=src%2Fapp%2Ftab-group%2Ftab-group.component.ts
 

@@ -3,7 +3,7 @@
 Các ứng dụng thông thường đều bao gồm các tác vụ khá đơn giản:
 
 1. Lấy dữ liệu từ server. Đơn giản là gọi API call lên server, phức tạp thì listen tới một websocket để nhận được dữ liệu theo thời gian thực.
-2. Transform the data, ví dụ như bạn nhận được `firstName` và `lastName` từ server. Nhưng trên UI mình phải show `{firstName} ${lastName}`.
+2. Transform the data, ví dụ như bạn nhận được giá trị là `2020-06-24T09:00:00.000Z` dưới định dạng ISO. Nhưng trên UI mình phải show ở format dễ đọc cho user `Jun 24, 2020 `.
 3. Và hiển thị dữ liệu lên UI cho người dùng.
 
 Pipes sẽ lo phần thứ 2, transform data trước khi show cho người dùng.
@@ -154,7 +154,7 @@ export class AppTitlePipe implements PipeTransform {
 
 Khi thêm Pipe decorator thì có một property là required, đó chính là tên của pipe. Mình đặt là `appTitle`.
 
-Nhớ là phải đặt `AppTitlePipe` trong mảng declarations ở module tương ứng mà bạn muốn sử dụng. Nếu không Angular sẽ báo lỗi.
+Nhớ là phải đặt `AppTitlePipe` trong mảng `declarations` ở module tương ứng mà bạn muốn sử dụng. Nếu không Angular sẽ báo lỗi.
 
 Xong rồi đây, giờ mình có thể dùng `appTitle` như bình thường.
 
@@ -172,7 +172,7 @@ Chi tiết có trong [Angular Style Guide][styleguide]
 
 ### Custom pipe parameters
 
-Vẫn là ví dụ trên, nhưng giờ có yêu cầu ở một vài page là khi mở form Add, sẽ không hiện title là Add nữa, mà đổi lại thành Set. Ví dụ `Set Item`. Còn form Edit thì đổi lại thành Change.
+Vẫn là ví dụ trên, nhưng ở một vài page có yêu cầu là khi mở form Add, sẽ không hiện title là Add nữa, mà đổi lại thành Set. Ví dụ `Set Item`. Còn form Edit thì đổi lại thành Change.
 
 Mình hoàn toàn có thể truyền vào hai parameters tương ứng với hai text này. Và nếu mặc định không truyền mình sẽ set lại Add và Edit tương ứng.
 
@@ -201,8 +201,158 @@ Method `transform` sẽ nhận vào nhiều argument. Trong đó:
 
 ## Detecting changes with data binding in pipes
 
+### Primitive type
+
+Với pipe `appTitle` ở trên, vì mình truyền vào giá trị string cho argument `resourceId`. Nên khi value của `resourceId` thay đổi, pipe nhận biết được là có sự thay đổi và update UI tương ứng. Ví dụ:
+
+```ts
+export class PipeExampleComponent implements OnInit {  
+  userIdChangeAfterFiveSeconds = "14324";
+  timer = 5;  
+
+  ngOnInit() {
+    let interval = setInterval(() => {
+      this.timer = this.timer - 1;
+      if (this.timer === 0) {
+        this.userIdChangeAfterFiveSeconds = "";
+        clearInterval(interval)
+      }
+    }, 1000);
+  }
+}
+```
+
+```html
+<p>Set userId to empty string after {{ timer }} seconds, notice the text "Edit" will be set to "Add"</p>
+<pre ngNonBindable>{{ userIdChangeAfterFiveSeconds | appTitle}}</pre>
+<div>Form title: {{ userIdChangeAfterFiveSeconds | appTitle}} User</div>
+```
+
+![Day 18 Pipe example][ss1]
+
+Vậy đối với primitive type như string, boolean, number. Angular detech changes khá là straight forward. Mỗi khi value thay đổi thì pipe cũng sẽ update theo. Còn đối với các reference type như object hay array thì sao nhỉ? 
+
+### Reference type
+
+Ví dụ như có một mảng của users như sau.
+
+```ts
+users: User[] = [
+  {
+    name: "Tiep Phan",
+    age: 30
+  },
+  {
+    name: "Trung Vo",
+    age: 28
+  },
+  {
+    name: "Chau Tran",
+    age: 29
+  },
+  {
+    name: "Tuan Anh",
+    age: 16
+  }
+];
+```
+
+Mình có một pipe tên là `isAdult`, để filter ra những user lớn hơn 18 tuổi.
+
+```ts
+@Pipe({
+  name: "isAdult"
+})
+export class IsAdultPipe implements PipeTransform {
+  transform(arr: User[]): User[] {
+    return arr.filter(x => x.age > 18);
+  }
+}
+```
+
+Và mình render cả 2 list lên màn hình
+
+```html
+<div class="row">
+	<div class="col-xs-6">
+		<h4>Full user list</h4>
+		<div *ngFor="let user of users">{{ user.name }}</div>
+	</div>
+	<div class="col-xs-6">
+		<div class="ml-4">
+			<h4>Adult user list</h4>
+			<div *ngFor="let user of users | isAdult">{{ user.name }}</div>
+		</div>
+	</div>
+</div>
+```
+
+![Day 18 Pipe example][ss2]
+
+Như các bạn thấy list những người trưởng thành hiện không có user `Tuan Anh` dc render, chứng tỏ pipe đã hoạt động như ý mình muốn
+
+Bây giờ mình add thêm 2 textbox để điền user và tuổi, cùng với một button để add thêm user vào mảng `users`. Tuy nhiên khi add thêm một user với tuổi lớn 18 vào mảng `users`. Phần render list người lớn bên phải ko tự update.
+
+![Day 18 Pipe example][ss3]
+
+
+```ts
+addUser() {
+  this.users.push(this.newUser);
+  this.newUser = new User()
+}  
+```
+
+Mình push thêm phần tử mới vào mảng khi click add. Tức là mutate giá trị của mảng trực tiếp, chứ không gán một reference mới cho mảng. Điều này dẫn đến một đặc điểm quan trọng của Pipe.
+
+> By default, pipes are defined as pure so that Angular executes the pipe only when it detects a pure change to the input value. A pure change is either a change to a primitive input value (such as String, Number, Boolean, or Symbol), or a changed object reference (such as Date, Array, Function, or Object).
+
+Mặc định pipe luôn pure (tinh khiết), tức là pipe chỉ trigger lại khi giá trị của input đầu vào, tức là thay đổi value với primitive type và thay đổi reference đối với object. Nên khi mình push trực tiếp phần tử vào mảng, reference của mảng không thay đổi. Dẫn đến pipe ko được execute lại và ko update lên UI.
+
+Việc check reference thay đổi nhanh hơn rất nhiều so với việc phải check từng phần trong array hay từng property trong object xem có thay đổi hay không. Nên khuyến cáo luôn dùng pure Pipe khi có thể.
+
+Để fix, có hai cách
+
+### 1. Update the variable reference
+
+Tức là thay vì mình push một item vô mảng `users`. Thì mình sẽ gán mảng `users` bằng một mảng mới với tất cả items cũ và item mới được add. Đoạn code ở trên sẽ được sửa lại thành.
+
+```ts
+addUserByUpdateReference() {
+  this.users = [...this.users, this.newUser];
+  this.newUser = new User();
+}
+```
+
+Bây giờ thì bạn thấy list người lớn cũng đã được update khi mình bấm nút.
+
+![Day 18 Pipe example][ss4]
+
+
+### 2. Set impure Pipe
+
+Nếu bạn muốn trigger pipe khi có thay đổi value của một phần tử trong array, hay khi một property của object bị thay đổi. Bạn có thể cấu hình pipe của bạn với thuộc tính `pure` với giá trị `false` trong decorator. Mặc định, `pure` luôn có giá trị true.
+
+@Pipe({
+  name: 'isAdult',
+  pure: false
+})
+
+> Tuy nhiên khi sử dụng impure pipe phải hết sức cẩn thận vì như đã đề cập ở trên. Việc check từng phần trong array hay từng property trong object xem có thay đổi hay không rất tốn thời gian. Nên khi tập dữ liệu của bạn đủ lớn, chắc chắn app sẽ chậm đi trông thấy.
+
+## Summary
+
+Vậy là qua ngày 18 này, hy vọng các bạn đã hiểu được Pipe và các use case phổ biến trong việc dùng Pipe. Cũng như sự khác nhau giữa pure và impure Pipe cùng change detection.
+
+Để tìm hiểu sâu hơn, các bạn cần theo dõi thêm một số nguồn sau đây:
+
+- https://angular.io/guide/pipes
+- https://angular.io/api/common/CommonModule#pipes
+- https://trungk18.com/experience/angular-pipe-singular-plural/
 
 ## Code sample
+
+Toàn bộ code trong bài viết này các bạn có thể xem ở link dưới
 
 https://stackblitz.com/edit/angular-100-days-of-code-day-18-pipes
 
@@ -216,3 +366,7 @@ https://stackblitz.com/edit/angular-100-days-of-code-day-18-pipes
 [pipes]: https://angular.io/api/common/CommonModule#pipes
 [pipeTransform]: https://angular.io/api/core/PipeTransform
 [styleguide]: https://angular.io/guide/styleguide#pipe-names
+[ss1]: assets/day-18-pipes-01.gif
+[ss2]: assets/day-18-pipes-02.png
+[ss3]: assets/day-18-pipes-03.gif
+[ss3]: assets/day-18-pipes-04.gif
