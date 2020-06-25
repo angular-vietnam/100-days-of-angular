@@ -54,7 +54,7 @@ Chú ý phần giữa hai dấu ngoặc nhọn `{{ }}`, ngoài việc truyền v
 
 Pipe cho phép truyền thêm các parameters, ví dụ `date` ở trên mình có thể truyền thêm format `medium` phân tách nhau bằng dấu hai chấm `:`. Đó cũng là cú pháp để pass parameter cho pipe.
 
-```
+```html
 {{ interpolated_value | pipe_name:parameter1:parameter2:...:parameterN }}
 ```
 
@@ -74,7 +74,7 @@ Thứ tự thực hiện sẽ là từ trái qua phải. Sau khi `pipe_name_1` c
 
 > Mình đang ở Sing và máy tính được config múi giờ +8 nên mình nhìn thấy value là 5 PM. Còn các bạn đa phần sẽ nhìn thấy giá trị là 4 PM vì cấu hình máy tính ở giờ +7
 
-```
+```html
 {{ now | date:'medium' | uppercase}} // JUN 24, 2020, 5:00:00 PM
 ```
 
@@ -141,14 +141,14 @@ export class AppTitlePipe implements PipeTransform {
 
 Giống như component có decorator `@Component`. Pipe cũng có decorator `@Pipe`.
 
-```
+```ts
 @Pipe({
-    name: 'appTitle'
+  name: 'appTitle'
 })
 export class AppTitlePipe implements PipeTransform {
-    transform(resourceId: string): string {
-        return resourceId ? "Edit" : "Add";
-    }
+  transform(resourceId: string): string {
+    return resourceId ? "Edit" : "Add";
+  }
 }
 ```
 
@@ -179,13 +179,13 @@ Mình hoàn toàn có thể truyền vào hai parameters tương ứng với hai
 Code của mình có thể được viết lại như sau:
 
 ```ts
-  transform(
-    resourceId: string,
-    addText: string = "Add",
-    editText: string = "Edit"
-  ): string {
-    return resourceId ? editText : addText;
-  }
+transform(
+  resourceId: string,
+  addText: string = "Add",
+  editText: string = "Edit"
+): string {
+  return resourceId ? editText : addText;
+}
 ```
 
 Và dùng trên UI
@@ -330,13 +330,14 @@ Bây giờ thì bạn thấy list người lớn cũng đã được update khi 
 ### 2. Set impure Pipe
 
 Nếu bạn muốn trigger pipe khi có thay đổi value của một phần tử trong array, hay khi một property của object bị thay đổi. Bạn có thể cấu hình pipe của bạn với thuộc tính `pure` với giá trị `false` trong decorator. Mặc định, `pure` luôn có giá trị true.
-
+```ts
 @Pipe({
-name: 'isAdult',
-pure: false
+  name: 'isAdult',
+  pure: false
 })
+```
 
-> Tuy nhiên khi sử dụng impure pipe phải hết sức cẩn thận vì như đã đề cập ở trên. Việc check từng phần trong array hay từng property trong object xem có thay đổi hay không rất tốn thời gian. Nên khi tập dữ liệu của bạn đủ lớn, chắc chắn app sẽ chậm đi trông thấy.
+> Tuy nhiên khi sử dụng impure pipe phải hết sức cẩn thận vì như đã đề cập ở trên. Việc check từng phần trong array hay từng property trong object xem có thay đổi hay không rất tốn performance. Nên khi tập dữ liệu của bạn đủ lớn, chắc chắn app sẽ chậm đi trông thấy.
 
 ## Summary
 
@@ -353,6 +354,8 @@ Vậy là qua ngày 18 này, hy vọng các bạn đã hiểu được Pipe và 
 Toàn bộ code trong bài viết này các bạn có thể xem ở link dưới
 
 https://stackblitz.com/edit/angular-100-days-of-code-day-18-pipes
+
+Mục tiêu của Day 19 là **Giới thiệu RxJS và Observable**.
 
 ## Author
 
