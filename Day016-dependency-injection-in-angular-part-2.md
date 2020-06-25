@@ -222,7 +222,7 @@ SomeClass = SomeDecorator(SomeClass);
 
 ## Provider syntax
 
-Như chúng ta đã tìm hiểu qua thì chúng ta có các các provide một provider với các dạng như sau:
+Như chúng ta đã tìm hiểu qua thì chúng ta có các cách provide một provider với các dạng như sau:
 
 > Lưu ý: code phía dưới đây sẽ tương tự cho `@NgModule`, `@Component`, `@Directive`.
 

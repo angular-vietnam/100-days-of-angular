@@ -22,6 +22,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 14: ng-template, ngTemplateOutlet và ng-container trong Angular][day14]             | [Youtube][day14-video] |
 | [Day 15: Introduction to Dependency Injection in Angular][day15]                         | [Youtube][day15-video] |
 |[Day 16: Dependency Injection trong Ứng Dụng Angular Part 2][day16]|                        |
+|[Day 17: ContentChild và ContentChildren trong Angular][day17]|                        |
 | | |
 ## Youtube Playlist
 
@@ -49,6 +50,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day14]: Day014-ng-template-ng-template-outlet-ng-container.md
 [day15]: Day015-introduction-dependency-injection-in-angular.md
 [day16]: Day016-dependency-injection-in-angular-part-2.md
+[day17]: Day017-contentchild-contentchildren.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
