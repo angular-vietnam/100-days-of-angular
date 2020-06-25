@@ -289,6 +289,7 @@ Như vậy, trong Day 16 này bạn sẽ cần tìm hiểu một số kỹ thu�
 - https://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html
 
 ## Code sample
+
 https://stackblitz.com/edit/angular-ivy-100-days-of-code-day-16?file=src%2Fapp%2Ftab-panel%2Ftab-panel.component.ts
 
 Mục tiêu của Day 17 là **ContentChild & ContentChildren**.
