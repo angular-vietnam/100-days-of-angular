@@ -1,4 +1,4 @@
-# Day 19: Giới thiệu RxJS và Observable trong Angular
+# Day 19: Giới thiệu Reactive Programming, RxJS và Observable
 
 Khi bạn tìm hiểu về Angular, bạn sẽ thấy rằng nó có phụ thuộc vào một library là RxJS. Có khá nhiều concept trong Angular sử dụng đến RxJS như là Forms, HttpClient, hay như là QueryList, EventEmitter, etc.
 

@@ -24,6 +24,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 16: Dependency Injection trong Ứng Dụng Angular Part 2][day16]                      |                        |
 | [Day 17: ContentChild và ContentChildren trong Angular][day17]                           |                        |
 | [Day 18: Pipes trong Angular][day18]                                                     |                        |
+| [Day 19: Giới thiệu Reactive Programming, RxJS và Observable][day19]                                                     |                        |
 
 ## Youtube Playlist
 
@@ -53,6 +54,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day16]: Day016-dependency-injection-in-angular-part-2.md
 [day17]: Day017-contentchild-contentchildren.md
 [day18]: Day018-pipes.md
+[day19]: Day019-intro-rxjs-observable.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
