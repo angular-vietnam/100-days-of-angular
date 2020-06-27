@@ -292,6 +292,8 @@ Với `defer()`, chúng ta đã có 3 giá trị khác nhau cho mỗi lần subs
 - [RxJS Overview](https://rxjs.dev/guide/overview)
 - [LearnRxJS](https://www.learnrxjs.io/)
 
+Mục tiêu của Day 21 là **RxJS Transformation Operators**.
+
 ## Author
 
 [Chau Tran](https://github.com/nartc)
