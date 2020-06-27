@@ -287,11 +287,13 @@ Với `defer()`, chúng ta đã có 3 giá trị khác nhau cho mỗi lần subs
 
 Ở ngày 20 này, chúng ta đã tìm hiểu qua kha khá các `operators` dùng để tạo `Observable`, với tên gọi chính thức là `Creation Operators`. Đây là những operators khá phổ biến, tuy nhiên, các bạn chỉ cần nắm kĩ: `from()`, `of()`, `interval()`, `timer()`, và `defer()` là được. `fromEvent()` và `fromEventPattern()` rất ít khi sử dụng trong ứng dụng Angular. Ngoài những `operators` mình liệt kê trên, **RxJS** còn cung cấp 1 số `Creation Operators` khác như: `ajax()`, `fromFetch()`, `generate()`. Và cũng như lý do trên, trong `Angular`, chúng ta rất ít khi sử dụng những operators này. Ví dụ thay vì `ajax()` và `fromFetch()` chúng ta đã có `HttpClientModule`.
 
+## References
+
+- [RxJS Overview](https://rxjs.dev/guide/overview)
+- [LearnRxJS](https://www.learnrxjs.io/)
+
 ## Author
 
 [Chau Tran](https://github.com/nartc)
 
 `#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day20`
-
-[rxjsoverview]: https://rxjs.dev/guide/overview
-[learnrxjs]: https://www.learnrxjs.io/
