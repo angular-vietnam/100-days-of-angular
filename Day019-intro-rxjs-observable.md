@@ -4,9 +4,9 @@ Khi bạn tìm hiểu về Angular, bạn sẽ thấy rằng nó có phụ thu�
 
 Đây vừa là một điểm mạnh, cũng vừa là điểm yếu của Angular. Vì RxJS xử lý asynchronous rất mạnh, nhưng bù lại bạn sẽ phải học thêm một số các concept khác xoay quanh stream. Thinking in streams.
 
-> RxJS is a library for composing asynchronous and event-based programs by using observable sequences.
+> RxJS is a library for composing asynchronous and event-based programs by using observable sequences. [RxJS Overview][RxJSOverview]
 
-> In RxJS and in reactive programming in general, the fundamental unit of work is the stream. Think in terms of streams (think reactively) and design code in a way that, instead of holding on to data, you allow it to flow through and apply transformations along the way until it reaches your desired state.
+> In RxJS and in reactive programming in general, the fundamental unit of work is the stream. Think in terms of streams (think reactively) and design code in a way that, instead of holding on to data, you allow it to flow through and apply transformations along the way until it reaches your desired state. [RxJS in Action][RxJSinAction]
 
 ![Everything is a stream](assets/everything-is-a-stream.jpg)
 
@@ -69,7 +69,7 @@ Với cách sử dụng RxJS cho bài toán trên quả không tệ, và nếu c
 ### Observable
 - Observable: đại diện cho ý tưởng về một tập hợp các giá trị hoặc các sự kiện trong tương lai. Khi các giá trị hoặc sự kiện phát sinh trong tương lai, Observable sẽ điều phối nó đến Observer.
 - Observable chỉ là một function (class) mà nó có một số yêu cầu đặc biệt. Nó nhận đầu vào là một Function, mà Function này nhận đầu vào là một Observer và trả về một function để có thể thực hiện việc cancel quá trình xử lý. Thông thường (RxJS 5 trở lên) chúng ta đặt tên function đó là unsubscribe.
-> Observables are functions that tie an observer to a producer. That’s it. They don’t necessarily set up the producer, they just set up an observer to listen to the producer, and generally return a teardown mechanism to remove that listener. The act of subscription is the act of “calling” the observable like a function, and passing it an observer.
+> Observables are functions that tie an observer to a producer. That’s it. They don’t necessarily set up the producer, they just set up an observer to listen to the producer, and generally return a teardown mechanism to remove that listener. The act of subscription is the act of “calling” the observable like a function, and passing it an observer. [Ben Lesh: Hot vs Cold Observables][BenLeshHotandCold]
 
 ### Observer
 - Observer là một tập hợp các callbacks tương ứng cho việc lắng nghe các giá trị (next, error, hay complete) được gửi đến bởi Observable.
@@ -277,6 +277,8 @@ Vậy là qua Day 19 hy vọng các bạn đã hiểu được cơ bản về Rx
 - https://www.tiepphan.com/rxjs-reactive-programming/
 - https://rxjs.dev/guide/overview
 - https://angular.io/guide/observables
+- https://medium.com/@benlesh/learning-observable-by-building-observable-d5da57405d87
+- https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339
 
 ## Code sample
 
@@ -290,3 +292,8 @@ Mục tiêu của Day 20 là **RxJS Creation Operators**.
 
 `#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day19`
 
+[RxJSOverview]: https://rxjs.dev/guide/overview
+
+[RxJSinAction]: https://freecontent.manning.com/reactive-fundamentals-thinking-in-streams/#:~:text=In%20RxJS%20and%20in%20reactive,it%20reaches%20your%20desired%20state.
+
+[BenLeshHotandCold]: https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339#:~:text=Observables%20are%20functions%20that%20tie,mechanism%20to%20remove%20that%20listener.
