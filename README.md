@@ -21,11 +21,11 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 13: Content Projection Trong Angular][day13]                                        | [Youtube][day13-video] |
 | [Day 14: ng-template, ngTemplateOutlet và ng-container trong Angular][day14]             | [Youtube][day14-video] |
 | [Day 15: Introduction to Dependency Injection in Angular][day15]                         | [Youtube][day15-video] |
-| [Day 16: Dependency Injection trong Ứng Dụng Angular Part 2][day16]                      |                        |
-| [Day 17: ContentChild và ContentChildren trong Angular][day17]                           |                        |
-| [Day 18: Pipes trong Angular][day18]                                                     |                        |
-| [Day 19: Giới thiệu Reactive Programming, RxJS và Observable][day19]                     |                        |
-| [Day 20: RxJS Creation Operators][day20]                                                 |                        |
+| [Day 16: Dependency Injection trong Ứng Dụng Angular Part 2][day16]                      | [Youtube][day16-video] |
+| [Day 17: ContentChild và ContentChildren trong Angular][day17]                           | [Youtube][day17-video] |
+| [Day 18: Pipes trong Angular][day18]                                                     | [Youtube][day18-video] |
+| [Day 19: Giới thiệu Reactive Programming, RxJS và Observable][day19]                     | [Youtube][day19-video] |
+| [Day 20: RxJS Creation Operators][day20]                                                 | [Youtube][day20-video] |
 
 ## Youtube Playlist
 
@@ -72,6 +72,11 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day13-video]: https://youtu.be/-vN52YVbcgk
 [day14-video]: https://youtu.be/3JM8pDR-MaU
 [day15-video]: https://youtu.be/_JnUGhVhq_o
+[day16-video]: https://youtu.be/hTsn6L8vcVg
+[day17-video]: https://youtu.be/m3ZgeVGLZag
+[day18-video]: https://youtu.be/4BJ2Vk67f6A
+[day19-video]: https://youtu.be/lRfyUh4ex38
+[day20-video]: https://youtu.be/OWvK8ZB_Wrc
 [tieppt]: https://github.com/tieppt
 [nartc]: https://github.com/nartc
 [trungk18]: https://github.com/trungk18
