@@ -370,7 +370,7 @@ _credit: [https://dev.to/kosich/debounce-vs-throttle-vs-audit-vs-sample-differen
 
 Ngày hôm nay phải nói là quá nhiều `operators` để tìm hiểu 🙂. Các **filtering operators** thường dùng gồm có: `first()`, `last()`, `filter()`, `take()`, `takeUntil()`, `skip()`, `skipUntil()`, `debounceTime()`, và `throttleTime()`. Các operators còn lại cũng có dùng nhưng tần suất không nhiều bằng. Các bạn tìm hiểu sâu thêm về mỗi loại nếu muốn nhé.
 
-Mục tiêu ngày 23 sẽ là **RxJS Operators**
+Mục tiêu ngày 23 sẽ là **RxJS Combination Operators**
 
 ## References
 
