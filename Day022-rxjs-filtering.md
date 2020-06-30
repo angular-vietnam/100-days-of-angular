@@ -363,6 +363,7 @@ fromEvent(document, 'click').pipe(sampleTime(1000)).subscribe(console.log); // c
 Cả 4 `operators` này có phần hoạt động khá giống nhau ngoại trừ `debounceTime` là hơi khác biệt. Mình có 1 diagram để mô tả sự khác biệt của 4 loại `operators` này
 
 ![RxJS difference](assets/rxjs-debounce-audit-sample-throttle.png)
+
 _credit: [https://dev.to/kosich/debounce-vs-throttle-vs-audit-vs-sample-difference-you-should-know-1f21](https://dev.to/kosich/debounce-vs-throttle-vs-audit-vs-sample-difference-you-should-know-1f21)_
 
 ## Summary
