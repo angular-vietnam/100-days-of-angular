@@ -28,6 +28,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 20: RxJS Creation Operators][day20]                                                 | [Youtube][day20-video] |
 | [Day 21: RxJS Transformation Operators][day21]                                           |                        |
 | [Day 22: RxJS Filtering Operators][day22]                                                |                        |
+| [Day 23: RxJS Combination Operators][day23]                                              |                        |
 
 ## Youtube Playlist
 
@@ -60,7 +61,8 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day19]: Day019-intro-rxjs-observable.md
 [day20]: Day020-rxjs-creation.md
 [day21]: Day021-rxjs-transformation.md
-[day22]: Day021-rxjs-filtering.md
+[day22]: Day022-rxjs-filtering.md
+[day23]: Day023-rxjs-combination.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
