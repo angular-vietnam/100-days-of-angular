@@ -198,7 +198,7 @@ this.vm$ = combineLatest(
 
 `zip()` nhận vào tham số là `...(Observables | Function)` để tượng trưng cho các child `Observable` được truyền vào lần lượt. `zip()` là 1 operator khá hay ho vì `zip()` sẽ gom tất cả các giá trị được emit bởi children `Observable` theo cặp.
 
-Nghĩa là sao? Ví dụ: `obs1 emit 1 - 2 - 3`, `obs2 emit 2 - 3- 4`, `obs3 emit 3 - 4 - 5`. Nếu như bạn dùng `combineLatest()` thì giá trị mà các bạn nhận được là:
+Nghĩa là sao? Ví dụ: `obs1 emit 1 - 2 - 3`, `obs2 emit 4 - 5 - 6`, `obs3 emit 7 - 8 - 9`. Nếu như bạn dùng `combineLatest()` thì giá trị mà các bạn nhận được là:
 
 ```ts
 combineLatest(of(1, 2, 3), of(4, 5, 6), of(7, 8, 9)).subscribe(observer);
