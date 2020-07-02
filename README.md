@@ -29,6 +29,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 21: RxJS Transformation Operators][day21]                                           |                        |
 | [Day 22: RxJS Filtering Operators][day22]                                                |                        |
 | [Day 23: RxJS Combination Operators][day23]                                              |                        |
+| [Day 24: RxJS Error Handling and Conditional Operators][day24] ||
 
 ## Youtube Playlist
 
@@ -63,6 +64,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day21]: Day021-rxjs-transformation.md
 [day22]: Day022-rxjs-filtering.md
 [day23]: Day023-rxjs-combination.md
+[day24]: Day024-rxjs-error-handling-conditional.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
