@@ -120,6 +120,8 @@ this.queryInput.valueChanges
 
 Như ở phần **Nguồn gốc**, mình có đề cập đến `switchMap = switchAll + map`. Tuy nhiên, một số trường hợp sẽ làm cho `switchAll + map` không hoạt động đúng tính chất của `switchMap()` nữa. Điển hình là khi bạn dùng với `Promise`. Vì tính chất `non-cancellable` của `Promise`, nên nếu các bạn có request gửi đi thì `switchAll()` cũng không cancel được vì `Promise` không hề cancel được.
 
+Một lưu ý nữa, khi làm việc với Http Client trong Angular chẳng hạn, bạn chỉ nên dùng `switchMap` cho những task get dữ liệu, nếu bạn sử dụng cho Create, Update, Delete có thể sinh ra race condition. Lúc này các bạn nên thay thế bằng `mergeMap` hoặc `concatMap`.
+
 #### mergeMap()
 
 `mergeMap<T, R, O extends ObservableInput<any>>(project: (value: T, index: number) => O, resultSelector?: number | ((outerValue: T, innerValue: ObservedValueOf<O>, outerIndex: number, innerIndex: number) => R), concurrent: number = Number.POSITIVE_INFINITY): OperatorFunction<T, ObservedValueOf<O> | R>`
@@ -128,7 +130,7 @@ Như ở phần **Nguồn gốc**, mình có đề cập đến `switchMap = swi
 
 ![RxJS mergeMap](assets/rxjs-mergeMap.png)
 
-Khác với `switchMap()`, `mergeMap()` sẽ không `unsubscribe` `Inner Observable` cũ nếu như có `Inner Observable` mới. Nói đúng hơn, `mergeMap()` sẽ giữ nhiều `Subscription`. Vì tính chất này, `mergeMap()` thích hợp khi bạn có nghiệp vụ mà không cần/được dừng `Inner Observable` nếu như `Outer Observable` có emit giá trị mới (ví dụ những nghiệp vụ liên quan đến Write vào Database, `switchMap()` sẽ thích hợp với Read).
+Khác với `switchMap()`, `mergeMap()` sẽ không `unsubscribe` `Inner Observable` cũ nếu như có `Inner Observable` mới. Nói đúng hơn, `mergeMap()` sẽ giữ nhiều `Subscription`. Vì tính chất này, `mergeMap()` thích hợp khi bạn có nghiệp vụ mà không cần/được dừng `Inner Observable` nếu như `Outer Observable` có emit giá trị mới (ví dụ những nghiệp vụ liên quan đến **Write vào Database**, `switchMap()` sẽ thích hợp với **Read**).
 
 ```ts
 fromEvent(document, 'click').pipe(
@@ -147,6 +149,10 @@ fromEvent(document, 'click').pipe(
 ```
 
 Các bạn đã thấy sự khác biệt với `switchMap()` rồi chứ? Vì `mergeMap()` sẽ không `unsubscribe` `Inner Observable` nên số lượng `Subscription` mà `mergeMap()` tạo ra có khi lên rất nhiều, các bạn chú ý khi dừng `mergeMap()` nhé. Không cẩn thận là ăn **Memory Leak** đấy.
+
+Operator này còn nhận vào một tham số là `concurrent` giống như `merge` operator để control có bao nhiêu Inner Observable có thể chạy đồng thời.
+
+Nếu bạn set `concurrent = 1` chúng ta sẽ có cách hoạt động tương tự như `concatMap` phía dưới.
 
 #### concatMap()
 
