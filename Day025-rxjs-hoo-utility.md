@@ -17,6 +17,34 @@ interval(1000)
 
 Các bạn sẽ thấy là `map()` dùng giá trị của `interval(1000)` là `0 -- 1 -- 2 -- 3 -- 4...` và trả về giá trị mới là nhân đôi của giá trị ban đầu `0 -- 2 -- 4 -- 6 -- 8...`. **HOOs** cũng là những **Transformation Operators** nhưng thành vì `transform` thành `value` mới thì chúng sẽ trả về `Observable` mới để chúng ta có thể `subscribe` vào `Observable` mới này và lấy giá trị mới.
 
+#### Nguồn gốc của các HOOs?
+
+Trước khi tìm hiểu về cái HOOs, chúng ta sẽ tìm hiểu các operators sau: `mergeAll()`, `concatAll()`, và `switchAll()`. Như mình vừa nói qua ở trên, operator `map()` dùng để chuyển giá trị được emit từ `Source Observable` sang 1 giá trị mới rồi emit giá trị mới này. Ở ví dụ trên, chúng ta thấy `map()` trả về 1 giá trị bình thường. Vậy trường hợp `map()` trả về giá trị là 1 `Observable` thì sao? Chúng ta hãy thử nhé.
+
+```ts
+fromEvent(document, 'click')
+  .pipe(map(() => interval(1000)))
+  .subscribe(console.log);
+// Click
+// output: Observable {}
+// Click
+// output: Observable {}
+// Click
+// output: Observable {}
+```
+
+Như các bạn thấy, chúng ta nhận được `Observable {}` ở trên Console. Lí do là vì `map()` trả về 1 `Observable`, là `interval(1000)` ở đây. Và lúc này các bạn đang có 1 **Higher Order Observable** (aka `Observable<Observable>`). Các bạn có thể hiểu là mỗi lần click, chúng ta sẽ có 1 `interval()` mới. Lúc này, chúng ta có thể dùng 1 trong 3 operators mình vừa liệt kê ở trên để `pipe` vào `Source Observable` này:
+
+```ts
+const source = fromEvent(document, 'click').pipe(map(() => interval(1000)));
+
+source.pipe(mergeAll()).subscribe(console.log);
+source.pipe(switchAll()).subscribe(console.log);
+source.pipe(concatAll()).subscribe(console.log);
+```
+
+Cả 3 `merge/switch/concatAll` sẽ giúp các bạn chuyển **Higher Order Observable** về lại **First Order Observable** bằng cách sẽ `subscribe` vào `Observable` mà `map()` trả về. Nói cách khác, các **Higher Order Operators** chính là `merge/switch/concatAll + map()`. Cách thức hoạt động cũng như tính chất của `merge/switch/concat` khác nhau như thế nào thì chúng ta sẽ tìm hiểu qua các **Higher Order Operators** nhé.
+
 #### Tại sao lại cần HOOs?
 
 Chúng ta xem qua ví dụ sau:
@@ -88,6 +116,10 @@ this.queryInput.valueChanges
   });
 ```
 
+##### Lưu ý:
+
+Như ở phần **Nguồn gốc**, mình có đề cập đến `switchMap = switchAll + map`. Tuy nhiên, một số trường hợp sẽ làm cho `switchAll + map` không hoạt động đúng tính chất của `switchMap()` nữa. Điển hình là khi bạn dùng với `Promise`. Vì tính chất `non-cancellable` của `Promise`, nên nếu các bạn có request gửi đi thì `switchAll()` cũng không cancel được vì `Promise` không hề cancel được.
+
 #### mergeMap()
 
 `mergeMap<T, R, O extends ObservableInput<any>>(project: (value: T, index: number) => O, resultSelector?: number | ((outerValue: T, innerValue: ObservedValueOf<O>, outerIndex: number, innerIndex: number) => R), concurrent: number = Number.POSITIVE_INFINITY): OperatorFunction<T, ObservedValueOf<O> | R>`
@@ -148,6 +180,19 @@ from([image1, image2, image3]).pipe(
   concatMap((singleImage) => this.apiService.upload(singleImage)) // upload từng image theo thứ tự
 );
 ```
+
+##### Lưu ý:
+
+Như phần **Nguồn gốc** mình có đề cập tới `concatMap = concatAll + map`. Tuy nhiên, có một số trường hợp `concatAll + map` sẽ hoạt động không đúng với tính chất của `concatMap`. Điển hình chính là khi các bạn nhúng `Promise` vào. Các bạn xem ví dụ sau:
+
+```ts
+fromEvent(document, 'click').pipe(
+  map(() => axios('...')),
+  concatAll()
+);
+```
+
+Lúc này, vì bản chất **eager** của `Promise`, khi được invoke là sẽ gửi request ngay lặp tức, nghĩa là `axios(...)` kia đã gửi request tại thời điểm `map()` mất rồi cho nên `concatAll()` ở đây để thực thi theo thứ tự thì hoàn toàn vô nghĩa, và nhiều trường hợp sẽ bị **Racing Condition** ngay.
 
 #### exhaustMap()
 
