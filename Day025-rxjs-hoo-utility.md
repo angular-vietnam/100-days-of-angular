@@ -1,10 +1,10 @@
-# Day 25: RxJS Higher Order Operators and Utility Operators
+# Day 25: RxJS Higher Order Observables and Utility Operators
 
-Whoa, chúng ta đã cùng nhau tìm hiểu gần hết các **Operators** thường (có thể thường) sử dụng trong ứng dụng **Angular** rồi, còn mấy cái nữa thôi 💪. Ngày hôm nay, chúng ta sẽ cùng nhau tìm hiểu 2 (trong 3) loại **Operators** cuối cùng là: **Higher Order Operators** và **Utility Operators** nhé.
+Whoa, chúng ta đã cùng nhau tìm hiểu gần hết các **Operators** thường (có thể thường) sử dụng trong ứng dụng **Angular** rồi, còn mấy cái nữa thôi 💪. Ngày hôm nay, chúng ta sẽ cùng nhau tìm hiểu 2 (trong 3) loại **Operators** cuối cùng là: **RxJS Higher Order Observables** và **Utility Operators** nhé.
 
 > Loại **Operator** còn lại là **Multicasting Operator** và đây là loại **Operator** chúng ta sẽ tìm hiểu vào ngày kế tiếp
 
-## Higher Order Operators (HOOs)
+## RxJS Higher Order Observables (HOOs)
 
 **HOOs** là những operators mà sẽ nhận vào giá trị của **Outer Observable** (hay còn gọi là **Source**) và sẽ trả về một **Inner Observable** (hay còn gọi là **Destination**) khác. Nhắc lại ngày trước 1 chút, chúng ta đã cùng tìm hiểu về `map()`, là **Transformation Operator**
 
@@ -43,7 +43,7 @@ source.pipe(switchAll()).subscribe(console.log);
 source.pipe(concatAll()).subscribe(console.log);
 ```
 
-Cả 3 `merge/switch/concatAll` sẽ giúp các bạn chuyển **Higher Order Observable** về lại **First Order Observable** bằng cách sẽ `subscribe` vào `Observable` mà `map()` trả về. Nói cách khác, các **Higher Order Operators** chính là `merge/switch/concatAll + map()`. Cách thức hoạt động cũng như tính chất của `merge/switch/concat` khác nhau như thế nào thì chúng ta sẽ tìm hiểu qua các **Higher Order Operators** nhé.
+Cả 3 `merge/switch/concatAll` sẽ giúp các bạn chuyển **Higher Order Observable** về lại **First Order Observable** bằng cách sẽ `subscribe` vào `Observable` mà `map()` trả về. Nói cách khác, các **Higher Order Observables** chính là `merge/switch/concatAll + map()`. Cách thức hoạt động cũng như tính chất của `merge/switch/concat` khác nhau như thế nào thì chúng ta sẽ tìm hiểu qua các **Higher Order Observables** nhé.
 
 #### Tại sao lại cần HOOs?
 

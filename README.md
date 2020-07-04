@@ -30,7 +30,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 22: RxJS Filtering Operators][day22]                                                |                        |
 | [Day 23: RxJS Combination Operators][day23]                                              |                        |
 | [Day 24: RxJS Error Handling and Conditional Operators][day24]                           |                        |
-| [Day 25: RxJS Higher Order Operators and Utility Operators][day25]                       |                        |
+| [Day 25: RxJS Higher Order Observables and Utility Operators][day25]                       |                        |
 
 ## Youtube Playlist
 
