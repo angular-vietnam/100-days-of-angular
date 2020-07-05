@@ -15,7 +15,7 @@ interval(1000)
 // output: 0 -- 2 -- 4 -- 6 -- 8
 ```
 
-Các bạn sẽ thấy là `map()` dùng giá trị của `interval(1000)` là `0 -- 1 -- 2 -- 3 -- 4...` và trả về giá trị mới là nhân đôi của giá trị ban đầu `0 -- 2 -- 4 -- 6 -- 8...`. **HOOs** cũng là những **Transformation Operators** nhưng thành vì `transform` thành `value` mới thì chúng sẽ trả về `Observable` mới để chúng ta có thể `subscribe` vào `Observable` mới này và lấy giá trị mới.
+Các bạn sẽ thấy là `map()` dùng giá trị của `interval(1000)` là `0 -- 1 -- 2 -- 3 -- 4...` và trả về giá trị mới là nhân đôi của giá trị ban đầu `0 -- 2 -- 4 -- 6 -- 8...`. **HOOs** cũng là những **Transformation Operators** nhưng thay vì `transform` thành `value` mới thì chúng sẽ trả về `Observable` mới để chúng ta có thể `subscribe` vào `Observable` mới này và lấy giá trị mới.
 
 #### Nguồn gốc của các HOOs?
 
