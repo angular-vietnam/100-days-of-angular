@@ -10,11 +10,11 @@ Cách này đã được dùng cho đến mãi gần đây khi concept về Sing
 
 Vậy làm sao ứng dụng Angular có thể biết được là bạn đang cần truy cập vào phần thông tin nào, và cách hoạt động ra sao. Đó là nhờ [Angular Router][router].
 
-Khi người dùng thực hiện các tác vụ ứng dụng, họ cần di chuyển giữa các view khác nhau mà developer đã config. Ví dụ đơn khi bạn vào kenh14.vn, bạn sẽ thấy một danh sách các bài viết. Bạn click vô một bài rất hay, muốn gửi cho bạn bè. Thì bạn sẽ copy cái đường link có dạng kenh14.vn/bai-nay-hay-lam và gửi cho bạn của mình.
+Khi người dùng thực hiện các tác vụ ứng dụng, họ cần di chuyển giữa các view khác nhau mà developer đã config. Ví dụ khi bạn vào `tiepphan.com`, bạn sẽ thấy một danh sách các bài viết. Bạn click vô một bài rất hay, muốn gửi cho bạn bè. Thì bạn sẽ copy cái đường link có dạng `tiepphan.com/bai-nay-hay-lam` và gửi cho bạn của mình.
 
-Về phía ứng dụng, khi bạn mở đường dẫn `kenh14.vn/bai-nay-hay-lam`, application phải hiển thị được đúng bài viết mà bạn đã xem.
+Về phía ứng dụng, khi bạn mở đường dẫn `tiepphan.com/bai-nay-hay-lam`, application phải hiển thị được đúng bài viết mà bạn đã xem.
 
-- Ứng dụng Angular cần phải được config để bạn có thể mở được đường dẫn có dạng `kenh14.vn/bai-nay-hay-lam`
+- Ứng dụng Angular cần phải được config để bạn có thể mở được đường dẫn có dạng `tiepphan.com/bai-nay-hay-lam`
 - Khi mở đường dẫn có dạng như vậy, Angular cần phải hiển thị một layout của một bài báo. Chứ ko thể hiển thị danh sách các bài viết như ở trang chủ được
 - Bài báo đó phải hiện thị nội dung mà bạn đã xem, chứ ko thể là một bài viết ngẫu nhiên được.
 
@@ -82,7 +82,7 @@ ng generate component article-detail
 
 Khi tạo ứng dụng mới theo step ở trên thì CLI đã mặc định tạo ra một module với tên gọi `AppRoutingModule` và tự động import vào `AppModule` cho chúng ta.
 
-```
+```ts
 @NgModule({
   declarations: [
     AppComponent
@@ -111,7 +111,15 @@ const routes: Routes = [];
 export class AppRoutingModule {}
 ```
 
-Chú ý là `AppRoutingModule` vừa import và export `RouterModule`. Điều này có nghĩa là khi bạn import `AppRoutingModule` vào các module khác, bạn ko cần import lại `RouterModule` để sử dụng nữa vì nó đã được đc export từ `AppRoutingModule`
+Chú ý là `AppRoutingModule` vừa import và export `RouterModule`. Điều này có nghĩa là khi bạn import `AppRoutingModule` vào các module khác, bạn ko cần import lại `RouterModule` để sử dụng nữa vì nó đã được đc re-export từ `AppRoutingModule`.
+
+RouterModule mặc định sẽ provide hai method là `forRoot` và `forChild`. Hai method này đều dùng để config routes, tuy nhiên.
+- `forRoot`, dc gọi <u>một lần duy nhất</u> khi bạn config route trong `AppRoutingModule`. forRoot cũng dùng để configures/initializes router.
+- `forChild`, dc gọi trong các module khác để config routes.
+
+Việc dùng forRoot còn liên quan đến khởi tạo service internal của RouterModule. Như trong [Day 15][day15] anh Tiệp có nhắc đến việc sử dụng DI trong Angular. Gọi forRoot một lần duy nhất để đảm bảo rằng các service của RouterModule được khởi tạo và chỉ có một instance duy nhất. Nếu bạn gọi forRoot nhiều lần trong các module khác nhau, có thể dẫn đến các behavior không đoán được khi dùng Router.
+
+Các bạn có thể đọc thêm ở [stackoverflow](https://stackoverflow.com/a/44680396/3375906)
 
 2. Config routes trong mảng `Routes`
 
@@ -159,7 +167,7 @@ Chạy thử thì thấy router đã hoạt động như kì vọng.
 `/detail/123/edit` - để show edit form cho item id 123
 `/detail/123` - để show thông tin chi tiết cho item id 123
 
-Thì phần config cho route edit nên được đẩy lên trước.
+Thì phần config cho route edit nên được đẩy lên trước. Những phần nào generic thì nên để phía sau những phần detail hơn.
 
 ## Lấy thông tin từ route
 
@@ -279,7 +287,7 @@ Các bạn có thể đọc thêm ở các bài viết sau
 - https://angular.io/guide/router
 - https://www.tiepphan.com/angular-router-series/
 
-Mục tiêu của Day 28 là Lazy Loading Module.
+Mục tiêu của Day 28 là Feature Module.
 
 ## Code example
 
@@ -292,6 +300,7 @@ https://stackblitz.com/edit/angular-100-days-of-code-day-27-router-basic
 `#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day27`
 
 [router]: https://angular.io/guide/router
+[day15]: Day015-introduction-dependency-injection-in-angular.md
 [01]: assets/day-27-router-01.gif
 [02]: assets/day-27-router-02.png
 [03]: assets/day-27-router-03.png
