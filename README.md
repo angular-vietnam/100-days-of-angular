@@ -30,8 +30,9 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 22: RxJS Filtering Operators][day22]                                                |                        |
 | [Day 23: RxJS Combination Operators][day23]                                              |                        |
 | [Day 24: RxJS Error Handling and Conditional Operators][day24]                           |                        |
-| [Day 25: RxJS Higher Order Observables and Utility Operators][day25]                       |                        |
-|[Day 26: RxJS Subject and Multicasting][day26]| | 
+| [Day 25: RxJS Higher Order Observables and Utility Operators][day25]                     |                        |
+| [Day 25: RxJS Higher Order Observables and Utility Operators][day25]                     |                        |
+| [Day 27: Router][day27]                                                                  |                        |
 
 ## Youtube Playlist
 
@@ -69,6 +70,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day24]: Day024-rxjs-error-handling-conditional.md
 [day25]: Day025-rxjs-hoo-utility.md
 [day26]: Day026-rxjs-subject-multicast.md
+[day27]: Day027-router.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
