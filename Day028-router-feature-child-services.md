@@ -270,7 +270,11 @@ Sử dụng `paramMap` snapshot:
 
 ![paramMap snapshot](assets/day28-router-6.gif)
 
-Full code: https://stackblitz.com/edit/angular-100-days-of-code-day-28-router-feature-4?file=src/app/article/article-detail/article-detail.component.ts
+Full code:
+
+- https://stackblitz.com/edit/angular-100-days-of-code-day-28-router-feature-4?file=src/app/article/article-detail/article-detail.component.ts
+- https://stackblitz.com/edit/angular-100-days-of-code-day-28-router-feature-5?file=src%2Fapp%2Farticle%2Farticle-detail%2Farticle-detail.component.ts
+- https://stackblitz.com/edit/angular-100-days-of-code-day-28-router-feature-6?file=src%2Fapp%2Farticle%2Farticle-detail%2Farticle-detail.component.ts
 
 ### Retrieve config: query params, route data, etc
 Ngoài việc cung cấp API cho `params`, ActivatedRoute Service cũng cho phép bạn lấy/observe query params thông qua `queryParamMap`.

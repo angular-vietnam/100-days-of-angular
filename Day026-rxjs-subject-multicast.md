@@ -994,6 +994,7 @@ https://stackblitz.com/edit/angular-ivy-wbyobn?file=src%2Fapp%2Fapp.component.ts
 - [RxJS Overview](https://rxjs.dev/guide/overview)
 - [LearnRxJS](https://www.learnrxjs.io/)
 - [rxmarbles](https://rxmarbles.com/)
+- https://www.tiepphan.com/rxjs-reactive-programming/#rxjs-subject
 
 ## Author
 
