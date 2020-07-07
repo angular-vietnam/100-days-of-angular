@@ -233,7 +233,7 @@ export class ArticleListComponent implements OnInit {
 </div>
 ```
 
-Kết quả sẽ trông như thế này. Nhưng khi bán vào hai cái button thì chưa hoạt động đâu nhé.
+Kết quả sẽ trông như thế này. Nhưng khi bấm vào hai cái button thì chưa hoạt động đâu nhé.
 
 ![Step 5][05]
 
