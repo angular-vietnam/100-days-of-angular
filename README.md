@@ -33,7 +33,8 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 25: RxJS Higher Order Observables and Utility Operators][day25]                     |                        |
 | [Day 25: RxJS Higher Order Observables and Utility Operators][day25]                     |                        |
 | [Day 27: Router][day27]                                                                  |                        |
-| [Day 28: Angular Router - Feature Modules, Child Routes and Services][day28] | | 
+| [Day 28: Angular Router - Feature Modules, Child Routes and Services][day28]             |                        |
+| [Day 29: Angular Router - Lazy Loading Modules][day29]                                   |                        |
 
 ## Youtube Playlist
 
@@ -73,6 +74,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day26]: Day026-rxjs-subject-multicast.md
 [day27]: Day027-router.md
 [day28]: Day028-router-feature-child-services.md
+[day29]: Day029-router-lazy-load.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
