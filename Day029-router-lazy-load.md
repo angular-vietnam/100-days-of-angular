@@ -233,7 +233,7 @@ Bây giờ chạy lại app nào.
 
 Great. Đã hoạt động như kì vọng. Ngay sau khi trang chủ được load, thì app đã tự động download `admin-admin-module.js` về. Do mình ko dùng `ng build` với flag `--prod=true` nên dung lượng file hơi lớn. Chứ khi build có flag prod thì file size sẽ nhẹ hơn rất nhiều nhé.
 
-Để có thể preload các module theo ý muốn, thay vì toàn bộ các lazy loading module, các bạn tham khảo thêm ở đây. Do khuôn khổ bài viết có hạn nên mình ko đưa vào. Ai có nhu cầu thì tìm đọc thêm nhé.
+Để có thể preload các module theo ý muốn, thay vì toàn bộ các lazy loading module, các bạn tham khảo thêm ở [đây][preloading]. Do khuôn khổ bài viết có hạn nên mình ko đưa vào. Ai có nhu cầu thì tìm đọc thêm nhé.
 
 ## Summary
 
@@ -275,3 +275,4 @@ Các bạn có thể đọc thêm ở các bài viết sau
 [step12]: assets/day-29-12.gif
 [step13]: assets/day-29-13.gif
 [step14]: assets/day-29-14.gif
+[preloading]: https://web.dev/route-preloading-in-angular/
