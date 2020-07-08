@@ -31,7 +31,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 23: RxJS Combination Operators][day23]                                              |                        |
 | [Day 24: RxJS Error Handling and Conditional Operators][day24]                           |                        |
 | [Day 25: RxJS Higher Order Observables and Utility Operators][day25]                     |                        |
-| [Day 25: RxJS Higher Order Observables and Utility Operators][day25]                     |                        |
+| [Day 26: RxJS Subject and Multicasting][day26]                     |                        |
 | [Day 27: Router][day27]                                                                  |                        |
 | [Day 28: Angular Router - Feature Modules, Child Routes and Services][day28]             |                        |
 | [Day 29: Angular Router - Lazy Loading Modules][day29]                                   |                        |

@@ -151,7 +151,7 @@ Giờ mình mới đến phần quan trọng của bài viết hôm nay - Lazy L
 
 ![Step 6][step06]
 
-2. Config lại route cho `AdminModule`. Mình cần bỏ phần path admin ở trong `AdminRoutingModule` đi. Lý do thì các bạn xem step 3 sẽ rõ.
+2. Config lại route cho `AdminModule`. Mình cần bỏ phần path `admin` ở trong `AdminRoutingModule` đi. Lý do thì các bạn xem step 3 sẽ rõ.
 
 ![Step 7][step07]
 
@@ -161,7 +161,13 @@ Giờ mình mới đến phần quan trọng của bài viết hôm nay - Lazy L
 
 Vẫn là định nghĩa là path `admin`, nhưng thay vì component, mình dùng `loadChildren` với cú pháp `() => import('./admin/admin.module').then((m) => m.AdminModule)`, tức là một function có return lại một dynamic import module.
 
-> Notice that the lazy-loading syntax uses loadChildren followed by a function that uses the browser's built-in import('...') syntax for dynamic imports. The import path is the relative path to the module.
+> Notice that the lazy-loading syntax uses loadChildren followed by a function that uses the browser's built-in `import('...')` syntax for dynamic imports. The import path is the relative path to the module.
+
+> `import('...')` syntax được khuyến cáo sử dụng từ Angular version 8.
+
+> Ngoài cách dùng `import('...')` syntax, chúng ta có một cách dùng từ Angular version 7 trở xuống như sau: `loadChildren: './admin/admin.module#AdminModule'`. Đó là một magic string, để chỉ ra file path đến file mà chứa NgModule có kèm Router cần load.
+
+
 
 Vậy là xong rồi đấy. Giờ mình mở sẽ run `npm run build` một lần nữa. Giờ CLI đã tạo ra một file JS mới dành riêng cho `AdminModule` tên `admin-admin-module.js`.
 
@@ -237,7 +243,9 @@ Great. Đã hoạt động như kì vọng. Ngay sau khi trang chủ được lo
 
 ## Summary
 
-Hy vọng các bạn đã thấy được lợi ích của Lazy Loading và biết cách config một Lazy loading module cho Router trong Angular qua bài viết này. Để luyện tập thì mình nghĩ anh em nên thử convert cái ArticleModule qua lazy loading module xem sao. 
+Hy vọng các bạn đã thấy được lợi ích của Lazy Loading và biết cách config một Lazy loading module cho Router trong Angular qua bài viết này. Để luyện tập thì mình nghĩ anh em nên thử convert cái ArticleModule qua lazy loading module xem sao.
+
+Mục tiêu của Day 30 là **Angular Router: Guard & Resolver**
 
 ## Code example
 
@@ -250,12 +258,13 @@ Các bạn có thể đọc thêm ở các bài viết sau
 - https://angular.io/guide/router
 - https://angular.io/guide/lazy-loading-ngmodules#preloading-modules
 - https://www.tiepphan.com/angular-router-series/
+- https://web.dev/route-preloading-in-angular/
 
 ## Author
 
 [Trung Vo](https://github.com/trungk18)
 
-`#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day28`
+`#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day29`
 
 [lazy]: https://angular.io/guide/lazy-loading-ngmodules
 [day28]: Day028-router-feature-child-services.md
