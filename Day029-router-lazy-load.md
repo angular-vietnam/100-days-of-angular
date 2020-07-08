@@ -237,7 +237,7 @@ Great. Đã hoạt động như kì vọng. Ngay sau khi trang chủ được lo
 
 ## Summary
 
-Hy vọng các bạn đã thấy được lợi ích của Lazy Loading và biết cách config một Lazy loading module cho Router trong Angular qua bài viết này.
+Hy vọng các bạn đã thấy được lợi ích của Lazy Loading và biết cách config một Lazy loading module cho Router trong Angular qua bài viết này. Để luyện tập thì mình nghĩ anh em nên thử convert cái ArticleModule qua lazy loading module xem sao. 
 
 ## Code example
 
