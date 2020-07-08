@@ -163,12 +163,6 @@ Vẫn là định nghĩa là path `admin`, nhưng thay vì component, mình dùn
 
 > Notice that the lazy-loading syntax uses loadChildren followed by a function that uses the browser's built-in `import('...')` syntax for dynamic imports. The import path is the relative path to the module.
 
-> `import('...')` syntax được khuyến cáo sử dụng từ Angular version 8.
-
-> Ngoài cách dùng `import('...')` syntax, chúng ta có một cách dùng từ Angular version 7 trở xuống như sau: `loadChildren: './admin/admin.module#AdminModule'`. Đó là một magic string, để chỉ ra file path đến file mà chứa NgModule có kèm Router cần load.
-
-
-
 Vậy là xong rồi đấy. Giờ mình mở sẽ run `npm run build` một lần nữa. Giờ CLI đã tạo ra một file JS mới dành riêng cho `AdminModule` tên `admin-admin-module.js`.
 
 ![Step 9][step09]
@@ -193,6 +187,14 @@ Phần bundle của `main.js` giờ đã không còn AdminModule nữa rồi, ch
 ![Step 12][step12]
 
 Còn đây là phân tích của `admin-admin-module.js`. Phần import của Form và các component của AdminModule đã nằm trong bundle này. Quá xuất sắc.
+
+
+## Lazy load syntax
+
+`import('...')` syntax được khuyến cáo sử dụng từ Angular version 8.
+
+Ngoài cách dùng `import('...')` syntax, chúng ta có một cách dùng từ Angular version 7 trở xuống như sau: `loadChildren: './admin/admin.module#AdminModule'`. Đó là một magic string, để chỉ ra file path đến file mà chứa NgModule có kèm Router cần load.
+
 
 ### Preloading Lazy Module
 
