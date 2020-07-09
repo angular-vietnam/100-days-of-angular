@@ -26,12 +26,12 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 18: Pipes trong Angular][day18]                                                     | [Youtube][day18-video] |
 | [Day 19: Giới thiệu Reactive Programming, RxJS và Observable][day19]                     | [Youtube][day19-video] |
 | [Day 20: RxJS Creation Operators][day20]                                                 | [Youtube][day20-video] |
-| [Day 21: RxJS Transformation Operators][day21]                                           |                        |
-| [Day 22: RxJS Filtering Operators][day22]                                                |                        |
-| [Day 23: RxJS Combination Operators][day23]                                              |                        |
+| [Day 21: RxJS Transformation Operators][day21]                                           | [Youtube][day21-video] |
+| [Day 22: RxJS Filtering Operators][day22]                                                | [Youtube][day22-video] |
+| [Day 23: RxJS Combination Operators][day23]                                              | [Youtube][day23-video] |
 | [Day 24: RxJS Error Handling and Conditional Operators][day24]                           |                        |
 | [Day 25: RxJS Higher Order Observables and Utility Operators][day25]                     |                        |
-| [Day 26: RxJS Subject and Multicasting][day26]                     |                        |
+| [Day 26: RxJS Subject and Multicasting][day26]                                           |                        |
 | [Day 27: Router][day27]                                                                  |                        |
 | [Day 28: Angular Router - Feature Modules, Child Routes and Services][day28]             |                        |
 | [Day 29: Angular Router - Lazy Loading Modules][day29]                                   |                        |
@@ -95,6 +95,9 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day18-video]: https://youtu.be/4BJ2Vk67f6A
 [day19-video]: https://youtu.be/lRfyUh4ex38
 [day20-video]: https://youtu.be/OWvK8ZB_Wrc
+[day21-video]: https://youtu.be/AG97A7_NCLE
+[day22-video]: https://youtu.be/KEBpdRL11Nw
+[day23-video]: https://youtu.be/qChj6nScvl0
 [tieppt]: https://github.com/tieppt
 [nartc]: https://github.com/nartc
 [trungk18]: https://github.com/trungk18
