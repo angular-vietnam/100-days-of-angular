@@ -35,6 +35,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 27: Router][day27]                                                                  |                        |
 | [Day 28: Angular Router - Feature Modules, Child Routes and Services][day28]             |                        |
 | [Day 29: Angular Router - Lazy Loading Modules][day29]                                   |                        |
+| [Day 30: Angular Router - Guards and Resolvers Part 1][day30]                                   |                        |
 
 ## Youtube Playlist
 
@@ -75,6 +76,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day27]: Day027-router.md
 [day28]: Day028-router-feature-child-services.md
 [day29]: Day029-router-lazy-load.md
+[day30]: Day030-router-guards-resolvers.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
