@@ -78,7 +78,7 @@ const routes: Routes = [
 ### Navigation
 Operation đầu tiên chính là **Navigation** hay **Applies redirects**.
 
-Đối với thẻ `a href` thông thường, hành vi mặc định của nó sẽ gửi request đến URL được chỉ định. Do đó Angular Router cung cấp một directive là `routerLink` để thay thế hành vi đó. Directive đó là các declarative để thực hiện navigation. Ngoài ra chúng ta cũng có các cách imperative như dùng `Router.navigate()` hoặc `Router.navigateByUrl()`.
+Đối với thẻ `a href` thông thường, hành vi mặc định của nó sẽ gửi request đến URL được chỉ định. Do đó Angular Router cung cấp một directive là `routerLink` để thay thế hành vi đó. Directive đó là cách declarative để thực hiện navigation. Ngoài ra chúng ta cũng có các cách imperative như dùng `Router.navigate()` hoặc `Router.navigateByUrl()`.
 
 Navigation được thực hiện (thông thường) qua việc thay đổi URL bằng các cách kể trên.
 
