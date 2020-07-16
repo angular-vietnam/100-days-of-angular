@@ -58,7 +58,10 @@ error NG8001: 'app-hello' is not a known element:
    `@usageNotes` — The set of selectors that are available to a template include those declared here, and those that are exported from imported NgModules.
    Declarables must belong to exactly one module. The compiler emits an error if you try to declare the same class in more than one module. Be careful not to declare a class that is imported from another module.
 
-   Yeah, chính là nó đó, giờ chỉ việc thêm HelloComponent vào đó là xong.
+   Yeah, chính là nó đó, giờ chỉ việc import component lên đầu và thêm HelloComponent vào declarations là xong.
+```typescript
+import { HelloComponent } from './hello.component'
+```
 
 ```typescript
 declarations: [
