@@ -4,42 +4,42 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 
 ## Các bài viết
 
-| Bài viết                                                                                 | Video                  |
-| ---------------------------------------------------------------------------------------- | ---------------------- |
-| [Day 1: Prepare The Working Environment][day1]                                           | [Youtube][day1-video]  |
-| [Day 2: Explore Angular App][day2]                                                       | [Youtube][day2-video]  |
-| [Day 3: Angular Data Binding][day3]                                                      | [Youtube][day3-video]  |
-| [Day 4: Angular Structure Directive - NgIf][day4]                                        | [Youtube][day4-video]  |
-| [Day 5: Angular Structure Directive - NgForOf][day5]                                     | [Youtube][day5-video]  |
-| [Day 6: Attribute Directive - Class and Style][day6]                                     | [Youtube][day6-video]  |
-| [Day 7: Component Interaction - Pass data from parent to child with input binding][day7] | [Youtube][day7-video]  |
-| [Day 8: Component Interaction - Parent listens for child event][day8]                    | [Youtube][day8-video]  |
-| [Day 9: Custom Two-way Binding][day9]                                                    | [Youtube][day9-video]  |
-| [Day 10: Template Variable và ViewChild/ViewChildren][day10]                             | [Youtube][day10-video] |
-| [Day 11: TypeScript Data Type][day11]                                                    | [Youtube][day11-video] |
-| [Day 12: TypeScript Advanced Type][day12]                                                | [Youtube][day12-video] |
-| [Day 13: Content Projection Trong Angular][day13]                                        | [Youtube][day13-video] |
-| [Day 14: ng-template, ngTemplateOutlet và ng-container trong Angular][day14]             | [Youtube][day14-video] |
-| [Day 15: Introduction to Dependency Injection in Angular][day15]                         | [Youtube][day15-video] |
-| [Day 16: Dependency Injection trong Ứng Dụng Angular Part 2][day16]                      | [Youtube][day16-video] |
-| [Day 17: ContentChild và ContentChildren trong Angular][day17]                           | [Youtube][day17-video] |
-| [Day 18: Pipes trong Angular][day18]                                                     | [Youtube][day18-video] |
-| [Day 19: Giới thiệu Reactive Programming, RxJS và Observable][day19]                     | [Youtube][day19-video] |
-| [Day 20: RxJS Creation Operators][day20]                                                 | [Youtube][day20-video] |
-| [Day 21: RxJS Transformation Operators][day21]                                           | [Youtube][day21-video] |
-| [Day 22: RxJS Filtering Operators][day22]                                                | [Youtube][day22-video] |
-| [Day 23: RxJS Combination Operators][day23]                                              | [Youtube][day23-video] |
-| [Day 24: RxJS Error Handling and Conditional Operators][day24]                           |                        |
-| [Day 25: RxJS Higher Order Observables and Utility Operators][day25]                     |                        |
-| [Day 26: RxJS Subject and Multicasting][day26]                                           |                        |
-| [Day 27: Router][day27]                                                                  |                        |
-| [Day 28: Angular Router - Feature Modules, Child Routes and Services][day28]             |                        |
-| [Day 29: Angular Router - Lazy Loading Modules][day29]                                   |                        |
-| [Day 30: Angular Router - Guards and Resolvers Part 1][day30]                                   |                        |
-| [Day 31: Angular Router - Guards and Resolvers Part 2][day31]                                   |                        |
-| [Day 32: Angular Router - Guards and Resolvers Part 3][day32]                                   |                        |
-| [Day 33: Template-driven Forms Trong Angular][day33]                                   |                        |
-| [Day 34: Template-driven Forms Trong Angular Part 2][day34] | | 
+| Bài viết                                                                                 | Video                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [Day 1: Prepare The Working Environment][day1]                                           | [Youtube][day1-video]                                                  |
+| [Day 2: Explore Angular App][day2]                                                       | [Youtube][day2-video]                                                  |
+| [Day 3: Angular Data Binding][day3]                                                      | [Youtube][day3-video]                                                  |
+| [Day 4: Angular Structure Directive - NgIf][day4]                                        | [Youtube][day4-video]                                                  |
+| [Day 5: Angular Structure Directive - NgForOf][day5]                                     | [Youtube][day5-video]                                                  |
+| [Day 6: Attribute Directive - Class and Style][day6]                                     | [Youtube][day6-video]                                                  |
+| [Day 7: Component Interaction - Pass data from parent to child with input binding][day7] | [Youtube][day7-video]                                                  |
+| [Day 8: Component Interaction - Parent listens for child event][day8]                    | [Youtube][day8-video]                                                  |
+| [Day 9: Custom Two-way Binding][day9]                                                    | [Youtube][day9-video]                                                  |
+| [Day 10: Template Variable và ViewChild/ViewChildren][day10]                             | [Youtube][day10-video]                                                 |
+| [Day 11: TypeScript Data Type][day11]                                                    | [Youtube][day11-video]                                                 |
+| [Day 12: TypeScript Advanced Type][day12]                                                | [Youtube][day12-video]                                                 |
+| [Day 13: Content Projection Trong Angular][day13]                                        | [Youtube][day13-video]                                                 |
+| [Day 14: ng-template, ngTemplateOutlet và ng-container trong Angular][day14]             | [Youtube][day14-video]                                                 |
+| [Day 15: Introduction to Dependency Injection in Angular][day15]                         | [Youtube][day15-video]                                                 |
+| [Day 16: Dependency Injection trong Ứng Dụng Angular Part 2][day16]                      | [Youtube][day16-video]                                                 |
+| [Day 17: ContentChild và ContentChildren trong Angular][day17]                           | [Youtube][day17-video]                                                 |
+| [Day 18: Pipes trong Angular][day18]                                                     | [Youtube][day18-video]                                                 |
+| [Day 19: Giới thiệu Reactive Programming, RxJS và Observable][day19]                     | [Youtube][day19-video]                                                 |
+| [Day 20: RxJS Creation Operators][day20]                                                 | [Youtube][day20-video]                                                 |
+| [Day 21: RxJS Transformation Operators][day21]                                           | [Youtube][day21-video]                                                 |
+| [Day 22: RxJS Filtering Operators][day22]                                                | [Youtube][day22-video]                                                 |
+| [Day 23: RxJS Combination Operators][day23]                                              | [Youtube][day23-video]                                                 |
+| [Day 24: RxJS Error Handling and Conditional Operators][day24]                           | [Youtube][day24-video]                                                 |
+| [Day 25: RxJS Higher Order Observables and Utility Operators][day25]                     | [Youtube][day25-video]                                                 |
+| [Day 26: RxJS Subject and Multicasting][day26]                                           | [Youtube][day26-video]                                                 |
+| [Day 27: Router][day27]                                                                  | [Youtube][day27-28-video]                                              |
+| [Day 28: Angular Router - Feature Modules, Child Routes and Services][day28]             | [part of 27 video][day27-28-video], [part of 29 video][day28-29-video] |
+| [Day 29: Angular Router - Lazy Loading Modules][day29]                                   | [Youtube][day28-29-video]                                              |
+| [Day 30: Angular Router - Guards and Resolvers Part 1][day30]                            |                                                                        |
+| [Day 31: Angular Router - Guards and Resolvers Part 2][day31]                            |                                                                        |
+| [Day 32: Angular Router - Guards and Resolvers Part 3][day32]                            |                                                                        |
+| [Day 33: Template-driven Forms Trong Angular][day33]                                     |                                                                        |
+| [Day 34: Template-driven Forms Trong Angular Part 2][day34]                              |                                                                        |
 
 ## Youtube Playlist
 
@@ -108,6 +108,11 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day21-video]: https://youtu.be/AG97A7_NCLE
 [day22-video]: https://youtu.be/KEBpdRL11Nw
 [day23-video]: https://youtu.be/qChj6nScvl0
+[day24-video]: https://youtu.be/UnfiFpY5VtQ
+[day25-video]: https://youtu.be/5SD2YIxMBBM
+[day26-video]: https://youtu.be/8nWosjgcI5k
+[day27-28-video]: https://youtu.be/mw4a9S5k8yU
+[day28-29-video]: https://youtu.be/D0Tv5BaNTa8
 [tieppt]: https://github.com/tieppt
 [nartc]: https://github.com/nartc
 [trungk18]: https://github.com/trungk18
