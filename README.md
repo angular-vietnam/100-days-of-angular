@@ -40,6 +40,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 32: Angular Router - Guards and Resolvers Part 3][day32]                            |                                                                        |
 | [Day 33: Template-driven Forms Trong Angular][day33]                                     |                                                                        |
 | [Day 34: Template-driven Forms Trong Angular Part 2][day34]                              |                                                                        |
+| [Day 35: Reactive Forms Trong Angular][day35]                              |                                                                        |
 
 ## Youtube Playlist
 
@@ -85,6 +86,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day32]: Day032-router-guards-resolvers-3.md
 [day33]: Day033-template-driven-forms.md
 [day34]: Day034-template-driven-forms-2.md
+[day35]: Day035-reactive-forms.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
