@@ -96,10 +96,12 @@ export class ExampleContainerComponent implements OnInit {
 }
 ```
 
-Những điều cần lưu ý để hiểu:
-Flow chính: 1. Tạo 1 ViewChild trong template. Ở đây là thẻ div #dynamicComponent.
-Đây sẽ là nơi chúng ta load những components vào ở runtime. 2. Connect #dynamicComponent thông qua @ViewChild. Chúng ta sẽ có 1 ViewContainerRef. (Đọc phần concept để hiểu về ViewContainerRef) 3. Inject CompanyFactoryResolver của Angular vào component ExampleContainerComponent. 4.
-Dùng Resolver connect với component nào chúng ta muốn load dynamic.
+Flow chính: 
+1. Tạo 1 ViewChild trong template. Ở đây là thẻ div #dynamicComponent.
+Đây sẽ là nơi chúng ta load những components vào ở runtime. 
+2. Connect #dynamicComponent thông qua @ViewChild. Chúng ta sẽ có 1 ViewContainerRef. (Đọc phần concept để hiểu về ViewContainerRef) 
+3. Inject CompanyFactoryResolver của Angular vào component ExampleContainerComponent. 
+4. Dùng Resolver connect với component nào chúng ta muốn load dynamic.
 => Kết quả sẽ trả về 1 Component Factory
 
 ```typescript
@@ -108,8 +110,7 @@ const componentFactory = this.cfr.resolveComponentFactory(
 );
 ```
 
-Dùng ViewContainerRef với Component Factory chúng ta vừa tạo ở trên để
-load Dynamic Component.
+  Dùng ViewContainerRef với Component Factory chúng ta vừa tạo ở trên để load Dynamic Component.
 
 ```typescript
 const componentRef = this.containerRef.createComponent(componentFactory);
