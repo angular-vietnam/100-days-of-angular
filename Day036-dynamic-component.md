@@ -11,7 +11,7 @@ Trong nhiều trường hợp, chúng ta muốn thay đổi trong lúc ru
 Hay ở tình huống khác, chúng ta muốn người dùng phải làm gì đó ở component A thì mới load component B lên. Nếu code bình thường, component B luôn được fix cứng trong template là con của A.
 
 Vậy việc load động 1 component khác trong lúc runtime được thực hiện như thế nào?
-Điều đó dẫn ta đến bài hôm nay, Dynamic Component sẽ là câu trả lời phù hợp để làm việc này.
+Điều đó dẫn ta đến bài hôm nay, **Dynamic Component** sẽ là câu trả lời phù hợp để làm việc này.
 
 ## Coding Practice
 
@@ -43,7 +43,7 @@ Sau đó chúng ta add example-container vào template của app.component.ht
 
 ### Step 3: Code container components
 
-Chúng ta khởi tạo template example-component với 2 nút và 1 ViewChild như sau.
+Chúng ta khởi tạo template example-component với 2 nút và 1 **ViewChild** như sau.
 
 ```html
 <button (click)="addDynamicCompOne()" class="btn">
@@ -98,12 +98,11 @@ export class ExampleContainerComponent implements OnInit {
 
 Flow chính:
 
-1. Tạo 1 ViewChild trong template. Ở đây là thẻ div #dynamicComponent.
-   Đây sẽ là nơi chúng ta load những components vào ở runtime.
-2. Connect #dynamicComponent thông qua @ViewChild. Chúng ta sẽ có 1 ViewContainerRef. (Đọc phần concept để hiểu về ViewContainerRef)
-3. Inject CompanyFactoryResolver của Angular vào component ExampleContainerComponent.
+1. Tạo 1 ViewChild trong template. Ở đây là thẻ div **#dynamicComponent**. Đây sẽ là nơi chúng ta load những components vào ở runtime.
+2. Connect **#dynamicComponent** thông qua @ViewChild. Chúng ta sẽ có 1 **ViewContainerRef**. (Đọc phần concept để hiểu về **ViewContainerRef**)
+3. Inject **CompanyFactoryResolver** của Angular vào component ExampleContainerComponent.
 4. Dùng Resolver connect với component nào chúng ta muốn load dynamic.
-   => Kết quả sẽ trả về 1 Component Factory
+   => Kết quả sẽ trả về 1 **Component Factory**
 
 ```typescript
 const componentFactory = this.cfr.resolveComponentFactory(
@@ -111,7 +110,7 @@ const componentFactory = this.cfr.resolveComponentFactory(
 );
 ```
 
-Dùng ViewContainerRef với Component Factory chúng ta vừa tạo ở trên để load Dynamic Component.
+Dùng **ViewContainerRef** với Component Factory chúng ta vừa tạo ở trên để load **Dynamic Component**.
 
 ```typescript
 const componentRef = this.containerRef.createComponent(componentFactory);
@@ -119,7 +118,7 @@ const componentRef = this.containerRef.createComponent(componentFactory);
 
 ### Step 4: Add các dynamic components vào entryComponents
 
-Để code trên hoạt động được, các bạn cần add 2 components DynamicContentOne và DynamicContentTwo vào entryComponents như sau. Nếu không sẽ xảy ra lỗi "No component factory found ... "
+Để code trên hoạt động được, các bạn cần add 2 components DynamicContentOne và DynamicContentTwo vào **entryComponents** như sau. Nếu không sẽ xảy ra lỗi "No component factory found ... "
 
 ```typescript
 
@@ -170,7 +169,7 @@ Chúng ta tương tác giữa containers và các dynamic components cũng
 <p>++++++{{data}}+++++++++</p>
 ```
 
-Ở component cha, chúng ta sẽ truyền data thông qua componentRef (Đây là kết quả trả về sau khi chúng ta dùng ViewContainerRef load dynamic component)
+Ở component cha, chúng ta sẽ truyền data thông qua componentRef (Đây là kết quả trả về sau khi chúng ta dùng **ViewContainerRef** load dynamic component)
 
 ```typescript
 addDynamicCompOne() {
@@ -193,11 +192,11 @@ Container có thể chứa các container khác (ng-container chẳng hạn) t�
 
 ### 2. ComponentFactory
 
-Đây là 1 class dùng để tạo ra các components dynamic. Là kết quả trả về của ComponentFactoryResolver.resolveComponentFactory().
+Đây là 1 class dùng để tạo ra các components dynamic. Là kết quả trả về của **ComponentFactoryResolver.resolveComponentFactory()**.
 
 ### 3. ComponentFactoryResolver
 
-Đây là 1 class nhận vào các component để load dynamic và tạo ra 1 component factory của component đó. ViewContainerRef sẽ dùng ComponentFactory đó để load dynamic các components.
+Đây là 1 class nhận vào các component để load dynamic và tạo ra 1 component factory của component đó. ViewContainerRef sẽ dùng **ComponentFactory** đó để load dynamic các components.
 
 ## Exercies
 
