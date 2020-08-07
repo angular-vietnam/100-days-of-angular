@@ -181,6 +181,44 @@ addDynamicCompOne() {
   }
 ```
 
+### Step 7: Update with Angular Ivy Lazy Load and Refactor code
+
+Hiện tại code sử dụng entryComponents đã cũ và với **Angular Ivy**, chúng ta hoàn toàn không cần sử dụng nữa. Ngoài ra chúng ta có thể sử dụng **Angular Ivy** để **lazy load** các components dynamic.
+Code sẽ sửa như sau:
+
+### Step 7.1: Xóa entryComponents setting in app.module.ts
+
+Các bạn hãy vào file app.module.ts xóa đi config đã set ở step 4.
+
+### Step 7.2: Update code ở container component
+
+- Remove 2 cái import components ở đầu file.
+- Sửa 2 hàm addDynamicComp
+
+Code sẽ như sau:
+
+```typescript
+  async addDynamicCompOne() {
+    const { DynamicContentOneComponent } = await import('../dynamic-content-one/dynamic-content-one.component');
+    const componentFactory = this.cfr.resolveComponentFactory(
+      DynamicContentOneComponent
+    );
+    const componentRef = this.containerRef.createComponent(componentFactory);
+    componentRef.instance.data = "INPUT DATA 1";
+  }
+
+  async addDynamicCompTwo() {
+    const { DynamicContentTwoComponent } = await import('../dynamic-content-two/dynamic-content-two.component');
+    const componentFactory = this.cfr.resolveComponentFactory(
+      DynamicContentTwoComponent
+    );
+    const componentRef = this.containerRef.createComponent(componentFactory);
+    componentRef.instance.data = "INPUT DATA 2";
+  }
+```
+Vậy là đã xong, các bạn đã thực hiện thành công việc lazy load các dynamic components mà không phải add trực tiếp vào như ở những step đầu.
+**Lưu ý**: Đối với những bạn nào dùng Angular phiên bản cũ thì nhớ update angular để sử dụng tính năng Angular Ivy. 
+
 ## Concepts
 
 ### 1. ViewContainerRef
