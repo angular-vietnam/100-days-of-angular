@@ -181,7 +181,7 @@ addDynamicCompOne() {
   }
 ```
 
-### Step 7: Update with Angular Ivy Lazy Load and Refactor code
+### Step 7: Update with Angular Ivy Lazy Load
 
 Hiện tại code sử dụng entryComponents đã cũ và với **Angular Ivy**, chúng ta hoàn toàn không cần sử dụng nữa. Ngoài ra chúng ta có thể sử dụng **Angular Ivy** để **lazy load** các components dynamic.
 Code sẽ sửa như sau:
