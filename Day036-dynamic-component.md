@@ -99,10 +99,10 @@ export class ExampleContainerComponent implements OnInit {
 Flow chính:
 
 1. Tạo 1 ViewChild trong template. Ở đây là thẻ div **#dynamicComponent**. Đây sẽ là nơi chúng ta load những components vào ở runtime.
-2. Connect **#dynamicComponent** thông qua @ViewChild. Chúng ta sẽ có 1 **ViewContainerRef**. (Đọc phần concept để hiểu về **ViewContainerRef**)
-3. Inject **CompanyFactoryResolver** của Angular vào component ExampleContainerComponent.
+2. Connect **#dynamicComponent** thông qua @ViewChild. Chúng ta sẽ có 1 [ViewContainerRef](###ViewContainerRef)
+3. Inject [CompanyFactoryResolver](###ComponentFactoryResolver) của Angular vào component ExampleContainerComponent.
 4. Dùng Resolver connect với component nào chúng ta muốn load dynamic.
-   => Kết quả sẽ trả về 1 **Component Factory**
+   => Kết quả sẽ trả về 1 [Component Factory](###ComponentFactory)
 
 ```typescript
 const componentFactory = this.cfr.resolveComponentFactory(
@@ -221,18 +221,18 @@ Vậy là đã xong, các bạn đã thực hiện thành công việc 
 
 ## Concepts
 
-### 1. ViewContainerRef
+### ViewContainerRef
 
 Nó là một cái container từ đó có thể tạo ra Host View (component khi được khởi tạo sẽ tạo ra view tương ứng), và Embedded View (được tạo từ TemplateRef). Với các view được tạo đó sẽ có nơi để gắn vào (container).
 
 Container có thể chứa các container khác (ng-container chẳng hạn) tạo nên cấu trúc cây. Hay hiểu đơn giản thì nó giống như 1 DOM Element, khi đó có thể add thêm các view khác (Component, Template) vào đó.
 ![TiepPhan](https://www.tiepphan.com/angular-trong-5-phut-dynamic-component-rendering/)
 
-### 2. ComponentFactory
+### ComponentFactory
 
 Đây là 1 class dùng để tạo ra các components dynamic. Là kết quả trả về của **ComponentFactoryResolver.resolveComponentFactory()**.
 
-### 3. ComponentFactoryResolver
+### ComponentFactoryResolver
 
 Đây là 1 class nhận vào các component để load dynamic và tạo ra 1 component factory của component đó. ViewContainerRef sẽ dùng **ComponentFactory** đó để load dynamic các components.
 
