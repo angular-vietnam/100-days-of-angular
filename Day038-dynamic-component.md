@@ -237,7 +237,7 @@ Container có thể chứa các container khác (ng-container chẳng hạn) t�
 
 Đây là 1 class nhận vào các component để load dynamic và tạo ra 1 component factory của component đó. ViewContainerRef sẽ dùng **ComponentFactory** đó để load dynamic các components.
 
-## Exercies
+## Exercise
 
 ### 1. Replace component, not Add
 

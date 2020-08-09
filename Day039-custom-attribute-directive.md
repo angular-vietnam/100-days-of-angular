@@ -74,23 +74,130 @@ Vậy là chúng ta đã hoàn thành cách tạo và sử dụng 1 cus
 
 ### Step 5: Using Render2
 
+Ở step 3, chúng ta đã dùng **ElementRef** để tương tác và thay đổi các properties của DOM element. Điều này đã được warning trong official doc của Angular là không nên vì nó sẽ tạo nguy cơ về cho XSS attacks.
+Và ở chính warning đó, Angular cũng giới thiệu đến **Render2** layer. **Render2** cung cấp những apis để dùng tương tác với DOM element 1 cách an toàn. Vậy nên chúng ta sẽ update code sử dụng **Render2** như sau:
+
+```typescript
+export class CustomDirectiveDemoDirective {
+  constructor(private el: ElementRef, private renderer: Renderer2) {
+    this.customContent("DEMO TEXT", "blue");
+  }
+  private customContent(text: string, color: string) {
+    this.renderer.setProperty(this.el.nativeElement, "innerText", text);
+    this.renderer.setStyle(this.el.nativeElement, "color", color);
+  }
+}
+```
+
 ### Step 6: Interact with event of Host Element
 
+Khi chúng ta sử dụng 1 **Custom Directive** cho 1 HTML element, thì element đó sẽ được gọi là **Host Element**.( Ở trường hợp của chúng ta Host Element chính thẻ p ở template của example component )
+
+Vậy hiện tại chúng ta muốn xử lý event của Host Element ở directive thì chúng ta sẽ làm thế nào? Ví dụ, khi hover chuột thì đổi màu text. Ở trường hợp nào chúng ta sẽ tương tác thông qua **HostListener**.
+
+Code chúng ta sẽ update như sau để lắng nghe và xử lý 2 event **mouseenter** and **mouseleave** trên Host Element:
+
+```typescript
+export class CustomDirectiveDemoDirective {
+  constructor(private el: ElementRef, private renderer: Renderer2) {
+    this.customContent("DEMO TEXT", "blue");
+  }
+
+  @HostListener("mouseenter") onMouseEnter() {
+    this.customContent("ON MOUSE ENTER", "orange");
+  }
+
+  @HostListener("mouseleave") onMouseLeave() {
+    this.customContent("DEMO TEXT", "blue");
+  }
+
+  private customContent(text: string, color: string) {
+    this.renderer.setProperty(this.el.nativeElement, "innerText", text);
+    this.renderer.setStyle(this.el.nativeElement, "color", color);
+  }
+}
+```
+
 ### Step 7: Pass values into the directive
+
+Tiếp theo, chúng ta sẽ truyền xử lý data truyền từ Host Element vào directive. Cụ thể ở case này chúng ta sẽ truyền màu sẽ thay đổi khi hover từ thẻ p vào.
+
+Ở thẻ p, chúng ta sẽ truyền vào như 1 attribute bình thường.
+
+```html
+<p appCustomDirective hoverColor="green"></p>
+```
+
+Ở directive, chúng ta sẽ dùng **@Input** để nhận và xử lý.
+
+```typescript
+import {
+  Directive,
+  ElementRef,
+  Renderer2,
+  HostListener,
+  Input,
+} from "@angular/core";
+
+@Directive({
+  selector: "[appCustomDirective]",
+})
+export class CustomDirectiveDemoDirective {
+  @Input() hoverColor: string;
+
+  constructor(private el: ElementRef, private renderer: Renderer2) {
+    this.customContent("DEMO TEXT", "blue");
+  }
+
+  @HostListener("mouseenter") onMouseEnter() {
+    this.customContent("ON MOUSE ENTER", this.hoverColor);
+  }
+
+  @HostListener("mouseleave") onMouseLeave() {
+    this.customContent("DEMO TEXT", "blue");
+  }
+
+  private customContent(text: string, color: string) {
+    this.renderer.setProperty(this.el.nativeElement, "innerText", text);
+    this.renderer.setStyle(this.el.nativeElement, "color", color);
+  }
+}
+```
+
+Vậy là đã xong, các bạn đã thực hiện thành công việc tạo và sử dụng 1 **Custom Directive** trong Angular.
 
 ## Concepts
 
 ### ElementRef
 
-### Renderer
+Đây là 1 class trong **@angular/core** dùng để tương tác với các DOM element trong template. Tuy nhiên chúng ta không nên sử dụng trực tiếp vì vấn đề security.
+
+### Renderer2
+
+Đây là 1 class cung cấp những apis để tương tác với DOM Element 1 cách an toàn. Chúng ta sẽ dùng nó gọi đến ElementRef.
 
 ### HostListener
 
-## Exercies
+Đây là 1 decorator được định nghĩa cho việc lắng nghe 1 event của DOM. Chúng ta sẽ dùng để viết hàm xử lý khi event đó diễn ra.
 
-### 1. Replace component, not Add
+Example:
 
-### 2. Interact with more view childs
+```typescript
+constructor(private el: ElementRef, private renderer: Renderer2) {
+  this.renderer.setProperty(this.el.nativeElement, "innerText", "DEMO");
+}
+```
+
+## Exercise
+
+### 1. @Input and @Input alias
+
+Hiện tại code đang truyền vào thẻ p 2 attribute là **appCustomDirective** và **hoverColor** cho 2 mục đích khác nhau. Hãy sử dụng **property binding** để chỉ cần truyền 1 cái và làm gọn code đi.
+Tham khảo: [**Pass value into directive**](https://angular.io/guide/attribute-directives#pass-values-into-the-directive-with-an-input-data-binding)
+
+### 2. Interact more with Render2
+
+Hãy sử dụng các apis của Render2 để biến đổi nhiều properties và styles hơn.
 
 ## Summary
 
@@ -100,7 +207,7 @@ Mục tiêu của ngày 40 sẽ là **Custom structural directive**.
 
 ## Code sample
 
-- https://github.com/januaryofmine/Dynamic-Component-Demo
+- https://github.com/januaryofmine/angular-custom-attribute-directive-example
 
 ## References
 
