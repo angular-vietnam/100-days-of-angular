@@ -1,11 +1,11 @@
-# Day 36: Dynamic Component trong Angular
+# Day 38: Dynamic Component trong Angular
 
 ## Introduction
 
 Qua các bài trước, các bạn cũng biết cách tạo những components cha con cũng như cách tương tác giữa chúng rồi.
 Vậy có 1 trường hợp thế này. Ta có component A là cha của component B như sau:
 
-![ParentComponent](assets/day-36-dynamic-component-01.png)
+![ParentComponent](assets/day-38-dynamic-component-01.png)
 
 Trong nhiều trường hợp, chúng ta muốn thay đổi trong lúc runtime, ở vị trí đó không phải chỉ fix cứng 1 component B như vậy. Có lúc sẽ là component B, có lúc sẽ là component C tùy logic của ứng dụng.
 Hay ở tình huống khác, chúng ta muốn người dùng phải làm gì đó ở component A thì mới load component B lên. Nếu code bình thường, component B luôn được fix cứng trong template là con của A.
@@ -250,9 +250,9 @@ Cũng như thử emit event từ ViewChild và nhận, xử lý sự ki�
 
 ## Summary
 
-Day 36 chúng ta đã học được những concepts liên quan đến Dynamic Component. Đây là 1 tính năng quan trọng có tính ứng dụng cao. Các bạn có thể thực hành nhiều hơn thông qua các bài tập mình đưa cũng như các nguồn tài liệu mình để dưới đây.
+Day 38 chúng ta đã học được những concepts liên quan đến Dynamic Component. Đây là 1 tính năng quan trọng có tính ứng dụng cao. Các bạn có thể thực hành nhiều hơn thông qua các bài tập mình đưa cũng như các nguồn tài liệu mình để dưới đây.
 
-Mục tiêu của ngày 37 sẽ là
+Mục tiêu của ngày 39 sẽ là
 
 ## Code sample
 
@@ -271,7 +271,7 @@ Các bạn có thể đọc thêm ở các bài viết sau
 
 [Khanh Tiet](https://github.com/januaryofmine)
 
-`#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day36`
+`#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day38`
 
 [day34]: Day034-template-driven-forms-2.md
 [day35]: Day035-reactive-forms.md
