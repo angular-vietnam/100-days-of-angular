@@ -216,8 +216,9 @@ Code sẽ như sau:
     componentRef.instance.data = "INPUT DATA 2";
   }
 ```
+
 Vậy là đã xong, các bạn đã thực hiện thành công việc lazy load các dynamic components mà không phải add trực tiếp vào như ở những step đầu.
-**Lưu ý**: Đối với những bạn nào dùng Angular phiên bản cũ thì nhớ update angular để sử dụng tính năng Angular Ivy. 
+**Lưu ý**: Đối với những bạn nào dùng Angular phiên bản cũ thì nhớ update angular để sử dụng tính năng Angular Ivy.
 
 ## Concepts
 
@@ -252,7 +253,7 @@ Cũng như thử emit event từ ViewChild và nhận, xử lý sự ki�
 
 Day 38 chúng ta đã học được những concepts liên quan đến Dynamic Component. Đây là 1 tính năng quan trọng có tính ứng dụng cao. Các bạn có thể thực hành nhiều hơn thông qua các bài tập mình đưa cũng như các nguồn tài liệu mình để dưới đây.
 
-Mục tiêu của ngày 39 sẽ là
+Mục tiêu của ngày 39 sẽ là **Custom Attribute Directive**.
 
 ## Code sample
 
