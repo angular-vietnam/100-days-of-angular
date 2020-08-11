@@ -13,6 +13,9 @@ Hay ở tình huống khác, chúng ta muốn người dùng phải là
 Vậy việc load động 1 component khác trong lúc runtime được thực hiện như thế nào?
 Điều đó dẫn ta đến bài hôm nay, **Dynamic Component** sẽ là câu trả lời phù hợp để làm việc này.
 
+Dưới đây là kết quả của project code hôm nay
+![Dynamic Component Demo](assets/day038.gif)
+
 ## Coding Practice
 
 ### Step 1: Khởi tạo project

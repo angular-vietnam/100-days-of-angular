@@ -15,6 +15,9 @@ Có 3 loại directives trong Angular:
 
 Và bài hôm nay của chúng ta sẽ là tạo 1 **Custom Attribute Directive** để chúng ta có thể tái sử dụng nhiều nơi trong ứng dụng.
 
+Dưới đây là kết quả của project code hôm nay
+![Dynamic Component Demo](assets/day039.gif)
+
 ## Coding Practice
 
 ### Step 1: Khởi tạo project
