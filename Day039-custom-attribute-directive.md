@@ -164,7 +164,7 @@ export class CustomDirectiveDemoDirective {
 }
 ```
 
-Vậy là đã xong, các bạn đã thực hiện thành công việc tạo và sử dụng 1 **Custom Directive** trong Angular.
+Vậy là đã xong, các bạn đã thực hiện thành công việc tạo và sử dụng 1 **Custom Attribute Directive** trong Angular.
 
 ## Concepts
 
