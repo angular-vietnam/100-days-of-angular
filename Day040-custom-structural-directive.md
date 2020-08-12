@@ -169,9 +169,9 @@ Và các bạn nhìn lại project, vẫn hoạt động bình thường.
 
 Đầu tiên ở đây mình đã sửa thành **of: cityList** cho các bạn dễ hiểu, đây là truyền vào directive biến **of** có value là **cityList**. Tương tự như mình vừa truyền vào thêm 1 biến khác **findingText** có value là **text** (biến text này mình đã tạo sẵn trong file typescript của component).
 
-Tiếp đó cái **let city** bản chất là let city = **\$implicit**. Đây là biến bắt buộc cần định nghĩa để Angular gán giá trị của **$implicit** vào. Nếu không khai báo let city thì sẽ bị lỗi.
+Tiếp đó cái **let city** bản chất là let city = **\$implicit**. Đây là biến bắt buộc cần định nghĩa để Angular gán giá trị của **\$implicit** vào. Nếu không khai báo let city thì sẽ bị lỗi.
 
-Kết luận bản chất **let city** là cái hứng đầu ra. **of: cityList** là biến truyền đầu vào. 2 cái này không liên quan gì nhau hết. Việc mình biến đổi cityList thế nào để trả ra là quyền của mình, thậm chí mình trả cái **$implicit** ra chẳng liên quan gì cái **cityList** cũng chẳng sao cả. Quyền của mình mà.
+Kết luận bản chất **let city** là cái hứng đầu ra. **of: cityList** là biến truyền đầu vào. 2 cái này không liên quan gì nhau hết. Việc mình biến đổi cityList thế nào để trả ra là quyền của mình, thậm chí mình trả cái **\$implicit** ra chẳng liên quan gì cái **cityList** cũng chẳng sao cả. Quyền của mình mà.
 
 Đến đây chắc các bạn cũng hiểu rồi. Ngoài ra nhìn lại đoạn
 
@@ -188,15 +188,17 @@ ngOnChanges() {
 
 ```html
 <p *ngCustomLoop="let city findingText: text of: cityList; let i = index">
-     {{ i + 1 }}. {{ city }}
-   </p>
+  {{ i + 1 }}. {{ city }}
+</p>
 ```
 
-Các bạn sẽ thấy ngoài trừ **$implicit**, mình còn thêm vào object trả ra 1 cái nữa tên là index. Ở đây mình đã xử lý để trả ra index là vị trí phần tử trong mảng /**index: this.itemList.indexOf(item)**/.
+Các bạn sẽ thấy ngoài trừ **\$implicit**, mình còn thêm vào object trả ra 1 cái nữa tên là index. Ở đây mình đã xử lý để trả ra index là vị trí phần tử trong mảng /**index: this.itemList.indexOf(item)**/.
 
-Vì biến này không phải $implicit nên muốn nhận biến này phải khai báo nhận đàng hoàng như sau trong file html /**let i = index**/. Ngoài ra các bạn cũng có thể dùng cách /**index as i**/.
+Vì biến này không phải \$implicit nên muốn nhận biến này phải khai báo nhận đàng hoàng như sau trong file html /**let i = index**/. Ngoài ra các bạn cũng có thể dùng cách /**index as i**/.
 
-Vậy là đã xong, các bạn đã thực hiện thành công việc tạo và sử dụng 1 **Custom Structural Directive** trong Angular.
+Vậy là đã xong, các bạn đã thực hiện thành công việc tạo và sử dụng 1 **Custom Structural Directive** trong Angular. Các bạn có thể dựa vào đây tiếp tục truyền thêm **@Input** vào, xử lý trả về Object Context nhiều hơn. Hoặc lắng nghe event ở directive này.
+
+Mấu chốt để tạo **Custom Structural Directive** vẫn chỉ đơn giản nằm ở hàm **createEmbeddedView()** của **ViewContainerRef**. Hiểu được hàm này nhận vào gì, trả ra gì là xong.
 
 ## Concepts
 
@@ -206,7 +208,7 @@ Bài này chủ yếu là các concepts cũ. Những concepts cần đo�
 
 ### 1. Implement Filter Feature like demo project
 
-Mình làm đến đây rồi, các bạn hãy thử code tiếp để hoàn thành tính năng filter theo chữ cái đầu như demo nhen. Không thì các bạn có thể tham khảo source code hoàn chỉnh ở dưới đây. 
+Mình làm đến đây rồi, các bạn hãy thử code tiếp để hoàn thành tính năng filter theo chữ cái đầu như demo nhen. Không thì các bạn có thể tham khảo source code hoàn chỉnh ở dưới đây.
 
 ## Summary
 
