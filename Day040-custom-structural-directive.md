@@ -167,9 +167,9 @@ Nói về `TemplateRef`, khi gặp directive có dấu \* (asterisk), Angul
 
 #### 3.4, Hàm `createEmbeddedView()` và những điều cần biết.
 
-1, Hàm `createEmbeddedView()` nhận vào param thứ 1 là 1 `TemplateRef` dùng để khởi tạo `EmbeddedView`.
+1, Hàm `createEmbeddedView()` nhận vào param thứ 1 là `TemplateRef` dùng để khởi tạo `EmbeddedView`.
 
-2, Hàm `createEmbeddedView()` nhận vào param thứ 2, là Object định nghĩa cho những gì nó trả ra. Chúng ta còn gọi Object này là `Context Object`.
+2, Hàm `createEmbeddedView()` nhận vào param thứ 2 là `Context Object`.Đây là Object định nghĩa cho những gì nó trả ra.
 
 > Nói về **\$implicit**, khái niệm này ở bài 5 đã giới thiệu qua. Nay mình nói lại cho cụ thể hơn. **\$implicit** là 1 property đặc biệt, như tên gọi của nó, mình tạm dịch nghĩa tiếng Việt của Implicit là `"Ngầm hiểu"`. Đây là property được mặc định sẽ trả ra trong hàm này.
 
@@ -193,16 +193,17 @@ File `custom-loop.directive.ts`
  }
 ```
 
-Nhìn lại project, vẫn hoạt động bình thường.
-Đến đây thì các bạn cũng hình dung ra rồi. Cái cấu trúc huyền thoại đã học **\*ngFor="let item of itemList"**, thật ra `item` với `itemList` nó chẳng liên quan gì với nhau cả.
+Nhìn lại project, vẫn hoạt động bình thường. Đến đây thì các bạn cũng hình dung ra rồi. 
 
-Ở đây mình đã sửa thành **of: cityList** cho các bạn dễ hiểu, đây là truyền vào directive biến **of** có value là **cityList**.
+Cấu trúc huyền thoại đã học `*ngFor="let item of itemList"`, thật ra `item` với `itemList` nó chẳng liên quan gì với nhau cả.
+
+Ở đây mình đã sửa thành `of: cityList` cho các bạn dễ hiểu, đây là truyền vào directive biến **of** có value là **cityList**.
 
 Tương tự như mình vừa truyền vào thêm 1 biến khác **findingText** có value là **text** (biến text này mình đã tạo sẵn trong file typescript của component).
 
-Tiếp đó cái **let city** bản chất là let city = **\$implicit**. Đây là biến bắt buộc cần định nghĩa để Angular gán giá trị của **\$implicit** vào. Nếu không khai báo let city thì sẽ bị lỗi.
+Tiếp đó cái **let city** bản chất là `let city = $implicit`. Đây là biến bắt buộc cần định nghĩa để Angular gán giá trị của **\$implicit** vào. Nếu không khai báo thì sẽ bị lỗi.
 
-Kết luận bản chất **let city** là cái hứng đầu ra. **of: cityList** là biến truyền đầu vào. 2 cái này không liên quan gì nhau hết. Việc mình biến đổi cityList thế nào để trả ra là quyền của mình, thậm chí mình trả cái **\$implicit** ra chẳng liên quan gì cái **cityList** cũng chẳng sao cả. Quyền của mình mà.
+Kết luận bản chất **let city** là cái hứng đầu ra. **of: cityList** là biến truyền đầu vào. 2 cái này không liên quan gì nhau hết. Việc mình biến đổi **cityList** thế nào để trả ra là quyền của mình, thậm chí mình trả cái **\$implicit** ra chẳng liên quan gì cái **cityList** cũng chẳng sao cả. Quyền của mình mà.
 
 Đến đây chắc các bạn cũng hiểu rồi. Ngoài ra nhìn lại đoạn
 
