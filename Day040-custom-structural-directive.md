@@ -34,11 +34,11 @@ Sau đó chúng ta add example-container vào template của app.component.ht
 
 ### Step 3: Code directive logic and apply to component
 
-Đầu tiên chúng ta sẽ tạo 1 ngFor cơ bản như sau.
+Chúng ta sẽ tạo 1 **ngFor** cơ bản như sau. Đầu tiên các bạn hãy add những đoạn code sau vào và chạy project thử để có cái nhìn tổng quan.
 
-Các bạn hãy add FormsModule vào app.module. (Vì chúng ta sẽ sử dụng ngModel cho project này).
+Add `FormsModule` vào app.module. (Vì chúng ta sẽ sử dụng `ngModel` cho project này).
 
-Các bạn add đoạn code này vào file Custom Loop directive vừa được generate ở trên.
+File `custom-loop.directive.ts`
 
 ```typescript
 import { Directive, Input, ViewContainerRef, TemplateRef } from "@angular/core";
@@ -55,6 +55,8 @@ export class CustomLoopDirective {
   ) {}
 
   ngOnChanges() {
+    this.containerRef.clear();
+
     for (const item of itemList) {
       this.containerRef.createEmbeddedView(this.template, {
         $implicit: item,
@@ -65,7 +67,7 @@ export class CustomLoopDirective {
 }
 ```
 
-Các bạn add đoạn code này vào component Example Container.
+File `example-container.component.html`
 
 ```html
 <input type="text" [(ngModel)]="text" />
@@ -73,6 +75,8 @@ Các bạn add đoạn code này vào component Example Container.
   {{ i + 1 }}. {{ city }}
 </p>
 ```
+
+File `example-container.component.ts`
 
 ```typescript
 export class ExampleContainerComponent implements OnInit {
@@ -85,13 +89,17 @@ export class ExampleContainerComponent implements OnInit {
 }
 ```
 
-Giờ các bạn chạy project thử và xem kết quả. Các bạn đã thấy được 1 cái input và 1 danh sách ngắn các thành phố.
-Mình đã dùng Custom Loop Directive của mình để generate ra.
+Khi chạy đoạn code trên, các bạn đã thấy được 1 cái input và 1 danh sách ngắn các thành phố.
+Mình đã dùng `Custom Loop Directive` của mình để generate ra.
+
+Bây giờ chúng ta đi vào quá trình đọc hiểu code.
+
+> 3.1, Mình đã làm thế nào để sử dụng directive `CustomLoop` cho component `ExampleContainer`?
 
 Đầu tiên các bạn nhìn vào file html của component. Các bạn thấy thay vì là *ngFor như bình thường, mình đã thay thế bằng
 *ngCustomLoop.
 
-Các bạn vào file directive. Như bài 39 trước, tên directive nằm ở trong decorator @Directive, và các bạn sẽ dùng tên này mỗi khi muốn sẽ sử dụng directive có các HTML elements. (Ở đây mình sẽ sửa tên này ngCustomLoop)
+Các bạn vào file directive. Như bài 39 trước, tên directive nằm ở trong decorator **@Directive**, và các bạn sẽ dùng tên này mỗi khi muốn sẽ sử dụng directive có các HTML elements. (Ở đây mình sẽ sửa tên này ngCustomLoop)
 
 ```typescript
 @Directive({
@@ -99,15 +107,17 @@ Các bạn vào file directive. Như bài 39 trước, tên directive nằm
 })
 ```
 
-Tiếp đến các bạn thấy directive này mình nhận vào 1 Array như sau:
+> 3.2, Mình đã truyền list các thành phố cho directive bằng cách nào?
+
+Các bạn thấy `Custom Loop directive` này mình nhận vào 1 Array như sau:
 
 ```typescript
 @Input("ngCustomLoopOf") itemList: Array<any>;
 ```
 
-Mình đã dùng **@Input** alias để đổi tên lại thành _itemList_, dễ dùng hơn thay vì dùng tên _ngCustomLoopOf_ bên ngoài truyền vào. Dừng lại chút, mình đã truyền cái này vào ở đâu?
+Mình đã dùng **@Input** alias để đổi tên lại thành _itemList_, dễ dùng hơn thay vì dùng tên _ngCustomLoopOf_ bên ngoài truyền vào. Nhưng mình đã truyền cái này vào ở đâu?
 
-Các bạn qua file html của example component.
+Các bạn qua file html của `ExampleContainer` component.
 
 ```html
 <p *ngCustomLoop="let city of cityList; let i = index">
@@ -115,19 +125,29 @@ Các bạn qua file html của example component.
 </p>
 ```
 
-Nhìn vào đây các bạn có thể đoán được biến mình truyền vào là cityList. Tuy nhiên, tại sao nó lại có tên ngCustomLoopOf.
+Nhìn vào đây các bạn có thể đoán được biến mình truyền vào là `cityList`. Tuy nhiên, tại sao nó lại có tên `ngCustomLoopOf`.
+
 Đó là 1 micro syntax trong Angular. Angular đã kết hợp tên của directive (ở đây là **ngCustomLoop**) với tên identity cho biến truyền vào (ở đây là chữ **of**).
 
-**=> ngCustomLoop + of = ngCustomLoopOf.**
+> **ngCustomLoop + of = ngCustomLoopOf**
 
 (Nếu đoạn này các bạn vẫn cảm thấy chưa hiểu lắm thì đọc xuống xíu nữa, mình có giải thích tiếp)
 
 Các bạn sẽ còn gặp lại cách truyền value thế này vào directive ở tính năng tiếp theo của project này.
 
-Tiếp theo, ở lifecycle _ngOnChange_ của directive này, mình dùng **ViewContainerRef** và gọi hàm **createEmbeddedView()** của nó như sau:
+> 3.3, Mình đã dùng cái gì để generate ở `HTML` code từ file `Custom Loop directive`?
+
+Ở lifecycle _ngOnChange_ của directive này, mình dùng **ViewContainerRef** và gọi hàm **createEmbeddedView()** của nó như sau:
 
 ```typescript
+constructor(
+    private containerRef: ViewContainerRef,
+    private template: TemplateRef<any>
+) {}
+
 ngOnChanges() {
+    this.containerRef.clear();
+
     for (const item of itemList) {
       this.containerRef.createEmbeddedView(this.template, {
         $implicit: item,
@@ -139,35 +159,46 @@ ngOnChanges() {
 
 Đọc code này các bạn có thể hình dung cơ bản:
 
-1. Hàm **createEmbeddedView()** dùng để tạo thêm View. Đây là cơ chế chính trong việc tạo 1 **custom structural directive**.
+1, Mình inject `TemplateRef` và `ViewContainerRef` vào directive này.
+Nói về `TemplateRef`, khi gặp directive có dấu \* (asterisk), Angular sẽ thực hiện cơ chế wrapper Host Element (ở đây là thẻ `p`) vào `<ng-template></ng-template>`. Và điều này chúng ta khi inject template này vào directive để sử dụng cũng như thực hiện các thao tác trên nó.
 
-2. Hàm này cần nhận vào 1 template, đó là 1 **TemplateRef**.
+2, Mình dùng `ViewContainerRef` và gọi hàm `createEmbeddedView()` dùng để tạo views. Ở bài 38, mình cũng có nói `ViewContainerRef` sẽ được dùng để tạo những `EmbeddedView`.
+Đây là cơ chế chính trong việc tạo 1 **Custom Structural Directive**.
 
-3. Hàm này nhận vào param thứ 2, là Object định nghĩa cho những gì nó trả ra. Chúng ta còn gọi Object này là Context Object.
-   Đầu tiên là **\$implicit**, này ở bài 5 đã giới thiệu qua. Nay mình nói lại cho cụ thể hơn. **\$implicit** là 1 property đặc biệt, như tên gọi của nó, mình tạm dịch nghĩa tiếng Việt của Implicit là "Ngầm hiểu". Đây là property được mặc định sẽ trả ra trong hàm này. Để hiểu rõ hơn thì các bạn làm thế này cho mình. Tạm thời các bạn sửa code như sau:
+> 3.4, Hàm `createEmbeddedView()` và những điều cần biết.
 
-   Các bạn vào file html của Example Container sửa thành thế này:
+1, Hàm `createEmbeddedView()` nhận vào param thứ 1 là 1 `TemplateRef` dùng để khởi tạo `EmbeddedView`.
 
-   ```html
-   <p *ngCustomLoop="let city findingText: text of: cityList; let i = index">
-     {{ i + 1 }}. {{ city }}
-   </p>
-   ```
+2, Hàm `createEmbeddedView()` nhận vào param thứ 2, là Object định nghĩa cho những gì nó trả ra. Chúng ta còn gọi Object này là `Context Object`.
 
-   Các bạn vào file directive thêm vào 1 Input mới như sau:
+> Nói về **\$implicit**, khái niệm này ở bài 5 đã giới thiệu qua. Nay mình nói lại cho cụ thể hơn. **\$implicit** là 1 property đặc biệt, như tên gọi của nó, mình tạm dịch nghĩa tiếng Việt của Implicit là `"Ngầm hiểu"`. Đây là property được mặc định sẽ trả ra trong hàm này.
 
-   ```typescript
-     export class CustomLoopDirective {
-        @Input("ngCustomLoopOf") itemList: Array<any>;
-        @Input("ngCustomLoopFindingText") findingText: string;
-        ...
-    }
-   ```
+Để hiểu rõ hơn thì các bạn tạm thời các bạn sửa code như sau.
 
-Và các bạn nhìn lại project, vẫn hoạt động bình thường.
-Đến đây thì các bạn cũng hình dung ra rồi. Cái cấu trúc huyền thoại mình đã học **\*ngFor="let item of itemList"**, thật ra item với itemList nó chẳng liên quan gì với nhau cả.
+File `example-container.component.html`
 
-Đầu tiên ở đây mình đã sửa thành **of: cityList** cho các bạn dễ hiểu, đây là truyền vào directive biến **of** có value là **cityList**. Tương tự như mình vừa truyền vào thêm 1 biến khác **findingText** có value là **text** (biến text này mình đã tạo sẵn trong file typescript của component).
+```html
+<p *ngCustomLoop="let city findingText: text of: cityList; let i = index">
+  {{ i + 1 }}. {{ city }}
+</p>
+```
+
+File `custom-loop.directive.ts`
+
+```typescript
+  export class CustomLoopDirective {
+     @Input("ngCustomLoopOf") itemList: Array<any>;
+     @Input("ngCustomLoopFindingText") findingText: string;
+     ...
+ }
+```
+
+Nhìn lại project, vẫn hoạt động bình thường.
+Đến đây thì các bạn cũng hình dung ra rồi. Cái cấu trúc huyền thoại đã học **\*ngFor="let item of itemList"**, thật ra `item` với `itemList` nó chẳng liên quan gì với nhau cả.
+
+Ở đây mình đã sửa thành **of: cityList** cho các bạn dễ hiểu, đây là truyền vào directive biến **of** có value là **cityList**.
+
+Tương tự như mình vừa truyền vào thêm 1 biến khác **findingText** có value là **text** (biến text này mình đã tạo sẵn trong file typescript của component).
 
 Tiếp đó cái **let city** bản chất là let city = **\$implicit**. Đây là biến bắt buộc cần định nghĩa để Angular gán giá trị của **\$implicit** vào. Nếu không khai báo let city thì sẽ bị lỗi.
 
@@ -192,13 +223,17 @@ ngOnChanges() {
 </p>
 ```
 
-Các bạn sẽ thấy ngoài trừ **\$implicit**, mình còn thêm vào object trả ra 1 cái nữa tên là index. Ở đây mình đã xử lý để trả ra index là vị trí phần tử trong mảng /**index: this.itemList.indexOf(item)**/.
+Các bạn sẽ thấy ngoài trừ `$implicit`, mình còn thêm vào object trả ra 1 cái nữa tên là `index`. Ở đây mình đã xử lý để trả ra `index` là vị trí phần tử trong mảng
 
-Vì biến này không phải \$implicit nên muốn nhận biến này phải khai báo nhận đàng hoàng như sau trong file html /**let i = index**/. Ngoài ra các bạn cũng có thể dùng cách /**index as i**/.
+```typescript
+ index: this.itemList.indexOf(item).
+```
 
-Vậy là đã xong, các bạn đã thực hiện thành công việc tạo và sử dụng 1 **Custom Structural Directive** trong Angular. Các bạn có thể dựa vào đây tiếp tục truyền thêm **@Input** vào, xử lý trả về Object Context nhiều hơn. Hoặc lắng nghe event ở directive này.
+Vì biến này không phải `$implicit` nên muốn nhận biến này phải khai báo nhận đàng hoàng như sau trong file html `let i = index`. Ngoài ra các bạn cũng có thể dùng cách `index as i`.
 
-Mấu chốt để tạo **Custom Structural Directive** vẫn chỉ đơn giản nằm ở hàm **createEmbeddedView()** của **ViewContainerRef**. Hiểu được hàm này nhận vào gì, trả ra gì là xong.
+Vậy là đã xong, các bạn đã thực hiện thành công việc tạo và sử dụng 1 **Custom Structural Directive** trong Angular. Các bạn có thể dựa vào đây tiếp tục truyền thêm **@Input** vào, xử lý trả về `Object Context` nhiều và đa dạng hơn. Hoặc lắng nghe `event` ở directive này.
+
+Mấu chốt để tạo **Custom Structural Directive** xoay quanh ở hàm `createEmbeddedView()` của `ViewContainerRef`. Hiểu được input `TemplateRef` của hàm này từ đầu mà có, cũng như các kết quả trả ra của `Context Object`.
 
 ## Concepts
 
