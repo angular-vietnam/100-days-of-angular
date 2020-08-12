@@ -94,7 +94,7 @@ Mình đã dùng `Custom Loop Directive` của mình để generate ra.
 
 Bây giờ chúng ta đi vào quá trình đọc hiểu code.
 
-> #### 3.1, Mình đã làm thế nào để sử dụng directive `CustomLoop` cho component `ExampleContainer`?
+#### 3.1, Mình đã làm thế nào để sử dụng directive `CustomLoop` cho component `ExampleContainer`?
 
 Đầu tiên các bạn nhìn vào file html của component. Các bạn thấy thay vì là *ngFor như bình thường, mình đã thay thế bằng
 *ngCustomLoop.
@@ -107,7 +107,7 @@ Các bạn vào file directive. Như bài 39 trước, tên directive nằm
 })
 ```
 
-> #### 3.2, Mình đã truyền list các thành phố cho directive bằng cách nào?
+#### 3.2, Mình đã truyền list các thành phố cho directive bằng cách nào?
 
 Các bạn thấy `Custom Loop directive` này mình nhận vào 1 Array như sau:
 
@@ -135,7 +135,7 @@ Nhìn vào đây các bạn có thể đoán được biến mình truy
 
 Các bạn sẽ còn gặp lại cách truyền value thế này vào directive ở tính năng tiếp theo của project này.
 
-> #### 3.3, Mình đã dùng cái gì để generate ở `HTML` code từ file `Custom Loop directive`?
+#### 3.3, Mình đã dùng cái gì để generate ở `HTML` code từ file `Custom Loop directive`?
 
 Ở lifecycle _ngOnChange_ của directive này, mình dùng **ViewContainerRef** và gọi hàm **createEmbeddedView()** của nó như sau:
 
@@ -165,7 +165,7 @@ Nói về `TemplateRef`, khi gặp directive có dấu \* (asterisk), Angul
 2, Mình dùng `ViewContainerRef` và gọi hàm `createEmbeddedView()` dùng để tạo views. Ở bài 38, mình cũng có nói `ViewContainerRef` sẽ được dùng để tạo những `EmbeddedView`.
 Đây là cơ chế chính trong việc tạo 1 **Custom Structural Directive**.
 
-> #### 3.4, Hàm `createEmbeddedView()` và những điều cần biết.
+#### 3.4, Hàm `createEmbeddedView()` và những điều cần biết.
 
 1, Hàm `createEmbeddedView()` nhận vào param thứ 1 là 1 `TemplateRef` dùng để khởi tạo `EmbeddedView`.
 
