@@ -116,7 +116,7 @@ Các bạn qua file html của example component.
 ```
 
 Nhìn vào đây các bạn có thể đoán được biến mình truyền vào là cityList. Tuy nhiên, tại sao nó lại có tên ngCustomLoopOf.
-Đó là 1 micro syntax trong Angular. Angular đã kết hợp tên của directive (ở đây là **ngCustomLoop**) với tên identity cho biến truyền vào, ở đây là chữ **of**.
+Đó là 1 micro syntax trong Angular. Angular đã kết hợp tên của directive (ở đây là **ngCustomLoop**) với tên identity cho biến truyền vào (ở đây là chữ **of**).
 
 **=> ngCustomLoop + of = ngCustomLoopOf.**
 
@@ -124,7 +124,7 @@ Nhìn vào đây các bạn có thể đoán được biến mình truy
 
 Các bạn sẽ còn gặp lại cách truyền value thế này vào directive ở tính năng tiếp theo của project này.
 
-Tiếp theo, ở lifecycle _ngOnChange_ của directive này, mình dùng ViewContainerRef và gọi hàm createEmbeddedView của nó như sau:
+Tiếp theo, ở lifecycle _ngOnChange_ của directive này, mình dùng **ViewContainerRef** và gọi hàm **createEmbeddedView()** của nó như sau:
 
 ```typescript
 ngOnChanges() {
@@ -139,9 +139,9 @@ ngOnChanges() {
 
 Đọc code này các bạn có thể hình dung cơ bản:
 
-1. Hàm createEmbeddedView() dùng để tạo thêm View. Đây là cơ chế chính trong việc tạo 1 cutom structural directive.
+1. Hàm **createEmbeddedView()** dùng để tạo thêm View. Đây là cơ chế chính trong việc tạo 1 **custom structural directive**.
 
-2. Hàm này cần nhận vào 1 template, đó là 1 TemplateRef.
+2. Hàm này cần nhận vào 1 template, đó là 1 **TemplateRef**.
 
 3. Hàm này nhận vào param thứ 2, là Object định nghĩa cho những gì nó trả ra. Chúng ta còn gọi Object này là Context Object.
    Đầu tiên là **\$implicit**, này ở bài 5 đã giới thiệu qua. Nay mình nói lại cho cụ thể hơn. **\$implicit** là 1 property đặc biệt, như tên gọi của nó, mình tạm dịch nghĩa tiếng Việt của Implicit là "Ngầm hiểu". Đây là property được mặc định sẽ trả ra trong hàm này. Để hiểu rõ hơn thì các bạn làm thế này cho mình. Tạm thời các bạn sửa code như sau:
