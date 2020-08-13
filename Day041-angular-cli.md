@@ -17,8 +17,8 @@ Chúng ta bắt đầu thôi.
 Khởi tạo project mới
 
 ```sh
-    `ng new <name> [options]`
-    `ng n <name> [options]`
+    ng new <name> [options]
+    ng n <name> [options]
 ```
 
 Options:
@@ -34,8 +34,8 @@ Options:
 Generate files
 
 ```sh
-    `ng generate <schematic> [options]`
-    `ng g <schematic> [options]`
+    ng generate <schematic> [options]
+    ng g <schematic> [options]
 ```
 
 Shematic:
@@ -44,7 +44,9 @@ Shematic:
 
 `` sh `ng g c demo\demo-list` ``
 
-> Ngoài ra generate mấy files này, các bạn nên dùng alias để gõ command cho nhanh. Đa số alias là chữ cái đầu của nó. Ví dụ: `module` là `m`.
+Ngoài ra generate mấy files này, các bạn nên dùng alias để gõ command cho nhanh. Đa số alias là chữ cái đầu của nó. 
+
+Ví dụ: `module` là `m`.
 
 #### 1. Module
 
@@ -129,8 +131,8 @@ Options:
 Compile code và đưa vào thư mục `/dist`
 
 ```sh
-    `ng build <project> [options]`
-    `ng b <project> [options]`
+    ng build <project> [options]
+    ng b <project> [options]
 ```
 
 Options:
@@ -148,8 +150,8 @@ Options:
 Build và Serve code, tự động build lại khi có sự thay đổi file.
 
 ```sh
-    `ng new <name> [options]`
-    `ng n <name> [options]`
+    ng serve <project> [options]
+    ng s <project> [options]
 ```
 
 Options:
@@ -163,8 +165,8 @@ Options:
 Chạy unit tests trong project.
 
 ```sh
-    `ng test <project> [options]`
-    `ng t <project> [options]`
+    ng test <project> [options]
+    ng t <project> [options]
 ```
 
 Options:
@@ -176,8 +178,8 @@ Options:
 Chạy những linting tools.
 
 ```sh
-    `ng lint <project> [options]`
-    `ng l <project> [options]`
+    ng lint <project> [options]
+    ng l <project> [options]
 ```
 
 Options:
@@ -191,8 +193,8 @@ Options:
 Xem version của Angular CLI.
 
 ```sh
-    `ng version [options]`
-    `ng v [options]`
+    ng version [options]
+    ng v [options]
 ```
 
 ### ng update
@@ -200,7 +202,7 @@ Xem version của Angular CLI.
 Update packages
 
 ```sh
-    `ng update [options]`
+    ng update [options]
 ```
 
 ## Summary
