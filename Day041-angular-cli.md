@@ -22,8 +22,11 @@ Khởi tạo project mới
 ```
 
 Options:
+
 --directory=directory: Tạo project mới trong folder chỉ định.
+
 --skipInstall=true|false: Tạo project mà không install dependency (hữu ích khi mạng yếu).
+
 --packageManager=npm|yarn|pnpm|cnpm: Chọn package manager cho project.
 
 ### ng generate
@@ -48,28 +51,39 @@ Shematic:
 `` sh `ng g module <name>` `ng g m <name>` ``
 
 Options:
+
 --routing=true|false: Tạo module với routing module.
 
 #### 2. Component
 
 `` sh `ng g component <name>` `ng g c <name>` ``
+
 Options:
+
 --export=true|false: Export component vừa tạo.
+
 --inlineStyle=true|false: Chỉ định Style nằm chung trong file.
+
 --inlineTemplate=true|false: Chỉ định HTML nằm chung trong file.
+
 --selector=selector: Tên của selector của component.
+
 --skipTests=true|false: Không generate file spec.
 
 #### 3. Service
 
 `` sh `ng g service <name>` `ng g s <name>` ``
+
 Options:
+
 --skipTests=true|false
 
 #### 4. Class
 
 `` sh `ng g class <name>` `ng g cl <name>` ``
+
 Options:
+
 --skipTests=true|false
 
 #### 5. Interface
@@ -79,22 +93,31 @@ Options:
 #### 6. Directive
 
 `` sh `ng g directive <name>` `ng g d <name>` ``
+
 Options:
+
 --export=true|false
+
 --selector=selector
+
 --skipTests=true|false
 
 #### 7. Guard
 
 `` sh `ng g guard <name>` `ng g g <name>` ``
+
 Options:
+
 --skipTests=true|false
 
 #### 8. Pipe
 
 `` sh `ng g pipe <name>` `ng g p <name>` ``
+
 Options:
+
 --export=true|false
+
 --skipTests=true|false
 
 #### 9. Enum
@@ -111,9 +134,13 @@ Compile code và đưa vào thư mục `/dist`
 ```
 
 Options:
+
 --prod=true|false: Build project với production mode.
+
 --aot=true|false: Sử compiler ahead of time. (Khái niệm này sẽ nói ở những bài sau)
+
 --baseHref=baseHref: Chỉ định baseHref sẽ dùng.
+
 --deployUrl=deployUrl: Chỉ định deployment url sẽ dùng.
 
 ### ng serve
@@ -126,7 +153,9 @@ Build và Serve code, tự động build lại khi có sự thay đổi fi
 ```
 
 Options:
+
 -o: Tự động mở project trong browser.
+
 --port=port: Chỉ định port sẽ dùng (default là 4200).
 
 ### ng test, ng lint
@@ -139,7 +168,9 @@ Chạy unit tests trong project.
 ```
 
 Options:
+
 --watch=true|false: Tự động test lại khi có thay đổi ở file.
+
 --codeCoverage=true|false: Thêm test coverage report.
 
 Chạy những linting tools.
@@ -150,7 +181,9 @@ Chạy những linting tools.
 ```
 
 Options:
+
 --exclude: Chỉ định những file không lint.
+
 --typeCheck=true|false: Check type cho linting.
 
 ### ng version
@@ -173,6 +206,7 @@ Update packages
 ## Summary
 
 Day 41 chúng ta đã học được command và flag thường dùng với Angular CLI.
+
 Mục tiêu của ngày 42 sẽ là **Angular Schematics**.
 
 ## References
