@@ -42,6 +42,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 | [Day 34: Template-driven Forms Trong Angular Part 2][day34]                              |                                                                        |
 | [Day 35: Reactive Forms Trong Angular][day35]                                            |                                                                        |
 | [Day 38: Dynamic Component][day38]                                                       |
+| [Day 39: Custom Attribute Directive][day39]                                              |
 | [Day 40: Custom Structural Directive][day40]                                             |
 |                                                                                          |
 
@@ -54,6 +55,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 - [Tiep Phan][tieppt]
 - [Chau Tran][nartc]
 - [Trung Vo][trungk18]
+- [Khanh Tiet][khanhtiet]
 
 [day1]: Day001-Installation.md
 [day2]: Day002-AngularApp.md
@@ -91,6 +93,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day34]: Day034-template-driven-forms-2.md
 [day35]: Day035-reactive-forms.md
 [day38]: Day038-dynamic-component.md
+[day39]: Day039-custom-attribute-directive.md
 [day40]: Day040-custom-structural-directive.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
@@ -123,3 +126,4 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [tieppt]: https://github.com/tieppt
 [nartc]: https://github.com/nartc
 [trungk18]: https://github.com/trungk18
+[khanhtiet]: (https://github.com/januaryofmine)
