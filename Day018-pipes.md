@@ -29,7 +29,7 @@ Angular có cung cấp sẵn một số pipes thường dùng trong package `@an
 
 Như đã nói, pipe sẽ nhận vào input và output ra một giá trị mình mong muốn.
 
-Mình có một biến tên là `date` ở trong component.
+Mình có một biến tên là `now` ở trong component.
 
 ```ts
 export class PipeExampleComponent implements OnInit {
