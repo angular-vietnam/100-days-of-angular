@@ -75,7 +75,10 @@ Có 2 loại validator function:
 
 #### 1. Sync validators (đồng bộ)
 
-Đây là các function để validate thường gặp, sẽ nhận đầu vào là một form control và trả 1. một danh sách các validation errors, hay 2. null tức là control này ko có lỗi gì. 
+Đây là các function để validate thường gặp, sẽ nhận đầu vào là một form control và trả về:
+
+- Một danh sách các validation errors.
+- Hoặc null tức là control này ko có lỗi gì.
 
 Ví dụ như input cần có độ dài tối thiểu là 6, thì function validate khi nhận control đầu vào sẽ check ngay giá trị của control đó xem có đủ độ dài hay ko, đơn giản như `control.value.length < 6 ? { "notValid": "input too short!"} : null`
 
