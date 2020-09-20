@@ -2,6 +2,14 @@
 
 Series độc quyền cung cấp bởi thành viên của Angular Vietnam về các chủ đề liên quan tới Angular trong vòng 100 ngày.
 
+## Ủng hộ/ Support
+
+- [Ủng hộ cho Chau Tran](https://github.com/sponsors/nartc)
+- [Ủng hộ cho Trung Vo](https://www.buymeacoffee.com/tuantrungvo)
+- [Ủng hộ cho Tiep Phan](https://www.facebook.com/pttiep)
+
+Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các bạn!
+
 ## Các bài viết
 
 | Bài viết                                                                                 | Video                                                                  |
