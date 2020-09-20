@@ -2,11 +2,11 @@
 
 Trong [day 35][day35], chúng ta đã tìm hiểu về Reactive Forms trong Angular. Day 36 chúng ta sẽ nói thêm về validate input của Reactive Forms.
 
-Mình sẽ dùng lại ví dụ về SignIn form như anh Tiệp đã lấy ví dụ từ [Day 35][day35]
+Mình sẽ dùng lại ví dụ về SignIn form như trong [Day 35][day35] của anh Tiệp.
 
 ## Prerequisites
 
-Form SignIn mình sẽ tạo bằng `FormBuilder` cho ngắn gọn như ví dụ trước. Sẽ có hai textbox là username/password và một checkbox.
+SignIn form mình sẽ tạo bằng `FormBuilder` cho ngắn gọn như ví dụ trước. Sẽ có hai textbox là username/password và một checkbox.
 
 ```ts
 export class SignInRfComponent implements OnInit {
@@ -55,7 +55,7 @@ Phần HTML của form sẽ có dạng như sau.
 </form>
 ```
 
-- Đầu tiên, set formGroup input của thẻ `form` tới `signInForm` mình đã tạo bằng `FormBuilder`
+- Đầu tiên, set `formGroup` input của thẻ `form` tới `signInForm` mình đã tạo bằng `FormBuilder`
 - Với mỗi control của form, thêm directive `formControlName` tới phần key của `signInForm`. Bởi vì input là string và ko có auto suggestion nên các bạn chú ý điền đúng giá trị và có phân biệt chữ hoa chữ thường. Ví dụ nếu trong form setup là `username` mà set `formControlName="userName"` thì sẽ ko chạy nhé.
 
 ## Yêu cầu validate data
@@ -82,7 +82,7 @@ Có 2 loại validator function:
 
 Ví dụ như input cần có độ dài tối thiểu là 6, thì function validate khi nhận control đầu vào sẽ check ngay giá trị của control đó xem có đủ độ dài hay ko, đơn giản như `control.value.length < 6 ? { "notValid": "input too short!"} : null`
 
-Khi khởi tạo `FormControl` thì Sync validators sẽ được truyển vào ở argument số 2. Argument số 1 sẽ là giá trị mặc định khi khởi tạo form nhé.
+Khi khởi tạo `FormControl` thì Sync validators sẽ được truyền vào ở argument số 2. Argument số 1 sẽ là giá trị mặc định khi khởi tạo form nhé.
 
 ```ts
 let control = new FormControl("", Validators.required);
@@ -107,7 +107,7 @@ this.fb.control("", Validators.required, this.isUserNameDuplicated);
 
 ### Implement validate function
 
-Angular có cung cấp một set các validate function trong class [Validators][validator], cụ thể:
+Angular có cung cấp một set các validate function trong class [Validators][validators], cụ thể:
 
 ```ts
 class Validators {
@@ -163,7 +163,9 @@ Kết quả thì như ở dưới, mình show trên UI phần error để các b
 
 ### Your first custom validator
 
-Các bạn để ý là `Validators.require` chỉ check là input có value thì validator này sẽ trả về null, tức là control đã valid. Nếu bạn thử một điền chỉ toàn dấu cách thì control này cũng sẽ được pass `Validators.require`. Như ví dụ ở trên thì sau khi mình điền đủ 6 kí tự khoảng trắng, thì `Validators.required` và `Validators.minLength` đã pass. Nhưng vì có `Validators.pattern` nên control vẫn invalid. Ví dụ bây giờ username sẽ cho phép điền toàn bộ kí tự. Để minh họa thì mình sẽ tạm bỏ `Validators.pattern(/^[a-z]{6,32}$/i)` đi nhé.
+Các bạn để ý là `Validators.require` chỉ check là input có value thì validator này sẽ trả về null, tức là control đã valid. Nếu bạn thử điền chỉ toàn dấu cách thì control này cũng sẽ được pass `Validators.require`.
+
+Như ví dụ ở trên thì sau khi mình điền đủ 6 kí tự khoảng trắng, thì `Validators.required` và `Validators.minLength` đã pass. Nhưng vì có `Validators.pattern` nên control vẫn invalid. Ví dụ bây giờ username sẽ cho phép điền toàn bộ kí tự. Để minh họa thì mình sẽ tạm bỏ `Validators.pattern(/^[a-z]{6,32}$/i)` đi nhé.
 
 ```ts
 this.signInForm = this.fb.group({
@@ -225,7 +227,7 @@ this.signInForm = this.fb.group({
 
 Test thử thì thấy hoạt động khá mượt mà như ý muốn. Vậy là đã xong custom validator đầu tiên rồi đấy 😂
 
-![Reactive Forms 2](assets/day36-02.gif)
+![Reactive Forms 2](assets/day36-03.gif)
 
 Mình có dùng `NoWhitespaceValidator` trong dự án [Angular Jira Clone][no-white-space]
 
