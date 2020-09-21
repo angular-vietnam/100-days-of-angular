@@ -49,7 +49,8 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 | [Day 33: Template-driven Forms Trong Angular][day33]                                     |                                                                        |
 | [Day 34: Template-driven Forms Trong Angular Part 2][day34]                              |                                                                        |
 | [Day 35: Reactive Forms Trong Angular][day35]                                            |                                                                        |
-| [Day 35: Reactive Forms Trong Angular Part 2][day36]                                     |                                                                        |
+| [Day 36: Reactive Forms Trong Angular Part 2][day36]                                     |                                                                        |
+| [Day 37: Angular Form Async Validator][day37]                                            |                                                                        |
 | [Day 38: Dynamic Component][day38]                                                       |                                                                        |
 
 ## Youtube Playlist
@@ -98,6 +99,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day34]: Day034-template-driven-forms-2.md
 [day35]: Day035-reactive-forms.md
 [day36]: Day036-reactive-forms-2.md
+[day37]: Day037-form-async-validator.md
 [day38]: Day038-dynamic-component.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs

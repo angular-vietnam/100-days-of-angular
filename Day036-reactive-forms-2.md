@@ -253,7 +253,7 @@ Các bạn có thể đọc thêm ở các bài viết sau
 
 ## Author
 
-[Trung Vo](https://github.com/tieppt)
+[Trung Vo](https://github.com/trungk18)
 
 `#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day36`
 
