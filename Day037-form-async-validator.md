@@ -128,7 +128,7 @@ Vì ko có API nên mình sẽ mock một hàm để check username và sẽ tr�
 ```ts
 validateUsername(username: string): Observable<boolean> {
   console.log("Trigger API call");
-  let existedUsers = ["trungkl8", "tieppt", "chautran"];
+  let existedUsers = ["trungvo", "tieppt", "chautran"];
   let isValid = existedUsers.every(x => x !== username);
   return of(isValid).pipe(delay(1000));
 }
