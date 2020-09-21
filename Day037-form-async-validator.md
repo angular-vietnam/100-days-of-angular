@@ -119,7 +119,7 @@ Dựa vào requirements, ta cần viết 2 custom validator:
 1. Async validator để gọi API check xem username đã tồn tại trong hệ thống hay chưa
 2. Sync validator để check xem password type lần hai có trùng khớp với password đầu tiên hay ko.
 
-## Async Validator để validate username
+## 1. Async Validator để validate username
 
 Nhắc lại một chút về Async Validator. Đây là các validate function sẽ trả về Promise hoặc Observable. Ví dụ như bạn muốn validate xem username nhập vào đã có trong hệ thống hay chưa. Thông thường bắt buộc bạn phải gửi một yêu cầu lên server để làm việc này, HTTP request thường sẽ trả về Promise/Observable.
 
@@ -279,14 +279,65 @@ Test thôi anh em. Như trong hình thì trong khoảng thời gian đang valida
 
 ![Async Validator trong Angular Form](/assets/day37-04.gif)
 
+## 2. Bonus: Validate confirm password
+
+Use case để validate confirm password trùng với password thì chúng ta chỉ cần viết một hàm custom validator đơn giản hơn, nhưng hàm này vì cần value của 2 controls nên mình sẽ apply validator này cho `formGroup` nhé. Code của function `validatePassword` sẽ như sau:
+
+```ts
+validatePassword(formGroup: FormGroup) {
+  const { value: password } = formGroup.get("password");
+  const { value: confirmPassword } = formGroup.get("confirmPassword");
+  return password === confirmPassword ? null : {
+    passwordNotMatch: {
+      password,
+      confirmPassword
+    }
+  };
+}
+```
+
+- Function nhận vào một formGroup và get value từ hai control
+- Nếu hai control này giống nhau thì return null, tức là ko có lỗi. Nếu ko sẽ return một object thông báo lỗi để dựa vào đó ta có thể hiển thị lên UI.
+
+Sau đó mình apply validator này vào form group.
+
+```ts
+this.registerForm = this._fb.group(
+    {
+      password: [
+        "",
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(6),
+          Validators.pattern(PASSWORD_PATTERN)
+        ])
+      ],
+      confirmPassword: [
+        "",
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(6),
+          Validators.pattern(PASSWORD_PATTERN)
+        ])
+      ]
+    },
+    {
+      validators: this.validatePassword.bind(this)
+    }
+  );
+})
+```
+
+Kết quả đây anh em ei. Nếu hai password ko giống nhau thì form sẽ có errors. Phần UI hiển thị đẹp đẽ như nào thì để tùy anh em 😍
+
+![Async Validator trong Angular Form](/assets/day37-05.gif)
+
 ## Summary
 
 Day 37 chúng ta đã tìm hiểu về async validator với reactive form. Anh em chú ý mấy điểm này:
 
 - Muốn viết async validator thì theo cú pháp `validate(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null>`
 - Angular sẽ ko chờ async validator hoàn thành rồi mới submit form nên phải thật cẩn thận trong một số trường hợp.
-
-Use case để validate confirm password trùng với password mình sẽ viết trong bài sau nhé. Bài Async Validator này cũng có khá nhiều kiến thức cần nắm.
 
 Mục tiêu của ngày 38 sẽ là **Angular Template Form Validation**
 
