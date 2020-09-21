@@ -1,4 +1,4 @@
-# Day 36: Async Validator trong Angular Form
+# Day 37: Async Validator trong Angular Form
 
 Trong [day 36][day36], chúng ta đã tìm hiểu về validate reactive forms trong Angular, cũng như viết một custom validator đơn giản để check xem input có dấu cách hay ko.
 
