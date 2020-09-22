@@ -216,8 +216,30 @@ Code sẽ như sau:
     componentRef.instance.data = "INPUT DATA 2";
   }
 ```
+
+### Step 7.3 Update code ở app.module.ts
+
+- Remove 2 cái import components ở đầu file.
+  Code sẽ như sau:
+
+```typescript
+  import { BrowserModule } from "@angular/platform-browser";
+  import { NgModule } from "@angular/core";
+
+  import { AppComponent } from "./app.component";
+  import { ExampleContainerComponent } from "./example-container/example-container.component";
+
+  @NgModule({
+    declarations: [AppComponent, ExampleContainerComponent],
+    imports: [BrowserModule],
+    providers: [],
+    bootstrap: [AppComponent],
+  })
+  export class AppModule {}
+```
+
 Vậy là đã xong, các bạn đã thực hiện thành công việc lazy load các dynamic components mà không phải add trực tiếp vào như ở những step đầu.
-**Lưu ý**: Đối với những bạn nào dùng Angular phiên bản cũ thì nhớ update angular để sử dụng tính năng Angular Ivy. 
+**Lưu ý**: Đối với những bạn nào dùng Angular phiên bản cũ thì nhớ update angular để sử dụng tính năng Angular Ivy.
 
 ## Concepts
 
