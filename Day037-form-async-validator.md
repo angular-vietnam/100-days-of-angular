@@ -281,23 +281,28 @@ Test thôi anh em. Như trong hình thì trong khoảng thời gian đang valida
 
 ## 2. Bonus: Validate confirm password
 
-Use case để validate confirm password trùng với password thì chúng ta chỉ cần viết một hàm custom validator đơn giản hơn, nhưng hàm này vì cần value của 2 controls nên mình sẽ apply validator này cho `formGroup` nhé. Code của function `validatePassword` sẽ như sau:
+Use case để validate confirm password trùng với password thì chúng ta chỉ cần viết một hàm custom validator đơn giản hơn, nhưng hàm này vì cần value của 2 controls nên mình sẽ apply validator này cho `formGroup` nhé. Code của function `validateControlsValue` sẽ như sau:
 
 ```ts
-validatePassword(formGroup: FormGroup) {
-  const { value: password } = formGroup.get("password");
-  const { value: confirmPassword } = formGroup.get("confirmPassword");
-  return password === confirmPassword ? null : {
-    passwordNotMatch: {
-      password,
-      confirmPassword
-    }
+validateControlsValue(firstControlName: string, secondControlName: string) {
+  return function(formGroup: FormGroup) {
+    const { value: firstControlValue } = formGroup.get(firstControlName);
+    const { value: secondControlValue } = formGroup.get(secondControlName);
+    return firstControlValue === secondControlValue
+      ? null
+      : {
+          valueNotMatch: {
+            firstControlValue,
+            secondControlValue
+          }
+        };
   };
 }
 ```
 
-- Function nhận vào một formGroup và get value từ hai control
-- Nếu hai control này giống nhau thì return null, tức là ko có lỗi. Nếu ko sẽ return một object thông báo lỗi để dựa vào đó ta có thể hiển thị lên UI.
+- Mình tạo ra hàm `validateControlsValue` và truyền vào tên của 2 controls. Function này sẽ return lại một function làm nhiệm vụ validate.
+- Function validate sẽ nhận vào một formGroup và get value từ hai control.
+- Nếu hai control này có giá trị giống nhau thì return null, tức là ko có lỗi. Nếu ko sẽ return một object thông báo lỗi để dựa vào đó ta có thể hiển thị lên UI.
 
 Sau đó mình apply validator này vào form group.
 
@@ -322,7 +327,7 @@ this.registerForm = this._fb.group(
       ]
     },
     {
-      validators: this.validatePassword.bind(this)
+      validators: this.validateControlsValue("password", "confirmPassword")
     }
   );
 })
