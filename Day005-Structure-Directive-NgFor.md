@@ -107,7 +107,7 @@ Ví dụ:
 </div>
 ```
 
-Giả sử nếu bạn không được phép hoặc không muốn sinh ra một div thừa thì sao? Chúng ta có thể convert NgIf về dạng ng-template như buổi trước hoặc dùng ng-container để dùng:
+Giả sử nếu bạn không được phép hoặc không muốn sinh ra một div thừa thì sao? Chúng ta có thể convert NgIf về dạng ng-template như buổi trước hoặc dùng ng-container:
 
 ```html
 <div *ngFor="”let" item of list”>
