@@ -17,7 +17,7 @@ import { Component } from "@angular/core";
   template: `
     <h2>Hello there!</h2>
     <h3>Your name: {{ user.name }}</h3>
-    <p>Your name: {{ user.age }}</p>
+    <p>Your age: {{ user.age }}</p>
   `,
 })
 export class HelloComponent {
