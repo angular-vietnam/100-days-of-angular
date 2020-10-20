@@ -25,6 +25,12 @@ node -v
 npm -v
 ```
 
+Ngoài ra thay vì dùng `npm`, các bạn cũng có thể dùng `yarn`. `yarn` cũng có chức năng tương tự `npm` là quản lý package, nhưng nhanh hơn. Cách cài `yarn` ở [đây](https://classic.yarnpkg.com/en/docs/install).
+
+```bash
+yarn -v
+```
+
 ### ANGULAR CLI
 
 Để phát triển một dự án Angular, chúng ta sẽ sử dụng đến công cụ chính thức từ team Angular đó là Angular CLI, (nó là một tool chạy các lệnh từ Terminal), và chúng ta sẽ cài đặt thông qua NPM bằng câu lệnh sau:
