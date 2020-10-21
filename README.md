@@ -1,5 +1,7 @@
 # 100-days-of-angular
 
+> *English translation for this series is available at [`./translations/en` folder](./translation/en)*
+
 Series độc quyền cung cấp bởi thành viên của Angular Vietnam về các chủ đề liên quan tới Angular trong vòng 100 ngày.
 
 ## Ủng hộ/ Support
