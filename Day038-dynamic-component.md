@@ -274,7 +274,7 @@ Cũng như thử emit event từ ViewChild và nhận, xử lý sự ki�
 
 Day 38 chúng ta đã học được những concepts liên quan đến Dynamic Component. Đây là 1 tính năng quan trọng có tính ứng dụng cao. Các bạn có thể thực hành nhiều hơn thông qua các bài tập mình đưa cũng như các nguồn tài liệu mình để dưới đây.
 
-Mục tiêu của ngày 39 sẽ là
+Mục tiêu của ngày 39 sẽ là **Thực hành Micro Frontends**
 
 ## Code sample
 

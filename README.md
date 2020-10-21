@@ -52,6 +52,7 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 | [Day 36: Reactive Forms Trong Angular Part 2][day36]                                     |                                                                        |
 | [Day 37: Angular Form Async Validator][day37]                                            |                                                                        |
 | [Day 38: Dynamic Component][day38]                                                       |                                                                        |
+| [Day 39: Thực hành Micro Frontends][day39]                                       |                                                                        |
 
 ## Youtube Playlist
 
@@ -62,6 +63,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 - [Tiep Phan][tieppt]
 - [Chau Tran][nartc]
 - [Trung Vo][trungk18]
+- [Khanh Tiet][KhanhTiet]
 
 [day1]: Day001-Installation.md
 [day2]: Day002-AngularApp.md
@@ -101,6 +103,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day36]: Day036-reactive-forms-2.md
 [day37]: Day037-form-async-validator.md
 [day38]: Day038-dynamic-component.md
+[day39]: Day039-micro-frontends.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
@@ -132,3 +135,4 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [tieppt]: https://github.com/tieppt
 [nartc]: https://github.com/nartc
 [trungk18]: https://github.com/trungk18
+[KhanhTiet]: https://github.com/januaryofmine

@@ -344,7 +344,7 @@ Day 37 chúng ta đã tìm hiểu về async validator với reactive form. Anh 
 - Muốn viết async validator thì theo cú pháp `validate(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null>`
 - Angular sẽ ko chờ async validator hoàn thành rồi mới submit form nên phải thật cẩn thận trong một số trường hợp.
 
-Mục tiêu của ngày 38 sẽ là **Angular Template Form Validation**
+Mục tiêu của ngày 38 sẽ là **Dynamic Component trong Angular**
 
 ## Code sample
 
