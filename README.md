@@ -52,7 +52,7 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 | [Day 36: Reactive Forms Trong Angular Part 2][day36]                                     |                                                                        |
 | [Day 37: Angular Form Async Validator][day37]                                            |                                                                        |
 | [Day 38: Dynamic Component][day38]                                                       |                                                                        |
-| [Day 39: Thực hành Micro Frontends][day39]                                       |                                                                        |
+| [Day 39: Thực Hành Micro Frontends][day39]                                       |                                                                        |
 
 ## Youtube Playlist
 

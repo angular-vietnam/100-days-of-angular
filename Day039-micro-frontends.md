@@ -1,4 +1,4 @@
-# Day 39: Thực hành Micro Frontends
+# Day 39: Thực Hành Micro Frontends
 
 ## Micro Frontends là gì?
 Hiện nay, các ứng dụng Single Page Apps (SPAs) cực kỳ phổ biến, chúng có nhiều tính năng và cũng rất phức tạp và thường được kết hợp với kiến trúc Microservices ở tầng backend. Sau một thời gian phát triển, các ứng dụng SPAs này trở nên cồng kềnh, và khó hơn cho việc maintain và chúng được gọi là Frontend Monolith.
