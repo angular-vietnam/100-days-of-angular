@@ -68,7 +68,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 - [Khanh Tiet][KhanhTiet]
 
 [day1]: Day001-Installation.md
-[day1-eng]: ./tree/master/translations/EN/Day001-Installation.md
+[day1-eng]: ./translations/EN/Day001-Installation.md
 [day2]: Day002-AngularApp.md
 [day3]: Day003-DataBinding.md
 [day4]: Day004-Structure-Directive-If-Else.md
