@@ -84,7 +84,7 @@ To run the app, execute this command in your project'sdirectory:
 ng serve
 ```
 
-By default, the app is ran at port 4200. You can change which port to run the app by using command:
+By default, the app runs at port 4200. You can change which port to run the app by using command:
 
 ```bash
 ng serve --port=other-port-number
