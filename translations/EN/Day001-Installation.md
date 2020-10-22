@@ -4,7 +4,7 @@
 
 In the recent years, Angular has remarkably improved and re-innovated its features and performance. These positive changes have helped this powerful framework to attract more organisations, including big names such as Apple, PayPal, Telegram, Forbes, Nike, etc. We, **Angular Vietnam**, recognised that it is the opportunistic time to embark on this project, **100 Days of Angular**. 
 
-This series of tutorials aim at providing you a continuously intensive learning experience which not only inspire but also challenge you in your learning journey with Angular. In order to follow along, you're expected to be equipped with basic JavaScript knowlegde.
+This series of tutorials aim at providing you a continuously intensive learning experience which not only inspire but also challenge you in your learning journey with Angular. In order to follow along, you're expected to be equipped with basic JavaScript and TypeScript knowlegde. If you already know JS, [this tutorial](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) from TS official documentation would help you to quickly get started with TS.
 
 ## PREREQUISITES
 
@@ -102,12 +102,12 @@ https://youtu.be/NS6P1fpU77o
 
 ## HASHTAGS
 
-`#100DaysOfCodeAngular` `#100DaysOfCode #AngularVietNam100DoC_Day1`
+`#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day1`
 
 ## REFERENCES
 
 - [https://angular.io/guide/setup-local](https://angular.io/guide/setup-local)
-- [https://angular.io/tutorial/toh-pt0](https://angular.io/guide/setup-local)
+- [https://angular.io/tutorial/toh-pt0](https://angular.io/tutorial/toh-pt0)
 
 ## AUTHORS
 

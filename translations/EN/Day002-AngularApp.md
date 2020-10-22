@@ -98,5 +98,5 @@ Mục tiêu Day 3 sẽ là về **data binding**.
 
 ## HASHTAG
 
-`#100DaysOfCodeAngular #100DaysOfCode`
+`#100DaysOfCodeAngular` `#100DaysOfCode`
 `#AngularVietNam100DoC_Day2`
