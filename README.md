@@ -17,7 +17,7 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 | Bài viết                                                                                 | Translations                                        | Video                                                                  |
 | ---------------------------------------------------------------------------------------- |-----------------------------------------------------| ---------------------------------------------------------------------- |
 | [Day 1: Prepare The Working Environment][day1]                                           | [ENG][day1-eng]                                     | [Youtube][day1-video]                                                  |
-| [Day 2: Explore Angular App][day2]                                                       |                                                     | [Youtube][day2-video]                                                  |
+| [Day 2: Explore Angular App][day2]                                                       | [ENG][day2-eng]                                     | [Youtube][day2-video]                                                  |
 | [Day 3: Angular Data Binding][day3]                                                      |                                                     | [Youtube][day3-video]                                                  |
 | [Day 4: Angular Structure Directive - NgIf][day4]                                        |                                                     | [Youtube][day4-video]                                                  |
 | [Day 5: Angular Structure Directive - NgForOf][day5]                                     |                                                     | [Youtube][day5-video]                                                  |
@@ -70,6 +70,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day1]: Day001-Installation.md
 [day1-eng]: ./translations/EN/Day001-Installation.md
 [day2]: Day002-AngularApp.md
+[day2-eng]: ./translations/EN/Day002-AngularApp.md  
 [day3]: Day003-DataBinding.md
 [day4]: Day004-Structure-Directive-If-Else.md
 [day5]: Day005-Structure-Directive-NgFor.md
