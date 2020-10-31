@@ -1,9 +1,17 @@
 # Day 39: Thực Hành Micro Frontends
 
+> Good frontend development is hard. Scaling frontend development so that many teams can work simultaneously on a large and complex product is even harder.
+
+> source: [https://martinfowler.com/articles/micro-frontends.html](https://martinfowler.com/articles/micro-frontends.html)
+
 ## Micro Frontends là gì?
 Hiện nay, các ứng dụng Single Page Apps (SPAs) cực kỳ phổ biến, chúng có nhiều tính năng và cũng rất phức tạp và thường được kết hợp với kiến trúc Microservices ở tầng backend. Sau một thời gian phát triển, các ứng dụng SPAs này trở nên cồng kềnh, và khó hơn cho việc maintain và chúng được gọi là Frontend Monolith.
 
 Trong những năm trở lại đây, việc áp dụng những concepts từ Microservices vào các ứng dụng Frontend được nhắc đến khá thường xuyên. Ý tưởng của Micro Frontends đó là sẽ phân tách các ứng dụng này thành các phần kết hợp của các tính năng, mỗi tính năng có thể được phát triển bới một team độc lập.
+
+> "An architectural style where independently deliverable frontend applications are composed into a greater whole"
+
+> source: [https://martinfowler.com/articles/micro-frontends.html](https://martinfowler.com/articles/micro-frontends.html)
 
 ### Monolithic Frontends
 
@@ -24,7 +32,7 @@ Trong những năm trở lại đây, việc áp dụng những concepts từ Mi
 Phương pháp này dễ để áp dụng nhưng có chứa nhiều giới hạn như việc navigation, thực thi các đoạn JavaScript từ Host App, ...
 - Proxy like nginx
 
-Phương pháp này yêu cầu việc phát triển các ứng dụng phải độc lập, ví dụ <host>/mailbox, <host>/calendar là các app Frontend khác nhau. Phương pháp này có một vấn đề là khi navigate từ app này sang app khác thì bạn sẽ bị reload giống như ứng dụng client-server thông thường.
+Phương pháp này yêu cầu việc phát triển các ứng dụng phải độc lập, ví dụ `<host>/mailbox`, `<host>/calendar` là các app Frontend khác nhau. Phương pháp này có một vấn đề là khi navigate từ app này sang app khác thì bạn sẽ bị reload giống như ứng dụng client-server thông thường.
 - Web Components
 
 Đây là một công nghệ không quá mới trong thời gian trở lại đây. Các framework áp dụng hoặc tạo ra Custom Elements khá nhiều. Ví dụ [Angular Elements](https://angular.io/guide/elements), [Stencil](https://stenciljs.com).
@@ -49,7 +57,7 @@ Ví dụ: nếu chúng ta lựa chọn Angular hay React làm shell app, thì c�
 
 ### Chuẩn bị
 Trong demo này, chúng ta sẽ sử dụng Webpack 5, trong bản release mới nhất nó đã giới thiệu một advanced API là Module Federation. Điều này giúp chúng ta dễ dàng phát triển được Micro Frontend.
-Ngoài ra, chúng ta sẽ dùng Angular v11 (thời điểm này đang là beta) để tạo các app.
+Ngoài ra, chúng ta sẽ dùng Angular v11 (thời điểm này đang là RC) để tạo các app.
 
 Đầu tiên, chúng ta cần tạo một shell app bằng lệnh sau. (lưu ý, nếu Angular CLI đã support Webpack 5 thì không cần dùng `next` version, bạn chỉ cần dùng `latest` là được).
 ```sh
@@ -64,7 +72,7 @@ npx ng generate application mailbox
 npx ng generate application calendar
 ```
 
-Do thời điểm hiện tại Angular CLI (v11 beta7) mới chỉ opt-in support cho Webpack 5, nên chúng ta cần dùng Yarn và `resolutions` để có thể dùng được Webpack 5.
+Do thời điểm hiện tại Angular CLI (v11 RC.1) mới chỉ opt-in support cho Webpack 5, nên chúng ta cần dùng Yarn và `resolutions` để có thể dùng được Webpack 5.
 
 Ngoài ra, chúng ta cần dùng đến custom webpack config nên chúng ta cần install thêm một package là `@angular-builders/custom-webpack`.
 
@@ -83,14 +91,14 @@ File `package.json` của chúng ta sẽ có dạng như sau:
       "./": "other deps"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1100.0-next.7",
-    "@angular/cli": "~11.0.0-next.7",
-    "@angular/compiler-cli": "~11.0.0-next.6",
+    "@angular-devkit/build-angular": "~0.1100.0-rc.1",
+    "@angular/cli": "~11.0.0-rc.1",
+    "@angular/compiler-cli": "~11.0.0-rc.1",
     "@angular-builders/custom-webpack": "~10.0.1"
   },
   "resolutions": {
-    "webpack": "~5.1.0",
-    "@angular-devkit/build-angular": "~0.1100.0-next.7"
+    "webpack": "~5.3.0",
+    "@angular-devkit/build-angular": "~0.1100.0-rc.1"
   }
 }
 ```
@@ -382,6 +390,7 @@ Các bạn có thể đọc thêm ở các bài viết sau:
 
 - https://medium.com/dev-genius/module-federation-advanced-api-inwebpack-5-0-0-beta-17-71cd4d42e534
 - https://www.angulararchitects.io/aktuelles/the-microfrontend-revolution-part-2-module-federation-with-angular/
+- https://martinfowler.com/articles/micro-frontends.html
 
 ## Author
 
