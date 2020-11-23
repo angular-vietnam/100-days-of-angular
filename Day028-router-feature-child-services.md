@@ -1,4 +1,4 @@
-# Day 28: Angular Router - Feature Modules, Child Routes and Services
+# Day 28: Angular Router - Feature Modules, Child Routes and Routes Services
 
 Tiếp tục với Angular Router từ hôm trước, hôm nay chúng ta sẽ tìm hiểu những thành phần tiếp theo như Feature Module, Child Routes và một số Services hay sử dụng.
 
