@@ -56,6 +56,7 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 | [Day 38: Dynamic Component][day38]                                                       |                  |                                                                        |
 | [Day 39: Thực Hành Micro Frontends][day39]                                               |                  |                                                                        |
 | [Day 40: Jira Clone 01 - Lên kế hoạch và cài cắm dự án Angular][day40]                   | [ENG][day40-eng] |                                                                        |
+| [Day 41: Jira Clone 02 - Dựng layout với flexbox và TailwindCSS][day41]                  | [ENG][day41-eng] |                                                                        |
 
 ## Youtube Playlist
 
@@ -111,6 +112,8 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day39]: Day039-micro-frontends.md
 [day40]: Day040-jira-angular-01.md
 [day40-eng]: https://trungk18.com/experience/angular-jira-clone-tutorial-01-planning-and-set-up/
+[day41]: Day040-jira-angular-02.md
+[day41-eng]: https://trungk18.com/experience/angular-jira-clone-tutorial-02-application-layout-tailwindcss-flex/
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk

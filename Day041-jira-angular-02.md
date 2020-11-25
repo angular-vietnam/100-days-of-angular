@@ -91,10 +91,7 @@ With Flexbox, we can now create scrollable containers whose size depends on the 
 
 Xem ví dụ ở dưới
 
-<iframe height="378" style="width: 100%;" scrolling="no" title="Scrollable container with dynamic height" src="https://codepen.io/stephenbunch/embed/KWBNVo?height=378&theme-id=light&default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/stephenbunch/pen/KWBNVo'>Scrollable container with dynamic height</a> by Stephen Bunch
-  (<a href='https://codepen.io/stephenbunch'>@stephenbunch</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
+> https://codepen.io/stephenbunch/pen/KWBNVo
 
 Mình cũng làm tương tự với Jira clone, bắt đầu dùng flex ở trên cùng `app-component` cho đến khi đến được chỗ mình cần scrollable thì thôi.
 
