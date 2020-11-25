@@ -326,5 +326,4 @@ Mình đã cố viết chi tiết nhất có thể, nhưng bài viết này vi�
 [prettiervs]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 [tailwind]: https://trungk18.com/experience/configure-tailwind-css-with-angular/
 [notion]: https://www.notion.so/trungk18/Angular-Jira-clone-Phase-1-79d3205e26024357a75ebfc00aba558e
-[jira]: https://jira.trungk18.com/
 [cli]: https://cli.angular.io/
