@@ -75,7 +75,7 @@ Khá là giống với những gì mình đã làm ở bước 2 cho left nav, c
 
 Đại khái, mình muốn có cái thanh cuộn dọc nếu như **không có đủ không gian**. Nghe thì đơn giản, nhưng khá phức tạp nhiều lúc 🤣
 
-### Scroll-able container with dynamic height using Flexbox
+### 4. Scroll-able container with dynamic height using Flexbox
 
 Mình có đọc một bài viết rất hay về việc [Làm thế nào để có scrollable container với chiều cao động (dynamic) dùng Flexbox by @stephenbunch][flexbox].
 
