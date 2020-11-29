@@ -126,6 +126,8 @@ handleResize() {
 }
 ```
 
+Mình ko có đoạn code để `removeListener` vì component Resizer sẽ thường ko bị destroy trong ứng dụng Jira clone. Nếu bạn code thì nên đặt `removeListener` vào nhé.
+
 ![Angular Jira Clone Tutorial Part 02](./assets/jira02/06.gif)
 
 ## Kết hợp lại với nhau
@@ -180,6 +182,10 @@ const routes: Routes = [
 Hy vọng với bài viết thứ hai, mọi người đã có hình dung rõ ràng hơn về việc build phần layout của một ứng dụng. Bình thường đây là phần khá tốn thời gian, chưa nói đến project structure này nọ. Chỉ nguyên làm cái thanh cuộn với CSS nhiều lúc đã đau đầu rồi.
 
 Có feedback gì mọi người cứ tạo PR nhé, cảm ơn anh em đã đọc và đóng góp.
+
+## Source code
+
+https://github.com/trungk18/jira-clone-angular/tree/leftnav-sidebar
 
 ## Author
 
