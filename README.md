@@ -58,6 +58,7 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 | [Day 40: Jira Clone 01 - Lên kế hoạch và cài cắm dự án Angular][day40]                   | [ENG][day40-eng] |                                                                        |
 | [Day 41: Jira Clone 02 - Dựng layout với flexbox và TailwindCSS][day41]                  | [ENG][day41-eng] |                                                                        |
 | [Day 42: Angular CDK Coercion][day42]                                                    |                  |                                                                        |
+| [Day 43: DisabledControlDirective to disable Reactive Form control][day43]               |                  |                                                                        |
 
 ## Youtube Playlist
 
@@ -116,6 +117,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day41]: Day040-jira-angular-02.md
 [day41-eng]: https://trungk18.com/experience/angular-jira-clone-tutorial-02-application-layout-tailwindcss-flex/
 [day42]: Day042-angular-cdk-coercion.md
+[day43]: Day043-angular-disable-control-directive.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk

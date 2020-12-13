@@ -20,7 +20,7 @@ Hay ngay cả khi dùng `if ('trung') {}`, vì `'trung'` là string, không ph�
 
 Ví dụ ở trên khi mình sửa lại thành `if (Boolean('string')) {}` thì là mình muốn nói JS hãy convert string thành boolean để check thay vì để JS tự làm công việc đấy, thì đây là explicit. Hay còn gọi là type casting.
 
-Tóm tắt lại là Implicit (ngầm) >< Explicit (không ngầm 😂 )
+Tóm tắt lại là `Implicit (ngầm)` >< `Explicit (không ngầm 😂 )`
 
 ### Angular CDK Coercion có gì hay?
 
@@ -127,6 +127,6 @@ https://stackblitz.com/edit/angular-ivy-cdk-coercion?file=src/app/child/child.co
 - [Chau Tran](https://github.com/nartc)
 - [Trung Vo](https://github.com/trungk18)
 
-`#100DaysOfCodeAngular` `#100DaysOfCode` `AngularVietNamJiraCloneTutorial` `#AngularVietNam100DoC_Day42`
+`#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day42`
 
 [src/cdk/coercion]: https://github.com/angular/components/tree/master/src/cdk/coercion
