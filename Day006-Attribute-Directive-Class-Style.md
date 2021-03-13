@@ -55,11 +55,11 @@ Cuối cùng là cú pháp dạng:
 
 Với styleExpr là một trong các dạng:
 
-| Type         | Value                                                                              |
-| ------------ | ---------------------------------------------------------------------------------- |
-| String       | `"width: 100%; height: 100%"`                                                      |
-| Array String | `['width', '100px']`                                                               |
-| Object       | `{[key: string]: string | undefined | null} như {width: '100px', height: '100px'}` |
+| Type         | Value                                                                                                   |
+| ------------ | ------------------------------------------------------------------------------------------------------- |
+| String       | `"width: 100%; height: 100%"`                                                                           |
+| Array String | `['width', '100px']`                                                                                    |
+| Object       | <code>{[key: string]: string &#x7c; undefined &#x7c; null} như {width: '100px', height: '100px'}</code> |
 
 Có một directive tương tự là ngStyle với cách dùng gấn giống thế, trong hầu hết các trường hợp, chúng ta được khuyến cáo sử dụng style binding thay thế.
 Lưu ý rằng, một style property có thể dùng cả kiểu dash-key hoặc camelCase, ví dụ font-size hoặc fontSize đều được.
