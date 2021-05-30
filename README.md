@@ -12,6 +12,26 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 
 Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các bạn!
 
+## Dự án thực tế để tham khảo
+
+| Dự án                      | Nội dung                                                                                                                                                                                                                     | Từ khóa                                    | Video (nếu có)           |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------ |
+| [Spotify][spotify]         | Spotify được thiết kế với Nx workspace với một kiến trúc hoàn chỉnh tối ưu hóa Single Component Per Module (SCAM). ngrx và ngrx/component-store để quản lý dữ liệu giữa các component. TailwindCSS và ng-zorro cho phần UI.  | Nx, ngrx, TailwindCSS, ng-zorro            | [Youtube][spotify-video] |
+| [Jira Clone][jira]         | Jira clone có sử dụng Akita state management để quản lý data giữa các thành phần trong ứng dụng. Ngoài ra có dùng thêm TailwindCSS cho styling và ng-zorro để sử dụng các component có sẵn như modal, tooltip                | TailwindCSS, ng-zorro, Akita               | [Youtube][jira-video]    |
+| [Tetris][tetris]           | Tetris là ví dụ về game đơn giản viết bằng Angular có sử dụng Akita làm state management. Trông đơn giản thôi nhưng nếu bạn mở React Devtools lên thì sẽ thấy rất nhiều data được cập nhật với mỗi chuyển động trên màn hình | Akita                                      | [Youtube][tetris-video]  |
+| Authentication Flow        | Anh Châu có chia sẻ về Authentication Flow, Permission-based Flow                                                                                                                                                            | Authentication Flow, Permission-based Flow | [Youtube][avo3]          |
+| [MEAN - NestJS][nest-mean] | Anh Châu có chia sẻ về MEAN stack - MongoDB, Express, Angular and NodeJS                                                                                                                                                     | Authentication Flow, Permission-based Flow | [Youtube][nest-video]    |
+
+[jira]: https://jira.trungk18.com/
+[jira-video]: https://youtu.be/3dukbsRX0tc
+[spotify]: https://github.com/trungk18/angular-spotify
+[spotify-video]: https://youtube.com/playlist?list=PLvi61hSZk9hE65SkVjxT_t1cNBuiuKE4n
+[tetris]: https://tetris.trungk18.com/
+[tetris-video]: https://youtu.be/XlgDhlgRBCM
+[avo3]: https://youtu.be/iXZd3vk6pAo
+[nest-mean]: https://github.com/nartc/nest-mean
+[nest-video]: https://www.youtube.com/watch?v=Tj_MMY15g6w&list=PLVmX3uPQtp3uRu30YKw0v2VIPgZo45FUD
+
 ## Các bài viết
 
 | Bài viết                                                                                 | Translations     | Video                                                                  |
