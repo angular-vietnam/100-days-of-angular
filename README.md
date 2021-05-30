@@ -80,9 +80,7 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 | [Day 42: Angular CDK Coercion][day42]                                                    |                  |                                                                        |
 | [Day 43: DisabledControlDirective to disable Reactive Form control][day43]               | [ENG][day43-eng] |                                                                        |
 | [Day 44: Observable for @Output][day44]                                                  | [ENG][day44-eng] |                                                                        |
-
-| [Day 45: RxJS Trong Angular - Unsubscribe Một Subscription][day45]
-| | |
+| [Day 45: RxJS Trong Angular - Unsubscribe Một Subscription][day45]                       |                  |                                                                        |
 
 ## Youtube Playlist
 
