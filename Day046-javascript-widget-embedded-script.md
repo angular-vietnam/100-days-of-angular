@@ -314,7 +314,7 @@ customElements.define('embedded-widget', Widget);
 Lưu ý: Khi đặt tên define cho custom web component, chúng ta nên đặt tên mang theo logic và ngăn cách bằng dấu “-” do native component các HTML tag chỉ có 1 word.
 
 ## Tổng kết
-Với các cách triển khai embedded script như trên, dễ thấy, đây là 1 hướng implement rất phù hợp với giải pháp Micro-frontend hiện nay (tham khảo: Day 045). Tuy nhiên, để thêm hoàn thiện, các embedded script cần có 1 giải pháp để trao đổi dữ liệu với nhau. Chúng ta sẽ cùng nhau tìm hiểu giải pháp ở các bài viết tiếp theo.
+Với các cách triển khai embedded script như trên, dễ thấy, đây là 1 hướng implement rất phù hợp với giải pháp Micro-frontend hiện nay (tham khảo: Day 039). Tuy nhiên, để thêm hoàn thiện, các embedded script cần có 1 giải pháp để trao đổi dữ liệu với nhau. Chúng ta sẽ cùng nhau tìm hiểu giải pháp ở các bài viết tiếp theo.
 Như vậy qua chia sẻ ngày hôm nay, chúng ta đã đã được tìm hiểu về Javascript Widget, các thức thực hiện để có được 1 embedded script nhằm tạo ra các widget như ý muốn.
 
 Chúc các bạn thành công.
