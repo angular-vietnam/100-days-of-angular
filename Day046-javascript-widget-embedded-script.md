@@ -1,16 +1,16 @@
-# Day 46: Javascript Widget và Embedded Script
+# Day 46: JavaScript Widget và Embedded Script
 
-Tìm hiểu về khái niệm, cách xây dựng và triển khai một Javascript Widget và Embedded Script
+Tìm hiểu về khái niệm, cách xây dựng và triển khai một JavaScript Widget và Embedded Script
 
 ## Mục đích ra đời và trường hợp sử dụng
 
-Ngày nay, việc xây dựng và phát triển ứng dụng web bằng Javascript đã trở nên cực kỳ phổ biến, gần như có thể nói làm web ngày nay là sử dụng javascript.
+Ngày nay, việc xây dựng và phát triển ứng dụng web bằng JavaScript đã trở nên cực kỳ phổ biến, gần như có thể nói làm web ngày nay là sử dụng JavaScript.
 
-Một ứng dụng web ngày nay có rất nhiều tính năng và nghiệp vụ đi kèm. Có thể kể đến, khi một website đã được triển khai và cần thêm các tính năng nhẹ nhàng, độc lập với website chính như 1 form thu thập phản hồi khách hàng, 1 form dành cho chăm sóc khách hàng hoặc là 1 dịch vụ chat support. Dựa vào nhu cầu đó, việc xây dựng Javascript Widget ra đời.
+Một ứng dụng web ngày nay có rất nhiều tính năng và nghiệp vụ đi kèm. Có thể kể đến, khi một website đã được triển khai và cần thêm các tính năng nhẹ nhàng, độc lập với website chính như 1 form thu thập phản hồi khách hàng, 1 form dành cho chăm sóc khách hàng hoặc là 1 dịch vụ chat support. Dựa vào nhu cầu đó, việc xây dựng JavaScript Widget ra đời.
 
 ## Khái niệm
 
-Javascript Widget là một giải pháp để đưa thêm các dịch vụ và tính năng vào 1 trang web có sẵn chỉ bằng việc import 1 đoạn mã nhúng (embedded script) và 1 số config đơn giản.
+JavaScript Widget là một giải pháp để đưa thêm các dịch vụ và tính năng vào 1 trang web có sẵn chỉ bằng việc import 1 đoạn mã nhúng (embedded script) và 1 số config đơn giản.
 
 Script được nhúng vào trang web sẽ thực hiện tất cả những bước cần có để từ đó provide cho trang web làm “host” có được thêm 1 tính năng hoàn chỉnh và chạy độc lập. 
 
@@ -31,7 +31,7 @@ Tuy nhiên, việc chèn thêm các element mới vào website có một số đ
 - Bundle size của script
 - Các feature mà widget sử dụng không được hỗ trợ trên trình duyệt đang chạy website.
 
-Với các lưu ý này, chúng ta có thể có nhiều cách để có thể giải quyết. Với các công nghệ xây dựng web ngày nay thì chúng ta hiện tại đều đã có sẵn các webpack plugin, polyfill tương ứng để giúp chúng ta dễ dàng giải quyết các lưu ý khi thực hiện một javascript widget.
+Với các lưu ý này, chúng ta có thể có nhiều cách để có thể giải quyết. Với các công nghệ xây dựng web ngày nay thì chúng ta hiện tại đều đã có sẵn các webpack plugin, polyfill tương ứng để giúp chúng ta dễ dàng giải quyết các lưu ý khi thực hiện một JavaScript widget.
 
 ## Thực hành xây dựng embedded script với các giải pháp web application quen thuộc
 
@@ -315,7 +315,7 @@ Lưu ý: Khi đặt tên define cho custom web component, chúng ta nên đặt 
 
 ## Tổng kết
 Với các cách triển khai embedded script như trên, dễ thấy, đây là 1 hướng implement rất phù hợp với giải pháp Micro-frontend hiện nay (tham khảo: Day 039). Tuy nhiên, để thêm hoàn thiện, các embedded script cần có 1 giải pháp để trao đổi dữ liệu với nhau. Chúng ta sẽ cùng nhau tìm hiểu giải pháp ở các bài viết tiếp theo.
-Như vậy qua chia sẻ ngày hôm nay, chúng ta đã đã được tìm hiểu về Javascript Widget, các thức thực hiện để có được 1 embedded script nhằm tạo ra các widget như ý muốn.
+Như vậy qua chia sẻ ngày hôm nay, chúng ta đã đã được tìm hiểu về JavaScript Widget, các thức thực hiện để có được 1 embedded script nhằm tạo ra các widget như ý muốn.
 
 Chúc các bạn thành công.
 
