@@ -136,7 +136,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day39]: Day039-micro-frontends.md
 [day40]: Day040-jira-angular-01.md
 [day40-eng]: https://trungk18.com/experience/angular-jira-clone-tutorial-01-planning-and-set-up/
-[day41]: Day040-jira-angular-02.md
+[day41]: Day041-jira-angular-02.md
 [day41-eng]: https://trungk18.com/experience/angular-jira-clone-tutorial-02-application-layout-tailwindcss-flex/
 [day42]: Day042-angular-cdk-coercion.md
 [day43]: Day043-angular-disable-control-directive.md
