@@ -59,9 +59,9 @@ Ví dụ: nếu chúng ta lựa chọn Angular hay React làm shell app, thì c�
 Trong demo này, chúng ta sẽ sử dụng Webpack 5, trong bản release mới nhất nó đã giới thiệu một advanced API là Module Federation. Điều này giúp chúng ta dễ dàng phát triển được Micro Frontend.
 Ngoài ra, chúng ta sẽ dùng Angular v11 (thời điểm này đang là RC) để tạo các app.
 
-Đầu tiên, chúng ta cần tạo một shell app bằng lệnh sau. (lưu ý, nếu Angular CLI đã support Webpack 5 thì không cần dùng `next` version, bạn chỉ cần dùng `latest` là được).
+Đầu tiên, chúng ta cần tạo một shell app bằng lệnh sau.
 ```sh
-npx @angular/cli@next new acme-email-client
+npx @angular/cli@latest new acme-email-client
 ```
 
 Sau khi tạo xong project, chúng ta sẽ tạo thêm 2 application nữa: 1 cho mailbox, 1 cho calendar.
@@ -72,9 +72,11 @@ npx ng generate application mailbox
 npx ng generate application calendar
 ```
 
-Do thời điểm hiện tại Angular CLI (v11 RC.1) mới chỉ opt-in support cho Webpack 5, nên chúng ta cần dùng Yarn và `resolutions` để có thể dùng được Webpack 5.
-
 Ngoài ra, chúng ta cần dùng đến custom webpack config nên chúng ta cần install thêm một package là `@angular-builders/custom-webpack`.
+
+```sh
+npm i -D @angular-builders/custom-webpack
+```
 
 File `package.json` của chúng ta sẽ có dạng như sau:
 
@@ -88,26 +90,34 @@ File `package.json` của chúng ta sẽ có dạng như sau:
     "start:calendar": "ng serve --project=calendar --port 5400"
   },
   "dependencies": {
-      "./": "other deps"
+    "@angular/animations": "~12.1.2",
+    "@angular/common": "~12.1.2",
+    "@angular/compiler": "~12.1.2",
+    "@angular/core": "~12.1.2",
+    "@angular/forms": "~12.1.2",
+    "@angular/platform-browser": "~12.1.2",
+    "@angular/platform-browser-dynamic": "~12.1.2",
+    "@angular/router": "~12.1.2",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.2.0",
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1100.0-rc.1",
-    "@angular/cli": "~11.0.0-rc.1",
-    "@angular/compiler-cli": "~11.0.0-rc.1",
-    "@angular-builders/custom-webpack": "~10.0.1"
-  },
-  "resolutions": {
-    "webpack": "~5.3.0",
-    "@angular-devkit/build-angular": "~0.1100.0-rc.1"
+    "@angular-builders/custom-webpack": "^12.1.0",
+    "@angular-devkit/build-angular": "~12.1.2",
+    "@angular/cli": "~12.1.2",
+    "@angular/compiler-cli": "~12.1.2",
+    "@types/jasmine": "~3.8.0",
+    "@types/node": "^12.11.1",
+    "jasmine-core": "~3.8.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "typescript": "~4.3.2"
   }
 }
-```
-Sau đó chúng ta cần xóa bỏ `node_modules` và chạy lại `yarn install` để cài đặt các packages.
-
-Ngoài ra để đảm bảo rằng project sẽ sử dụng yarn khi cài đặt các package thông qua lệnh `ng add` thì chúng ta có thể chạy lệnh sau:
-
-```sh
-npx ng config cli.packageManager yarn
 ```
 
 ### Bật tính năng Module Federation
@@ -143,20 +153,15 @@ Dưới đây là một phần của file `angular.json`.
         },
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
-          "options": {
-            "browserTarget": "acme-email-client:build",
-            "customWebpackConfig": {
-              "path": "./webpack.config.js"
-            }
-          },
           "configurations": {
             "production": {
-              "browserTarget": "acme-email-client:build:production",
-              "customWebpackConfig": {
-                "path": "./webpack.prod.config.js"
-              }
+              "browserTarget": "acme-email-client:build:production"
+            },
+            "development": {
+              "browserTarget": "acme-email-client:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
       }
     },
@@ -171,7 +176,7 @@ Sau đó chúng ta sẽ tạo tương tự cho các project `mailbox` và `calen
 Chúng ta cần config shell như sau để bật Module Federation:
 
 ```js
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
   output: {
@@ -266,7 +271,7 @@ Nếu chúng ta muốn navigate vào 2 micro app kia thì cũng cần config tư
 
 Config dưới đây là dành cho mailbox app.
 ```js
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
   output: {
@@ -332,7 +337,7 @@ export class MailboxModule { }
 Tương tự chúng ta có thể config cho calendar app như sau:
 
 ```js
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
   output: {
@@ -362,9 +367,9 @@ module.exports = {
 
 Giờ đây bạn có thể chạy cả 3 ứng dụng:
 ```sh
-yarn start:shell
-yarn start:mailbox
-yarn start:calendar
+npm run start:shell
+npm run start:mailbox
+npm run start:calendar
 ```
 
 Sau đó truy cập vào các địa chỉ sau:
