@@ -32,6 +32,13 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 [nest-mean]: https://github.com/nartc/nest-mean
 [nest-video]: https://www.youtube.com/watch?v=Tj_MMY15g6w&list=PLVmX3uPQtp3uRu30YKw0v2VIPgZo45FUD
 
+## Các chia sẻ tâm huyết của ban quản trị Angular Việt Nam và những khách mời
+
+| #   | Title                                                                                              | Nội dung                                                                                                                                                                                                                                                                                              |
+| --- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | [Cơ hội việc làm tại Singapore trong ngành IT](https://youtu.be/o5K2rAbIkg8)                       | Process phỏng vấn ở Sing trong các công ty công nghệ như thế nào, Điểm mạnh điểm yếu của ứng viên đến từ Việt Nam. Cách phát huy điểm mạnh và khắc phục                                                                                                                                               |
+| 2   | [Giá như mình biết - Những chia sẻ của một Senior Software Engineer](https://youtu.be/GA5ErG5V4CQ) | Với thâm niên 10 năm làm việc trong ngành lĩnh vực tech qua nhiều vị trí, anh Bill Nguyễn sẽ quay trở lại chia sẻ với chúng ta những điều mà như anh nói là "giá như mình biết". Từ đó hy vọng các bạn rút ra được những bài học nhất định để trở thành một Software Engineer tốt hơn ngày hôm qua :) |
+
 ## Các bài viết
 
 | Bài viết                                                                                 | Translations     | Video                                                                  |
