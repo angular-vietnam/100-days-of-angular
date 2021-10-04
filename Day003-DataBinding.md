@@ -44,7 +44,7 @@ attributes: [] // thuộc type NamedNodeMap, dạng như một array
 }
 ```
 
-Như bạn có thể thấy attribute được để chỉ những gì các bạn đặt vào phần opening tag của một tag sẽ là attributes, còn những gì là property của object (node) sẽ được gọi là property.
+Như bạn có thể thấy, attribute được dùng để chỉ những gì các bạn đặt vào phần opening tag của một tag, còn lại là property của object (node).
 Các attributes sẽ được lưu trữ vào property attributes của node tương ứng.
 Có những attribute sẽ được map sang thành property tương ứng, ví dụ như type và value ở trên, nhưng có những attribute không được map sang ví dụ class sẽ thành className, chúng không có quan hệ 1-1 với nhau.
 Thực tế khi sử dụng Angular, chúng ta sẽ muốn ứng dụng trở nên linh động hơn (ví dụ: cùng là 1 template nhưng có thể thay đổi data để hiển thị). Lúc này chúng ta cần update các properties của DOM để làm cho nó đáp ứng chẳng hạn. Nhưng nếu cần phải dùng document.querySelector/jQuery để manipulate DOM thì Angular quá vô vị. Phải có cách gì đó hay ho hơn chứ nhỉ?
