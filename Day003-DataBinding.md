@@ -37,10 +37,10 @@ Sau khi parse xong sẽ có một object (node) thuộc type HTMLInputElement đ
 
 ```typescript
 obj = {
-type: ‘text’,
-value: ‘something’,
-attributes: [] // thuộc type NamedNodeMap, dạng như một array
-// … các thuộc tính, method khác
+    type: 'text',
+    value: 'something',
+    attributes: [] // thuộc type NamedNodeMap, dạng như một array
+    // … các thuộc tính, method khác
 }
 ```
 
@@ -128,4 +128,4 @@ https://youtu.be/WrMywdbnQfk
 
 ## HASHTAG
 
-`#100DaysOfCodeAngular` `#100DaysOfCode #AngularVietNam100DoC_Day3`
+`#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day3`
