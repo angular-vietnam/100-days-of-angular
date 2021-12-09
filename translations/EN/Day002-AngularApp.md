@@ -186,6 +186,4 @@ That's enough magic for today! For the next day, we'll introduce you **data bind
 ## AUTHORS
 
 - [Tiep Phan](https://github.com/tieppt)
-- Translator: [Minh Tu Hoang](https://github.com/mnhthng-thms)
-
-
+- Translator: [Minh Tu Hoang](https://github.com/m1nhtu99-hoan9)
