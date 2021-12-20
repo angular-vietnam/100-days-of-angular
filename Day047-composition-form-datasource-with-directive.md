@@ -48,7 +48,7 @@ Chúng ta sẽ cùng tìm hiểu kỹ hơn về ý tưởng này trong phần co
 ng new composition-datasource-with-directive
 ```
 
-Trong pratice này chúng ta sẽ sử dụng UI library của ng zorro nên câu lệnh để cài đặt như sau:
+Trong pratice này chúng ta sẽ sử dụng UI library của ng zorro (ngoài ra có thể sử dụng các UI library khác với cách làm tương tự) nên câu lệnh để cài đặt như sau:
 
 ```sh
 ng add ng-zorro-antd
@@ -234,7 +234,7 @@ Sau khi thực hiện tới bước này, ta đã có thể rõ ràng được �
   placeholder="Select mode"
 ></app-select-control>
 ```
-Có thể dễ dàng nhận thấy, ta đã thực hiện kết hợp 2 thành phần khi viết là selector của component `app-select-control` và directive `appModeDataSource`. Khi component được khởi tạo, bản thân component sẽ lấy directive thông qua Inject Token trong `constructor` và khi được viết như trên Token đó thông qua keyword `useExisting` trong `providers` của Directive đã định vị được component sẽ sử dụng Directive nào để kết hợp. Từ đó, kết hợp với việc Directive đã được implement từ 1 interface đã chuẩn hóa, việc get `options$` tương ứng được thực hiện khi khởi tạo component.
+Có thể dễ dàng nhận thấy, ta đã thực hiện kết hợp 2 thành phần khi viết là selector của component `app-select-control` và directive `appModeDataSource`. Khi component được khởi tạo, bản thân component sẽ lấy directive thông qua Inject Token trong `constructor` và khi được viết như trên. Token đó thông qua keyword `useExisting` trong `providers` của Directive đã định vị được component sẽ sử dụng Directive nào để kết hợp. Từ đó, kết hợp với việc Directive đã được implement từ 1 interface đã chuẩn hóa, việc get `options$` tương ứng được thực hiện khi khởi tạo component.
 
 Ngoài ra, không chỉ có thể tạo các data source với data fix cứng, ta có thể tạo directive datasource được lấy từ Service, và thông qua các operator của Observable ta có thể chuẩn hóa đúng với yêu cầu của control.
 
