@@ -88,7 +88,7 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 | [Day 43: DisabledControlDirective to disable Reactive Form control][day43]               | [ENG][day43-eng] |                                                                        |
 | [Day 44: Observable for @Output][day44]                                                  | [ENG][day44-eng] |                                                                        |
 | [Day 45: RxJS Trong Angular - Unsubscribe Một Subscription][day45]                       |                  |                                                                        |
-| [DDay 46: JavaScript Widget và Embedded Script][day46]                       |                  |                                                                        |
+| [Day 46: JavaScript Widget và Embedded Script][day46]                       |                  |                                                                        |
 | [Day 47: Composition form datasource with Directive][day47]                       |                  |                                                                        |
 
 
@@ -101,7 +101,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 - [Tiep Phan][tieppt]
 - [Chau Tran][nartc]
 - [Trung Vo][trungk18]
-- Tuan Le (Lê Ngọc Tuấn)
+- [Tuan Le][ngoctuanle]
 - [Khanh Tiet][khanhtiet]
 
 [day1]: Day001-Installation.md
@@ -188,4 +188,5 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [tieppt]: https://github.com/tieppt
 [nartc]: https://github.com/nartc
 [trungk18]: https://github.com/trungk18
+[ngoctuanle]: https://github.com/ngoctuanle
 [khanhtiet]: https://github.com/januaryofmine
