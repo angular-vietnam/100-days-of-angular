@@ -1,6 +1,6 @@
 # Day 27: Angular Router
 
-Trước đây khi các ứng dụng web vẫn chủ yếu folow theo mô hình server side rendering. Tức là khi bạn mở một website, phía server sẽ gửi cho bạn toàn bộ page đó để render. Khi bạn chuyển trang, ví dụ như từ trang chủ của một website mua bán trực tuyến, bạn click vào một đường dẫn để xem phần thông tin các sản phẩm về giày dép. Phần server sẽ gửi lại toàn bộ HTML của page đó, bao gồm từ thẻ <html>, <head> và các thẻ script, cho đến phần nội dung cần được hiển thị. Điều này dẫn đến việc với mỗi click lên website, cả website sẽ được reload với phần nội dung mới. Thuật ngữ đó là refresh, hay postback trong một số ngôn ngữ.
+Trước đây khi các ứng dụng web vẫn chủ yếu follow theo mô hình server side rendering. Tức là khi bạn mở một website, phía server sẽ gửi cho bạn toàn bộ page đó để render. Khi bạn chuyển trang, ví dụ như từ trang chủ của một website mua bán trực tuyến, bạn click vào một đường dẫn để xem phần thông tin các sản phẩm về giày dép. Phần server sẽ gửi lại toàn bộ HTML của page đó, bao gồm từ thẻ <html>, <head> và các thẻ script, cho đến phần nội dung cần được hiển thị. Điều này dẫn đến việc với mỗi click lên website, cả website sẽ được reload với phần nội dung mới. Thuật ngữ đó là refresh, hay postback trong một số ngôn ngữ.
 
 ![Postback][01]
 
