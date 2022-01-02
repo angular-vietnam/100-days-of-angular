@@ -88,6 +88,9 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 | [Day 43: DisabledControlDirective to disable Reactive Form control][day43]               | [ENG][day43-eng] |                                                                        |
 | [Day 44: Observable for @Output][day44]                                                  | [ENG][day44-eng] |                                                                        |
 | [Day 45: RxJS Trong Angular - Unsubscribe Một Subscription][day45]                       |                  |                                                                        |
+| [DDay 46: JavaScript Widget và Embedded Script][day46]                       |                  |                                                                        |
+| [Day 47: Composition form datasource with Directive][day47]                       |                  |                                                                        |
+
 
 ## Youtube Playlist
 
@@ -98,6 +101,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 - [Tiep Phan][tieppt]
 - [Chau Tran][nartc]
 - [Trung Vo][trungk18]
+- Tuan Le (Lê Ngọc Tuấn)
 - [Khanh Tiet][khanhtiet]
 
 [day1]: Day001-Installation.md
@@ -151,6 +155,8 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day44]: Day044-output-observable.md
 [day44-eng]: https://trungk18.com/experience/observable-for-angular-output/
 [day45]: Day045-angular-observable-subscription-unsubscribe.md
+[day46]: Day046-javascript-widget-embedded-script.md
+[day47]: Day047-composition-form-datasource-with-directive.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
