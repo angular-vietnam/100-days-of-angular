@@ -150,7 +150,7 @@ export interface SelectDirective {
 ```typescript
 import { InjectionToken } from '@angular/core';
 
-export const SELECT_DIRECTIVE = new InjectionToken('SELECT_DIRECTIVE');
+export const SELECT_DIRECTIVE = new InjectionToken<SelectDirective>('SELECT_DIRECTIVE');
 ```
 
 ### Step 5: Cấu hình cho Select control
