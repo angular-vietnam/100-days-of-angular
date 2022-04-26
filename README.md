@@ -46,7 +46,7 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 |------------------------------------------------------------------------------------------| ---------------- | ---------------------------------------------------------------------- |
 | [Day 1: Prepare The Working Environment][day1]                                           | [ENG][day1-eng]  | [Youtube][day1-video]                                                  |
 | [Day 2: Explore Angular App][day2]                                                       | [ENG][day2-eng]  | [Youtube][day2-video]                                                  |
-| [Day 3: Angular Data Binding][day3]                                                      |                  | [Youtube][day3-video]                                                  |
+| [Day 3: Angular Data Binding][day3]                                                      | [ENG][day3-eng]  | [Youtube][day3-video]                                                  |
 | [Day 4: Angular Structure Directive - NgIf][day4]                                        |                  | [Youtube][day4-video]                                                  |
 | [Day 5: Angular Structure Directive - NgForOf][day5]                                     |                  | [Youtube][day5-video]                                                  |
 | [Day 6: Attribute Directive - Class and Style][day6]                                     |                  | [Youtube][day6-video]                                                  |
@@ -105,12 +105,14 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 - [Trung Vo][trungk18]
 - [Tuan Le][ngoctuanle]
 - [Khanh Tiet][khanhtiet]
+- [Minh Tu Hoang][m1nhtu99-hoan9]
 
 [day1]: Day001-Installation.md
 [day1-eng]: ./translations/EN/Day001-Installation.md
 [day2]: Day002-AngularApp.md
 [day2-eng]: ./translations/EN/Day002-AngularApp.md
 [day3]: Day003-DataBinding.md
+[day3-eng]: ./translations/EN/Day003-DataBinding.md
 [day4]: Day004-Structure-Directive-If-Else.md
 [day5]: Day005-Structure-Directive-NgFor.md
 [day6]: Day006-Attribute-Directive-Class-Style.md
@@ -193,3 +195,4 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [trungk18]: https://github.com/trungk18
 [ngoctuanle]: https://github.com/ngoctuanle
 [khanhtiet]: https://github.com/januaryofmine
+[m1nhtu99-hoan9]: https://github.com/m1nhtu99-hoan9

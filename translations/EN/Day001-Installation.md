@@ -49,7 +49,7 @@ ng version
 
 At the time of this writing, Angular CLI is at version 9.
 
-A few sidenotes:
+A few side notes:
 
 - If you're using Windows, there's a chance that you have to install either `Python` or `windows-build-tools` to get SCSS running properly for the upcoming projects.
 - If you encountered the error `'ng' is not recognized as an internal or external command.` after executing `ng version`, you need to add `npm global` into your OS' `PATH` global variable.
@@ -59,7 +59,7 @@ A few sidenotes:
 
 In this case, you have to `enable policy` to run commands. To enable it, you open `Powershell` as Administrator and execute this command `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine` or follow the link in error message for more details.
 
-## APPLICATION INITILISATION
+## APPLICATION INITIALISATION
 
 After you've done with these above steps, run this command to initialise an Angular application:
 
@@ -112,6 +112,4 @@ https://youtu.be/NS6P1fpU77o
 ## AUTHORS
 
 - [Tiep Phan](https://github.com/tieppt)
-- Translator: [Minh Tu Hoang](https://github.com/mnhthng-thms)
-
-
+- Translator: [Minh Tu Hoang](https://github.com/m1nhtu99-hoan9)
