@@ -43,7 +43,7 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 ## Các bài viết
 
 | Bài viết                                                                                 | Translations     | Video                                                                  |
-| ---------------------------------------------------------------------------------------- | ---------------- | ---------------------------------------------------------------------- |
+|------------------------------------------------------------------------------------------| ---------------- | ---------------------------------------------------------------------- |
 | [Day 1: Prepare The Working Environment][day1]                                           | [ENG][day1-eng]  | [Youtube][day1-video]                                                  |
 | [Day 2: Explore Angular App][day2]                                                       | [ENG][day2-eng]  | [Youtube][day2-video]                                                  |
 | [Day 3: Angular Data Binding][day3]                                                      |                  | [Youtube][day3-video]                                                  |
@@ -89,8 +89,9 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 | [Day 43: DisabledControlDirective to disable Reactive Form control][day43]               | [ENG][day43-eng] |                                                                        |
 | [Day 44: Observable for @Output][day44]                                                  | [ENG][day44-eng] |                                                                        |
 | [Day 45: RxJS Trong Angular - Unsubscribe Một Subscription][day45]                       |                  |                                                                        |
-| [Day 46: JavaScript Widget và Embedded Script][day46]                       |                  |                                                                        |
-| [Day 47: Composition form datasource with Directive][day47]                       |                  |                                                                        |
+| [Day 46: JavaScript Widget và Embedded Script][day46]                                    |                  |                                                                        |
+| [Day 47: Composition form datasource with Directive][day47]                              |                  |                                                                        |
+| [Day 48: Using dependency injection to get data from ActivatedRoute][day48]              |                  |                                                                        |
 
 
 ## Youtube Playlist
@@ -158,6 +159,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day45]: Day045-angular-observable-subscription-unsubscribe.md
 [day46]: Day046-javascript-widget-embedded-script.md
 [day47]: Day047-composition-form-datasource-with-directive.md
+[day48]: Day048-using-dependency-injection-to-get-data-from-activated-route.md
 [day1-video]: https://youtu.be/NS6P1fpU77o
 [day2-video]: https://youtu.be/jgFw8tAgKNs
 [day3-video]: https://youtu.be/WrMywdbnQfk
