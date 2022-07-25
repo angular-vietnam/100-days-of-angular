@@ -43,10 +43,13 @@ Sau khi tạo thành công, bạn chỉ cần chạy lệnh sau để add Angula
 ```sh
 ng add @angular/cdk
 ```
+
 ```sh
 ng add @angular/material
 ```
+
 Ở bước này bạn có thể trả lời một số câu hỏi, hoặc bạn có thể chọn các giá trị mặc định. Ví dụ:
+
 ```
 ? Choose a prebuilt theme name, or "custom" for a custom theme: Indigo/Pink [ Preview: https://material.angular.io?theme=indigo-pink ]
 ? Set up global Angular Material typography styles? Yes
@@ -61,22 +64,24 @@ ng serve
 
 ## Sign in form
 
-Chúng ta sẽ cần một component (*sign-in*) mới và setup routing cho nó như sau:
+Chúng ta sẽ cần một component (_sign-in_) mới và setup routing cho nó như sau:
 
 ```sh
 ng g c sign-in
 ```
 
 ```ts
-const routes: Routes = [{
-  path: 'sign-in',
-  component: SignInComponent
-}];
+const routes: Routes = [
+  {
+    path: 'sign-in',
+    component: SignInComponent,
+  },
+];
 ```
 
 Giờ đây bạn có thể navigate vào trang http://localhost:4200/sign-in và bắt đầu code được rồi.
 
-Giả sử page **Sign in** sẽ có một input cho việc nhập *Username*, một input cho *Password*, và một checkbox cho chức năng *Remember me*, kèm theo đó là một button để submit form chẳng hạn.
+Giả sử page **Sign in** sẽ có một input cho việc nhập _Username_, một input cho _Password_, và một checkbox cho chức năng _Remember me_, kèm theo đó là một button để submit form chẳng hạn.
 
 Chúng ta có thể có template như sau:
 
@@ -87,13 +92,13 @@ Chúng ta có thể có template như sau:
     <div class="row-control">
       <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
-        <input matInput placeholder="Username">
+        <input matInput placeholder="Username" />
       </mat-form-field>
     </div>
     <div class="row-control">
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input type="password" matInput placeholder="Password">
+        <input type="password" matInput placeholder="Password" />
       </mat-form-field>
     </div>
     <div class="row-control">
@@ -112,12 +117,10 @@ Lưu ý, để có thể sử dụng các components/directives từ Angular Mat
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignInComponent
-  ],
+  declarations: [AppComponent, SignInComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -126,9 +129,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    MatButtonModule,
   ],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 Khi render chúng ta sẽ có giao diện như sau:
@@ -143,46 +147,48 @@ Khi render chúng ta sẽ có giao diện như sau:
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignInComponent
-  ],
+  declarations: [AppComponent, SignInComponent],
   imports: [
     // other NgModules
     FormsModule,
   ],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 ### ngForm và ngModel directives
+
 Để có thể lấy về NgForm instance, chúng ta chỉ cần tạo một template variable cho thẻ `form` kèm theo chỉ định về exportAs như sau:
 
 ```html
-<form novalidate #signInForm="ngForm" ...>
-</form>
+<form novalidate #signInForm="ngForm" ...></form>
 ```
+
 Từ đây bạn có thể sử dụng variable `signInForm` này ở trong template, cũng như truyền về component class.
 
 Ví dụ, chúng ta truyền instance này vào hàm lắng nghe event submit của form chẳng hạn:
 
 ```ts
 export class SignInComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit(form: NgForm): void {
     console.log(form);
   }
 }
 ```
+
 ```html
-<form novalidate #signInForm="ngForm" (submit)="onSubmit(signInForm)" ...>
-</form>
+<form
+  novalidate
+  #signInForm="ngForm"
+  (submit)="onSubmit(signInForm)"
+  ...
+></form>
 ```
+
 Ở thời điểm hiện tại chúng ta mặc dù đã khai báo một số input/control, nhưng form của chúng ta không thể xác nhận được những control đó, nên nếu bạn print thử value của form hiện tại sẽ là một object rỗng:
 
 ```html
@@ -194,8 +200,9 @@ export class SignInComponent implements OnInit {
 Lúc này bạn sẽ cần phải register các control vào form thông qua `ngModel` directive.
 
 ```html
-<input matInput placeholder="Username" ngModel>
+<input matInput placeholder="Username" ngModel />
 ```
+
 Ngay khi chúng ta save lại, bạn sẽ nhận được một thông báo lỗi runtime như sau ở console:
 
 ```
@@ -208,8 +215,9 @@ Error: If ngModel is used within a form tag, either the name attribute must be s
 Một thông báo khá rõ ràng, chúng ta cần phải gắn thêm `name` attribute cho thẻ `input` hoặc sẽ thêm một config nữa. Trong trường hợp này, chúng ta mong muốn register control nên chúng ta sẽ thêm `name` attribute.
 
 ```html
-<input matInput placeholder="Username" ngModel name="username">
+<input matInput placeholder="Username" ngModel name="username" />
 ```
+
 Giờ đây control của chúng ta đã được register, và mỗi khi user typing vào ô input đó thì value của form cũng sẽ update theo.
 
 ![day33-sign-in-form](assets/day33-sign-in-form-2.png)
@@ -217,18 +225,29 @@ Giờ đây control của chúng ta đã được register, và mỗi khi user t
 Thực hiện tương tự cho các control khác, chúng ta sẽ có một form hoàn chỉnh như sau:
 
 ```html
-<form class="sign-in-form" novalidate #signInForm="ngForm" (submit)="onSubmit(signInForm)">
+<form
+  class="sign-in-form"
+  novalidate
+  #signInForm="ngForm"
+  (submit)="onSubmit(signInForm)"
+>
   <h2>Sign in</h2>
   <div class="row-control">
     <mat-form-field appearance="outline">
       <mat-label>Username</mat-label>
-      <input matInput placeholder="Username" ngModel name="username">
+      <input matInput placeholder="Username" ngModel name="username" />
     </mat-form-field>
   </div>
   <div class="row-control">
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
-      <input type="password" matInput placeholder="Password" ngModel name="password">
+      <input
+        type="password"
+        matInput
+        placeholder="Password"
+        ngModel
+        name="password"
+      />
     </mat-form-field>
   </div>
   <div class="row-control">
@@ -245,6 +264,7 @@ Thực hiện tương tự cho các control khác, chúng ta sẽ có một form
 ![day33-sign-in-form](assets/day33-sign-in-form-3.png)
 
 ### Event Submit vs NgSubmit
+
 Ở phần trước, chúng ta đã listen event `submit` của form, nhưng ngoài ra, còn một event khác cũng được fired ra khi thực hiện submit form, đó là `ngSubmit`. Vậy có điều gì khác biệt giữa `submit` và `ngSubmit`?
 
 Giống như `submit`, event `ngSubmit` cũng thực hiện hành động khi form thực hiện submit – người dùng nhấn vào button submit chẳng hạn. Nhưng `ngSubmit` sẽ thêm một số nhiệm vụ để đảm bảo form của bạn không thực hiện submit form theo cách thông thường – tải lại trang sau khi submit.
@@ -258,6 +278,7 @@ onSubmit(form: NgForm) {
   throw new Error('something went wrong');
 }
 ```
+
 Lời khuyên dành cho bạn là nên dùng `ngSubmit` cho việc listen form submit.
 
 > Lưu ý rằng `ngSubmit` có thể áp dụng cho cả Reactive Forms
@@ -278,33 +299,51 @@ export class SignInComponent implements OnInit {
     password: '',
     rememberMe: true,
   };
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit(form: NgForm): void {
     console.log(form);
   }
 }
 ```
+
 ```html
-<form class="sign-in-form" novalidate #signInForm="ngForm" (submit)="onSubmit(signInForm)">
+<form
+  class="sign-in-form"
+  novalidate
+  #signInForm="ngForm"
+  (submit)="onSubmit(signInForm)"
+>
   <h2>Sign in</h2>
   <div class="row-control">
     <mat-form-field appearance="outline">
       <mat-label>Username</mat-label>
-      <input matInput placeholder="Username" [ngModel]="userInfo.userName" name="username">
+      <input
+        matInput
+        placeholder="Username"
+        [ngModel]="userInfo.userName"
+        name="username"
+      />
     </mat-form-field>
   </div>
   <div class="row-control">
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
-      <input type="password" matInput placeholder="Password" [ngModel]="userInfo.password" name="password">
+      <input
+        type="password"
+        matInput
+        placeholder="Password"
+        [ngModel]="userInfo.password"
+        name="password"
+      />
     </mat-form-field>
   </div>
   <div class="row-control">
-    <mat-checkbox [ngModel]="userInfo.rememberMe" name="rememberMe">Remember me</mat-checkbox>
+    <mat-checkbox [ngModel]="userInfo.rememberMe" name="rememberMe"
+      >Remember me</mat-checkbox
+    >
   </div>
   <div class="row-control row-actions">
     <button mat-raised-button color="primary" type="submit">Sign in</button>
@@ -320,23 +359,42 @@ Khi render, những gì có trong model sẽ được binding vào control, như
 ![day33-sign-in-form](assets/day33-sign-in-form-4.png)
 
 Nếu chúng ta thay đổi thành two-way binding, thì những gì có ở form sẽ được update tương ứng lại model và ngược lại:
+
 ```html
-<form class="sign-in-form" novalidate #signInForm="ngForm" (submit)="onSubmit(signInForm)">
+<form
+  class="sign-in-form"
+  novalidate
+  #signInForm="ngForm"
+  (submit)="onSubmit(signInForm)"
+>
   <h2>Sign in</h2>
   <div class="row-control">
     <mat-form-field appearance="outline">
       <mat-label>Username</mat-label>
-      <input matInput placeholder="Username" [(ngModel)]="userInfo.userName" name="username">
+      <input
+        matInput
+        placeholder="Username"
+        [(ngModel)]="userInfo.userName"
+        name="username"
+      />
     </mat-form-field>
   </div>
   <div class="row-control">
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
-      <input type="password" matInput placeholder="Password" [(ngModel)]="userInfo.password" name="password">
+      <input
+        type="password"
+        matInput
+        placeholder="Password"
+        [(ngModel)]="userInfo.password"
+        name="password"
+      />
     </mat-form-field>
   </div>
   <div class="row-control">
-    <mat-checkbox [(ngModel)]="userInfo.rememberMe" name="rememberMe">Remember me</mat-checkbox>
+    <mat-checkbox [(ngModel)]="userInfo.rememberMe" name="rememberMe"
+      >Remember me</mat-checkbox
+    >
   </div>
   <div class="row-control row-actions">
     <button mat-raised-button color="primary" type="submit">Sign in</button>
@@ -346,12 +404,14 @@ Nếu chúng ta thay đổi thành two-way binding, thì những gì có ở for
   <pre>{{ userInfo | json }}</pre>
 </form>
 ```
+
 ![day33-sign-in-form](assets/day33-sign-in-form.gif)
 
 ![day33-sign-in-form](assets/day33-sign-in-form-5.png)
 
 ## Summary
-Day 33 chúng ta đã tìm hiểu một số concept cơ bản về Angular Forms, và cũng đã thực hành cách tạo một *Sign In Form* đơn giản bằng **Template-driven Forms**. Các bạn có thể thực hành với nhiều form hơn ở trên các trang chia sẻ template.
+
+Day 33 chúng ta đã tìm hiểu một số concept cơ bản về Angular Forms, và cũng đã thực hành cách tạo một _Sign In Form_ đơn giản bằng **Template-driven Forms**. Các bạn có thể thực hành với nhiều form hơn ở trên các trang chia sẻ template.
 
 Mục tiêu của ngày 34 sẽ là **Angular Forms: Template-driven Forms Part 2**
 
