@@ -27,21 +27,21 @@ Và trong mỗi component của Angular chúng ta sẽ được cung cấp sẵn
 Đến thời điểm hiện tại, bạn hoàn toàn có thể sử dụng `EventEmitter` để notify cho parent component biết được các thời điểm tương ứng. Nhưng cũng có một cách khác, đó chính là inject parent component vào child component và thực hiện các hành động tương ứng.
 
 Giả sử bạn cài đặt **tab-group.component.ts** như sau:
+
 ```ts
 @Component({
   selector: 'app-tab-group',
   templateUrl: './tab-group.component.html',
-  styleUrls: ['./tab-group.component.css']
+  styleUrls: ['./tab-group.component.css'],
 })
 export class TabGroupComponent implements OnInit {
   tabPanelList: TabPanelComponent[] = [];
 
   @Input() tabActiveIndex = 0;
   @Output() tabActiveChange = new EventEmitter<number>();
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   selectItem(idx: number) {
     this.tabActiveIndex = idx;
@@ -65,19 +65,22 @@ export class TabGroupComponent implements OnInit {
     if (index !== -1) {
       this.selectItem(0);
     }
-    
   }
-
 }
 ```
 
 Và đây là phần UI cho **tab-group.component.html**:
+
 ```html
 <div class="tab-header">
-  <div class="tab-item-header" role="presentation" *ngFor="let tab of tabPanelList; index as idx" (click)="selectItem(idx)">
+  <div
+    class="tab-item-header"
+    role="presentation"
+    *ngFor="let tab of tabPanelList; index as idx"
+    (click)="selectItem(idx)"
+  >
     {{tab.title}}
   </div>
-
 </div>
 
 <div class="tab-body">
@@ -88,22 +91,23 @@ Và đây là phần UI cho **tab-group.component.html**:
   </ng-container>
 </div>
 ```
+
 Việc của chúng ta bây giờ chỉ là inject và call các method để register và remove:
 
 ```ts
 @Component({
   selector: 'app-tab-panel',
   template: `
-<ng-template>
-  <ng-content></ng-content>
-</ng-template>
+    <ng-template>
+      <ng-content></ng-content>
+    </ng-template>
   `,
-  styles: ['']
+  styles: [''],
 })
 export class TabPanelComponent implements OnInit, OnDestroy {
   @Input() title: string;
-  @ViewChild(TemplateRef, {static: true}) panelBody: TemplateRef<unknown>;
-  constructor(private tabGroup: TabGroupComponent) { }
+  @ViewChild(TemplateRef, { static: true }) panelBody: TemplateRef<unknown>;
+  constructor(private tabGroup: TabGroupComponent) {}
 
   ngOnInit() {
     this.tabGroup.addTabPanel(this);
@@ -111,7 +115,6 @@ export class TabPanelComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.tabGroup.removeTabPanel(this);
   }
-
 }
 ```
 
@@ -122,6 +125,7 @@ Như bạn có thể thấy, tab group của chúng ta ở trên có UI cực k�
 Đây là nơi tỏa sáng của DI. Bạn chỉ cần đơn giản là provide một provider để override là được.
 
 **bs-tab-group.component.ts**
+
 ```ts
 @Component({
   selector: 'app-bs-tab-group',
@@ -130,20 +134,31 @@ Như bạn có thể thấy, tab group của chúng ta ở trên có UI cực k�
   providers: [
     {
       provide: TabGroupComponent,
-      useExisting: BsTabGroupComponent
-    }
-  ]
+      useExisting: BsTabGroupComponent,
+    },
+  ],
 })
-export class BsTabGroupComponent extends TabGroupComponent {
-}
+export class BsTabGroupComponent extends TabGroupComponent {}
 ```
+
 **bs-tab-group.component.html**
+
 ```html
 <ul class="nav nav-tabs" role="tablist">
-  <li class="nav-item" role="presentation" *ngFor="let tab of tabPanelList; index as idx" (click)="selectItem(idx)">
-    <a class="nav-link" [class.active]="idx === tabActiveIndex" role="tab" aria-selected="true">{{tab.title}}</a>
+  <li
+    class="nav-item"
+    role="presentation"
+    *ngFor="let tab of tabPanelList; index as idx"
+    (click)="selectItem(idx)"
+  >
+    <a
+      class="nav-link"
+      [class.active]="idx === tabActiveIndex"
+      role="tab"
+      aria-selected="true"
+      >{{tab.title}}</a
+    >
   </li>
-
 </ul>
 
 <div class="tab-content">
@@ -156,6 +171,7 @@ export class BsTabGroupComponent extends TabGroupComponent {
 ```
 
 Template khi sử dụng:
+
 ```html
 <app-bs-tab-group>
   <app-tab-panel title="Tab 1">content tab 1</app-tab-panel>
@@ -179,22 +195,20 @@ Bây giờ giả sử bạn tách phần provider ở decorator ra một variabl
 ```ts
 const BsTabGroupProvider = {
   provide: TabGroupComponent,
-  useExisting: BsTabGroupComponent
-}
+  useExisting: BsTabGroupComponent,
+};
 
 @Component({
   selector: 'app-bs-tab-group',
   templateUrl: './bs-tab-group.component.html',
   styleUrls: ['./bs-tab-group.component.css'],
-  providers: [
-    BsTabGroupProvider
-  ]
+  providers: [BsTabGroupProvider],
 })
-export class BsTabGroupComponent extends TabGroupComponent {
-}
+export class BsTabGroupComponent extends TabGroupComponent {}
 ```
 
 Bạn sẽ nhận được một Error như sau:
+
 > Error in src/app/bs-tab-group/bs-tab-group.component.ts (6:16)
 >
 > Class 'BsTabGroupComponent' used before its declaration.
@@ -204,19 +218,23 @@ Do đó chúng ta cần dùng đến closure, đó là tạo một function nó 
 ```ts
 const BsTabGroupProvider = {
   provide: TabGroupComponent,
-  useExisting: forwardRef(() => BsTabGroupComponent)
-}
+  useExisting: forwardRef(() => BsTabGroupComponent),
+};
 ```
+
 Bạn có thể thắc mắc là tại sao sử dụng trực tiếp trong decorator thì lại không lỗi? Câu trả lời là vì bản thân Class Decorator sẽ được call sau khi mà bạn đã tạo xong class.
 
 Bạn có thể tưởng tượng nó sẽ hoạt động giống như sau:
+
 ```ts
 @SomeDecorator
 class SomeClass {}
 ```
+
 Sẽ tương đương với call một function như sau.
+
 ```ts
-let SomeClass = class SomeClass {}
+let SomeClass = class SomeClass {};
 SomeClass = SomeDecorator(SomeClass);
 ```
 
@@ -227,6 +245,7 @@ Như chúng ta đã tìm hiểu qua thì chúng ta có các cách provide một 
 > Lưu ý: code phía dưới đây sẽ tương tự cho `@NgModule`, `@Component`, `@Directive`.
 
 - useClass:
+
 ```ts
 @NgModule({
   providers: [SomeClass]
@@ -234,6 +253,7 @@ Như chúng ta đã tìm hiểu qua thì chúng ta có các cách provide một 
 ```
 
 Tương đương với cú pháp:
+
 ```ts
 @NgModule({
   providers: [{ provide: SomeClass, useClass: SomeClass}]
@@ -241,6 +261,7 @@ Tương đương với cú pháp:
 ```
 
 - useExisting:
+
 ```ts
 @Component({
   providers: [
@@ -253,6 +274,7 @@ Tương đương với cú pháp:
 ```
 
 - useFactory:
+
 ```ts
 @Component({
   providers: [
@@ -267,6 +289,7 @@ Tương đương với cú pháp:
 ```
 
 - useValue:
+
 ```ts
 @Component({
   providers: [
@@ -277,6 +300,7 @@ Tương đương với cú pháp:
   ]
 })
 ```
+
 ## Summary
 
 Như vậy, trong Day 16 này bạn sẽ cần tìm hiểu một số kỹ thuật sử dụng DI trong Angular, như thế sẽ giúp bạn hiểu sâu hơn về DI trong Angular và có thể tạo những phần code dễ reuse, flexible hơn.
@@ -293,6 +317,10 @@ Như vậy, trong Day 16 này bạn sẽ cần tìm hiểu một số kỹ thu�
 https://stackblitz.com/edit/angular-ivy-100-days-of-code-day-16?file=src%2Fapp%2Ftab-panel%2Ftab-panel.component.ts
 
 Mục tiêu của Day 17 là **ContentChild & ContentChildren**.
+
+## Youtube Video
+
+[![Day 16](https://img.youtube.com/vi/hTsn6L8vcVg/0.jpg)](https://youtu.be/hTsn6L8vcVg)
 
 ## Author
 

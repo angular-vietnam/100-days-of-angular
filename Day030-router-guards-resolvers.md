@@ -20,10 +20,10 @@ Khi nhận một URL, Angular Router sẽ thực hiện các hành động sau:
 4. Activates all the needed components
 5. Manages navigation
 
-
 Để demo cho các nội dung tiếp theo, ứng dụng của chúng ta bao gồm các config routing như sau:
 
 **app-routing.module.ts**
+
 ```ts
 const routes: Routes = [
   {
@@ -34,12 +34,13 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'article',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 ```
 
 **article-routing.module.ts**
+
 ```ts
 const routes: Routes = [
   {
@@ -52,14 +53,15 @@ const routes: Routes = [
       },
       {
         path: ':slug',
-        component: ArticleDetailComponent
-      }
-    ]
+        component: ArticleDetailComponent,
+      },
+    ],
   },
 ];
 ```
 
 **admin-routing.module.ts**
+
 ```ts
 const routes: Routes = [
   {
@@ -76,6 +78,7 @@ const routes: Routes = [
 ```
 
 ### Navigation
+
 Operation đầu tiên chính là **Navigation** hay **Applies redirects**.
 
 Đối với thẻ `a href` thông thường, hành vi mặc định của nó sẽ gửi request đến URL được chỉ định. Do đó Angular Router cung cấp một directive là `routerLink` để thay thế hành vi đó. Directive đó là cách declarative để thực hiện navigation. Ngoài ra chúng ta cũng có các cách imperative như dùng `Router.navigate()` hoặc `Router.navigateByUrl()`.
@@ -104,7 +107,7 @@ Sau bước này Angular Router sẽ emit event **RoutesRecognized**.
 
 Đây chính là Operation mà chúng ta sẽ tìm hiểu chủ yếu trong ngày hôm nay.
 
-Ở thời điểm này, chúng ta sẽ có *future router state*, Router sẽ kiểm tra xem nơi mà chúng ta sắp đến này có được phép hay không.
+Ở thời điểm này, chúng ta sẽ có _future router state_, Router sẽ kiểm tra xem nơi mà chúng ta sắp đến này có được phép hay không.
 
 Chúng ta có thể apply nhiều Guards khác nhau, Router sẽ check nếu tất cả các Guards đều trả về `true` hoặc `Promise<<true>>` hoặc `Observable<<true>>` thì sẽ cấp cho giấy thông hành. Ngược lại, nếu bạn trả về các giá trị `false` hoặc `Promise<<false>>` hoặc `Observable<<false>>` hoặc một [`UrlTree`](https://angular.io/api/router/UrlTree) thì sẽ không cấp phép.
 
@@ -123,6 +126,7 @@ Sau bước này, Router sẽ update thêm những phần của resolvers vào `
 Sau khi đã chạy hết tất cả các resolvers đã được thiết lập từ trước, Router sẽ tiến hành activate component vào các router-outlet tương ứng trong config đã được set trước đó.
 
 ### Activating Components
+
 Ở thời điểm này, Router sẽ activate các components đã được liên kết với các activated route. Đây sẽ là thời điểm khởi tạo mới hoặc reuse các components sau đó render chúng vào các `router-outlet` tương ứng. Default sẽ là primary outlet - tức là `<router-outlet></router-outlet>` mà không có `name`.
 
 Các events tương ứng là **ActivationStart**, **ActivationEnd**, **ChildActivationStart**, **ChildActivationEnd**.
@@ -137,7 +141,6 @@ Từ đây, Router lại tiếp tục observe, nếu có một yêu cầu nào �
 
 ![Navigation Logs](assets/day30-router-03.png)
 
-
 ## Route Guards
 
 Route Guards để giải quyết câu hỏi, liệu tôi có được phép redirect đến URL này hay không.
@@ -150,25 +153,59 @@ Angular Router cung cấp một số guards như sau:
 
 ```ts
 interface CanActivate {
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree;
 }
 ```
+
 ```ts
 interface CanActivateChild {
-  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
+  canActivateChild(
+    childRoute: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree;
 }
 ```
 
 - Deactivate components:
+
 ```ts
 interface CanDeactivate<T> {
-  canDeactivate(component: T, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
+  canDeactivate(
+    component: T,
+    currentRoute: ActivatedRouteSnapshot,
+    currentState: RouterStateSnapshot,
+    nextState?: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree;
 }
 ```
+
 - Load children (lazy loading route):
+
 ```ts
 interface CanLoad {
-  canLoad(route: Route, segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
+  canLoad(
+    route: Route,
+    segments: UrlSegment[]
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree;
 }
 ```
 
@@ -188,13 +225,13 @@ const routes: Routes = [
       },
       {
         path: ':slug',
-        component: ArticleDetailComponent
+        component: ArticleDetailComponent,
       },
       {
         path: ':slug/edit',
-        component: ArticleEditComponent
-      }
-    ]
+        component: ArticleEditComponent,
+      },
+    ],
   },
 ];
 ```
@@ -207,16 +244,26 @@ Giờ đây bạn có thể tạo một service, sau đó kiểm tra các quyề
 
 ```ts
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root' // you can change to any level if needed
+  providedIn: 'root', // you can change to any level if needed
 })
 export class CanEditArticleGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     return true; // replace with actual logic
   }
 }
@@ -234,9 +281,9 @@ const routes: Routes = [
       {
         path: ':slug/edit',
         component: ArticleEditComponent,
-        canActivate: [CanEditArticleGuard] // <== this is an array, we can have multiple guards
-      }
-    ]
+        canActivate: [CanEditArticleGuard], // <== this is an array, we can have multiple guards
+      },
+    ],
   },
 ];
 ```
@@ -247,14 +294,13 @@ Giả định rằng, chúng ta có một service để biết được user hi�
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   currentUser = {
-    username: 'TiepPhan'
+    username: 'TiepPhan',
   };
-  constructor() { }
-
+  constructor() {}
 }
 ```
 
@@ -262,19 +308,32 @@ Guard của chúng ta sẽ có thể có logic như sau:
 
 ```ts
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CanEditArticleGuard implements CanActivate {
-  constructor(private userService: UserService, private articleService: ArticleService) {}
+  constructor(
+    private userService: UserService,
+    private articleService: ArticleService
+  ) {}
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.articleService.getArticleBySlug(next.paramMap.get('slug')).pipe(
-      map(article => article.author === this.userService.currentUser.username)
-    );
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    return this.articleService
+      .getArticleBySlug(next.paramMap.get('slug'))
+      .pipe(
+        map(
+          (article) => article.author === this.userService.currentUser.username
+        )
+      );
   }
 }
 ```
+
 Thành quả có được là chúng ta không thể vào page edit của `bai-viet-2`, vì author không phải là user đang đăng nhập.
 
 ![Apply Guard](assets/day30-router-04.gif)
@@ -282,6 +341,7 @@ Thành quả có được là chúng ta không thể vào page edit của `bai-v
 Tương tự như `CanActivate`, chúng ta có cách hoạt động của `CanActivateChild`, nhưng được apply cho các children của một route.
 
 ## Summary
+
 Day 30 này có khá nhiều concept về Angular Router Navigation Lifecycle mà các bạn nên biết, ngoài ra chúng ta đã thực hành một guard thường được sử dụng là CanActivate, hi vọng sẽ không làm khó được các bạn.
 
 Mục tiêu của ngày 31 sẽ là **Angular Router - Guards and Resolvers Part 2**
@@ -291,8 +351,11 @@ Mục tiêu của ngày 31 sẽ là **Angular Router - Guards and Resolvers Part
 - https://stackblitz.com/edit/angular-100-days-of-code-day-30?file=src%2Fapp%2Farticle%2Farticle.service.ts
 - https://stackblitz.com/edit/angular-100-days-of-code-day-30-01?file=src%2Fapp%2Farticle%2Farticle-routing.module.ts
 
-## References
+## Youtube Video
 
+[![Day 30](https://img.youtube.com/vi/STzxk1vOGqw/0.jpg)](https://youtu.be/STzxk1vOGqw)
+
+## References
 Các bạn có thể đọc thêm ở các bài viết sau
 
 - https://angular.io/guide/router

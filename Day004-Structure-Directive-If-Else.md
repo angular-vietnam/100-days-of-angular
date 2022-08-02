@@ -9,19 +9,17 @@ Trong Angular để thêm, xóa, thay đổi structure (structure HTML chẳng h
 
 ```typescript
 @Component({
-  selector: "app-hello",
+  selector: 'app-hello',
   template: `
     <h2>Hello there!</h2>
     <h3>Your name: {{ user.name }}</h3>
     <p>Your name: {{ user.age }}</p>
-    <div *ngIf="user.age >= 13">
-      Bạn có thể xem nội dung PG-13
-    </div>
+    <div *ngIf="user.age >= 13">Bạn có thể xem nội dung PG-13</div>
   `,
 })
 export class HelloComponent {
   user = {
-    name: "Tiep Phan",
+    name: 'Tiep Phan',
     age: 30,
   };
 }
@@ -32,24 +30,16 @@ Với những directive được cung cấp sẵn (built-in) bởi Angular, gi�
 Vậy nếu chúng ta muốn dùng IF-ELSE thì thế nào. Có thể các bạn sẽ nghĩ ngay đến phủ định mệnh đề IF là được ELSE thôi. Điều này hoàn toàn được.
 
 ```html
-<div *ngIf="user.age >= 13">
-  Bạn có thể xem nội dung PG-13
-</div>
-<div *ngIf="user.age < 13">
-  Bạn không thể xem nội dung PG-13
-</div>
+<div *ngIf="user.age >= 13">Bạn có thể xem nội dung PG-13</div>
+<div *ngIf="user.age < 13">Bạn không thể xem nội dung PG-13</div>
 ```
 
 Hoặc chúng ta có cách hay ho khác, đó là dùng đến ng-template. Tag ng-template là một tag được cung cấp bởi Angular, nó sẽ lưu trữ một Template được định nghĩa bên trong cặp thẻ mở/đóng của nó. Những gì được định nghĩa bên trong đó sẽ không được hiển thị ra view, nhưng chúng ta có thể sử dụng Template đó để render bằng code. Đoạn code phía trên có thể được chuyển đổi tương đương:
 
 ```html
-<div *ngIf="user.age >= 13; else noPG13">
-  Bạn có thể xem nội dung PG-13
-</div>
+<div *ngIf="user.age >= 13; else noPG13">Bạn có thể xem nội dung PG-13</div>
 <ng-template #noPG13>
-  <div>
-    Bạn không thể xem nội dung PG-13
-  </div>
+  <div>Bạn không thể xem nội dung PG-13</div>
 </ng-template>
 ```
 
@@ -59,9 +49,7 @@ Với cú pháp sử dụng dấu `*` ở trên, có thể các bạn sẽ thấ
 
 ```html
 <ng-template [ngIf]="user.age >= 13" [ngIfElse]="noPG13">
-  <div>
-    Bạn có thể xem nội dung PG-13
-  </div>
+  <div>Bạn có thể xem nội dung PG-13</div>
 </ng-template>
 ```
 
@@ -77,7 +65,7 @@ Mục tiêu Day 5 sẽ là về cấu trúc lặp `ngForOf`
 
 ## Youtube Video
 
-https://youtu.be/Yujs6hi-l4w
+[![Day 04](https://img.youtube.com/vi/Yujs6hi-l4w/0.jpg)](https://youtu.be/Yujs6hi-l4w)
 
 ## Author
 

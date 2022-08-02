@@ -168,7 +168,7 @@ Một số link mà các bạn cần tìm hiểu:
 
 ## Youtube Video
 
-https://youtu.be/-vN52YVbcgk
+[![Day 13](https://img.youtube.com/vi/-vN52YVbcgk/0.jpg)](https://youtu.be/-vN52YVbcgk)
 
 ## Code sample
 

@@ -9,9 +9,7 @@ Như chúng ta đã biết, đối với các **Observable** thông thường, m
 Ví dụ, chúng ta có một observable như sau:
 
 ```ts
-const observable = interval(500).pipe(
-  take(5)
-);
+const observable = interval(500).pipe(take(5));
 
 const observerA = {
   next: (val) => console.log(`Observer A: ${val}`),
@@ -36,9 +34,7 @@ Observer A complete
 Giả sử chúng ta subscribe thêm một observer mới sau một khoảng thời gian (ví dụ: 2s)
 
 ```ts
-const observable = interval(500).pipe(
-  take(5)
-);
+const observable = interval(500).pipe(take(5));
 
 const observerA = {
   next: (val) => console.log(`Observer A: ${val}`),
@@ -136,15 +132,15 @@ const hybridObserver = {
     this.observers.push(observer);
   },
   next(value) {
-    this.observers.forEach(observer => observer.next(value));
+    this.observers.forEach((observer) => observer.next(value));
   },
   error(err) {
-    this.observers.forEach(observer => observer.error(err));
+    this.observers.forEach((observer) => observer.error(err));
   },
   complete() {
-    this.observers.forEach(observer => observer.complete());
-  }
-}
+    this.observers.forEach((observer) => observer.complete());
+  },
+};
 
 hybridObserver.subscribe(observerA);
 
@@ -181,8 +177,8 @@ Với phương pháp kể trên, chúng ta đã cơ bản chuyển đổi từ m
 
 - multicast: cũng là hai người (có thể nhiều hơn) vào xem video ở Youtube, nhưng video đó đang phát Live (theo dõi một show truyền hình, hay một trận bóng đá Live chẳng hạn). Lúc này Youtube sẽ phát video Live, và những người vào xem video đó sẽ có cùng một thời điểm của video đó (cùng thời điểm của trận đấu đang diễn ra chẳng hạn).
 
-
 ## Subject
+
 Do Subject vừa là một Observable (chúng ta có thể subscribe vào nó), vừa là một Observer (có các method để chúng ta tự control khi nào gửi notification). Nên nó khá hay được sử dụng trong ứng dụng, ví dụ để làm Event Bus chẳng hạn.
 
 Dưới đây là một ví dụ về type ahead:
@@ -191,22 +187,24 @@ Dưới đây là một ví dụ về type ahead:
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit  {
-
+export class AppComponent implements OnInit {
   searchTerm$ = new Subject<string>();
 
   ngOnInit() {
-    this.searchTerm$.asObservable().pipe(
-      throttleTime(250, undefined, {
-        leading: true,
-        trailing: true,
-      }),
-      distinctUntilChanged(),
-    ).subscribe({
-      next: value => console.log(value)
-    });
+    this.searchTerm$
+      .asObservable()
+      .pipe(
+        throttleTime(250, undefined, {
+          leading: true,
+          trailing: true,
+        }),
+        distinctUntilChanged()
+      )
+      .subscribe({
+        next: (value) => console.log(value),
+      });
   }
 
   onInput(event: Event) {
@@ -228,14 +226,14 @@ Một trong những vấn đề khi làm việc với Subject đó là tình hu�
 const subject = new Subject();
 
 subject.subscribe({
-  next: v => console.log("observerA: " + v)
+  next: (v) => console.log('observerA: ' + v),
 });
 
 subject.next(1);
 subject.next(2);
 
 subject.subscribe({
-  next: v => console.log("observerB: " + v)
+  next: (v) => console.log('observerB: ' + v),
 });
 
 subject.next(3);
@@ -249,6 +247,7 @@ observerA: 3
 observerB: 3
 */
 ```
+
 Để giải quyết vấn đề này, chúng ta có một trong các biến thể của **Subject** đó là **BehaviorSubject**, nó là biến thế có khái niệm về "the current value". **BehaviorSubject** lưu trữ lại giá trị mới emit gần nhất để khi một Observer mới subscribe vào, nó sẽ emit giá trị đó ngay lập tức cho Observer vừa rồi.
 
 > A variant of Subject that requires an initial value and emits its current value whenever it is subscribed to. [BehaviorSubject](https://rxjs.dev/api/index/class/BehaviorSubject)
@@ -263,14 +262,14 @@ Lưu ý: BehaviorSubject yêu cầu phải có giá trị khởi tạo khi tạo
 const subject = new BehaviorSubject(0); // 0 is the initial value
 
 subject.subscribe({
-  next: (v) => console.log('observerA: ' + v)
+  next: (v) => console.log('observerA: ' + v),
 });
 
 subject.next(1);
 subject.next(2);
 
 subject.subscribe({
-  next: (v) => console.log('observerB: ' + v)
+  next: (v) => console.log('observerB: ' + v),
 });
 
 subject.next(3);
@@ -288,6 +287,7 @@ observerB: 3
 ```
 
 ### ReplaySubject
+
 Một ReplaySubject tương tự như một BehaviorSubject khi nó có thể gửi những dữ liệu trước đó cho Observer mới subscribe, nhưng nó có thể lưu giữ nhiều giá trị (có thể là toàn bộ giá trị của stream từ thời điểm ban đầu).
 
 Tham số đầu vào của ReplaySubject có thể là:
@@ -301,7 +301,7 @@ Tham số đầu vào của ReplaySubject có thể là:
 const subject = new ReplaySubject(3); // buffer 3 values for new subscribers
 
 subject.subscribe({
-  next: (v) => console.log('observerA: ' + v)
+  next: (v) => console.log('observerA: ' + v),
 });
 
 subject.next(1);
@@ -310,7 +310,7 @@ subject.next(3);
 subject.next(4);
 
 subject.subscribe({
-  next: (v) => console.log('observerB: ' + v)
+  next: (v) => console.log('observerB: ' + v),
 });
 
 subject.next(5);
@@ -329,13 +329,14 @@ observerA: 5
 observerB: 5
 */
 ```
+
 Hoặc kết hợp buffer với `windowTime`:
 
 ```ts
 const subject = new ReplaySubject(100, 500 /* windowTime */);
 
 subject.subscribe({
-  next: (v) => console.log('observerA: ' + v)
+  next: (v) => console.log('observerA: ' + v),
 });
 
 let i = 1;
@@ -343,7 +344,7 @@ const id = setInterval(() => subject.next(i++), 200);
 
 setTimeout(() => {
   subject.subscribe({
-    next: (v) => console.log('observerB: ' + v)
+    next: (v) => console.log('observerB: ' + v),
   });
 }, 1000);
 
@@ -385,7 +386,7 @@ AsyncSubject khá giống Promise đấy chứ.
 const subject = new AsyncSubject();
 
 subject.subscribe({
-  next: (v) => console.log('observerA: ' + v)
+  next: (v) => console.log('observerA: ' + v),
 });
 
 subject.next(1);
@@ -394,7 +395,7 @@ subject.next(3);
 subject.next(4);
 
 subject.subscribe({
-  next: (v) => console.log('observerB: ' + v)
+  next: (v) => console.log('observerB: ' + v),
 });
 
 subject.next(5);
@@ -409,6 +410,7 @@ observerB: 5
 ```
 
 ### Subject Completion
+
 Khi BehaviorSubject complete, thì các Observers subscribe vào sau đó sẽ chỉ nhận được complete signal.
 
 Khi ReplaySubject complete, thì các Observers subscribe vào sau đó sẽ được emit tất cả các giá trị lưu trữ trong buffer, sau đó mới thực thi complete của Observer.
@@ -420,7 +422,7 @@ const subject = new BehaviorSubject(0); // 0 is the initial value
 
 subject.subscribe({
   next: (v) => console.log('observerA: ' + v),
-  complete: () => console.log('observerA: done')
+  complete: () => console.log('observerA: done'),
 });
 
 subject.next(1);
@@ -428,7 +430,7 @@ subject.next(2);
 
 subject.subscribe({
   next: (v) => console.log('observerB: ' + v),
-  complete: () => console.log('observerB: done')
+  complete: () => console.log('observerB: done'),
 });
 
 subject.next(3);
@@ -437,7 +439,7 @@ subject.complete();
 
 subject.subscribe({
   next: (v) => console.log('observerC: ' + v),
-  complete: () => console.log('observerC: done')
+  complete: () => console.log('observerC: done'),
 });
 
 /**
@@ -454,12 +456,13 @@ observerB: done
 observerC: done
 */
 ```
+
 ```ts
 const subject = new ReplaySubject(3);
 
 subject.subscribe({
   next: (v) => console.log('observerA: ' + v),
-  complete: () => console.log('observerA: done')
+  complete: () => console.log('observerA: done'),
 });
 
 let i = 1;
@@ -470,7 +473,7 @@ setTimeout(() => {
   clearInterval(id);
   subject.subscribe({
     next: (v) => console.log('observerB: ' + v),
-    complete: () => console.log('observerB: done')
+    complete: () => console.log('observerB: done'),
   });
 }, 1000);
 
@@ -489,12 +492,13 @@ observerB: 5
 observerB: done
 */
 ```
+
 ```ts
 const subject = new AsyncSubject();
 
 subject.subscribe({
   next: (v) => console.log('observerA: ' + v),
-  complete: () => console.log('observerA: done')
+  complete: () => console.log('observerA: done'),
 });
 
 subject.next(1);
@@ -507,7 +511,7 @@ subject.complete();
 
 subject.subscribe({
   next: (v) => console.log('observerB: ' + v),
-  complete: () => console.log('observerB: done')
+  complete: () => console.log('observerB: done'),
 });
 /**
 Output:
@@ -520,12 +524,11 @@ observerB: done
 ```
 
 ## Multicasting
+
 Quay trở lại vấn đề ban đầu khi chúng ta mong muốn multicast. Chúng ta mong muốn cả hai observer đều chạy cùng một execution.
 
 ```ts
-const observable = interval(500).pipe(
-  take(5)
-);
+const observable = interval(500).pipe(take(5));
 
 const subject = new Subject();
 
@@ -608,7 +611,9 @@ Multicast nhận vào một `subjectOrSubjectFactory`, như trong ví dụ trên
 ```ts
 connectableObservable.connect();
 ```
+
 Nó tương đương với việc subscribe internal Subject vào Observable như ban đầu:
+
 ```ts
 observable.subscribe(subject);
 ```
@@ -687,6 +692,7 @@ setTimeout(() => {
   connectSub.unsubscribe();
 }, 3000);
 ```
+
 Lúc này bạn chỉ cần `connectSub.unsubscribe()` là sẽ unsubscribe internal Subject do đó không cần chạy `sub.unsubscribe()` cũng được.
 
 #### refCount
@@ -697,7 +703,7 @@ Việc phải connect và disconnect manually khá là low level. Do đó `Conne
 const subject = new Subject();
 
 const connectableObservable = interval(500).pipe(
-  tap(x => console.log('log.info: ' + x)),
+  tap((x) => console.log('log.info: ' + x)),
   multicast(subject)
 ) as ConnectableObservable<number>;
 
@@ -738,7 +744,7 @@ Trong trường hợp Subject bị complete, nó sẽ không thể next thêm m�
 ```ts
 const connectableObservable = interval(500).pipe(
   take(10),
-  tap(x => console.log('log.info: ' + x)),
+  tap((x) => console.log('log.info: ' + x)),
   multicast(new Subject())
 ) as ConnectableObservable<number>;
 
@@ -766,7 +772,6 @@ setTimeout(() => {
 setTimeout(() => {
   const subA2 = sharedObservable.subscribe(observerA);
 }, 6000);
-
 ```
 
 Sau 5s `sharedObservable` đã emit complete nên khi ở thời điểm 6s chúng ta tiếp tục subscribe thì nó không thể nhận được các value được nữa. Lúc này để có thể tiếp tục trigger chúng ta cần phải tạo ra một Subject mới, đó chính là lúc bạn sẽ có thể dùng đến SubjectFactory.
@@ -774,7 +779,7 @@ Sau 5s `sharedObservable` đã emit complete nên khi ở thời điểm 6s chú
 ```ts
 const connectableObservable = interval(500).pipe(
   take(10),
-  tap(x => console.log('log.info: ' + x)),
+  tap((x) => console.log('log.info: ' + x)),
   multicast(() => new Subject())
 ) as ConnectableObservable<number>;
 ```
@@ -810,8 +815,8 @@ Việc sử dụng `multicast(new Subject())` có thể được viết gọn l�
 
 ```ts
 const connectableObservable = interval(500).pipe(
-  tap(x => console.log('log.info: ' + x)),
-  publish(),
+  tap((x) => console.log('log.info: ' + x)),
+  publish()
 ) as ConnectableObservable<number>;
 
 const observerA = {
@@ -843,6 +848,7 @@ setTimeout(() => {
   subB.unsubscribe(); // ref from 1 => 0
 }, 5000);
 ```
+
 ![RxJS publish](assets/rxjs-publish.png)
 
 Ngoài ra, giống như Subject có các biến thể thì publish cũng có các biến thể tương ứng với một số loại Subject.
@@ -861,8 +867,8 @@ Việc sử dụng `multicast(() => new Subject()) + refCount` khá phổ biến
 
 ```ts
 const sharedObservable = interval(500).pipe(
-  tap(x => console.log('log.info: ' + x)),
-  share(),
+  tap((x) => console.log('log.info: ' + x)),
+  share()
 );
 
 const observerA = {
@@ -939,19 +945,19 @@ export class JokeService {
   private cache$: Observable<Array<Joke>>;
   private reload$ = new Subject<void>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // This method is responsible for fetching the data.
-  // The first one who calls this function will initiate 
+  // The first one who calls this function will initiate
   // the process of fetching data.
   get jokes() {
     if (!this.cache$) {
       // Set up timer that ticks every X milliseconds
       const timer$ = timer(0, REFRESH_INTERVAL);
-          
+
       // For each timer tick make an http request to fetch new data
-      // We use shareReplay(X) to multicast the cache so that all 
-      // subscribers share one underlying source and don't re-create 
+      // We use shareReplay(X) to multicast the cache so that all
+      // subscribers share one underlying source and don't re-create
       // the source over and over again. We use takeUntil to complete
       // this stream when the user forces an update.
       this.cache$ = timer$.pipe(
@@ -972,9 +978,9 @@ export class JokeService {
 
   // Helper method to actually fetch the jokes
   private requestJokes() {
-    return this.http.get<JokeResponse>(API_ENDPOINT).pipe(
-      map(response => response.value)
-    );
+    return this.http
+      .get<JokeResponse>(API_ENDPOINT)
+      .pipe(map((response) => response.value));
   }
 }
 ```
@@ -988,6 +994,10 @@ Mục tiêu của ngày 27 sẽ là **Giới thiệu Router trong Angular**
 ## Code sample:
 
 https://stackblitz.com/edit/angular-ivy-wbyobn?file=src%2Fapp%2Fapp.component.ts
+
+## Youtube Video
+
+[![Day 26](https://img.youtube.com/vi/8nWosjgcI5k/0.jpg)](https://youtu.be/8nWosjgcI5k)
 
 ## References
 

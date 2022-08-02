@@ -294,6 +294,10 @@ Với `defer()`, chúng ta đã có 3 giá trị khác nhau cho mỗi lần subs
 
 Mục tiêu của Day 21 là **RxJS Transformation Operators**.
 
+## Youtube Video
+
+[![Day 20](https://img.youtube.com/vi/OWvK8ZB_Wrc/0.jpg)](https://youtu.be/OWvK8ZB_Wrc)
+
 ## Author
 
 [Chau Tran](https://github.com/nartc)

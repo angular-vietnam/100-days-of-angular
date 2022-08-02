@@ -451,6 +451,10 @@ Mục tiêu của ngày 26 sẽ là **RxJS Subject và Multicasting**
 - [RxJS Overview](https://rxjs.dev/guide/overview)
 - [LearnRxJS](https://www.learnrxjs.io/)
 
+## Youtube Video
+
+[![Day 25](https://img.youtube.com/vi/5SD2YIxMBBM/0.jpg)](https://youtu.be/5SD2YIxMBBM)
+
 ## Author
 
 [Chau Tran](https://github.com/nartc)

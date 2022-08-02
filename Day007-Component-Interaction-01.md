@@ -61,10 +61,10 @@ Khi đã có component và khai báo input rồi thì làm sao để sử dụng
 Đây là component progress-bar của chúng ta.
 
 ```typescript
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: "app-progress-bar",
+  selector: 'app-progress-bar',
   template: `
     <div
       class="progress-bar-container"
@@ -130,9 +130,9 @@ export class ProgressBarComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if ("progress" in changes) {
-      if (typeof changes["progress"].currentValue !== "number") {
-        const progress = Number(changes["progress"].currentValue);
+    if ('progress' in changes) {
+      if (typeof changes['progress'].currentValue !== 'number') {
+        const progress = Number(changes['progress'].currentValue);
         if (Number.isNaN(progress)) {
           this.progress = 0;
         } else {
@@ -158,7 +158,7 @@ export class ProgressBarComponent implements OnInit {
     return this.$progress;
   }
   set progress(value: number) {
-    if (typeof value !== "number") {
+    if (typeof value !== 'number') {
       const progress = Number(value);
       if (Number.isNaN(progress)) {
         this.$progress = 0;
@@ -192,7 +192,7 @@ Dưới đây là các link document mà các bạn cần tìm hiểu:
 
 ## Youtube Video
 
-https://youtu.be/uTd2W4NQkgs
+[![Day 07](https://img.youtube.com/vi/uTd2W4NQkgs/0.jpg)](https://youtu.be/uTd2W4NQkgs)
 
 ## Code sample
 

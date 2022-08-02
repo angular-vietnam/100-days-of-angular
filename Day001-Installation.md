@@ -74,7 +74,7 @@ Lúc này các bạn sẽ cần trả lời 1 số câu hỏi về routing, styl
 
 ## Youtube Video
 
-https://youtu.be/NS6P1fpU77o
+[![Day 01](https://img.youtube.com/vi/NS6P1fpU77o/0.jpg)](https://youtu.be/NS6P1fpU77o)
 
 ## HASHTAG
 

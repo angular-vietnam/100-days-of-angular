@@ -286,7 +286,7 @@ Mục tiêu của Day 13 là **Content Projection trong Angular**.
 
 ## Youtube Video
 
-https://youtu.be/4tcajihANZQ
+[![Day 12](https://img.youtube.com/vi/4tcajihANZQ/0.jpg)](https://youtu.be/4tcajihANZQ)
 
 ## Author
 

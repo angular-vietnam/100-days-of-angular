@@ -27,9 +27,9 @@ export class HelloComponent {}
 Nó là một TS class rất đơn giản phải không, bây giờ chúng ta sẽ gắn meta-data cho nó như sau.
 
 ```typescript
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 @Component({
-  selector: "app-hello",
+  selector: 'app-hello',
   template: ` <h2>Hello there!</h2> `,
 })
 export class HelloComponent {}
@@ -59,8 +59,9 @@ error NG8001: 'app-hello' is not a known element:
    Declarables must belong to exactly one module. The compiler emits an error if you try to declare the same class in more than one module. Be careful not to declare a class that is imported from another module.
 
    Yeah, chính là nó đó, giờ chỉ việc import component lên đầu và thêm HelloComponent vào declarations là xong.
+
 ```typescript
-import { HelloComponent } from './hello.component'
+import { HelloComponent } from './hello.component';
 ```
 
 ```typescript
@@ -80,7 +81,7 @@ Các bạn hãy thử tìm hiểu cấu trúc ứng dụng và tạo thêm nhi�
 
 ## Youtube Video
 
-https://youtu.be/jgFw8tAgKNs
+[![Day 02](https://img.youtube.com/vi/jgFw8tAgKNs/0.jpg)](https://youtu.be/jgFw8tAgKNs)
 
 ## Link tham khảo
 
@@ -89,7 +90,7 @@ Link document các bạn cần tìm hiểu trong Day 2
 - https://angular.io/guide/architecture
 - https://angular.io/guide/architecture-modules
 - https://angular.io/guide/architecture-components
- 
+
 Mục tiêu Day 3 sẽ là về **data binding**.
 
 ## Author

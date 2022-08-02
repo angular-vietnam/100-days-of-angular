@@ -28,10 +28,10 @@ export interface Author {
 ```
 
 ```typescript
-import { Component, OnInit } from "@angular/core";
-import { authors } from "../authors";
+import { Component, OnInit } from '@angular/core';
+import { authors } from '../authors';
 @Component({
-  selector: "app-author-list",
+  selector: 'app-author-list',
   template: `<app-author-detail
     *ngFor="let author of authors"
     [author]="author"
@@ -48,10 +48,10 @@ export class AuthorListComponent implements OnInit {
 Author Detail Component
 
 ```typescript
-import { Component, OnInit, Input } from "@angular/core";
-import { Author } from "../authors";
+import { Component, OnInit, Input } from '@angular/core';
+import { Author } from '../authors';
 @Component({
-  selector: "app-author-detail",
+  selector: 'app-author-detail',
   template: `
     <div *ngIf="author">
       <strong>{{ author.firstName }} {{ author.lastName }}</strong>
@@ -87,7 +87,7 @@ export class AuthorDetailComponent implements OnInit {
 
 ```typescript
 @Component({
-  selector: "app-author-list",
+  selector: 'app-author-list',
   template: `<app-author-detail
     *ngFor="let author of authors"
     [author]="author"
@@ -120,7 +120,7 @@ Dưới đây là các link document mà các bạn cần tìm hiểu:
 
 ## Youtube Video
 
-https://youtu.be/XFN75RZzMJY
+[![Day 08](https://img.youtube.com/vi/XFN75RZzMJY/0.jpg)](https://youtu.be/XFN75RZzMJY)
 
 ## Code sample
 

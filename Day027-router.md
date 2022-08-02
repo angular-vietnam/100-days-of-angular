@@ -84,17 +84,15 @@ Khi tạo ứng dụng mới theo step ở trên thì CLI đã mặc định t�
 
 ```ts
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule // Đây chính là AppRoutingModule được tạo tự động bằng CLI
+    AppRoutingModule, // Đây chính là AppRoutingModule được tạo tự động bằng CLI
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 Có ba thành phần chính khi làm việc với Router
@@ -114,6 +112,7 @@ export class AppRoutingModule {}
 Chú ý là `AppRoutingModule` vừa import và export `RouterModule`. Điều này có nghĩa là khi bạn import `AppRoutingModule` vào các module khác, bạn ko cần import lại `RouterModule` để sử dụng nữa vì nó đã được đc re-export từ `AppRoutingModule`.
 
 RouterModule mặc định sẽ provide hai method là `forRoot` và `forChild`. Hai method này đều dùng để config routes, tuy nhiên.
+
 - `forRoot`, dc gọi <u>một lần duy nhất</u> khi bạn config route trong `AppRoutingModule`. forRoot cũng dùng để configures/initializes router.
 - `forChild`, dc gọi trong các module khác để config routes.
 
@@ -128,11 +127,11 @@ Với yêu cầu của mình và hai component vừa được tạo, thì cấu 
 ```ts
 const routes: Routes = [
   {
-    path: "detail",
+    path: 'detail',
     component: ArticleDetailComponent,
   },
   {
-    path: "",
+    path: '',
     component: ArticleListComponent,
   },
 ];
@@ -178,22 +177,22 @@ Bây giờ mình sẽ render ra một danh sách các bài viết dựa vào dat
 ```ts
 const Articles: Article[] = [
   {
-    id: "1",
-    slug: "bai-viet-1",
-    title: "Bai viet 1",
-    content: "Day la noi dung bai viet 1",
-    updateAt: "2020-07-06T13:26:31.785Z",
+    id: '1',
+    slug: 'bai-viet-1',
+    title: 'Bai viet 1',
+    content: 'Day la noi dung bai viet 1',
+    updateAt: '2020-07-06T13:26:31.785Z',
   },
   {
-    id: "2",
-    slug: "bai-viet-2",
-    title: "Bai viet 2",
-    content: "Day la noi dung bai viet 2 nhe",
-    updateAt: "2020-07-15:00:00.000Z",
+    id: '2',
+    slug: 'bai-viet-2',
+    title: 'Bai viet 2',
+    content: 'Day la noi dung bai viet 2 nhe',
+    updateAt: '2020-07-15:00:00.000Z',
   },
 ];
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class ArticleService {
   getArticles(): Observable<Article[]> {
@@ -219,9 +218,7 @@ export class ArticleListComponent implements OnInit {
 <div class="row" *ngIf="articles$ | async as articles">
   <div class="col-md-3" *ngFor="let article of articles">
     <div class="card text-center">
-      <div class="card-header">
-        {{ article.title }}
-      </div>
+      <div class="card-header">{{ article.title }}</div>
       <div class="card-body">
         <p class="card-text">{{ article.content }}</p>
         <a [routerLink]="article.slug" class="btn btn-primary">
@@ -242,11 +239,11 @@ Giờ phần việc còn lại là config để route detail có thể nhận dc
 ```ts
 const routes: Routes = [
   {
-    path: ":slug",
+    path: ':slug',
     component: ArticleDetailComponent,
   },
   {
-    path: "",
+    path: '',
     component: ArticleListComponent,
   },
 ];
@@ -262,7 +259,7 @@ export class ArticleDetailComponent implements OnInit {
   constructor(private _route: ActivatedRoute, private _api: ArticleService) {}
 
   ngOnInit(): void {
-    let slug = this._route.snapshot.paramMap.get("slug");
+    let slug = this._route.snapshot.paramMap.get('slug');
     this.article$ = this._api.getArticleBySlug(slug);
   }
 }
@@ -292,6 +289,10 @@ Mục tiêu của Day 28 là Feature Module.
 ## Code example
 
 https://stackblitz.com/edit/angular-100-days-of-code-day-27-router-basic
+
+## Youtube Video
+
+[![Day 27](https://img.youtube.com/vi/D0Tv5BaNTa8/0.jpg)](https://youtu.be/D0Tv5BaNTa8)
 
 ## Author
 

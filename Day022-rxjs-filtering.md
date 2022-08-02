@@ -377,6 +377,10 @@ Mục tiêu ngày 23 sẽ là **RxJS Combination Operators**
 - [RxJS Overview](https://rxjs.dev/guide/overview)
 - [LearnRxJS](https://www.learnrxjs.io/)
 
+## Youtube Video
+
+[![Day 22](https://img.youtube.com/vi/KEBpdRL11Nw/0.jpg)](https://youtu.be/KEBpdRL11Nw)
+
 ## Author
 
 [Chau Tran](https://github.com/nartc)

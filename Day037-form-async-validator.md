@@ -248,7 +248,7 @@ submitForm() {
 
 Có thể thấy là mình vẫn bấm được nút Register trong khi đang validate username 😂 Để fix lỗi này thì mình có tham khảo [một câu trả lời trên stackoveflow][stack].
 
-Ý tưởng là thay vì ngSubmit sẽ trigger thẳng hàm submit, thay vào đó mình sẽ tạo ra một Subject tên là `formSubmit$` và handle chỉ khi nào status của form chuyển thành `VALID` thì `formSubmit$` mới emit một value, từ đó mới call hàm `submitForm`.
+Ý tưởng là thay vì `ngSubmit` sẽ trigger thẳng hàm `submit`, mình sẽ tạo ra một `Subject` tên là `formSubmit$` và handle chỉ khi nào status của form chuyển thành `VALID` thì `formSubmit$` mới emit một value, từ đó mới call hàm `submitForm`.
 
 ```ts
 this.formSubmit$

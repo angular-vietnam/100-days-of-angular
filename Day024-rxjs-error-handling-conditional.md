@@ -27,14 +27,14 @@ const observer = {
 `catchError<T, O extends ObservableInput<any>>(selector: (err: any, caught: Observable<T>) => O): OperatorFunction<T, T | ObservedValueOf<O>>`
 
 ```ts
-import { of } from "rxjs";
-import { map, catchError } from "rxjs/operators";
+import { of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 const cached = [4, 5];
 of(1, 2, 3, 4, 5)
   .pipe(
-    map(n => {
+    map((n) => {
       if (cached.includes(n)) {
-        throw new Error("Duplicated: " + n);
+        throw new Error('Duplicated: ' + n);
       }
       return n;
     }),
@@ -43,10 +43,9 @@ of(1, 2, 3, 4, 5)
   .subscribe(observer);
 
 /**
-* Output:
-* --1--2--3--(next: Error)--|
-*/
-
+ * Output:
+ * --1--2--3--(next: Error)--|
+ */
 ```
 
 Trong trường hợp trên nếu chúng ta không bắt error thì `observer.error` sẽ là nơi đón Error, nhưng vì chúng ta trả về là một `next: Error` nên error này đã được handle bởi `observer.next`.
@@ -54,31 +53,24 @@ Trong trường hợp trên nếu chúng ta không bắt error thì `observer.er
 Một ví dụ trong ứng dụng là khi các bạn làm việc với `forkJoin` [Day 23](Day023-rxjs-combination.md), lúc này nếu một stream nào đó emit error thì toàn bộ stream sẽ bị văng ra error. Trong trường hợp các bạn muốn nó vẫn tiếp tục chạy hết và chúng ta sẽ tách Error ra ở pipe tiếp theo thì chỉ cần `catchError` lại như trên là được.
 
 ```ts
-forkJoin([
-  of(1),
-  of(2),
-  throwError(new Error('401')),
-]).subscribe(observer);
+forkJoin([of(1), of(2), throwError(new Error('401'))]).subscribe(observer);
 /**
-* Output:
-* --(x: Error 401)--
-*/
-
+ * Output:
+ * --(x: Error 401)--
+ */
 
 // with catchError
 
 forkJoin([
   of(1),
   of(2),
-  throwError(new Error('401')).pipe(
-    catchError(err => of(err))
-  ),
+  throwError(new Error('401')).pipe(catchError((err) => of(err))),
 ]).subscribe(observer);
 
 /**
-* Output:
-* --(next: [1, 2, Error 401])|--
-*/
+ * Output:
+ * --(next: [1, 2, Error 401])|--
+ */
 ```
 
 ![RxJS catchError](assets/rxjs-catchError.png)
@@ -89,9 +81,9 @@ Nếu bạn muốn retry kèm theo giới hạn về số lần, chúng ta có t
 ```ts
 of(1, 2, 3, 4, 5)
   .pipe(
-    map(n => {
+    map((n) => {
       if (cached.includes(n)) {
-        throw new Error("Duplicated: " + n);
+        throw new Error('Duplicated: ' + n);
       }
       return n;
     }),
@@ -101,9 +93,9 @@ of(1, 2, 3, 4, 5)
   .subscribe(observer);
 
 /**
-* Output:
-* --1--2--3--1--2--3--1|
-*/
+ * Output:
+ * --1--2--3--1--2--3--1|
+ */
 ```
 
 Ngoài ra, trong catchError bạn hoàn toàn có thể throw về một error để pipe phía sau có thể handle tiếp.
@@ -122,9 +114,9 @@ Nó khá hữu ích khi bạn muốn retry HTTP request chẳng hạn. Lưu ý c
 const cached = [4, 5];
 of(1, 2, 3, 4, 5)
   .pipe(
-    map(n => {
+    map((n) => {
       if (cached.includes(n)) {
-        throw new Error("Duplicated: " + n);
+        throw new Error('Duplicated: ' + n);
       }
       return n;
     }),
@@ -133,9 +125,9 @@ of(1, 2, 3, 4, 5)
   .subscribe(observer);
 
 /**
-* Output:
-* --1--2--3--1--2--3--1--2--3--1--2--3--(x: Error)
-*/
+ * Output:
+ * --1--2--3--1--2--3--1--2--3--1--2--3--(x: Error)
+ */
 ```
 
 ![RxJS retry](assets/rxjs-retry.png)
@@ -162,9 +154,9 @@ export function retryBackoff(
     defer(() => {
       let index = 0;
       return source.pipe(
-        retryWhen<T>(errors =>
+        retryWhen<T>((errors) =>
           errors.pipe(
-            concatMap(error => {
+            concatMap((error) => {
               const attempt = index++;
               return iif(
                 () => attempt < maxRetries && shouldRetry(error),
@@ -189,6 +181,7 @@ export function retryBackoff(
 ## RxJS Error Conditional Operators
 
 ### defaultIfEmpty/throwIfEmpty
+
 `defaultIfEmpty<T, R>(defaultValue: R = null): OperatorFunction<T, T | R>`
 
 `throwIfEmpty<T>(errorFactory: () => any = defaultErrorFactory): MonoTypeOperatorFunction<T>`
@@ -200,16 +193,17 @@ Giả sử, chúng ta cần làm yêu cầu nếu người dùng không click v�
 ```ts
 import { fromEvent, timer } from 'rxjs';
 import { throwIfEmpty, takeUntil } from 'rxjs/operators';
- 
+
 const click$ = fromEvent(document, 'click');
- 
-click$.pipe(
-  takeUntil(timer(1000)),
-  throwIfEmpty(
-    () => new Error('the document was not clicked within 1 second')
-  ),
-)
-.subscribe(observer);
+
+click$
+  .pipe(
+    takeUntil(timer(1000)),
+    throwIfEmpty(
+      () => new Error('the document was not clicked within 1 second')
+    )
+  )
+  .subscribe(observer);
 ```
 
 ![RxJS throwIfEmpty](assets/rxjs-throwIfEmpty.png)
@@ -225,31 +219,32 @@ Opeator này sẽ trả về true nếu tất cả các value emit của source 
 > Lưu ý nếu source không complete thì sẽ không có gì emit ra cả.
 
 ```ts
-of(1, 2, 3, 4, 5, 6).pipe(
-  every(x => x < 5),
-)
-.subscribe(observer);
+of(1, 2, 3, 4, 5, 6)
+  .pipe(every((x) => x < 5))
+  .subscribe(observer);
 
 /**
-* Output:
-* ------false|
-*/
+ * Output:
+ * ------false|
+ */
 ```
+
 ![RxJS every](assets/rxjs-every.png)
 
 Các method của Array trong JS, có cả `every` và `some`, nếu các bạn muốn có một operator giống some ở trong RxJS thì có thể dùng `first` kèm theo predicate function. Giống như trong phần [Router của Angular](https://github.com/angular/angular/blob/10.0.x/packages/router/src/operators/check_guards.ts#L74-L76)
 
 ```ts
-of(1, 2, 3, 14, 5, 6).pipe(
-  first(x => x > 10, false),
-  map(v => Boolean(v))
-)
-.subscribe(observer);
+of(1, 2, 3, 14, 5, 6)
+  .pipe(
+    first((x) => x > 10, false),
+    map((v) => Boolean(v))
+  )
+  .subscribe(observer);
 
 /**
-* Output:
-* ------true|
-*/
+ * Output:
+ * ------true|
+ */
 ```
 
 ### iif
@@ -266,30 +261,24 @@ Opeartor này cho phép chúng ta lựa chọn Observable tương ứng với h�
 
 > If you have more complex logic that requires decision between more than two Observables, `defer` will probably be a better choice. Actually `iif` can be easily implemented with `defer` and exists only for convenience and readability reasons.
 
-
 ```ts
 import { iif, of } from 'rxjs';
- 
+
 let subscribeToFirst;
-const firstOrSecond = iif(
-  () => subscribeToFirst,
-  of('first'),
-  of('second'),
-);
- 
+const firstOrSecond = iif(() => subscribeToFirst, of('first'), of('second'));
+
 subscribeToFirst = true;
-firstOrSecond.subscribe(value => console.log(value));
- 
+firstOrSecond.subscribe((value) => console.log(value));
+
 // Logs:
 // "first"
- 
+
 subscribeToFirst = false;
-firstOrSecond.subscribe(value => console.log(value));
- 
+firstOrSecond.subscribe((value) => console.log(value));
+
 // Logs:
 // "second"
 ```
-
 
 ## Summary
 
@@ -303,9 +292,12 @@ Mục tiêu ngày 25 sẽ là **RxJS Higher-order Observable & Utility**
 - [LearnRxJS](https://www.learnrxjs.io/)
 - [rxmarbles](https://rxmarbles.com/)
 
+## Youtube Video
+
+[![Day 24](https://img.youtube.com/vi/UnfiFpY5VtQ/0.jpg)](https://youtu.be/UnfiFpY5VtQ)
+
 ## Author
 
 [Tiep Phan](https://github.com/tieppt)
-
 
 `#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day24`

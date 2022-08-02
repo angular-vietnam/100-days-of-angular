@@ -4,9 +4,9 @@ Khi bạn tìm hiểu về Angular, bạn sẽ thấy rằng nó có phụ thu�
 
 Đây vừa là một điểm mạnh, cũng vừa là điểm yếu của Angular. Vì RxJS xử lý asynchronous rất mạnh, nhưng bù lại bạn sẽ phải học thêm một số các concept khác xoay quanh stream. Thinking in streams.
 
-> RxJS is a library for composing asynchronous and event-based programs by using observable sequences. [RxJS Overview][RxJSOverview]
+> RxJS is a library for composing asynchronous and event-based programs by using observable sequences. [RxJS Overview][rxjsoverview]
 
-> In RxJS and in reactive programming in general, the fundamental unit of work is the stream. Think in terms of streams (think reactively) and design code in a way that, instead of holding on to data, you allow it to flow through and apply transformations along the way until it reaches your desired state. [RxJS in Action][RxJSinAction]
+> In RxJS and in reactive programming in general, the fundamental unit of work is the stream. Think in terms of streams (think reactively) and design code in a way that, instead of holding on to data, you allow it to flow through and apply transformations along the way until it reaches your desired state. [RxJS in Action][rxjsinaction]
 
 ![Everything is a stream](assets/everything-is-a-stream.jpg)
 
@@ -30,15 +30,15 @@ Observable có thể coi là một Array của các value theo thời gian:
 
 Hiện tại Observable chưa chính thức tồn tại trong JS, nhưng bạn có thể sử dụng RxJS để có thể có những thành phần chính như `Observable`, `Observer`, `Subject`, etc. Và một loạt các `operators` đi kèm để xử lý stream được dễ dàng hơn.
 
-
 ## Use-case throttle
 
 Thông thường để xử lý một số event xảy ra quá nhanh và nhiều, trong khi chúng ta có thể bỏ qua một số value ở trung gian. Chẳng hạn bạn tạo một ứng dụng, ứng dụng đó có một button và bạn không muốn người dùng click vào button đấy nhanh quá (e.g: 500ms), nếu họ click quá nhanh thì bỏ qua và chỉ tương tác khi lần click gần nhất đã cách đó hơn khoảng thời gian quy định ở trên.
 
 Bây giờ chúng ta thử implement giải pháp thông thường và giải pháp với RxJS xem sao. Các bạn hãy khoan đi vào chi tiết những phần code RxJS dưới đây:
+
 ```ts
-const btnjsThrottle = document.querySelector("#jsThrottle");
-const btnrxjsThrottle = document.querySelector("#rxjsThrottle");
+const btnjsThrottle = document.querySelector('#jsThrottle');
+const btnrxjsThrottle = document.querySelector('#rxjsThrottle');
 // PURE JS version
 let count = 0;
 let rate = 500;
@@ -57,9 +57,9 @@ import { throttleTime, scan } from 'rxjs/operators';
 fromEvent(btnrxjsThrottle, 'click')
   .pipe(
     throttleTime(500),
-    scan(count => count + 1, 0)
+    scan((count) => count + 1, 0)
   )
-  .subscribe(count => console.log(`RxJS: Clicked ${count} times`));
+  .subscribe((count) => console.log(`RxJS: Clicked ${count} times`));
 ```
 
 Với cách sử dụng RxJS cho bài toán trên quả không tệ, và nếu cần transform thêm nữa thì chúng ta hoàn toàn có thể handle được.
@@ -67,24 +67,33 @@ Với cách sử dụng RxJS cho bài toán trên quả không tệ, và nếu c
 ## RxJS core concepts
 
 ### Observable
+
 - Observable: đại diện cho ý tưởng về một tập hợp các giá trị hoặc các sự kiện trong tương lai. Khi các giá trị hoặc sự kiện phát sinh trong tương lai, Observable sẽ điều phối nó đến Observer.
 - Observable chỉ là một function (class) mà nó có một số yêu cầu đặc biệt. Nó nhận đầu vào là một Function, mà Function này nhận đầu vào là một Observer và trả về một function để có thể thực hiện việc cancel quá trình xử lý. Thông thường (RxJS 5 trở lên) chúng ta đặt tên function đó là unsubscribe.
-> Observables are functions that tie an observer to a producer. That’s it. They don’t necessarily set up the producer, they just set up an observer to listen to the producer, and generally return a teardown mechanism to remove that listener. The act of subscription is the act of “calling” the observable like a function, and passing it an observer. [Ben Lesh: Hot vs Cold Observables][BenLeshHotandCold]
+  > Observables are functions that tie an observer to a producer. That’s it. They don’t necessarily set up the producer, they just set up an observer to listen to the producer, and generally return a teardown mechanism to remove that listener. The act of subscription is the act of “calling” the observable like a function, and passing it an observer. [Ben Lesh: Hot vs Cold Observables][benleshhotandcold]
 
 ### Observer
+
 - Observer là một tập hợp các callbacks tương ứng cho việc lắng nghe các giá trị (next, error, hay complete) được gửi đến bởi Observable.
 
 ### Subscription
+
 - Subscription là kết quả có được sau khi thực hiện một Observable, nó thường dùng cho việc hủy việc tiếp tục xử lý.
 
 ### Operators
+
 - Operators là các pure functions cho phép lập trình functional với Observable.
+
 ### Subject
+
 - Subject để thực hiện việc gửi dữ liệu đến nhiều Observers (multicasting).
+
 ### Schedulers
+
 - Một scheduler sẽ điều khiển khi nào một subscription bắt đầu thực thi, và khi nào sẽ gửi tín hiệu đi.
 
 ## Working with Observables
+
 ### Creating Observables
 
 Để create một Observable chúng ta chỉ cần gọi constructor và truyền vào một function (gọi là **subscribe**), trong đó **subscribe function** sẽ nhận đầu vào là một Observer.
@@ -108,11 +117,12 @@ const observable = new Observable(function subscribe(observer) {
   }, 1000);
   return function unsubscribe() {
     clearTimeout(id);
-  }
+  };
 });
 ```
 
 ### Invoking Observable
+
 Các Observable hầu hết sẽ giống như một function, tức là nếu bạn có một Observable thì nó chỉ như khai báo một function, do đó những gì bên trong function sẽ không được chạy cho đến khi bạn invoke function đó (lazy computation).
 
 Để invoke một Observable bạn chỉ cần `subscribe` vào nó là được. Và sau khi subscribe thì nó sẽ trả về một Subscription.
@@ -127,7 +137,7 @@ const subscription = observable.subscribe({
   },
   complete: () => {
     console.log('Done');
-  }
+  },
 });
 ```
 
@@ -147,18 +157,17 @@ Có ba kiểu giá trị mà một Observable Execution có thể gửi đi:
 
 Next notifications thường được sử dụng rộng rãi, nó cực kỳ quan trọng, vì nó gửi đi dữ liệu cần thiết cho một Observer.
 
-Error và Complete notifications có thể chỉ xảy ra duy nhất một lần trong một Observable Execution. 
+Error và Complete notifications có thể chỉ xảy ra duy nhất một lần trong một Observable Execution.
 
 > Lưu ý rằng, chỉ có 1 trong 2 loại tín hiệu trên được gửi đi, nếu đã complete thì không có error, nếu có error thì không có complete. (Chúng không thuộc về nhau :D). Và nếu đã gửi đi complete, hoặc error signal, thì sau đó không có dữ liệu nào được gửi đi nữa. Tức là stream đã close.
 
 > In an Observable Execution, zero to infinite Next notifications may be delivered. If either an Error or Complete notification is delivered, then nothing else can be delivered afterwards.
 
-
 ### Disposing Observable Executions
 
-Bởi vì quá trình thực thi Observable có thể lặp vô hạn, hoặc trong trường hợp nào đó bạn muốn thực hiện hủy việc thực thi vì việc này không còn cần thiết nữa - dữ liệu đã lỗi thời, có dữ liệu khác thay thế. Các bạn có thể liên tưởng tới việc *close websocket stream*, *removeEvenListener* cho một element nào đó đã bị loại bỏ khỏi DOM chẳng hạn.
+Bởi vì quá trình thực thi Observable có thể lặp vô hạn, hoặc trong trường hợp nào đó bạn muốn thực hiện hủy việc thực thi vì việc này không còn cần thiết nữa - dữ liệu đã lỗi thời, có dữ liệu khác thay thế. Các bạn có thể liên tưởng tới việc _close websocket stream_, _removeEvenListener_ cho một element nào đó đã bị loại bỏ khỏi DOM chẳng hạn.
 
-Observable có cơ chế tương ứng, cho phép chúng ta hủy việc thực thi. Đó là khi subscribe được gọi, một Observer sẽ bị gắn với một *Observable execution* mới được tạo, sau đó nó sẽ trả về một object thuộc type Subscription. Kiểu dữ liệu này có một method `unsubscribe` khi chúng ta gọi đến, nó sẽ thực hiện cơ chế để hủy việc thực thi.
+Observable có cơ chế tương ứng, cho phép chúng ta hủy việc thực thi. Đó là khi subscribe được gọi, một Observer sẽ bị gắn với một _Observable execution_ mới được tạo, sau đó nó sẽ trả về một object thuộc type Subscription. Kiểu dữ liệu này có một method `unsubscribe` khi chúng ta gọi đến, nó sẽ thực hiện cơ chế để hủy việc thực thi.
 
 > Lưu ý: nếu bạn tự tạo Observable (bằng new Observable chẳng hạn) thì bạn phải tự thiết lập cơ chế để hủy.
 
@@ -174,31 +183,34 @@ const subscription = observable.subscribe({
   },
   complete: () => {
     console.log('Done');
-  }
+  },
 });
 
 setTimeout(() => {
   subscription.unsubscribe();
-}, 500)
+}, 500);
 ```
 
-
 ## Observers
+
 Observer là một Consumer những dữ liệu được gửi bởi Observable. Observer là một object chứa một tập 3 callbacks tương ứng cho mỗi loại notification được gửi từ Observable: `next`, `error`, `complete`.
 
 Một Observer có dạng như sau:
+
 ```ts
 const observer = {
-  next: x => console.log('Observer got a next value: ' + x),
-  error: err => console.error('Observer got an error: ' + err),
+  next: (x) => console.log('Observer got a next value: ' + x),
+  error: (err) => console.error('Observer got an error: ' + err),
   complete: () => console.log('Observer got a complete notification'),
 };
 ```
 
 Observer được cung cấp là tham số đầu vào của subscribe để kích hoạt Observable execution.
+
 ```ts
 observable.subscribe(observer);
 ```
+
 > Observers are just objects with three callbacks, one for each type of notification that an Observable may deliver.
 
 Observe có thể chỉ có một số callbacks trong bộ 3 callbacks kể trên (có thể là một object không có callback nào trong bộ kể trên, trường hợp này ít dùng đến).
@@ -206,18 +218,19 @@ Observe có thể chỉ có một số callbacks trong bộ 3 callbacks kể tr�
 Ngoài cách dùng như trên, `observable.subscribe` sẽ chuẩn hóa các callbacks thành Observer object tương ứng, bạn có thể truyền vào các hàm rời rạc nhau, nhưng cần lưu ý truyền đúng thứ tự callback.
 
 Cách dùng này hiện tại không khuyến cáo sử dụng, chỉ dùng cách truyền function nếu bạn có một hàm để handle `Next` notification.
+
 ```ts
 observable.subscribe(
-  x => console.log('Observer got a next value: ' + x),
-  err => console.error('Observer got an error: ' + err),
+  (x) => console.log('Observer got a next value: ' + x),
+  (err) => console.error('Observer got an error: ' + err),
   () => console.log('Observer got a complete notification')
 );
 
 // tương đương với
 
 const observer = {
-  next: x => console.log('Observer got a next value: ' + x),
-  error: err => console.error('Observer got an error: ' + err),
+  next: (x) => console.log('Observer got a next value: ' + x),
+  error: (err) => console.error('Observer got an error: ' + err),
   complete: () => console.log('Observer got a complete notification'),
 };
 
@@ -225,27 +238,28 @@ observable.subscribe(observer);
 ```
 
 > Lưu ý: Nếu bạn không muốn truyền error handler function vào, hãy truyền `null`/`undefined`:
+
 ```ts
 observable.subscribe(
-  x => console.log('Observer got a next value: ' + x),
+  (x) => console.log('Observer got a next value: ' + x),
   null,
   () => console.log('Observer got a complete notification')
 );
 ```
 
 # Subscription
+
 Subscription là một object đại diện cho một nguồn tài nguyên có khả năng hủy được, thông thường trong Rxjs là hủy Observable execution. Subscription có chứa một method quan trọng unsubscribe (từ Rxjs 5 trở lên), khi method này được gọi, execution sẽ bị hủy.
 
 Ví dụ: chúng ta có một đồng hồ đếm thời gian, mỗi giây sẽ gửi đi một giá trị, giả sử sau khi chạy 5s chúng ta cần hủy phần thực thi này.
 
 ```ts
 const observable = interval(1000);
-const subscription = observable.subscribe(x => console.log(x));
+const subscription = observable.subscribe((x) => console.log(x));
 
 setTimeout(() => {
   subscription.unsubscribe();
 }, 5000);
-
 ```
 
 > A Subscription essentially just has an unsubscribe() function to release resources or cancel Observable executions.
@@ -258,8 +272,8 @@ Một Subscription có thể chứa trong nó nhiều Subscriptions con, khi Sub
 const foo = interval(500);
 const bar = interval(700);
 
-const subscription = foo.subscribe(x => console.log('first: ' + x));
-const childSub = bar.subscribe(x => console.log('second: ' + x));
+const subscription = foo.subscribe((x) => console.log('first: ' + x));
+const childSub = bar.subscribe((x) => console.log('second: ' + x));
 
 subscription.add(childSub);
 
@@ -268,6 +282,7 @@ setTimeout(() => {
   subscription.unsubscribe();
 }, 2000);
 ```
+
 ## Summary
 
 Vậy là qua Day 19 hy vọng các bạn đã hiểu được cơ bản về RxJS và Observable.
@@ -286,14 +301,16 @@ https://stackblitz.com/edit/rxjs-racgao?file=index.ts
 
 Mục tiêu của Day 20 là **RxJS Creation Operators**.
 
+## Youtube Video
+
+[![Day 19](https://img.youtube.com/vi/lRfyUh4ex38/0.jpg)](https://youtu.be/lRfyUh4ex38)
+
 ## Author
 
 [Tiep Phan](https://github.com/tieppt)
 
 `#100DaysOfCodeAngular` `#100DaysOfCode` `#AngularVietNam100DoC_Day19`
 
-[RxJSOverview]: https://rxjs.dev/guide/overview
-
-[RxJSinAction]: https://freecontent.manning.com/reactive-fundamentals-thinking-in-streams/#:~:text=In%20RxJS%20and%20in%20reactive,it%20reaches%20your%20desired%20state.
-
-[BenLeshHotandCold]: https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339#:~:text=Observables%20are%20functions%20that%20tie,mechanism%20to%20remove%20that%20listener.
+[rxjsoverview]: https://rxjs.dev/guide/overview
+[rxjsinaction]: https://freecontent.manning.com/reactive-fundamentals-thinking-in-streams/#:~:text=In%20RxJS%20and%20in%20reactive,it%20reaches%20your%20desired%20state.
+[benleshhotandcold]: https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339#:~:text=Observables%20are%20functions%20that%20tie,mechanism%20to%20remove%20that%20listener.

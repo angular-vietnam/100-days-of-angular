@@ -3,6 +3,7 @@
 Nếu bạn cần trỏ tới một phần tử (HTMLElement/component/directive) ở trong template và thao tác trực tiếp lên nó thì sao. Có cách nào để chúng ta tạo ra một `variable` ở trong template và sử dụng nó không? Câu hỏi trên sẽ được trả lời trong ngày thứ 10 này.
 
 ## Parent interacts with child via local variable
+
 Giả sử chúng ta có `AppComponent` có nhúng một phần template như sau:
 
 ```html
@@ -14,7 +15,7 @@ Nhưng thay vì click vào `ToggleComponent` để thay đổi trạng thái c�
 ```html
 <button (click)="doSomething">Toggle</button>
 
-<br>
+<br />
 
 <app-toggle></app-toggle>
 ```
@@ -26,7 +27,7 @@ Lúc này bạn sẽ có thể sử dụng đến Template variable như một g
 ```html
 <button (click)="toggleComp.toggle()">Toggle</button>
 
-<br>
+<br />
 
 <app-toggle #toggleComp></app-toggle>
 ```
@@ -36,13 +37,9 @@ Cú pháp của Template variable chính là sử dụng `#varName` và bạn c�
 Như trước đây làm với ví dụ về `NgIf-Else` chúng ta cũng đã sử dụng Template variable để lấy về một instance của `ng-template` và truyền vào cho `NgIfElse` như sau:
 
 ```html
-<div *ngIf="user.age >= 13; else noPG13">
-  Bạn có thể xem nội dung PG-13
-</div>
+<div *ngIf="user.age >= 13; else noPG13">Bạn có thể xem nội dung PG-13</div>
 <ng-template #noPG13>
-  <div>
-    Bạn không thể xem nội dung PG-13
-  </div>
+  <div>Bạn không thể xem nội dung PG-13</div>
 </ng-template>
 ```
 
@@ -56,16 +53,20 @@ Trong một số trường hợp bạn cần lấy chính xác một instance c�
 
 ```html
 <form #nameForm="ngForm">
-	<input
-    type="text" class="form-control"
+  <input
+    type="text"
+    class="form-control"
     required
-    [(ngModel)]="model.name" name="name"
-    #name="ngModel">
+    [(ngModel)]="model.name"
+    name="name"
+    #name="ngModel"
+  />
   <button>Submit</button>
 </form>
 ```
 
 Ở template trên chúng ta đã tạo ra 2 Template variable là:
+
 - `nameForm`: mong muốn lấy instance của directive có `exportAs` là `ngForm`
 - `name`: mong muốn lấy instance của directive có `exportAs` là `ngModel`
 
@@ -79,14 +80,14 @@ Lúc này chúng ta có thể query một Template variable ở trong Component 
 
 ```html
 <button (click)="toggleInside()">Toggle inside class</button>
-<br>
-<br>
+<br />
+<br />
 
 <app-toggle #toggleComp></app-toggle>
 ```
 
 ```ts
-export class AppComponent  {
+export class AppComponent {
   @ViewChild('toggleComp') toggleComp: ToggleComponent;
   toggleInside() {
     this.toggleComp.toggle();
@@ -101,7 +102,7 @@ Nếu bạn sử dụng ViewChild cho một HTMLElement thì chúng ta sẽ nh�
 ```
 
 ```ts
-export class AppComponent  {
+export class AppComponent {
   @ViewChild('chartContainer') container: ElementRef<HTMLDivElement>;
 }
 ```
@@ -121,6 +122,7 @@ ViewChild(selector: string | Function | Type<any>, opts?: {
 ```
 
 Trong đó các `selector` có thể là:
+
 - Any class with the @Component or @Directive decorator
 - A template reference variable as a string (e.g. query <my-component #cmp></my-component> with @ViewChild('cmp'))
 - Any provider defined in the child component tree of the current component (e.g. @ViewChild(SomeService) someService: SomeService)
@@ -131,11 +133,14 @@ Trong đó các `selector` có thể là:
 
 ```html
 <form #nameForm="ngForm">
-	<input
-    type="text" class="form-control"
+  <input
+    type="text"
+    class="form-control"
     required
-    [(ngModel)]="model.name" name="name"
-    #name="ngModel">
+    [(ngModel)]="model.name"
+    name="name"
+    #name="ngModel"
+  />
   <button>Submit</button>
 </form>
 ```
@@ -143,25 +148,25 @@ Trong đó các `selector` có thể là:
 ```ts
 export class NameFormComponent implements OnInit {
   model = {
-    name: 'Tiep Phan'
+    name: 'Tiep Phan',
   };
 
   @ViewChild('nameForm', {
     read: ElementRef,
-    static: true
-  }) form: ElementRef<HTMLFormElement>;
-  constructor() { }
+    static: true,
+  })
+  form: ElementRef<HTMLFormElement>;
+  constructor() {}
 
   ngOnInit() {
-    console.log(this.form)
+    console.log(this.form);
   }
-
 }
 ```
 
 Ở trong trường hợp trên, nếu chúng ta không khai báo `read` thì sẽ lấy về NgForm instance, nhưng do khai báo là một ElementRef nên nó sẽ query khác với variable ở ngoài template.
 
-`opts.static` nếu `selector` không nằm trong if/else hay một structure directive nào thì chúng ta có thể gọi nó là `static: true`, tức là nó không thay đổi trong suốt thời gian sống của component. Lúc này Angular (v9 trở lên) sẽ chạy phần `resolve query result` (tiến trình) trước khi chạy *Change Detection* nên chúng ta có thể truy cập nó ở trong `ngOnInit` như ở trên, nếu `static: false` (giá trị mặc định) thì tiến trình trên sẽ chạy sau khi chạy *Change Detection* nên bạn không thể dùng nó ở `ngOnInit` mà phải chạy ở `ngAfterViewInit`.
+`opts.static` nếu `selector` không nằm trong if/else hay một structure directive nào thì chúng ta có thể gọi nó là `static: true`, tức là nó không thay đổi trong suốt thời gian sống của component. Lúc này Angular (v9 trở lên) sẽ chạy phần `resolve query result` (tiến trình) trước khi chạy _Change Detection_ nên chúng ta có thể truy cập nó ở trong `ngOnInit` như ở trên, nếu `static: false` (giá trị mặc định) thì tiến trình trên sẽ chạy sau khi chạy _Change Detection_ nên bạn không thể dùng nó ở `ngOnInit` mà phải chạy ở `ngAfterViewInit`.
 
 ## Parent class with ViewChildren
 
@@ -171,9 +176,10 @@ ViewChildren sẽ trả về một QueryList trước khi `ngAfterViewInit` đư
 
 ```html
 <app-toggle></app-toggle>
-<br>
+<br />
 <app-toggle></app-toggle>
 ```
+
 ```ts
 @ViewChildren(ToggleComponent) toggleList: QueryList<ToggleComponent>;
 
@@ -197,7 +203,7 @@ Cũng trong Day 10 chúng ta học thêm một component lifecycle khác là `ng
 
 ## Youtube Video
 
-https://youtu.be/Wd_644YBQUM
+[![Day 10](https://img.youtube.com/vi/Wd_644YBQUM/0.jpg)](https://youtu.be/Wd_644YBQUM)
 
 ## Code sample
 

@@ -5,13 +5,9 @@
 Trong [bài viết thứ tư][day4] của series, anh @tiepphan đã nói có nói đến một trường hợp dùng `ng-template`. Đó là khi dùng `*ngIf` với điều kiện else, chúng ta có thể truyền vào một template reference đc định nghĩa thông qua cú pháp `#templateReferenceName` để render lên UI.
 
 ```html
-<div *ngIf="user.age >= 13; else noPG13">
-  Bạn có thể xem nội dung PG-13
-</div>
+<div *ngIf="user.age >= 13; else noPG13">Bạn có thể xem nội dung PG-13</div>
 <ng-template #noPG13>
-  <div>
-    Bạn không thể xem nội dung PG-13
-  </div>
+  <div>Bạn không thể xem nội dung PG-13</div>
 </ng-template>
 ```
 
@@ -19,7 +15,6 @@ Thông qua ví dụ trên, chắc các bạn cũng đã nhận ra được đôi
 
 - Khi code HTML của bạn dc bao quanh bởi `ng-template`, phần HTML đó sẽ <u>không dc render lên UI ngay lập tức</u>. Mà chỉ dc render trong một số trường hợp, ví dụ như khi `*ngIf else tmpl` hoặc thông qua `ngTemplateOutlet` mà chúng ta sẽ đề cập đến ở phần sau của bài viết.
 - Tên gọi của ng-template cũng phần nào nói lên đc ý nghĩa của nó. Template hiểu nôm na là mẫu, dạng. Dịch ra tiếng Việt hơi khó, tuy nhiên khi kết hợp nhiều template với nhau thì chúng ta có thể có một UI đầy đủ.
-
 
 Từ những điểm trên, có thể định nghĩa `ng-template` là một thành phần của Angular để render HTML code. Và phần HTML code nằm trong `ng-template` không bao giờ được hiển thị trực tiếp ở nơi nó được định nghĩa
 
@@ -31,21 +26,24 @@ Một số trường hợp hay cần dùng đến ng-template theo như kinh ngh
 
 #### 2. Khi một số UI element trong một component bị lặp lại trong chính component đó, nhưng phần code đó quá nhỏ để tách ra làm một component riêng.
 
-Ví dụ như bạn có một component có chứa biến một biển tên là `counter`. Phần UI của counter này sẽ đc lặp lại ở trong component của bạn vài lần với UI giống nhau. 
+Ví dụ như bạn có một component có chứa biến một biển tên là `counter`. Phần UI của counter này sẽ đc lặp lại ở trong component của bạn vài lần với UI giống nhau.
 
 Đây là cách bình thường chúng ta hay làm. Copy and paste code.
 
 ```html
 <div class="card">
-    <div class="card-header">
-        You have selected <span class="badge badge-primary">{{ counter }}</span> items.
-    </div>
-    <div class="card-body">
-        There are <span class="badge badge-primary">{{ counter }}</span> items was selected.
-    </div>
-    <div class="card-footer">
-        You have selected <span class="badge badge-primary">{{ counter }}</span> items.
-    </div>
+  <div class="card-header">
+    You have selected
+    <span class="badge badge-primary">{{ counter }}</span> items.
+  </div>
+  <div class="card-body">
+    There are <span class="badge badge-primary">{{ counter }}</span> items was
+    selected.
+  </div>
+  <div class="card-footer">
+    You have selected
+    <span class="badge badge-primary">{{ counter }}</span> items.
+  </div>
 </div>
 ```
 
@@ -53,25 +51,28 @@ Và đây là cách chúng ta có thể viết lại bằng cách dùng `ng-temp
 
 ```html
 <div class="card">
-    <div class="card-header">
-        You have selected <ng-container [ngTemplateOutlet]="counterTmpl"></ng-container>.
-    </div>
-    <div class="card-body">
-        There are <ng-container [ngTemplateOutlet]="counterTmpl"></ng-container> was selected.
-    </div>
-    <div class="card-footer">
-        You have selected <ng-container [ngTemplateOutlet]="counterTmpl"></ng-container>.
-    </div>
+  <div class="card-header">
+    You have selected
+    <ng-container [ngTemplateOutlet]="counterTmpl"></ng-container>.
+  </div>
+  <div class="card-body">
+    There are <ng-container [ngTemplateOutlet]="counterTmpl"></ng-container> was
+    selected.
+  </div>
+  <div class="card-footer">
+    You have selected
+    <ng-container [ngTemplateOutlet]="counterTmpl"></ng-container>.
+  </div>
 </div>
 
 <ng-template #counterTmpl>
-    <span class="badge badge-primary">{{ counter }}</span> items
+  <span class="badge badge-primary">{{ counter }}</span> items
 </ng-template>
 ```
 
 Khi viết lại code dùng `ng-template`, ưu điểm dễ nhận thấy đó là:
 
-- Nếu cần sửa lại UI cho counter. Thay vì phải sửa ở 3 nơi, bây giờ ta chỉ cần sửa ở một vị trí đó là `ng-template` của counter thôi. Tránh những lỗi typo hay find and replace bị thiếu. 
+- Nếu cần sửa lại UI cho counter. Thay vì phải sửa ở 3 nơi, bây giờ ta chỉ cần sửa ở một vị trí đó là `ng-template` của counter thôi. Tránh những lỗi typo hay find and replace bị thiếu.
 - Vì phần template này chỉ gói gọn trong đúng một dòng code nên dùng ng-template tiện hơn hẳn là phải tách phần counter ra một component mới.
 
 #### 3. Dùng ng-template để pass vào component khác. Hỗ trợ override template có sẵn trong component.
@@ -83,16 +84,16 @@ Ví dụ mình có component `tab-container`, mặc định sẽ render tab vớ
   selector: 'tab-container',
   template: `
     <ng-template #defaultTabButtonsTmpl>
-      <div class="default-tab-buttons">
-        ...
-      </div>
+      <div class="default-tab-buttons">...</div>
     </ng-template>
-    <ng-container *ngTemplateOutlet="headerTemplate || defaultTabButtons"></ng-container>
+    <ng-container
+      *ngTemplateOutlet="headerTemplate || defaultTabButtons"
+    ></ng-container>
     ... rest of tab container component ...
-  `
+  `,
 })
 export class TabContainerComponent {
-    @Input() headerTemplate: TemplateRef<any>; // Custom template provided by parent
+  @Input() headerTemplate: TemplateRef<any>; // Custom template provided by parent
 }
 ```
 
@@ -101,7 +102,7 @@ Tuy nhiên, khi dùng `tab-container` bạn hoàn toàn có thể pass vào temp
 ```ts
 @Component({
   selector: 'app-root',
-  template: `      
+  template: `
     <ng-template #customTabButtons>
       <div class="custom-class">
         <button class="tab-button" (click)="login()">
@@ -112,7 +113,7 @@ Tuy nhiên, khi dùng `tab-container` bạn hoàn toàn có thể pass vào temp
         </button>
       </div>
     </ng-template>
-    <tab-container [headerTemplate]="customTabButtons"></tab-container>      
+    <tab-container [headerTemplate]="customTabButtons"></tab-container>
   `
 })
 ```
@@ -121,7 +122,7 @@ Tuy nhiên, khi dùng `tab-container` bạn hoàn toàn có thể pass vào temp
 
 Qua ví dụ trên thì có thể thấy ngay `ngTemplateOutlet` là cách dùng để render một template được tạo ra bởi `ng-template` lên UI. Cú pháp như sau
 
-- *ngTemplateOutlet="templateRef"(chú ý dấu sao `*` nhé, không có là không chạy đâu đấy)
+- _ngTemplateOutlet="templateRef"(chú ý dấu sao `_` nhé, không có là không chạy đâu đấy)
 - [ngTemplateOutlet]="templateRef"
 
 Tuy nhiên, như component có `@Input()` để truyền data từ bên ngoài vào, thì ng-template cũng có cú pháp tương tự để truyền data. Đó chính là `ngTemplateOutletContext`
@@ -129,36 +130,39 @@ Tuy nhiên, như component có `@Input()` để truyền data từ bên ngoài v
 Ví dụ như mình muốn reuse lại một button với những tên khác nhau, ngoài ra, một button mình muốn có icon, và một button mình ko muốn có icon. Thì bạn hoàn toàn cũng có thể dùng kết hợp giữa `ng-template`, `ngTemplateOutlet` và `ngTemplateOutletContext` để viết code.
 
 ```html
-<button class="btn btn-primary">
-    Click here
-</button>
+<button class="btn btn-primary">Click here</button>
 
 <button class="btn btn-danger">
-    <i class="fa fa-remove"></i>
-    Delete
+  <i class="fa fa-remove"></i>
+  Delete
 </button>
 ```
 
 Hoàn toàn có thể được viết lại thành.
 
 ```html
-<ng-template #buttonTmpl
-             let-label="label"
-             let-className="className"
-             let-icon="icon">
-    <button [ngClass]="['btn', className ? className : '']">
-        <i *ngIf="icon"
-           class="fa {{icon}}"></i>
-        {{ label }}
-    </button>
+<ng-template
+  #buttonTmpl
+  let-label="label"
+  let-className="className"
+  let-icon="icon"
+>
+  <button [ngClass]="['btn', className ? className : '']">
+    <i *ngIf="icon" class="fa {{icon}}"></i>
+    {{ label }}
+  </button>
 </ng-template>
 
-<ng-container [ngTemplateOutlet]="buttonTmpl"
-              [ngTemplateOutletContext]="{ label: 'Click here', className: 'btn-primary', icon: null }">
+<ng-container
+  [ngTemplateOutlet]="buttonTmpl"
+  [ngTemplateOutletContext]="{ label: 'Click here', className: 'btn-primary', icon: null }"
+>
 </ng-container>
 
-<ng-container [ngTemplateOutlet]="buttonTmpl"
-              [ngTemplateOutletContext]="{ label: 'Remove', className: 'btn-danger', icon: 'fa-remove' }">
+<ng-container
+  [ngTemplateOutlet]="buttonTmpl"
+  [ngTemplateOutletContext]="{ label: 'Remove', className: 'btn-danger', icon: 'fa-remove' }"
+>
 </ng-container>
 ```
 
@@ -167,24 +171,22 @@ Tuy nhiều code hơn, nhưng giờ chúng ta có thể reuse lại button này 
 Vài điểm chú ý:
 
 - Khi define ra `ng-template`, bạn có thể config cho template đó nhận vào value bằng cách dùng cú pháp `let-name="name"`.
-Trong đó name ở bên trái dấu bằng là variable bạn có thể access được ở trong ng-template, còn name ở bên phải dấu bằng là tên của object property khi pass qua `ngTemplateOutletContext`. Hai cái name này hoàn toàn có thể khác nhau, không có vấn đề gì cả.
+  Trong đó name ở bên trái dấu bằng là variable bạn có thể access được ở trong ng-template, còn name ở bên phải dấu bằng là tên của object property khi pass qua `ngTemplateOutletContext`. Hai cái name này hoàn toàn có thể khác nhau, không có vấn đề gì cả.
 
 - Nếu bạn không đặt tên cho variable ở vế phải của dấu bằng, chỉ viết là `let-name`, thì khi truyền data qua context, property của object truyền vào sẽ là `$implicit`. Ví dụ cụ thể:
 
 ```html
-<ng-template #buttonTmpl
-             let-label
-             let-className="className"
-             let-icon="icon">
-    <button [ngClass]="['btn', className ? className : '']">
-        <i *ngIf="icon"
-           class="fa {{icon}}"></i>
-        {{ label }}
-    </button>
+<ng-template #buttonTmpl let-label let-className="className" let-icon="icon">
+  <button [ngClass]="['btn', className ? className : '']">
+    <i *ngIf="icon" class="fa {{icon}}"></i>
+    {{ label }}
+  </button>
 </ng-template>
 
-<ng-container [ngTemplateOutlet]="buttonTmpl"
-              [ngTemplateOutletContext]="{ $implicit: 'Remove', className: 'btn-danger', icon: 'fa-remove' }">
+<ng-container
+  [ngTemplateOutlet]="buttonTmpl"
+  [ngTemplateOutletContext]="{ $implicit: 'Remove', className: 'btn-danger', icon: 'fa-remove' }"
+>
 </ng-container>
 ```
 
@@ -197,17 +199,15 @@ ng-container là một custom html tag để khi render trên UI sẽ không có
 ```html
 <div
   [ngTemplateOutlet]="buttonTmpl"
-  [ngTemplateOutletContext]="{ label: 'Click here', class: 'btn-primary', icon: null }">
-</div>
+  [ngTemplateOutletContext]="{ label: 'Click here', class: 'btn-primary', icon: null }"
+></div>
 ```
 
 Tuy nhiên khi render ra UI, sẽ bị thừa một thẻ div bao ngoài.
 
 ```html
 <div>
-  <button class="btn btn-primary">
-      Click here
-  </button>
+  <button class="btn btn-primary">Click here</button>
 </div>
 ```
 
@@ -221,14 +221,14 @@ Một số bài viết khác bạn có thể đọc thêm.
 
 - https://alligator.io/angular/reusable-components-ngtemplateoutlet/
 - https://angular.io/guide/structural-directives#the-ng-template
-- [Angular render recursive view using *ngFor and ng-template](https://trungk18.com/experience/angular-recursive-view-render/)
+- [Angular render recursive view using \*ngFor and ng-template](https://trungk18.com/experience/angular-recursive-view-render/)
 - https://blog.angular-university.io/angular-ng-template-ng-container-ngtemplateoutlet/
 
 Mục tiêu của Day 15 là **Giới thiệu Dependency Injection trong Angular**.
 
 ## Youtube Video
 
-https://youtu.be/3JM8pDR-MaU
+[![Day 14](https://img.youtube.com/vi/3JM8pDR-MaU/0.jpg)](https://youtu.be/3JM8pDR-MaU)
 
 ## Author
 

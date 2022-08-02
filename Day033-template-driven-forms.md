@@ -420,6 +420,9 @@ Mục tiêu của ngày 34 sẽ là **Angular Forms: Template-driven Forms Part 
 - https://github.com/tieppt/100-doc-angular/tree/day33
 - https://stackblitz.com/edit/100-days-of-angular-day-33?file=src%2Fapp%2Fsign-in%2Fsign-in.component.html
 
+## Youtube Video
+
+[![Day 35](https://img.youtube.com/vi/0kbEVtO79Xw/0.jpg)](https://youtu.be/0kbEVtO79Xw)
 ## References
 
 Các bạn có thể đọc thêm ở các bài viết sau

@@ -220,6 +220,10 @@ Mục tiêu của ngày 35 sẽ là **Angular Forms: Reactive Forms**
 - https://github.com/tieppt/100-doc-angular/tree/day34
 - https://stackblitz.com/edit/100-days-of-angular-day-34?file=src%2Fapp%2Fsign-in%2Fsign-in.component.html
 
+## Youtube Video
+
+[![Day 34](https://img.youtube.com/vi/45VnmzfV_MI/0.jpg)](https://youtu.be/45VnmzfV_MI)
+
 ## References
 
 Các bạn có thể đọc thêm ở các bài viết sau:

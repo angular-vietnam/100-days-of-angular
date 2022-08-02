@@ -78,7 +78,7 @@ Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các b�
 | [Day 32: Angular Router - Guards and Resolvers Part 3][day32]                            |                  | [Youtube][day32-video]                                                 |
 | [Day 33: Template-driven Forms Trong Angular][day33]                                     |                  | [Youtube][day33-video]                                                 |
 | [Day 34: Template-driven Forms Trong Angular Part 2][day34]                              |                  | [Youtube][day34-video]                                                 |
-| [Day 35: Reactive Forms Trong Angular][day35]                                            |                  |                                                                        |
+| [Day 35: Reactive Forms Trong Angular][day35]                                            |                  | [Youtube][day35-video]                                                                       |
 | [Day 36: Reactive Forms Trong Angular Part 2][day36]                                     |                  |                                                                        |
 | [Day 37: Angular Form Async Validator][day37]                                            |                  |                                                                        |
 | [Day 38: Dynamic Component][day38]                                                       |                  |                                                                        |
@@ -194,6 +194,7 @@ https://www.youtube.com/playlist?list=PLVmX3uPQtp3vXOXUOl8gDIA_43_pmIdFN
 [day32-video]: https://youtu.be/YAAv4f85s7A
 [day33-video]: https://youtu.be/0kbEVtO79Xw
 [day34-video]: https://youtu.be/45VnmzfV_MI
+[day35-video]: https://youtu.be/oTwukyGa_qY
 [tieppt]: https://github.com/tieppt
 [nartc]: https://github.com/nartc
 [trungk18]: https://github.com/trungk18

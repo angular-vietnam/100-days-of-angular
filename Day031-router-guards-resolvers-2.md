@@ -266,6 +266,10 @@ Mục tiêu của ngày 32 sẽ là **Angular Router - Guards and Resolvers Part
 - https://stackblitz.com/edit/angular-100-days-of-code-day-31-02?file=src%2Fapp%2Farticle%2Farticle-edit%2Farticle-edit.component.ts
 - https://stackblitz.com/edit/angular-100-days-of-code-day-31-03?file=src%2Fapp%2Fcan-load-admin.guard.ts
 
+## Youtube Video
+
+[![Day 31](https://img.youtube.com/vi/VsUjev5-pTU/0.jpg)](https://youtu.be/VsUjev5-pTU)
+
 ## References
 
 Các bạn có thể đọc thêm ở các bài viết sau

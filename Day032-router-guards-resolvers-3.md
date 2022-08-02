@@ -19,8 +19,8 @@ export class ArticleDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.article$ = this._route.paramMap.pipe(
-      map(params => params.get('slug')),
-      switchMap(slug => this._api.getArticleBySlug(slug))
+      map((params) => params.get('slug')),
+      switchMap((slug) => this._api.getArticleBySlug(slug))
     );
   }
 }
@@ -40,24 +40,28 @@ Với những trường hợp đơn giản như trên, chúng ta hoàn toàn có
 
 ```ts
 interface Resolve<T> {
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<T> | Promise<T> | T
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<T> | Promise<T> | T;
 }
 ```
 
 Resolver chỉ là một service, có implement interface `Resolve` ở trên. Các Resolvers sẽ được call hàm `resolve` và Router sẽ đợi đến khi nào data được `resolved` xong xuôi thì mới activate components.
 
-
 Ví dụ, chúng ta có thể tạo một resolver để lấy về thông tin một Article như sau:
 
 ```ts
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ArticleResolver implements Resolve<Article> {
+  constructor(private articleService: ArticleService) {}
 
-  constructor(private articleService: ArticleService) { }
-
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Article> | Promise<Article> | Article {
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<Article> | Promise<Article> | Article {
     const slug = route.paramMap.get('slug');
     return this.articleService.getArticleBySlug(slug);
   }
@@ -80,10 +84,10 @@ const routes: Routes = [
         path: ':slug',
         component: ArticleDetailComponent,
         resolve: {
-          article: ArticleResolver,       // <== key: value (service or Dependency injection token)
-        }
+          article: ArticleResolver, // <== key: value (service or Dependency injection token)
+        },
       },
-    ]
+    ],
   },
 ];
 ```
@@ -100,9 +104,7 @@ export class ArticleDetailComponent implements OnInit {
     //   map(params => params.get('slug')),
     //   switchMap(slug => this._api.getArticleBySlug(slug))
     // );
-    this.article$ = this._route.data.pipe(
-      map(data => data.article)
-    );
+    this.article$ = this._route.data.pipe(map((data) => data.article));
   }
 }
 ```
@@ -112,7 +114,6 @@ Bây giờ chúng ta chạy thử sẽ thấy, thay vì hiển thị loading ở
 ![Routing with resolver](assets/day32-router-02.gif)
 
 Full demo: https://stackblitz.com/edit/angular-100-days-of-code-day-32-02?file=src%2Fapp%2Farticle-resolver.service.ts
-
 
 ## Lưu ý
 
@@ -133,6 +134,7 @@ getArticleBySlug(slug: string): Observable<Article> {
   );
 }
 ```
+
 Nếu bạn sử dụng trong component thông thường, chúng sẽ hiển thị rất bình thường, nhưng trong Resolvers thì chỉ khi nào Observable trả về bởi `getArticleBySlug` complete, lúc đó bạn mới navigate vào page được.
 
 Full demo: https://stackblitz.com/edit/angular-100-days-of-code-day-32-03?file=src%2Fapp%2Farticle%2Farticle.service.ts
@@ -142,6 +144,7 @@ Do đó, đối với những stream trả về nhiều value, thì bạn không
 Quan điểm của mình, thì chúng ta chỉ nên dùng Resolver để lấy về một phần dữ liệu, sau đó component sẽ thực thi tiếp các connection khác.
 
 ## Summary
+
 Day 32 này chúng ta đã biết thêm về Route Resolvers, chúng ta cũng đã tìm hiểu một số trade-off của việc dùng Resolvers, hi vọng các bạn sẽ có thể thấy nhiều điều hữu ích khác của nó khi dùng trong dự án.
 
 Mục tiêu của ngày 33 sẽ là **Angular Forms: Template-driven Forms**
@@ -151,6 +154,10 @@ Mục tiêu của ngày 33 sẽ là **Angular Forms: Template-driven Forms**
 - https://stackblitz.com/edit/angular-100-days-of-code-day-32-01
 - https://stackblitz.com/edit/angular-100-days-of-code-day-32-02?file=src%2Fapp%2Farticle-resolver.service.ts
 - https://stackblitz.com/edit/angular-100-days-of-code-day-32-03?file=src%2Fapp%2Farticle%2Farticle.service.ts
+
+## Youtube Video
+
+[![Day 32](https://img.youtube.com/vi/YAAv4f85s7A/0.jpg)](https://youtu.be/YAAv4f85s7A)
 
 ## References
 

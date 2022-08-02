@@ -564,6 +564,10 @@ Mục tiêu ngày 24 sẽ là **RxJS Error handling/conditional Operators**
 - [RxJS Overview](https://rxjs.dev/guide/overview)
 - [LearnRxJS](https://www.learnrxjs.io/)
 
+## Youtube Video
+
+[![Day 23](https://img.youtube.com/vi/qChj6nScvl0/0.jpg)](https://youtu.be/qChj6nScvl0)
+
 ## Author
 
 [Chau Tran](https://github.com/nartc)

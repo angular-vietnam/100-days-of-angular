@@ -121,7 +121,7 @@ Ví dụ về cách provide `CartService`:
 
 ```ts
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class CartService {
   // properties and methods
@@ -130,9 +130,9 @@ export class CartService {
 
 ```ts
 @Component({
-  selector: "app-product",
-  templateUrl: "./product.component.html",
-  styleUrls: ["./product.component.css"],
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
   constructor(private cartService: CartService) {}
@@ -182,7 +182,7 @@ Hoặc có thể override vào `@Injectable` của service
 
 ```ts
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
   useClass: CartExtService,
 })
 export class CartService {
@@ -203,7 +203,7 @@ Như vậy, trong Day 15 chúng ta đã làm quen về khái niệm cũng như c
 
 ## Youtube Video
 
-https://youtu.be/_JnUGhVhq_o
+[![Day 15](https://img.youtube.com/vi/_JnUGhVhq_o/0.jpg)](https://youtu.be/_JnUGhVhq_o)
 
 ## Code sample
 

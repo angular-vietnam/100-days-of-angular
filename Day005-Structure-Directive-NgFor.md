@@ -9,19 +9,19 @@ Giả sử chúng ta có một danh sách các tác giả của các cuốn sác
 authors = [
   {
     id: 1,
-    firstName: "Flora",
-    lastName: "Twell",
-    email: "ftwell0@phoca.cz",
-    gender: "Female",
-    ipAddress: "99.180.237.33",
+    firstName: 'Flora',
+    lastName: 'Twell',
+    email: 'ftwell0@phoca.cz',
+    gender: 'Female',
+    ipAddress: '99.180.237.33',
   },
   {
     id: 2,
-    firstName: "Priscella",
-    lastName: "Signe",
-    email: "psigne1@berkeley.edu",
-    gender: "Female",
-    ipAddress: "183.243.228.65",
+    firstName: 'Priscella',
+    lastName: 'Signe',
+    email: 'psigne1@berkeley.edu',
+    gender: 'Female',
+    ipAddress: '183.243.228.65',
   },
   // more data
 ];
@@ -101,9 +101,7 @@ Ví dụ:
 
 ```html
 <div *ngFor="”let" item of list”>
-  <div *ngIf="”somethingGoood”">
-    More code
-  </div>
+  <div *ngIf="”somethingGoood”">More code</div>
 </div>
 ```
 
@@ -111,14 +109,10 @@ Giả sử nếu bạn không được phép hoặc không muốn sinh ra một 
 
 ```html
 <div *ngFor="”let" item of list”>
-  <ng-container *ngIf="”somethingGoood”">
-    More code
-  </ng-container>
+  <ng-container *ngIf="”somethingGoood”"> More code </ng-container>
 </div>
 <div *ngFor="”let" item of list”>
-  <ng-template [ngIf]="”somethingGoood”">
-    More code
-  </ng-template>
+  <ng-template [ngIf]="”somethingGoood”"> More code </ng-template>
 </div>
 ```
 
@@ -137,7 +131,7 @@ Mục tiêu Day 6 sẽ là về `Attribute directive` để áp dụng style, cl
 
 ## Youtube Video
 
-https://youtu.be/q7CQPEPSkD0
+[![Day 05](https://img.youtube.com/vi/q7CQPEPSkD0/0.jpg)](https://youtu.be/q7CQPEPSkD0)
 
 ## Author
 

@@ -19,12 +19,10 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-  ],
-  declarations: [ArticleListComponent, ArticleDetailComponent]
+  imports: [CommonModule],
+  declarations: [ArticleListComponent, ArticleDetailComponent],
 })
-export class ArticleModule { }
+export class ArticleModule {}
 ```
 
 Tiếp theo, chúng ta sẽ config RouterModule giống như đã từng làm với AppRoutingModule, nhưng thay vì gọi `forRoot` thì chúng ta sẽ gọi `forChild` (nguyên nhân tại sao thì các bạn quay trở lại Day 27).
@@ -39,22 +37,19 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
 const routes: Routes = [
   {
     path: 'article',
-    component: ArticleListComponent
+    component: ArticleListComponent,
   },
   {
     path: 'article/:slug',
-    component: ArticleDetailComponent
-  }
+    component: ArticleDetailComponent,
+  },
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-  ],
-  declarations: [ArticleListComponent, ArticleDetailComponent]
+  imports: [CommonModule, RouterModule.forChild(routes)],
+  declarations: [ArticleListComponent, ArticleDetailComponent],
 })
-export class ArticleModule { }
+export class ArticleModule {}
 ```
 
 Như thế là chúng ta đã tạo xong Feature Module kèm theo Router, bây giờ chúng ta cần import nó vào AppModule để có thể sử dụng.
@@ -67,12 +62,12 @@ import { ArticleModule } from './article/article.module';
     BrowserModule,
     FormsModule,
     ArticleModule, // <== lưu ý thứ tự import này
-    AppRoutingModule
+    AppRoutingModule,
   ],
-  declarations: [ AppComponent ],
-  bootstrap:    [ AppComponent ]
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 Bây giờ chúng ta có thể vào app với path `article` để xem Article List.
@@ -80,6 +75,7 @@ Bây giờ chúng ta có thể vào app với path `article` để xem Article L
 ![App Feature Route](assets/day28-router-1.gif)
 
 ## Route config redirect
+
 Để redirect người dùng khi vào một route nào đó đến một route khác, bạn có thể config như sau:
 
 ```ts
@@ -87,8 +83,8 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'article',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 ```
 
@@ -104,6 +100,7 @@ Với config `pathMatch`, chúng ta sẽ có thể có 2 strategy là `full` và
 Code sample cho phần này có đầy đủ tại đây: https://stackblitz.com/edit/angular-100-days-of-code-day-28-router-feature-1?file=src%2Fapp%2Farticle%2Farticle.module.ts
 
 ## Routing Module
+
 Có một kỹ thuật trong Angular Router đó là Routing Module, được dùng để tách phần routing ra thành một module riêng, và được sử dụng kèm với một NgModule thông thường. Trường hợp của AppRoutingModule là một ví dụ.
 
 Bạn hoàn toàn có thể áp dụng kỹ thuật này với các Feature Module như sau.
@@ -112,23 +109,23 @@ Bạn hoàn toàn có thể áp dụng kỹ thuật này với các Feature Modu
 const routes: Routes = [
   {
     path: 'article',
-    component: ArticleListComponent
+    component: ArticleListComponent,
   },
   {
     path: 'article/:slug',
-    component: ArticleDetailComponent
-  }
+    component: ArticleDetailComponent,
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes) // <== config routing
+    RouterModule.forChild(routes), // <== config routing
   ],
   declarations: [],
-  exports: [RouterModule] // <== exports this NgModule
+  exports: [RouterModule], // <== exports this NgModule
 })
-export class ArticleRoutingModule { }
+export class ArticleRoutingModule {}
 ```
 
 Ở đây chúng ta sẽ config routing với `RouterModule.forChild(routes)`, sau đó chúng ta exports `RouterModule` ra ngoài để `ArticleModule` có thể sử dụng những directives/components mà `RouterModule` cung cấp mà không cần imports `RouterModule`.
@@ -137,13 +134,10 @@ export class ArticleRoutingModule { }
 import { ArticleRoutingModule } from './article-routing.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ArticleRoutingModule
-  ],
-  declarations: [ArticleListComponent, ArticleDetailComponent]
+  imports: [CommonModule, ArticleRoutingModule],
+  declarations: [ArticleListComponent, ArticleDetailComponent],
 })
-export class ArticleModule { }
+export class ArticleModule {}
 ```
 
 Full code: https://stackblitz.com/edit/angular-100-days-of-code-day-28-router-feature-2?file=src%2Fapp%2Farticle%2Farticle-routing.module.ts
@@ -153,16 +147,17 @@ Full code: https://stackblitz.com/edit/angular-100-days-of-code-day-28-router-fe
 Nhìn vào config phía dưới đây các bạn sẽ thấy rằng có một phần prefix khá giống nhau. Vậy chúng ta có cấu trúc nào cho dạng parent-child hay không?
 
 **Cách 1**
+
 ```ts
 const routes: Routes = [
   {
     path: 'article',
-    component: ArticleListComponent
+    component: ArticleListComponent,
   },
   {
     path: 'article/:slug',
-    component: ArticleDetailComponent
-  }
+    component: ArticleDetailComponent,
+  },
 ];
 ```
 
@@ -179,9 +174,9 @@ const routes: Routes = [
       },
       {
         path: ':slug',
-        component: ArticleDetailComponent
-      }
-    ]
+        component: ArticleDetailComponent,
+      },
+    ],
   },
 ];
 ```
@@ -202,22 +197,23 @@ const routes: Routes = [
       },
       {
         path: ':slug',
-        component: ArticleDetailComponent
-      }
-    ]
+        component: ArticleDetailComponent,
+      },
+    ],
   },
 ];
 ```
 
 Full code: https://stackblitz.com/edit/angular-100-days-of-code-day-28-router-feature-3?file=src%2Fapp%2Farticle%2Farticle-routing.module.ts
 
-
 ## ActivatedRoute Service.
 
 > Provides access to information about a route associated with a component that is loaded in an outlet. Use to traverse the RouterState tree and extract information from nodes. [ActivatedRoute Service](https://angular.io/api/router/ActivatedRoute)
 
 Service này cung cấp một số public API cho phép chúng ta biết được thông tin về route đang activated và component đã được loaded (activated).
+
 ### Retrieve params
+
 Ví dụ trong Day 27, chúng ta muốn lấy thông tin của `params`, lúc đó chúng ta đã inject service này vào `ArticleDetailComponent` như sau:
 
 ```ts
@@ -241,8 +237,8 @@ export class ArticleDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.article$ = this._route.paramMap.pipe(
-      map(params => params.get('slug')),
-      switchMap(slug => this._api.getArticleBySlug(slug))
+      map((params) => params.get('slug')),
+      switchMap((slug) => this._api.getArticleBySlug(slug))
     );
   }
 }
@@ -277,13 +273,15 @@ Full code:
 - https://stackblitz.com/edit/angular-100-days-of-code-day-28-router-feature-6?file=src%2Fapp%2Farticle%2Farticle-detail%2Farticle-detail.component.ts
 
 ### Retrieve config: query params, route data, etc
+
 Ngoài việc cung cấp API cho `params`, ActivatedRoute Service cũng cho phép bạn lấy/observe query params thông qua `queryParamMap`.
 
 Ví dụ bạn vào một URL là `tiepphan.com/page/2?sort=createdDate`, thì bạn có thể lấy về `sort` query qua `snapshot.queryParamMap.get('sort')` hoặc
+
 ```ts
-queryParamMap.subscribe(query => {
+queryParamMap.subscribe((query) => {
   console.log(query.get('sort'));
-})
+});
 ```
 
 Tương tự chúng ta có thể lấy về `route data`, các bạn có thể tìm hiểu kỹ hơn ở đây: https://angular.io/api/router/ActivatedRoute
@@ -314,17 +312,22 @@ class SomeComponent {
 Ngoài ra bạn có thể observe Router Event để làm gì đó:
 
 ```ts
-this.router.events.pipe(
-  filter(e => e instanceof NavigationEnd)
-).subscribe(e => {
-  console.log(e);
-});
+this.router.events
+  .pipe(filter((e) => e instanceof NavigationEnd))
+  .subscribe((e) => {
+    console.log(e);
+  });
 ```
 
 ## Summary
+
 Day 28 này cũng đã có nhiều concept về Angular Router, đây đều là những concept không thể thiếu khi bạn phát triển một ứng dụng thực tế, vì thế các bạn nên đọc thêm nhiều về code của nó trên github, cũng như documentation từ Angular.io
 
 Mục tiêu của ngày 29 sẽ là **Angular Router Lazy Loading**
+
+## Youtube Video
+
+[![Day 28](https://img.youtube.com/vi/D0Tv5BaNTa8/0.jpg)](https://youtu.be/D0Tv5BaNTa8)
 
 ## References
 

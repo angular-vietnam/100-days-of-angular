@@ -9,23 +9,16 @@ Một Pipeable Operator là một function nó nhận đầu vào là một Obse
 Cú pháp:
 
 ```ts
-observableInstance.pipe(
-  operator1(),
-  operator2(),
-)
+observableInstance.pipe(operator1(), operator2());
 ```
 
-Với cú pháp trên thì `observableInstance` có *pipe* bao nhiêu operator đi nữa thì nó vẫn không đổi, và cuối cùng chúng ta sẽ nhận lại một Observable nên để có thể sử dụng thì chúng ta cần gán lại, hoặc thực hiện subscribe ngay sau khi *pipe*:
+Với cú pháp trên thì `observableInstance` có _pipe_ bao nhiêu operator đi nữa thì nó vẫn không đổi, và cuối cùng chúng ta sẽ nhận lại một Observable nên để có thể sử dụng thì chúng ta cần gán lại, hoặc thực hiện subscribe ngay sau khi _pipe_:
 
 ```ts
-const returnObservable = observableInstance.pipe(
-  operator1(),
-  operator2(),
-)
+const returnObservable = observableInstance.pipe(operator1(), operator2());
 ```
 
 Nếu bạn dùng với RxJS version < 5.5 thì có thể các bạn sẽ thấy cú pháp sử dụng khác là prototype method chain, nhưng nếu bạn dùng từ version 5.5 trở lên thì nên dùng pipe operators, dựa theo một số giải thích ở đây: [pipeable operators](https://rxjs.dev/guide/v6/pipeable-operators)
-
 
 Pipeable Operators có thể chia thành nhiều category khác nhau, trong ngày hôm nay chúng ta sẽ tìm hiểu về **Transformation Operators**.
 
@@ -35,18 +28,30 @@ Chắc hẳn các bạn đã quá quen với làm việc cùng Array trong JS, c
 
 ```ts
 const users = [
-  {id: 'ddfe3653-1569-4f2f-b57f-bf9bae542662', username: 'tiepphan', firstname: 'tiep', lastname: 'phan'},
-  {id: '34784716-019b-4868-86cd-02287e49c2d3', username: 'nartc', firstname: 'chau', lastname: 'tran'},
+  {
+    id: 'ddfe3653-1569-4f2f-b57f-bf9bae542662',
+    username: 'tiepphan',
+    firstname: 'tiep',
+    lastname: 'phan',
+  },
+  {
+    id: '34784716-019b-4868-86cd-02287e49c2d3',
+    username: 'nartc',
+    firstname: 'chau',
+    lastname: 'tran',
+  },
 ];
 
-const usersVm = users.map(user => {
+const usersVm = users.map((user) => {
   return {
     ...user,
-    fullname: `${user.firstname} ${user.lastname}`
-  }
+    fullname: `${user.firstname} ${user.lastname}`,
+  };
 });
 ```
+
 Kết quả có được sẽ có dạng như sau:
+
 ```ts
 usersVm = [
   {
@@ -54,25 +59,24 @@ usersVm = [
     username: 'tiepphan',
     firstname: 'tiep',
     lastname: 'phan',
-    fullname: 'tiep phan'
+    fullname: 'tiep phan',
   },
   {
     id: '34784716-019b-4868-86cd-02287e49c2d3',
     username: 'nartc',
     firstname: 'chau',
     lastname: 'tran',
-    fullname: 'chau tran'
-  }
-]
+    fullname: 'chau tran',
+  },
+];
 ```
 
 Như vậy qua một lần biến đổi, chúng ta sẽ có được dữ liệu như ý muốn.
 
 Vậy với Observable thì sao. Giả sử chúng ta đang có một hệ thống tracking xem những ai đăng nhập vào hệ thống. Do đó ở một số thời điểm sẽ có một/một vài người đăng nhập, và mỗi lần như thế hệ thống sẽ gửi cho chúng ta một event để biết. Bây giờ chúng ta cũng làm nhiệm vụ tương tự như `map` ở trên thì sao.
 
-
 ```ts
-import { Observable } from 'rxjs'; 
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 interface User {
@@ -84,8 +88,18 @@ interface User {
 
 const source = new Observable<User>((observer) => {
   const users = [
-    {id: 'ddfe3653-1569-4f2f-b57f-bf9bae542662', username: 'tiepphan', firstname: 'tiep', lastname: 'phan'},
-    {id: '34784716-019b-4868-86cd-02287e49c2d3', username: 'nartc', firstname: 'chau', lastname: 'tran'},
+    {
+      id: 'ddfe3653-1569-4f2f-b57f-bf9bae542662',
+      username: 'tiepphan',
+      firstname: 'tiep',
+      lastname: 'phan',
+    },
+    {
+      id: '34784716-019b-4868-86cd-02287e49c2d3',
+      username: 'nartc',
+      firstname: 'chau',
+      lastname: 'tran',
+    },
   ];
 
   setTimeout(() => {
@@ -98,12 +112,11 @@ const source = new Observable<User>((observer) => {
 });
 
 const observer = {
-  next: value => console.log(value),
-  error: err => console.error(err),
+  next: (value) => console.log(value),
+  error: (err) => console.error(err),
   complete: () => console.log('completed'),
 };
 source.subscribe(observer);
-
 ```
 
 Khi chạy chương trình bạn sẽ thấy rằng, sau 1 giây thì sẽ emit ra user đầu tiên, và sau đó 2 giây thì sẽ emit ra user thứ hai kèm theo complete signal.
@@ -121,23 +134,25 @@ Cách đơn giản nhất là bạn sẽ vào hàm next để thực hiện tín
 ```ts
 import { map } from 'rxjs/operators';
 
-source.pipe(
-  map(user => {
-    return {
-      ...user,
-      fullname: `${user.firstname} ${user.lastname}`
-    };
-  })
-).subscribe(observer);
+source
+  .pipe(
+    map((user) => {
+      return {
+        ...user,
+        fullname: `${user.firstname} ${user.lastname}`,
+      };
+    })
+  )
+  .subscribe(observer);
 ```
 
 Hoặc giả sử yêu cầu của chúng ta giờ đây thay đổi, chỉ cần trả về id của user mỗi khi được emit.
+
 ```ts
-source.pipe(
-  map(user => user.id)
-).subscribe(observer);
+source.pipe(map((user) => user.id)).subscribe(observer);
 ```
-Cách dùng map này *khá giống* cách dùng map của array ở trên phải không???
+
+Cách dùng map này _khá giống_ cách dùng map của array ở trên phải không???
 
 ![RxJS map](assets/rxjs-map.png)
 
@@ -146,13 +161,13 @@ Cách dùng map này *khá giống* cách dùng map của array ở trên phải
 `pluck<T, R>(...properties: string[]): OperatorFunction<T, R>`
 
 Đối với yêu cầu map ra một property trong một object như vừa rồi, bạn có thể sử dụng một cách khác là `pluck`:
+
 ```ts
 import { pluck } from 'rxjs/operators';
 
-source.pipe(
-  pluck('id')
-).subscribe(observer);
+source.pipe(pluck('id')).subscribe(observer);
 ```
+
 ![RxJS pluck](assets/rxjs-pluck.png)
 
 ### mapTo
@@ -174,12 +189,8 @@ const mouseover$ = fromEvent(element, 'mouseover');
 const mouseleave$ = fromEvent(element, 'mouseleave');
 
 const hover$ = merge(
-  mouseover$.pipe(
-    mapTo(true),
-  ),
-  mouseleave$.pipe(
-    mapTo(false),
-  )
+  mouseover$.pipe(mapTo(true)),
+  mouseleave$.pipe(mapTo(false))
 );
 
 hover$.subscribe(observer);
@@ -202,17 +213,28 @@ const button = document.querySelector('#add');
 
 const click$ = fromEvent(button, 'click');
 
-click$.pipe(
-  scan((acc, curr) => acc + 1, 0)
-).subscribe(observer);
+click$.pipe(scan((acc, curr) => acc + 1, 0)).subscribe(observer);
 ```
+
 Count số bài đăng của những người dùng đăng nhập theo thời gian:
 
 ```ts
 const users$ = new Observable<User>((observer) => {
   const users = [
-    {id: 'ddfe3653-1569-4f2f-b57f-bf9bae542662', username: 'tiepphan', firstname: 'tiep', lastname: 'phan', postCount: 5},
-    {id: '34784716-019b-4868-86cd-02287e49c2d3', username: 'nartc', firstname: 'chau', lastname: 'tran', postCount: 22},
+    {
+      id: 'ddfe3653-1569-4f2f-b57f-bf9bae542662',
+      username: 'tiepphan',
+      firstname: 'tiep',
+      lastname: 'phan',
+      postCount: 5,
+    },
+    {
+      id: '34784716-019b-4868-86cd-02287e49c2d3',
+      username: 'nartc',
+      firstname: 'chau',
+      lastname: 'tran',
+      postCount: 22,
+    },
   ];
 
   setTimeout(() => {
@@ -224,10 +246,9 @@ const users$ = new Observable<User>((observer) => {
   }, 3000);
 });
 
-users$.pipe(
-  scan((acc, curr) => acc + curr.postCount, 0)
-).subscribe(observer);
+users$.pipe(scan((acc, curr) => acc + curr.postCount, 0)).subscribe(observer);
 ```
+
 ![RxJS scan](assets/rxjs-scan.png)
 
 ### reduce
@@ -237,9 +258,7 @@ users$.pipe(
 Operator này khá giống `scan` là nó sẽ reduce value overtime, nhưng nó sẽ đợi đến khi source complete rồi thì nó mới emit một giá trị cuối cùng và gửi đi `complete`.
 
 ```ts
-users$.pipe(
-  reduce((acc, curr) => acc + curr.postCount, 0)
-).subscribe(observer);
+users$.pipe(reduce((acc, curr) => acc + curr.postCount, 0)).subscribe(observer);
 ```
 
 ![RxJS reduce](assets/rxjs-reduce.png)
@@ -251,18 +270,15 @@ users$.pipe(
 Giả sử bạn cần collect toàn bộ các value emit bởi stream rồi lưu trữ thành một array, sau đó đợi đến khi stream complete thì emit một array và complete. Lúc này bạn hoàn toàn có thể sử dụng `reduce`:
 
 ```ts
-users$.pipe(
-  reduce((acc, curr) => [...acc, curr], [])
-).subscribe(observer);
+users$.pipe(reduce((acc, curr) => [...acc, curr], [])).subscribe(observer);
 ```
 
 Nhưng có một cách viết khác ngắn gọn hơn đó là dùng `toArray`.
 
 ```ts
-users$.pipe(
-  toArray()
-).subscribe(observer);
+users$.pipe(toArray()).subscribe(observer);
 ```
+
 ### buffer
 
 `buffer<T>(closingNotifier: Observable<any>): OperatorFunction<T, T[]>`
@@ -274,20 +290,15 @@ const interval$ = interval(1000);
 
 const click$ = fromEvent(document, 'click');
 
-const buffer$ = interval$.pipe(
-  buffer(click$)
-);
+const buffer$ = interval$.pipe(buffer(click$));
 
-
-const subscribe = buffer$.subscribe(
-  val => console.log('Buffered Values: ', val)
+const subscribe = buffer$.subscribe((val) =>
+  console.log('Buffered Values: ', val)
 );
 
 // output có dạng
-"Buffered Values: "
-[0, 1]
-"Buffered Values: "
-[2, 3, 4, 5, 6]
+'Buffered Values: '[(0, 1)];
+'Buffered Values: '[(2, 3, 4, 5, 6)];
 ```
 
 ![RxJS buffer](assets/rxjs-buffer.png)
@@ -317,6 +328,7 @@ const bufferTimeSub = bufferTime.subscribe(
 [4, 5]
 ...
 ```
+
 ![RxJS bufferTime](assets/rxjs-bufferTime.png)
 
 ## Summary
@@ -329,6 +341,10 @@ Như vậy trong Day 21 chúng ta đã tìm hiểu cơ bản về một số **T
 - [LearnRxJS](https://www.learnrxjs.io/)
 
 Mục tiêu của Day 22 là **RxJS Filtering Operators**.
+
+## Youtube Video
+
+[![Day 21](https://img.youtube.com/vi/AG97A7_NCLE/0.jpg)](https://youtu.be/AG97A7_NCLE)
 
 ## Author
 

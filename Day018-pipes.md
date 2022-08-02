@@ -33,16 +33,17 @@ Mình có một biến tên là `now` ở trong component.
 
 ```ts
 export class PipeExampleComponent implements OnInit {
-  now = "2020-06-24T09:00:00.000Z";
+  now = '2020-06-24T09:00:00.000Z';
 }
 ```
 
 Và đây là cách mình hiển thị với built in pipe [Date][date] trong Angular
 
 ```html
-<div>{{ now | date }}</div> //Jun 24, 2020 
-<div>{{ now | date:'medium'}}</div> //Jun 24, 2020, 5:00:00
-PM
+<div>{{ now | date }}</div>
+//Jun 24, 2020
+<div>{{ now | date:'medium'}}</div>
+//Jun 24, 2020, 5:00:00 PM
 ```
 
 Chú ý phần giữa hai dấu ngoặc nhọn `{{ }}`, ngoài việc truyền vào variable bạn muốn hiển thì thì có thêm dấu xổ dọc `|`. Đó là pipe operator, sau đó là tên của pipe bạn đã định nghĩa. Tất cả pipe đều hoạt động theo cách này.
@@ -131,7 +132,7 @@ interface PipeTransform {
 ```ts
 export class AppTitlePipe implements PipeTransform {
   transform(resourceId: string): string {
-    return resourceId ? "Edit" : "Add";
+    return resourceId ? 'Edit' : 'Add';
   }
 }
 ```
@@ -144,11 +145,11 @@ Giống như component có decorator `@Component`. Pipe cũng có decorator `@Pi
 
 ```ts
 @Pipe({
-  name: 'appTitle'
+  name: 'appTitle',
 })
 export class AppTitlePipe implements PipeTransform {
   transform(resourceId: string): string {
-    return resourceId ? "Edit" : "Add";
+    return resourceId ? 'Edit' : 'Add';
   }
 }
 ```
@@ -208,12 +209,12 @@ Với pipe `appTitle` ở trên, vì mình truyền vào giá trị string cho a
 
 ```ts
 export class PipeExampleComponent implements OnInit {
-  userIdChangeAfterFiveSeconds = "14324";
+  userIdChangeAfterFiveSeconds = '14324';
   time$: Observable<number> = timer(0, 1000).pipe(
     map((val) => 5 - (val + 1)),
     startWith(5),
     finalize(() => {
-      this.userIdChangeAfterFiveSeconds = "";
+      this.userIdChangeAfterFiveSeconds = '';
     }),
     takeWhile((val) => val >= 0)
   );
@@ -262,7 +263,7 @@ Mình có một pipe tên là `isAdult`, để filter ra những user lớn hơn
 
 ```ts
 @Pipe({
-  name: "isAdult",
+  name: 'isAdult',
 })
 export class IsAdultPipe implements PipeTransform {
   transform(arr: User[]): User[] {
@@ -331,6 +332,7 @@ Bây giờ thì bạn thấy list người lớn cũng đã được update khi 
 ### 2. Set impure Pipe
 
 Nếu bạn muốn trigger pipe khi có thay đổi value của một phần tử trong array, hay khi một property của object bị thay đổi. Bạn có thể cấu hình pipe của bạn với thuộc tính `pure` với giá trị `false` trong decorator. Mặc định, `pure` luôn có giá trị true.
+
 ```ts
 @Pipe({
   name: 'isAdult',
@@ -357,6 +359,10 @@ Toàn bộ code trong bài viết này các bạn có thể xem ở link dưới
 https://stackblitz.com/edit/angular-100-days-of-code-day-18-pipes
 
 Mục tiêu của Day 19 là **Giới thiệu RxJS và Observable**.
+
+## Youtube Video
+
+[![Day 18](https://img.youtube.com/vi/4BJ2Vk67f6A/0.jpg)](https://youtu.be/4BJ2Vk67f6A)
 
 ## Author
 

@@ -211,7 +211,7 @@ Mục tiêu của Day 12 là **Một số kỹ thuật TypeScript Nâng Cao**.
 
 ## Youtube Video
 
-https://youtu.be/ozHjDLuusVU
+[![Day 11](https://img.youtube.com/vi/ozHjDLuusVU/0.jpg)](https://youtu.be/ozHjDLuusVU)
 
 ## Author
 

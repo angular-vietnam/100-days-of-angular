@@ -42,11 +42,11 @@ ng g c sign-in-rf
 ```ts
 const routes: Routes = [
   {
-    path: "sign-in",
+    path: 'sign-in',
     component: SignInComponent,
   },
   {
-    path: "sign-in-rf",
+    path: 'sign-in-rf',
     component: SignInRfComponent,
   },
 ];
@@ -89,7 +89,7 @@ Sau khi khởi chạy ứng dụng với lệnh `ng serve` bạn có thể visit
 Để sử dụng được **Reactive Forms** ở trong ứng dụng, chúng ta cần imports một `NgModule` là `ReactiveFormsModule` vào NgModule quản lý component của chúng ta - trong trường hợp của component hiện tại là `AppModule`.
 
 ```ts
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -118,8 +118,8 @@ Thông thường, mỗi một form sẽ bắt đầu bởi một **FormGroup**, 
 ```ts
 export class SignInRfComponent implements OnInit {
   signInForm = new FormGroup({
-    username: new FormControl(""), // <== default value
-    password: new FormControl(""), // <== default value
+    username: new FormControl(''), // <== default value
+    password: new FormControl(''), // <== default value
     rememberMe: new FormControl(false), // <== default value
   });
   constructor() {}
@@ -186,15 +186,15 @@ export class SignInRfComponent implements OnInit {
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
-      username: "",
-      password: "",
+      username: '',
+      password: '',
       rememberMe: false,
     });
   }
 }
 ```
 
-## Cập nhật giá trị cho Reactive Forms qua pathValue hoặc setValue
+## Cập nhật giá trị cho Reactive Forms qua patchValue hoặc setValue
 
 Có 2 phương thức để cập nhật giá trị cho form control được mô tả bởi class `AbstractControl` là `setValue` và `patchValue`. Chúng là các abstract method, vậy nên các class dẫn xuất sẽ phải implement riêng cho chúng.
 
@@ -250,6 +250,10 @@ Mục tiêu của ngày 36 sẽ là **Angular Forms: Reactive Forms Part 2**
 
 - https://github.com/tieppt/100-doc-angular/tree/day35
 - https://stackblitz.com/edit/100-days-of-angular-day-35
+
+## Youtube Video
+
+[![Day 35](https://img.youtube.com/vi/oTwukyGa_qY/0.jpg)](https://youtu.be/oTwukyGa_qY)
 
 ## References
 

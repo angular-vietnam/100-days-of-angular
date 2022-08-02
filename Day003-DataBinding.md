@@ -11,9 +11,9 @@ Nó có thể hiểu là hãy tính toán cái expression này, nếu có trả 
 Chỉ đơn giản thế. Giờ các bạn có thể phun data về tên tuổi của một người thành cái profile đơn giản như sau:
 
 ```typescript
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 @Component({
-  selector: "app-hello",
+  selector: 'app-hello',
   template: `
     <h2>Hello there!</h2>
     <h3>Your name: {{ user.name }}</h3>
@@ -22,7 +22,7 @@ import { Component } from "@angular/core";
 })
 export class HelloComponent {
   user = {
-    name: "Tiep Phan",
+    name: 'Tiep Phan',
     age: 30,
   };
 }
@@ -37,11 +37,11 @@ Sau khi parse xong sẽ có một object (node) thuộc type HTMLInputElement đ
 
 ```typescript
 obj = {
-    type: 'text',
-    value: 'something',
-    attributes: [] // thuộc type NamedNodeMap, dạng như một array
-    // … các thuộc tính, method khác
-}
+  type: 'text',
+  value: 'something',
+  attributes: [], // thuộc type NamedNodeMap, dạng như một array
+  // … các thuộc tính, method khác
+};
 ```
 
 Như bạn có thể thấy, attribute được dùng để chỉ những gì các bạn đặt vào phần opening tag của một tag, còn lại là property của object (node).
@@ -67,7 +67,7 @@ Câu trả lời chính là Event binding. Để gắn event listener vào một
 
 ```typescript
 @Component({
-  selector: "app-hello",
+  selector: 'app-hello',
   template: `
     <h2>Hello there!</h2>
     <button (click)="showInfo()">Click me!</button>
@@ -75,7 +75,7 @@ Câu trả lời chính là Event binding. Để gắn event listener vào một
 })
 export class HelloComponent {
   showInfo() {
-    alert("Inside Angular Component method");
+    alert('Inside Angular Component method');
   }
 }
 ```
@@ -119,12 +119,11 @@ Mục tiêu Day 4 sẽ là về cấu trúc `if else`
 
 ## Youtube Video
 
-https://youtu.be/WrMywdbnQfk
+[![Day 03](https://img.youtube.com/vi/WrMywdbnQfk/0.jpg)](https://youtu.be/WrMywdbnQfk)
 
 ## Author
 
 [Tiep Phan](https://github.com/tieppt)
-
 
 ## HASHTAG
 

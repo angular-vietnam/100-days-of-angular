@@ -25,15 +25,15 @@ export class ArticleModule {}
 ```ts
 const routes: Routes = [
   {
-    path: "article",
+    path: 'article',
     component: ArticleComponent,
     children: [
       {
-        path: "",
+        path: '',
         component: ArticleListComponent,
       },
       {
-        path: ":slug",
+        path: ':slug',
         component: ArticleDetailComponent,
       },
     ],
@@ -87,11 +87,11 @@ Giờ chúng ta bắt tay vào code nhé. Mình cũng sẽ tạo ra một `Admin
 ```ts
 const routes: Routes = [
   {
-    path: "admin",
+    path: 'admin',
     component: AdminComponent,
     children: [
       {
-        path: "",
+        path: '',
         component: AdminArticleListComponent,
       },
     ],
@@ -188,13 +188,11 @@ Phần bundle của `main.js` giờ đã không còn AdminModule nữa rồi, ch
 
 Còn đây là phân tích của `admin-admin-module.js`. Phần import của Form và các component của AdminModule đã nằm trong bundle này. Quá xuất sắc.
 
-
 ## Lazy load syntax
 
 `import('...')` syntax được khuyến cáo sử dụng từ Angular version 8.
 
 Ngoài cách dùng `import('...')` syntax, chúng ta có một cách dùng từ Angular version 7 trở xuống như sau: `loadChildren: './admin/admin.module#AdminModule'`. Đó là một magic string, để chỉ ra file path đến file mà chứa NgModule có kèm Router cần load.
-
 
 ### Preloading Lazy Module
 
@@ -209,18 +207,18 @@ Có một số module mà mình biết rằng thường là khi user mở ứng 
 Để enable preloading cho tất cả các lazy loaded modules, các bạn cần import `PreloadAllModules` từ package `@angular/router` và cấu hình nó ở trong AppRoutingModule, đoạn forRoot.
 
 ```ts
-import { PreloadAllModules } from "@angular/router";
+import { PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: "admin",
+    path: 'admin',
     loadChildren: () =>
-      import("./admin/admin.module").then((m) => m.AdminModule),
+      import('./admin/admin.module').then((m) => m.AdminModule),
   },
   {
-    path: "",
-    redirectTo: "article",
-    pathMatch: "full",
+    path: '',
+    redirectTo: 'article',
+    pathMatch: 'full',
   },
 ];
 
@@ -252,6 +250,10 @@ Mục tiêu của Day 30 là **Angular Router - Guards and Resolvers**
 ## Code example
 
 https://stackblitz.com/edit/angular-100-days-of-code-day-29-router-lazy
+
+## Youtube Video
+
+[![Day 29](https://img.youtube.com/vi/D0Tv5BaNTa8/0.jpg)](https://youtu.be/D0Tv5BaNTa8)
 
 ## References
 

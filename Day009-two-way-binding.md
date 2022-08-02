@@ -17,30 +17,32 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent],
-  bootstrap:    [ AppComponent ]
+  imports: [BrowserModule, FormsModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 ```
+
 Như thế là chúng ta có thể sử dụng được `ngModel` ở template, và sử dụng cú pháp vuông vuông tròn tròn `[(ngModel)]` để có được Two-way binding.
 
 **app.component.html**
-```html
-<p>
-  Your name: {{ name }}
-</p>
 
-<input type="text" [(ngModel)]="name">
+```html
+<p>Your name: {{ name }}</p>
+
+<input type="text" [(ngModel)]="name" />
 ```
+
 **app.component.ts**
+
 ```ts
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent  {
+export class AppComponent {
   name = 'Tiep Phan';
 }
 ```
@@ -50,7 +52,7 @@ Giờ đây mỗi lần bạn thay đổi giá trị của input thì thẻ `p` 
 Thực chất cách viết trên là viết tắt của property binding và event binding như sau:
 
 ```html
-<input type="text" [ngModel]="name" (ngModelChange)="name = $event">
+<input type="text" [ngModel]="name" (ngModelChange)="name = $event" />
 ```
 
 Vậy nên để tạo custom Two-way binding thì bạn chỉ cần tạo @Input và @Output với @Output có suffix là change là được, ví dụ `value` và `valueChange`.
@@ -66,52 +68,57 @@ ng g c toggle
 Phần code của component sẽ được implement như sau:
 
 **toggle.component.ts**
+
 ```ts
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-toggle',
   templateUrl: './toggle.component.html',
-  styleUrls: ['./toggle.component.css']
+  styleUrls: ['./toggle.component.css'],
 })
 export class ToggleComponent implements OnInit {
   @Input() checked = false;
   @Output() checkedChange = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   toggle() {
     this.checked = !this.checked;
     this.checkedChange.emit(this.checked);
   }
-
 }
 ```
 
 **toggle.component.html**
+
 ```html
-<div class="toggle-wrapper" [class.checked]="checked" tabindex="0" (click)="toggle()">
+<div
+  class="toggle-wrapper"
+  [class.checked]="checked"
+  tabindex="0"
+  (click)="toggle()"
+>
   <div class="toggle"></div>
 </div>
 ```
+
 **toggle.component.css**
+
 ```css
 .toggle-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all .2s;
+  transition: all 0.2s;
   width: 100px;
   height: 100px;
   border-radius: 50%;
   background-color: #fe4551;
   box-shadow: 0 20px 20px 0 rgba(#fe4551, 0.3);
-  
-  
 }
 
 .toggle-wrapper:active {
@@ -124,7 +131,6 @@ export class ToggleComponent implements OnInit {
   width: 17px;
 }
 
-    
 .toggle {
   transition: all 0.2s ease-in-out;
   height: 20px;
@@ -133,19 +139,16 @@ export class ToggleComponent implements OnInit {
   border: 10px solid #fff;
   border-radius: 50%;
   cursor: pointer;
-  animation: red .7s linear forwards;
+  animation: red 0.7s linear forwards;
 }
-
 
 .toggle-wrapper.checked {
   background-color: #48e98a;
   box-shadow: 0 20px 20px 0 rgba(#48e98a, 0.3);
-    
 }
 
 .toggle-wrapper.checked:active {
   box-shadow: 0 15px 15px 0 rgba(#48e98a, 0.5);
-
 }
 
 .toggle-wrapper.checked .toggle {
@@ -153,17 +156,19 @@ export class ToggleComponent implements OnInit {
   background-color: #fff;
   border-color: transparent;
   border-radius: 30px;
-  animation: green .7s linear forwards !important;
+  animation: green 0.7s linear forwards !important;
 }
 ```
+
 Component trên của chúng ta không có quá khác biệt so với những component trước đây, nó đều sử dụng những concept cơ bản như @Input, @Output, class binding, style css.
 
 Chỉ với việc sử dụng suffix `change` cho property `checked` chúng ta có thể sử dụng component này ở bất cứ đâu với cách dùng giống như `ngModel`:
+
 ```html
 <app-toggle [(checked)]="checked"></app-toggle>
 ```
-![Toggle](assets/100doc-day9.gif)
 
+![Toggle](assets/100doc-day9.gif)
 
 ## SUMMARY
 
@@ -176,7 +181,7 @@ Như vậy trong Day 9, chúng ta sẽ phải tìm hiểu cách để tạo ra c
 
 ## Youtube Video
 
-https://youtu.be/U8UCOKInmu8
+[![Day 09](https://img.youtube.com/vi/U8UCOKInmu8/0.jpg)](https://youtu.be/U8UCOKInmu8)
 
 ## Code sample
 

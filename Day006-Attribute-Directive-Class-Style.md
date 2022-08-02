@@ -9,9 +9,7 @@ Trong các ứng dụng thực tế, có thể chúng ta cần thay đổi (thê
 Ví dụ, nếu chúng ta đang chọn một tab nào đó để hiển thị, thì tab đó sẽ có thêm class tab-active, các tab khác sẽ không có. Lúc này chúng ta sẽ sử dụng cú pháp:
 
 ```html
-<div [class.tab-active]="isTabActive">
-  some content
-</div>
+<div [class.tab-active]="isTabActive">some content</div>
 ```
 
 Nhìn qua thì nó chỉ là property binding, với giá trị của isTabActive trả về true thì classList của div đó sẽ tồn tại class tab-active, còn nếu trả về false thì sẽ không tồn tại.
@@ -78,7 +76,7 @@ Mục tiêu Day 7 sẽ là Input cho component.
 
 ## Youtube Video
 
-https://youtu.be/Zh36WRD3MMQ
+[![Day 06](https://img.youtube.com/vi/Zh36WRD3MMQ/0.jpg)](https://youtu.be/Zh36WRD3MMQ)
 
 ## Author
 
