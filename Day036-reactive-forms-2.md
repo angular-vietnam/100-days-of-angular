@@ -15,8 +15,8 @@ export class SignInRfComponent implements OnInit {
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
-      username: "",
-      password: "",
+      username: '',
+      password: '',
       rememberMe: false,
     });
   }
@@ -75,7 +75,7 @@ Có 2 loại validator function:
 
 #### 1. Sync validators (đồng bộ)
 
-Đây là các function để validate thường gặp, sẽ nhận đầu vào là một form control và trả về:
+Đây là các function để validate thường gặp, sẽ nhận đầu vào là một form control và trả về `ngay lập tức`:
 
 - Một danh sách các validation errors.
 - Hoặc null tức là control này ko có lỗi gì.
@@ -85,14 +85,14 @@ Ví dụ như input cần có độ dài tối thiểu là 6, thì function vali
 Khi khởi tạo `FormControl` thì Sync validators sẽ được truyền vào ở argument số 2. Argument số 1 sẽ là giá trị mặc định khi khởi tạo form nhé.
 
 ```ts
-let control = new FormControl("", Validators.required);
+let control = new FormControl('', Validators.required);
 //Or
-this.fb.control("", Validators.required);
+this.fb.control('', Validators.required);
 ```
 
 #### 2. Async validators (bất đồng bộ)
 
-Đây là các validate function sẽ trả về Promise hoặc Observable. Ví dụ như bạn muốn validate xem username nhập vào đã có trong hệ thống hay chưa. Thì bắt buộc bạn phải gửi một yêu cầu lên server để làm việc này, HTTP request thường sẽ trả về Promise/Observable.
+Đây là các validate function sẽ trả về Promise hoặc Observable mà kết quả sẽ được emit trong tương lai. Ví dụ như bạn muốn validate xem username nhập vào đã có trong hệ thống hay chưa. Thì bắt buộc bạn phải gửi một yêu cầu lên server để làm việc này, HTTP request thường sẽ trả về Promise/Observable.
 
 Khi khởi tạo `FormControl` thì async validators sẽ được truyển vào ở argument số 3.
 
@@ -104,6 +104,10 @@ isUserNameDuplicated(control: AbstractControl): Observable<ValidationErrors> {
 let control = new FormControl("", Validators.required, this.isUserNameDuplicated);
 this.fb.control("", Validators.required, this.isUserNameDuplicated);
 ```
+
+> For performance reasons, Angular only runs async validators if all sync validators pass. Each must complete before errors are set.
+
+https://angular.io/guide/form-validation#validator-functions
 
 ### Implement validate function
 
@@ -130,7 +134,7 @@ Mình sẽ cần dùng `Validators.required`, `Validators.minLength` và `Valida
 ```ts
 this.signInForm = this.fb.group({
   username: [
-    "",
+    '',
     Validators.compose([
       Validators.required,
       Validators.minLength(6),
@@ -138,7 +142,7 @@ this.signInForm = this.fb.group({
     ]),
   ],
   password: [
-    "",
+    '',
     Validators.compose([
       Validators.required,
       Validators.minLength(6),
@@ -170,7 +174,7 @@ Như ví dụ ở trên thì sau khi mình điền đủ 6 kí tự khoảng tr�
 ```ts
 this.signInForm = this.fb.group({
   username: [
-    "",
+    '',
     Validators.compose([
       Validators.required,
       Validators.minLength(6),
@@ -187,17 +191,17 @@ Bây giờ khi điền dủ 6 dấu cách thì input đã pass validators!
 Để xử lý trường hợp trên mà ko dùng thêm tới `Validators.pattern(/^[a-z]{6,32}$/i)`, mình sẽ viết một custom validator có tên là `NoWhitespaceValidator`.
 
 ```ts
-import { AbstractControl, ValidatorFn } from "@angular/forms";
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 export function NoWhitespaceValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } => {
     let controlVal = control.value;
-    if (typeof controlVal === "number") {
+    if (typeof controlVal === 'number') {
       controlVal = `${controlVal}`;
     }
-    let isWhitespace = (controlVal || "").trim().length === 0;
+    let isWhitespace = (controlVal || '').trim().length === 0;
     let isValid = !isWhitespace;
-    return isValid ? null : { whitespace: "value is only whitespace" };
+    return isValid ? null : { whitespace: 'value is only whitespace' };
   };
 }
 ```
@@ -214,7 +218,7 @@ Giờ thì mình sẽ bỏ `Validators.required` và thay bằng `NoWhitespaceVa
 ```ts
 this.signInForm = this.fb.group({
   username: [
-    "",
+    '',
     Validators.compose([
       //Validators.required,
       NoWhitespaceValidator(),
