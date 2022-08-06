@@ -1,4 +1,4 @@
-# Day 36: Reactive Forms Part 2
+# Day 36: Reactive Forms Trong Angular - Part 2
 
 Trong [day 35][day35], chúng ta đã tìm hiểu về Reactive Forms trong Angular. Day 36 chúng ta sẽ nói thêm về validate input của Reactive Forms.
 
@@ -254,6 +254,10 @@ Các bạn có thể đọc thêm ở các bài viết sau
 - https://angular.io/guide/reactive-forms
 - https://www.tiepphan.com/thu-nghiem-voi-angular-reactive-forms-trong-angular/
 - https://www.tiepphan.com/thu-nghiem-voi-angular-template-driven-forms-trong-angular/
+
+## Youtube Video
+
+[![Day 36](https://img.youtube.com/vi/ozHU4MmRS1w/0.jpg)](https://youtu.be/ozHU4MmRS1w)
 
 ## Author
 
