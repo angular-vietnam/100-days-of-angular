@@ -2,7 +2,7 @@
 
 Trong [day 36][day36], chúng ta đã tìm hiểu về validate reactive forms trong Angular, cũng như viết một custom validator đơn giản để check xem input có dấu cách hay ko.
 
-Day 37 này sẽ nó thêm về Async Validator trong Angular.
+Day 37 này sẽ nói thêm về Async Validator trong Angular.
 
 ## Prerequisites
 
@@ -26,10 +26,44 @@ Mình sẽ build một form đăng kí user - `registerForm` bao gồm:
 
 Mình sẽ setup form như ở dưới nhé.
 
+1. Tạo register component dùng CLI
+
+```
+ng g c register
+```
+
+2. Update route để chỉ đến component này
+
+```diff
+const routes: Routes = [
+  {
+    path: "sign-in",
+    component: SignInComponent
+  },
+  {
+    path: "sign-in-rf",
+    component: SignInRfComponent
+  },
++  {
++    path: "register",
++    component: RegisterComponent
++  },
+  {
+    path: "",
+    redirectTo: "register",
+    pathMatch: "full"
+  }
+];
+```
+
+3. Setup registerForm
+
 ```ts
+const PASSWORD_PATTERN = /^(?=.*[!@#$%^&*]+)[a-z0-9!@#$%^&*]{6,32}$/;
+
 this.registerForm = this._fb.group({
   username: [
-    "",
+    '',
     Validators.compose([
       Validators.required,
       Validators.minLength(6),
@@ -37,7 +71,7 @@ this.registerForm = this._fb.group({
     ]),
   ],
   password: [
-    "",
+    '',
     Validators.compose([
       Validators.required,
       Validators.minLength(6),
@@ -45,7 +79,7 @@ this.registerForm = this._fb.group({
     ]),
   ],
   confirmPassword: [
-    "",
+    '',
     Validators.compose([
       Validators.required,
       Validators.minLength(6),
@@ -168,7 +202,7 @@ Sau khi viết xong function, chúng ta cần config control để sử dụng v
 ```ts
 this.registerForm = this._fb.group({
   username: [
-    "",
+    '',
     Validators.compose([
       Validators.required,
       Validators.minLength(6),
@@ -215,7 +249,7 @@ Sau đó config control để dùng `validateUserNameFromAPIDebounce`.
 ```ts
 this.registerForm = this._fb.group({
   username: [
-    "",
+    '',
     Validators.compose([
       Validators.required,
       Validators.minLength(6),
@@ -257,11 +291,11 @@ this.formSubmit$
     switchMap(() =>
       this.registerForm.statusChanges.pipe(
         startWith(this.registerForm.status),
-        filter((status) => status !== "PENDING"),
+        filter((status) => status !== 'PENDING'),
         take(1)
       )
     ),
-    filter((status) => status === "VALID")
+    filter((status) => status === 'VALID')
   )
   .subscribe((validationSuccessful) => this.submitForm());
 ```
