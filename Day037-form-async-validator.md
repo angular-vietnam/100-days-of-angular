@@ -181,20 +181,15 @@ Mình sẽ làm theo cách thứ nhất. Nếu làm theo cách thứ hai phải 
 - Còn nếu API trả về `false`, thì hàm `validateUserNameFromAPI` sẽ trả về một object với data là bất cứ gì bạn muốn, nhưng thông tin nên có giá trị một chút để sau này còn dùng hiển thị thông báo lỗi cho user chẳng hạn
 
 ```ts
-validateUserNameFromAPI(
-  control: AbstractControl
-): Observable<ValidationErrors | null> {
-  return this._api.validateUsername(control.value).pipe(
-    map(isValid => {
-      if (isValid) {
-        return null;
-      }
-      return {
-        "usernameDuplicated": true
-      }
-    })
-  );
-}
+const validateUserNameFromApi = (api: ApiService) => {
+  return (control: AbstractControl): Observable<ValidationErrors | null> => {
+    return api.validateUsername(control.value).pipe(
+      map((isValid: boolean) => {
+        return isValid ? null : { usernameDuplicated: true };
+      })
+    );
+  };
+};
 ```
 
 Sau khi viết xong function, chúng ta cần config control để sử dụng validator đó.
@@ -208,12 +203,10 @@ this.registerForm = this._fb.group({
       Validators.minLength(6),
       Validators.pattern(/^[a-z]{6,32}$/i),
     ]),
-    this.validateUserNameFromAPI.bind(this),
+    validateUserNameFromApi(this._api),
   ],
 });
 ```
-
-Tại sao phải có `bind(this)` thì đây là một chủ đề khá dài dòng 😂 Mình sẽ giải thích sau nhé.
 
 Kết quả như hình dưới. Khi điền đủ 6 kí tự alpha, khi đó username đã pass toàn bộ sync validator thì async validator sẽ đc trigger ngay sau khi bạn điền kí tự thứ 6. Sau đó, mỗi kí tự khi được nhập từ bàn phím vào sẽ trigger một API lên server để validate, như ta đã thấy có console.log "Trigger API call".
 
@@ -224,24 +217,24 @@ Kết quả như hình dưới. Khi điền đủ 6 kí tự alpha, khi đó use
 Bạn có thấy screenshot có điểm nào quen quen ko? Use case khi điền vào searchbox ko trigger API call ngay lập tức mà chỉ call API nếu như giữa hai keystroke cách nhau một khoảng thời gian, thường là `300ms`. Chúng ta cũng có thể implement behavior đó tương tự như dùng async validator. Sửa đoạn code ở trên có dùng timer như ở dưới:
 
 ```ts
-validateUserNameFromAPIDebounce(
-  control: AbstractControl
-): Observable<ValidationErrors | null> {
-  return timer(300).pipe(
-    switchMap(() =>
-      this._api.validateUsername(control.value).pipe(
-        map(isValid => {
-          if (isValid) {
-            return null;
-          }
-          return {
-            usernameDuplicated: true
-          };
-        })
+const validateUserNameFromApiDebounce = (api: ApiService) => {
+  return (control: AbstractControl): Observable<ValidationErrors | null> => {
+    return timer(300).pipe(
+      switchMap(() =>
+        api.validateUsername(control.value).pipe(
+          map((isValid) => {
+            if (isValid) {
+              return null;
+            }
+            return {
+              usernameDuplicated: true,
+            };
+          })
+        )
       )
-    )
-  );
-}
+    );
+  };
+};
 ```
 
 Sau đó config control để dùng `validateUserNameFromAPIDebounce`.
@@ -255,7 +248,7 @@ this.registerForm = this._fb.group({
       Validators.minLength(6),
       Validators.pattern(/^[a-z]{6,32}$/i),
     ]),
-    this.validateUserNameFromAPIDebounce.bind(this),
+    validateUserNameFromAPIDebounce(this._api),
   ],
 });
 ```
@@ -295,9 +288,12 @@ this.formSubmit$
         take(1)
       )
     ),
-    filter((status) => status === 'VALID')
+    filter((status) => status === 'VALID'),
+    tap(() => {
+      this.submitForm();
+    })
   )
-  .subscribe((validationSuccessful) => this.submitForm());
+  .subscribe();
 ```
 
 ```html
@@ -318,20 +314,27 @@ Test thôi anh em. Như trong hình thì trong khoảng thời gian đang valida
 Use case để validate confirm password trùng với password thì chúng ta chỉ cần viết một hàm custom validator đơn giản hơn, nhưng hàm này vì cần value của 2 controls nên mình sẽ apply validator này cho `formGroup` nhé. Code của function `validateControlsValue` sẽ như sau:
 
 ```ts
-validateControlsValue(firstControlName: string, secondControlName: string) {
-  return function(formGroup: FormGroup) {
-    const { value: firstControlValue } = formGroup.get(firstControlName);
-    const { value: secondControlValue } = formGroup.get(secondControlName);
+const validateMatchedControlsValue = (
+  firstControlName: string,
+  secondControlName: string
+) => {
+  return function (formGroup: FormGroup): ValidationErrors | null {
+    const { value: firstControlValue } = formGroup.get(
+      firstControlName
+    ) as AbstractControl;
+    const { value: secondControlValue } = formGroup.get(
+      secondControlName
+    ) as AbstractControl;
     return firstControlValue === secondControlValue
       ? null
       : {
           valueNotMatch: {
             firstControlValue,
-            secondControlValue
-          }
+            secondControlValue,
+          },
         };
   };
-}
+};
 ```
 
 - Mình tạo ra hàm `validateControlsValue` và truyền vào tên của 2 controls. Function này sẽ return lại một function làm nhiệm vụ validate.
@@ -361,7 +364,7 @@ this.registerForm = this._fb.group(
       ]
     },
     {
-      validators: this.validateControlsValue("password", "confirmPassword")
+      validators: validateControlsValue("password", "confirmPassword")
     }
   );
 })
@@ -391,6 +394,10 @@ Các bạn có thể đọc thêm ở các bài viết sau
 - https://trungk18.com/experience/angular-async-validator/
 - https://www.tiepphan.com/thu-nghiem-voi-angular-reactive-forms-trong-angular/
 - https://www.tiepphan.com/thu-nghiem-voi-angular-template-driven-forms-trong-angular/
+
+## Youtube Video
+
+[![Day 37](https://img.youtube.com/vi/-ib5p8KbapQ/0.jpg)](https://youtu.be/-ib5p8KbapQ)
 
 ## Author
 
