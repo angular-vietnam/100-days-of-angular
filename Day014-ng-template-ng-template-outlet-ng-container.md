@@ -122,8 +122,8 @@ Tuy nhiên, khi dùng `tab-container` bạn hoàn toàn có thể pass vào temp
 
 Qua ví dụ trên thì có thể thấy ngay `ngTemplateOutlet` là cách dùng để render một template được tạo ra bởi `ng-template` lên UI. Cú pháp như sau
 
-- _ngTemplateOutlet="templateRef"(chú ý dấu sao `_` nhé, không có là không chạy đâu đấy)
-- [ngTemplateOutlet]="templateRef"
+- `*ngTemplateOutlet="templateRef"` (chú ý dấu sao `*` nhé, không có là không chạy đâu đấy)
+- `[ngTemplateOutlet]="templateRef"`
 
 Tuy nhiên, như component có `@Input()` để truyền data từ bên ngoài vào, thì ng-template cũng có cú pháp tương tự để truyền data. Đó chính là `ngTemplateOutletContext`
 
