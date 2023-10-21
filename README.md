@@ -7,7 +7,7 @@ Series độc quyền cung cấp bởi thành viên của Angular Vietnam về c
 ## Ủng hộ/ Support
 
 - [Ủng hộ cho Chau Tran](https://github.com/sponsors/nartc)
-- [Ủng hộ cho Trung Vo](https://www.buymeacoffee.com/tuantrungvo)
+- [Ủng hộ cho Trung Vo](https://www.buymeacoffee.com/trungvose)
 - [Ủng hộ cho Tiep Phan](https://www.facebook.com/pttiep)
 
 Bọn mình chân thành cảm ơn sự ủng hộ và đóng góp của các bạn!
